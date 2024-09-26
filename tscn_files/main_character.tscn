@@ -69,7 +69,7 @@ _data = {
 "walk": SubResource("Animation_44enw")
 }
 
-[node name="Main_character" type="CharacterBody2D" node_paths=PackedStringArray("attackCollision")]
+[node name="Main_character" type="CharacterBody2D" node_paths=PackedStringArray("attackCollision") groups=["Player"]]
 collision_mask = 7
 platform_floor_layers = 4294967042
 platform_wall_layers = 4

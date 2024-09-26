@@ -1,28 +1,20 @@
 class_name Enemy extends CharacterBody2D
 
 
-enum State {
-	WALKING,
-	DEAD,
-}
-
-const WALK_SPEED = 22.0
-
-var _state := State.WALKING
+const WALK_SPEED = 30
 var hp = 3
 
+#@onready var animation := $AnimationPlayer as AnimationPlayer
 @onready var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
-#@onready var platform_detector := $PlatformDetector as RayCast2D
 @onready var floor_detector_left := $FloorDetectorLeft as RayCast2D
 @onready var floor_detector_right := $FloorDetectorRight as RayCast2D
 @onready var sprite := $Sprite2D as Sprite2D
-#@onready var animation_player := $AnimationPlayer as AnimationPlayer
+@onready var attackTimer := $AttackTimer as Timer
 
+@export var attackCollision : Area2D
 
 func _physics_process(delta: float) -> void:
-	if _state == State.DEAD:
-		queue_free()
-	if _state == State.WALKING and velocity.is_zero_approx():
+	if velocity.is_zero_approx():
 		velocity.x = WALK_SPEED
 	velocity.y += gravity * delta
 	if not floor_detector_left.is_colliding():
@@ -34,7 +26,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = -velocity.x
 
 	move_and_slide()
-
+	if attackTimer.is_stopped():
+		attack(1)
 	if velocity.x > 0.0:
 		sprite.scale.x = 1
 	elif velocity.x < 0.0:
@@ -44,4 +37,11 @@ func take_damage(damage: int):
 	hp-=damage
 	sprite.scale.y = -1
 	if hp <= 0:
-		_state = State.DEAD
+		queue_free()
+		
+func attack(damage):
+		#animation.play("attack")
+		for body in attackCollision.get_overlapping_bodies():
+			if body.is_in_group("Player"):
+				body.take_damage(damage)
+				attackTimer.start()

@@ -1,17 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://7lbe4hly8swj"]
+[gd_scene load_steps=5 format=3 uid="uid://7lbe4hly8swj"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_th8rd"]
 [ext_resource type="Texture2D" uid="uid://bco0ppp84efh7" path="res://Sprites/Generic_enemies/enemy.jpg" id="2_mtx1y"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_du2wl"]
+size = Vector2(43.5, 48)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eonvo"]
 size = Vector2(118, 119)
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("attackCollision") groups=["Enemy"]]
 collision_mask = 7
 script = ExtResource("1_th8rd")
+attackCollision = NodePath("Sprite2D/Attack")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_mtx1y")
+
+[node name="Attack" type="Area2D" parent="Sprite2D"]
+
+[node name="AttackCollision" type="CollisionShape2D" parent="Sprite2D/Attack"]
+position = Vector2(-42.25, 13)
+shape = SubResource("RectangleShape2D_du2wl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
 position = Vector2(0, 0.5)
@@ -26,3 +36,6 @@ collision_mask = 6
 position = Vector2(49, 43)
 scale = Vector2(0.7, 0.7)
 collision_mask = 6
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true

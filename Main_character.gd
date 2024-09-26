@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -500.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var hp = 12
 @onready var animation := $AnimationPlayer as AnimationPlayer
 @onready var sprite := $Sprite2D as Sprite2D
 @export var attackCollision : Area2D
@@ -42,3 +43,10 @@ func attack(damage):
 		for body in attackCollision.get_overlapping_bodies():
 			if body.is_in_group("Enemy"):
 				body.take_damage(damage)
+
+func take_damage(damage):
+	hp -= damage
+	print_debug(hp)
+	if hp <= 0:
+		print_debug("You are dead")
+		#takes to last save point
