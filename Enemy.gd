@@ -9,16 +9,19 @@ enum State {
 const WALK_SPEED = 22.0
 
 var _state := State.WALKING
+var hp = 3
 
 @onready var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
-@onready var platform_detector := $PlatformDetector as RayCast2D
+#@onready var platform_detector := $PlatformDetector as RayCast2D
 @onready var floor_detector_left := $FloorDetectorLeft as RayCast2D
 @onready var floor_detector_right := $FloorDetectorRight as RayCast2D
 @onready var sprite := $Sprite2D as Sprite2D
-@onready var animation_player := $AnimationPlayer as AnimationPlayer
+#@onready var animation_player := $AnimationPlayer as AnimationPlayer
 
 
 func _physics_process(delta: float) -> void:
+	if _state == State.DEAD:
+		queue_free()
 	if _state == State.WALKING and velocity.is_zero_approx():
 		velocity.x = WALK_SPEED
 	velocity.y += gravity * delta
@@ -33,7 +36,12 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	if velocity.x > 0.0:
-		sprite.scale.x = 0.8
+		sprite.scale.x = 1
 	elif velocity.x < 0.0:
-		sprite.scale.x = -0.8
-
+		sprite.scale.x = -1
+		
+func take_damage(damage: int):
+	hp-=damage
+	sprite.scale.y = -1
+	if hp <= 0:
+		_state = State.DEAD

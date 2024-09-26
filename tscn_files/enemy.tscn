@@ -4,25 +4,25 @@
 [ext_resource type="Texture2D" uid="uid://bco0ppp84efh7" path="res://Sprites/Generic_enemies/enemy.jpg" id="2_mtx1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eonvo"]
-size = Vector2(60, 60)
+size = Vector2(118, 119)
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 7
 script = ExtResource("1_th8rd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_mtx1y")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_eonvo")
 
 [node name="FloorDetectorLeft" type="RayCast2D" parent="."]
-position = Vector2(-37.325, 11.71)
+position = Vector2(-56, 44)
 scale = Vector2(0.77, 0.77)
 collision_mask = 6
 
 [node name="FloorDetectorRight" type="RayCast2D" parent="."]
-position = Vector2(37.16, 11.285)
+position = Vector2(49, 43)
 scale = Vector2(0.7, 0.7)
 collision_mask = 6
