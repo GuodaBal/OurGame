@@ -1016,7 +1016,7 @@ texture = ExtResource("1_6kt8r")
 23:15/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSet" id="TileSet_neu3a"]
-physics_layer_0/collision_layer = 6
+physics_layer_0/collision_layer = 4
 sources/0 = SubResource("TileSetAtlasSource_iqrcc")
 
 [node name="Level" type="Node2D"]

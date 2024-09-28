@@ -47,6 +47,7 @@ func attack(damage):
 func take_damage(damage):
 	hp -= damage
 	print_debug(hp)
+	get_parent().get_parent().get_node("UIOverlay").remove_HP()
 	if hp <= 0:
 		print_debug("You are dead")
-		#takes to last save point
+		get_tree().change_scene_to_file("res://tscn_files/game_over_screen.tscn")

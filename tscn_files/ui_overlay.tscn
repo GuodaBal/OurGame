@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu24i44u1po2c"]
+
+[ext_resource type="Script" path="res://tscn_files/ui_overlay.gd" id="1_5fhfp"]
+[ext_resource type="Texture2D" uid="uid://mbea5265tkea" path="res://ui/hp4.png" id="1_gjnop"]
+[ext_resource type="Texture2D" uid="uid://c7n5ik0tmnj1p" path="res://ui/hp1.png" id="2_1w5qc"]
+[ext_resource type="Texture2D" uid="uid://c7yvn0s4sb37c" path="res://ui/hp3.png" id="3_rvwha"]
+[ext_resource type="Texture2D" uid="uid://dpe3njprx8q42" path="res://ui/hp2.png" id="4_y2mjh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4f781"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gjnop")
+}],
+"loop": false,
+"name": &"four",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1w5qc")
+}],
+"loop": false,
+"name": &"one",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_rvwha")
+}],
+"loop": false,
+"name": &"three",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_y2mjh")
+}],
+"loop": false,
+"name": &"two",
+"speed": 5.0
+}]
+
+[node name="UIOverlay" type="CanvasLayer"]
+script = ExtResource("1_5fhfp")
+
+[node name="first" type="AnimatedSprite2D" parent="."]
+position = Vector2(40.5, 36)
+scale = Vector2(0.259868, 0.24)
+sprite_frames = SubResource("SpriteFrames_4f781")
+animation = &"four"
+
+[node name="second" type="AnimatedSprite2D" parent="."]
+position = Vector2(120, 36)
+scale = Vector2(0.259868, 0.24)
+sprite_frames = SubResource("SpriteFrames_4f781")
+animation = &"four"
+
+[node name="third" type="AnimatedSprite2D" parent="."]
+position = Vector2(192, 36)
+scale = Vector2(0.259868, 0.24)
+sprite_frames = SubResource("SpriteFrames_4f781")
+animation = &"four"
