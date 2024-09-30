@@ -1,16 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://cu24i44u1po2c"]
+[gd_scene load_steps=8 format=3 uid="uid://cu24i44u1po2c"]
 
 [ext_resource type="Script" path="res://tscn_files/ui_overlay.gd" id="1_5fhfp"]
-[ext_resource type="Texture2D" uid="uid://mbea5265tkea" path="res://ui/hp4.png" id="1_gjnop"]
-[ext_resource type="Texture2D" uid="uid://c7n5ik0tmnj1p" path="res://ui/hp1.png" id="2_1w5qc"]
-[ext_resource type="Texture2D" uid="uid://c7yvn0s4sb37c" path="res://ui/hp3.png" id="3_rvwha"]
-[ext_resource type="Texture2D" uid="uid://dpe3njprx8q42" path="res://ui/hp2.png" id="4_y2mjh"]
+[ext_resource type="Texture2D" uid="uid://dfmtq612ixohd" path="res://Sprites/UI Sprite/Hearts.png" id="2_jcojx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i7yfk"]
+atlas = ExtResource("2_jcojx")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq61i"]
+atlas = ExtResource("2_jcojx")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_coicw"]
+atlas = ExtResource("2_jcojx")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a31qa"]
+atlas = ExtResource("2_jcojx")
+region = Rect2(512, 0, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4f781"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_gjnop")
+"texture": SubResource("AtlasTexture_i7yfk")
 }],
 "loop": false,
 "name": &"four",
@@ -18,7 +31,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_1w5qc")
+"texture": SubResource("AtlasTexture_yq61i")
 }],
 "loop": false,
 "name": &"one",
@@ -26,7 +39,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_rvwha")
+"texture": SubResource("AtlasTexture_coicw")
 }],
 "loop": false,
 "name": &"three",
@@ -34,7 +47,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_y2mjh")
+"texture": SubResource("AtlasTexture_a31qa")
 }],
 "loop": false,
 "name": &"two",
@@ -45,19 +58,19 @@ animations = [{
 script = ExtResource("1_5fhfp")
 
 [node name="first" type="AnimatedSprite2D" parent="."]
-position = Vector2(40.5, 36)
-scale = Vector2(0.259868, 0.24)
+position = Vector2(48, 48)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
 animation = &"four"
 
 [node name="second" type="AnimatedSprite2D" parent="."]
-position = Vector2(120, 36)
-scale = Vector2(0.259868, 0.24)
+position = Vector2(128, 48)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
 animation = &"four"
 
 [node name="third" type="AnimatedSprite2D" parent="."]
-position = Vector2(192, 36)
-scale = Vector2(0.259868, 0.24)
+position = Vector2(208, 48)
+scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
 animation = &"four"

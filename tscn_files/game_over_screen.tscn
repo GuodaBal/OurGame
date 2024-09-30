@@ -10,6 +10,7 @@ offset_right = 1152.0
 offset_bottom = 648.0
 
 [node name="Try again" type="Button" parent="Panel"]
+layout_mode = 0
 offset_left = 320.0
 offset_top = 384.0
 offset_right = 832.0
