@@ -1,7 +1,7 @@
 class_name Enemy extends CharacterBody2D
 
 
-const WALK_SPEED = 30
+const WALK_SPEED = 50
 var hp = 3
 var damage = 1
 

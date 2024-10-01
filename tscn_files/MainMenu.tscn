@@ -14,7 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_8lk4f")
 
 [node name="GameName" type="Sprite2D" parent="."]
-position = Vector2(763, 208)
+position = Vector2(1312, 272)
 scale = Vector2(0.855, 0.801605)
 texture = ExtResource("3_q5g6p")
 
@@ -23,10 +23,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
-offset_top = -248.0
-offset_right = 418.0
-offset_bottom = -52.0
+offset_left = 192.0
+offset_top = -440.0
+offset_right = 560.0
+offset_bottom = -188.0
 grow_vertical = 0
 
 [node name="StartButton" type="Button" parent="VBoxContainer3"]
