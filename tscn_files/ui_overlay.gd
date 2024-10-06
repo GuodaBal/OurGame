@@ -20,5 +20,5 @@ func remove_HP():
 		"two":
 			hearts[-1].play("one")
 		"one":
-			hearts[-1].queue_free()
+			hearts[-1].play("zero")
 			hearts.pop_back()

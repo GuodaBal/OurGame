@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b531g433jovph" path="res://tscn_files/level.tscn" id="1_xbav2"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_vhprj"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="3_s6sv0"]
-[ext_resource type="PackedScene" uid="uid://cu24i44u1po2c" path="res://tscn_files/ui_overlay.tscn" id="4_ioh3k"]
+[ext_resource type="PackedScene" uid="uid://cm2o2u51ewval" path="res://tscn_files/ui_health_overlay.tscn" id="4_tic8s"]
 
 [node name="Main" type="Node"]
 
@@ -21,4 +21,4 @@ scale = Vector2(0.5, 0.5)
 position = Vector2(940, 144)
 scale = Vector2(0.5, 0.5)
 
-[node name="UIOverlay" parent="." instance=ExtResource("4_ioh3k")]
+[node name="UIOverlay" parent="." instance=ExtResource("4_tic8s")]

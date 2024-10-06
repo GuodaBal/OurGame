@@ -8,6 +8,7 @@ script = ExtResource("1_13flf")
 [node name="Panel" type="Panel" parent="."]
 offset_right = 1152.0
 offset_bottom = 648.0
+scale = Vector2(1.66712, 1.66376)
 
 [node name="Try again" type="Button" parent="Panel"]
 layout_mode = 0

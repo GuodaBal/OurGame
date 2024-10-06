@@ -1,23 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu24i44u1po2c"]
+[gd_scene load_steps=9 format=3 uid="uid://cm2o2u51ewval"]
 
-[ext_resource type="Script" path="res://tscn_files/ui_overlay.gd" id="1_5fhfp"]
-[ext_resource type="Texture2D" uid="uid://dfmtq612ixohd" path="res://Sprites/UI Sprite/Hearts.png" id="2_jcojx"]
+[ext_resource type="Script" path="res://tscn_files/ui_overlay.gd" id="1_efi5x"]
+[ext_resource type="Texture2D" uid="uid://dfmtq612ixohd" path="res://Sprites/UI Sprite/Hearts.png" id="2_g4xl5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i7yfk"]
-atlas = ExtResource("2_jcojx")
+atlas = ExtResource("2_g4xl5")
 region = Rect2(0, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yq61i"]
-atlas = ExtResource("2_jcojx")
+atlas = ExtResource("2_g4xl5")
 region = Rect2(0, 256, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_coicw"]
-atlas = ExtResource("2_jcojx")
+atlas = ExtResource("2_g4xl5")
 region = Rect2(256, 0, 256, 256)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a31qa"]
-atlas = ExtResource("2_jcojx")
+atlas = ExtResource("2_g4xl5")
 region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cueww"]
+atlas = ExtResource("2_g4xl5")
+region = Rect2(256, 256, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4f781"]
 animations = [{
@@ -52,10 +56,18 @@ animations = [{
 "loop": false,
 "name": &"two",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cueww")
+}],
+"loop": true,
+"name": &"zero",
+"speed": 5.0
 }]
 
 [node name="UIOverlay" type="CanvasLayer"]
-script = ExtResource("1_5fhfp")
+script = ExtResource("1_efi5x")
 
 [node name="first" type="AnimatedSprite2D" parent="."]
 position = Vector2(48, 48)
