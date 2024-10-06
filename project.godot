@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Paganism_vs_Christianity"
-run/main_scene="res://tscn_files/MainMenu.tscn"
+run/main_scene="res://tscn_files/ui_main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
