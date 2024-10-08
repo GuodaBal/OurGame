@@ -23,6 +23,7 @@ layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0.695503, 0.695503, 0.695503, 1)
 theme_override_font_sizes/font_size = 50
 toggle_mode = true
+button_pressed = true
 text = " Graphics"
 alignment = 0
 
@@ -41,6 +42,7 @@ text = " Controls"
 alignment = 0
 
 [node name="Graphics" type="GridContainer" parent="."]
+visible = false
 layout_mode = 1
 offset_left = 900.0
 offset_top = 200.0
@@ -121,7 +123,6 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="ControlsScroll" type="ScrollContainer" parent="."]
-visible = false
 custom_minimum_size = Vector2(892, 800)
 layout_mode = 2
 offset_left = 900.0
@@ -143,7 +144,7 @@ text = "Move left"
 [node name="LeftButton" type="Button" parent="ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "a"
+text = "A"
 
 [node name="RightLabel" type="Label" parent="ControlsScroll/Controls"]
 layout_mode = 2
@@ -153,7 +154,7 @@ text = "Move right"
 [node name="RightButton" type="Button" parent="ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "d"
+text = "D"
 
 [node name="JumpLabel" type="Label" parent="ControlsScroll/Controls"]
 layout_mode = 2
@@ -163,7 +164,7 @@ text = "Jump"
 [node name="JumpButton" type="Button" parent="ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Spacebar"
+text = "Space"
 
 [node name="AttackLabel" type="Label" parent="ControlsScroll/Controls"]
 layout_mode = 2
@@ -173,7 +174,7 @@ text = "Attack"
 [node name="AttackButton" type="Button" parent="ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Left click"
+text = "Left Mouse Button"
 
 [node name="Ability1Label" type="Label" parent="ControlsScroll/Controls"]
 layout_mode = 2
@@ -183,7 +184,7 @@ text = "Ability 1"
 [node name="Ability1Button" type="Button" parent="ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Right click"
+text = "Right Mouse Button"
 
 [node name="Ability2Label" type="Label" parent="ControlsScroll/Controls"]
 layout_mode = 2
@@ -193,7 +194,7 @@ text = "Ability 2"
 [node name="Ability2Button" type="Button" parent="ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "q"
+text = "Q"
 
 [node name="Ability3Label" type="Label" parent="ControlsScroll/Controls"]
 layout_mode = 2
@@ -203,7 +204,7 @@ text = "Ability 3"
 [node name="Ability3Button" type="Button" parent="ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "e"
+text = "E"
 
 [node name="MenuLabel" type="Label" parent="ControlsScroll/Controls"]
 layout_mode = 2
@@ -213,7 +214,7 @@ text = "Open menu"
 [node name="MenuButton" type="Button" parent="ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "esc"
+text = "Escape"
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
@@ -226,4 +227,12 @@ text = "Back"
 [connection signal="pressed" from="Options/Sound" to="." method="_on_sound_pressed"]
 [connection signal="pressed" from="Options/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Graphics/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="ControlsScroll/Controls/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="ControlsScroll/Controls/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="ControlsScroll/Controls/JumpButton" to="." method="_on_jump_button_pressed"]
+[connection signal="pressed" from="ControlsScroll/Controls/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="ControlsScroll/Controls/Ability1Button" to="." method="_on_ability_1_button_pressed"]
+[connection signal="pressed" from="ControlsScroll/Controls/Ability2Button" to="." method="_on_ability_2_button_pressed"]
+[connection signal="pressed" from="ControlsScroll/Controls/Ability3Button" to="." method="_on_ability_3_button_pressed"]
+[connection signal="pressed" from="ControlsScroll/Controls/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
