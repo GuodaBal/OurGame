@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://biff12c7vb888"]
+[gd_scene load_steps=2 format=3 uid="uid://biff12c7vb888"]
+
+[sub_resource type="Theme" id="Theme_8yoo2"]
+CheckButton/constants/icon_max_width = 500
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -30,37 +33,174 @@ theme_override_font_sizes/font_size = 50
 text = " Controls"
 alignment = 0
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="Graphics" type="GridContainer" parent="."]
+visible = false
 layout_mode = 1
-offset_left = 704.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1740.0
+offset_bottom = 664.0
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 100
 columns = 2
 
-[node name="Label" type="Label" parent="GridContainer"]
+[node name="Label" type="Label" parent="Graphics"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Resolution"
 
-[node name="OptionButton" type="OptionButton" parent="GridContainer"]
+[node name="OptionButton" type="OptionButton" parent="Graphics"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="GridContainer"]
+[node name="Label2" type="Label" parent="Graphics"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Fullscreen"
 
-[node name="Button" type="Button" parent="GridContainer"]
+[node name="Button" type="Button" parent="Graphics"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "              on              "
+text = "on"
 
-[node name="Label3" type="Label" parent="GridContainer"]
+[node name="Label3" type="Label" parent="Graphics"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Brightness"
 
-[node name="HSlider" type="HSlider" parent="GridContainer"]
+[node name="HSlider" type="HSlider" parent="Graphics"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Sound" type="GridContainer" parent="."]
+visible = false
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1740.0
+offset_bottom = 664.0
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 100
+columns = 2
+
+[node name="Label" type="Label" parent="Sound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="Sound"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="Sound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Miscellaneous"
+
+[node name="HSlider2" type="HSlider" parent="Sound"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="Sound"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Mute"
+
+[node name="CheckButton" type="CheckButton" parent="Sound"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_8yoo2")
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(892, 880)
+layout_mode = 2
+offset_left = 900.0
+offset_top = 200.0
+offset_right = 1792.0
+offset_bottom = 1080.0
+
+[node name="Controls" type="GridContainer" parent="ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 100
+columns = 2
+
+[node name="Label" type="Label" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Move left"
+
+[node name="Button" type="Button" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "a"
+
+[node name="Label2" type="Label" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Move right"
+
+[node name="Button2" type="Button" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "d"
+
+[node name="Label3" type="Label" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Jump"
+
+[node name="Button3" type="Button" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Spacebar"
+
+[node name="Label4" type="Label" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Attack"
+
+[node name="Button4" type="Button" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Left click"
+
+[node name="Label5" type="Label" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Ability 1"
+
+[node name="Button5" type="Button" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Right click"
+
+[node name="Label6" type="Label" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Ability 2"
+
+[node name="Button6" type="Button" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "q"
+
+[node name="Label7" type="Label" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Ability 3"
+
+[node name="Button7" type="Button" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "e"
+
+[node name="Label8" type="Label" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Open menu"
+
+[node name="Button8" type="Button" parent="ScrollContainer/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "esc"
