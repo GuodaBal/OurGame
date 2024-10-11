@@ -6,19 +6,38 @@
 CheckButton/constants/icon_max_width = 500
 
 [node name="Menu" type="Control"]
+process_mode = 3
+top_level = true
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_cmsfx")
 
-[node name="Options" type="VBoxContainer" parent="."]
-layout_mode = 0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visibility_layer = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2573, 0.298582, 0.31, 1)
+
+[node name="Options" type="VBoxContainer" parent="CanvasLayer"]
 offset_left = 100.0
 offset_top = 250.0
 offset_right = 600.0
 offset_bottom = 681.0
 theme_override_constants/separation = 100
 
-[node name="Graphics" type="Button" parent="Options"]
+[node name="Graphics" type="Button" parent="CanvasLayer/Options"]
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0.695503, 0.695503, 0.695503, 1)
 theme_override_font_sizes/font_size = 50
@@ -27,23 +46,21 @@ button_pressed = true
 text = " Graphics"
 alignment = 0
 
-[node name="Sound" type="Button" parent="Options"]
+[node name="Sound" type="Button" parent="CanvasLayer/Options"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 toggle_mode = true
 text = " Sound"
 alignment = 0
 
-[node name="Controls" type="Button" parent="Options"]
+[node name="Controls" type="Button" parent="CanvasLayer/Options"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 toggle_mode = true
 text = " Controls"
 alignment = 0
 
-[node name="Graphics" type="GridContainer" parent="."]
-visible = false
-layout_mode = 1
+[node name="Graphics" type="GridContainer" parent="CanvasLayer"]
 offset_left = 900.0
 offset_top = 200.0
 offset_right = 1740.0
@@ -52,187 +69,204 @@ theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 100
 columns = 2
 
-[node name="ResolutionLabel" type="Label" parent="Graphics"]
+[node name="ResolutionLabel" type="Label" parent="CanvasLayer/Graphics"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Resolution"
 
-[node name="ResolutionSelector" type="OptionButton" parent="Graphics"]
+[node name="ResolutionSelector" type="OptionButton" parent="CanvasLayer/Graphics"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
+alignment = 1
+selected = 0
+item_count = 7
+popup/item_0/text = "1920x1080"
+popup/item_1/text = "1760x990"
+popup/item_1/id = 1
+popup/item_2/text = "1600x900"
+popup/item_2/id = 2
+popup/item_3/text = "1536x864"
+popup/item_3/id = 3
+popup/item_4/text = "1440x900"
+popup/item_4/id = 6
+popup/item_5/text = "1366x768"
+popup/item_5/id = 4
+popup/item_6/text = "1280x720"
+popup/item_6/id = 5
 
-[node name="FullscreenLabel" type="Label" parent="Graphics"]
+[node name="FullscreenLabel" type="Label" parent="CanvasLayer/Graphics"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Fullscreen"
 
-[node name="FullscreenButton" type="Button" parent="Graphics"]
+[node name="FullscreenButton" type="Button" parent="CanvasLayer/Graphics"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "on"
 
-[node name="BrightnessLabel" type="Label" parent="Graphics"]
+[node name="BrightnessLabel" type="Label" parent="CanvasLayer/Graphics"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Brightness"
 
-[node name="BrightnessSlider" type="HSlider" parent="Graphics"]
+[node name="BrightnessSlider" type="HSlider" parent="CanvasLayer/Graphics"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 4
 value = 50.0
 
-[node name="Sound" type="GridContainer" parent="."]
+[node name="Sound" type="GridContainer" parent="CanvasLayer"]
 visible = false
 offset_left = 900.0
 offset_top = 200.0
-offset_right = 1740.0
+offset_right = 1792.0
 offset_bottom = 664.0
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 100
 columns = 2
 
-[node name="MusicLabel" type="Label" parent="Sound"]
+[node name="MusicLabel" type="Label" parent="CanvasLayer/Sound"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Music"
 
-[node name="MusicSlider" type="HSlider" parent="Sound"]
+[node name="MusicSlider" type="HSlider" parent="CanvasLayer/Sound"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MiscLabel" type="Label" parent="Sound"]
+[node name="MiscLabel" type="Label" parent="CanvasLayer/Sound"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Miscellaneous"
 
-[node name="MiscSlider" type="HSlider" parent="Sound"]
+[node name="MiscSlider" type="HSlider" parent="CanvasLayer/Sound"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="MuteLabel" type="Label" parent="Sound"]
+[node name="MuteLabel" type="Label" parent="CanvasLayer/Sound"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Mute"
 
-[node name="MuteButton" type="CheckButton" parent="Sound"]
+[node name="MuteButton" type="CheckButton" parent="CanvasLayer/Sound"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = SubResource("Theme_8yoo2")
 vertical_icon_alignment = 0
 expand_icon = true
 
-[node name="ControlsScroll" type="ScrollContainer" parent="."]
+[node name="ControlsScroll" type="ScrollContainer" parent="CanvasLayer"]
+visible = false
 custom_minimum_size = Vector2(892, 800)
-layout_mode = 2
 offset_left = 900.0
 offset_top = 200.0
 offset_right = 1792.0
 offset_bottom = 1000.0
 
-[node name="Controls" type="GridContainer" parent="ControlsScroll"]
+[node name="Controls" type="GridContainer" parent="CanvasLayer/ControlsScroll"]
 layout_mode = 2
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 100
 columns = 2
 
-[node name="LeftLabel" type="Label" parent="ControlsScroll/Controls"]
+[node name="LeftLabel" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Move left"
 
-[node name="LeftButton" type="Button" parent="ControlsScroll/Controls"]
+[node name="LeftButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "A"
 
-[node name="RightLabel" type="Label" parent="ControlsScroll/Controls"]
+[node name="RightLabel" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Move right"
 
-[node name="RightButton" type="Button" parent="ControlsScroll/Controls"]
+[node name="RightButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "D"
 
-[node name="JumpLabel" type="Label" parent="ControlsScroll/Controls"]
+[node name="JumpLabel" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Jump"
 
-[node name="JumpButton" type="Button" parent="ControlsScroll/Controls"]
+[node name="JumpButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Space"
 
-[node name="AttackLabel" type="Label" parent="ControlsScroll/Controls"]
+[node name="AttackLabel" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Attack"
 
-[node name="AttackButton" type="Button" parent="ControlsScroll/Controls"]
+[node name="AttackButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Left Mouse Button"
 
-[node name="Ability1Label" type="Label" parent="ControlsScroll/Controls"]
+[node name="Ability1Label" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Ability 1"
 
-[node name="Ability1Button" type="Button" parent="ControlsScroll/Controls"]
+[node name="Ability1Button" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Right Mouse Button"
 
-[node name="Ability2Label" type="Label" parent="ControlsScroll/Controls"]
+[node name="Ability2Label" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Ability 2"
 
-[node name="Ability2Button" type="Button" parent="ControlsScroll/Controls"]
+[node name="Ability2Button" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Q"
 
-[node name="Ability3Label" type="Label" parent="ControlsScroll/Controls"]
+[node name="Ability3Label" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Ability 3"
 
-[node name="Ability3Button" type="Button" parent="ControlsScroll/Controls"]
+[node name="Ability3Button" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "E"
 
-[node name="MenuLabel" type="Label" parent="ControlsScroll/Controls"]
+[node name="MenuLabel" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Open menu"
 
-[node name="MenuButton" type="Button" parent="ControlsScroll/Controls"]
+[node name="MenuButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Escape"
 
-[node name="Back" type="Button" parent="."]
-layout_mode = 0
+[node name="Back" type="Button" parent="CanvasLayer"]
 offset_right = 416.0
 offset_bottom = 80.0
 theme_override_font_sizes/font_size = 50
 text = "Back"
 
-[connection signal="pressed" from="Options/Graphics" to="." method="_on_graphics_pressed"]
-[connection signal="pressed" from="Options/Sound" to="." method="_on_sound_pressed"]
-[connection signal="pressed" from="Options/Controls" to="." method="_on_controls_pressed"]
-[connection signal="pressed" from="Graphics/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
-[connection signal="pressed" from="ControlsScroll/Controls/LeftButton" to="." method="_on_left_button_pressed"]
-[connection signal="pressed" from="ControlsScroll/Controls/RightButton" to="." method="_on_right_button_pressed"]
-[connection signal="pressed" from="ControlsScroll/Controls/JumpButton" to="." method="_on_jump_button_pressed"]
-[connection signal="pressed" from="ControlsScroll/Controls/AttackButton" to="." method="_on_attack_button_pressed"]
-[connection signal="pressed" from="ControlsScroll/Controls/Ability1Button" to="." method="_on_ability_1_button_pressed"]
-[connection signal="pressed" from="ControlsScroll/Controls/Ability2Button" to="." method="_on_ability_2_button_pressed"]
-[connection signal="pressed" from="ControlsScroll/Controls/Ability3Button" to="." method="_on_ability_3_button_pressed"]
-[connection signal="pressed" from="ControlsScroll/Controls/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CanvasLayer/Options/Graphics" to="." method="_on_graphics_pressed"]
+[connection signal="pressed" from="CanvasLayer/Options/Sound" to="." method="_on_sound_pressed"]
+[connection signal="pressed" from="CanvasLayer/Options/Controls" to="." method="_on_controls_pressed"]
+[connection signal="item_selected" from="CanvasLayer/Graphics/ResolutionSelector" to="." method="_on_resolution_selector_item_selected"]
+[connection signal="pressed" from="CanvasLayer/Graphics/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/RightButton" to="." method="_on_right_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/JumpButton" to="." method="_on_jump_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/AttackButton" to="." method="_on_attack_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/Ability1Button" to="." method="_on_ability_1_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/Ability2Button" to="." method="_on_ability_2_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/Ability3Button" to="." method="_on_ability_3_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

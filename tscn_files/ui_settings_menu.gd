@@ -1,18 +1,18 @@
 extends Control
 
 
-@onready var GraphicsMenu := $Graphics
-@onready var SoundMenu := $Sound
-@onready var ControlsMenu := $ControlsScroll
+@onready var GraphicsMenu := $CanvasLayer/Graphics
+@onready var SoundMenu := $CanvasLayer/Sound
+@onready var ControlsMenu := $CanvasLayer/ControlsScroll
 
-@onready var LeftButton := $ControlsScroll/Controls/LeftButton
-@onready var RightButton := $ControlsScroll/Controls/RightButton
-@onready var JumpButton := $ControlsScroll/Controls/JumpButton
-@onready var AttackButton := $ControlsScroll/Controls/AttackButton
-@onready var Ability1Button := $ControlsScroll/Controls/Ability1Button
-@onready var Ability2Button := $ControlsScroll/Controls/Ability2Button
-@onready var Ability3Button := $ControlsScroll/Controls/Ability3Button
-@onready var MenuOpenButton := $ControlsScroll/Controls/MenuButton
+@onready var LeftButton := $CanvasLayer/ControlsScroll/Controls/LeftButton
+@onready var RightButton := $CanvasLayer/ControlsScroll/Controls/RightButton
+@onready var JumpButton := $CanvasLayer/ControlsScroll/Controls/JumpButton
+@onready var AttackButton := $CanvasLayer/ControlsScroll/Controls/AttackButton
+@onready var Ability1Button := $CanvasLayer/ControlsScroll/Controls/Ability1Button
+@onready var Ability2Button := $CanvasLayer/ControlsScroll/Controls/Ability2Button
+@onready var Ability3Button := $CanvasLayer/ControlsScroll/Controls/Ability3Button
+@onready var MenuOpenButton := $CanvasLayer/ControlsScroll/Controls/MenuButton
 
 var waiting_for_input: bool = false
 var button
@@ -26,21 +26,21 @@ func _ready() -> void:
 	SoundMenu.visible = false
 	ControlsMenu.visible = false
 	var group = ButtonGroup.new()
-	$Options/Graphics.button_group = group
-	$Options/Sound.button_group = group
-	$Options/Controls.button_group = group
+	$CanvasLayer/Options/Graphics.button_group = group
+	$CanvasLayer/Options/Sound.button_group = group
+	$CanvasLayer/Options/Controls.button_group = group
 	if DisplayServer.window_get_mode() == 3:
-		$Graphics/FullscreenButton.text = "On"
+		$CanvasLayer/Graphics/FullscreenButton.text = "On"
 	else:
-		$Graphics/FullscreenButton.text = "Off"
-	LeftButton.text = InputMap.action_get_events("move_left")[0].as_text()
-	RightButton.text = InputMap.action_get_events("move_right")[0].as_text()
-	JumpButton.text = InputMap.action_get_events("jump")[0].as_text()
-	AttackButton.text = InputMap.action_get_events("attack")[0].as_text()
-	Ability1Button.text = InputMap.action_get_events("fire_ability")[0].as_text()
-	Ability2Button.text = InputMap.action_get_events("nature_ability")[0].as_text()
-	Ability3Button.text = InputMap.action_get_events("thunder_ability")[0].as_text()
-	MenuOpenButton.text = InputMap.action_get_events("menu")[0].as_text()
+		$CanvasLayer/Graphics/FullscreenButton.text = "Off"
+	LeftButton.text = InputMap.action_get_events("move_left")[0].as_text().replace("(Physical)", "")
+	RightButton.text = InputMap.action_get_events("move_right")[0].as_text().replace("(Physical)", "")
+	JumpButton.text = InputMap.action_get_events("jump")[0].as_text().replace("(Physical)", "")
+	AttackButton.text = InputMap.action_get_events("attack")[0].as_text().replace("(Physical)", "")
+	Ability1Button.text = InputMap.action_get_events("fire_ability")[0].as_text().replace("(Physical)", "")
+	Ability2Button.text = InputMap.action_get_events("nature_ability")[0].as_text().replace("(Physical)", "")
+	Ability3Button.text = InputMap.action_get_events("thunder_ability")[0].as_text().replace("(Physical)", "")
+	MenuOpenButton.text = InputMap.action_get_events("menu")[0].as_text().replace("(Physical)", "")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -66,16 +66,19 @@ func _on_controls_pressed() -> void:
 	ControlsMenu.visible = true
 
 func _on_back_pressed() -> void:
-	get_tree().change_scene_to_file("res://tscn_files/ui_main_menu.tscn")
+	if get_parent().get_parent() == null:
+		get_tree().change_scene_to_file("res://tscn_files/ui_main_menu.tscn")
+	else:
+		queue_free()
 
 
 func _on_fullscreen_button_pressed() -> void:
 	if DisplayServer.window_get_mode() == 3:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-		$Graphics/FullscreenButton.text = "Off"
+		$CanvasLayer/Graphics/FullscreenButton.text = "Off"
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		$Graphics/FullscreenButton.text = "On"
+		$CanvasLayer/Graphics/FullscreenButton.text = "On"
 
 
 func _on_left_button_pressed() -> void:
@@ -132,3 +135,12 @@ func _input(event: InputEvent) -> void:
 		waiting_for_input = false
 		button.text = userPressedKey.as_text()
 		
+
+
+func _on_resolution_selector_item_selected(index: int) -> void:
+	var resolution = $CanvasLayer/Graphics/ResolutionSelector.get_item_text(index).split("x")
+	#DisplayServer.window_set_size(Vector2i(int(resolution[0]),int(resolution[1])))
+	#get_viewport().size = Vector2i(int(resolution[0]),int(resolution[1]))
+	get_window().size = Vector2i(int(resolution[0]),int(resolution[1]))
+	get_window().move_to_center()
+	#Viewport.widt
