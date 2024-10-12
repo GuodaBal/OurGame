@@ -74,7 +74,7 @@ func _on_back_pressed() -> void:
 
 func _on_fullscreen_button_pressed() -> void:
 	if DisplayServer.window_get_mode() == 3:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		$CanvasLayer/Graphics/FullscreenButton.text = "Off"
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
@@ -139,8 +139,12 @@ func _input(event: InputEvent) -> void:
 
 func _on_resolution_selector_item_selected(index: int) -> void:
 	var resolution = $CanvasLayer/Graphics/ResolutionSelector.get_item_text(index).split("x")
+	print_debug(get_tree().root.get_content_scale_size()[0])
+	print_debug(get_tree().root.get_content_scale_size()[1])
+	#get_tree().root.content_scale_size = Vector2i(int(resolution[0]),int(resolution[1]))
 	#DisplayServer.window_set_size(Vector2i(int(resolution[0]),int(resolution[1])))
 	#get_viewport().size = Vector2i(int(resolution[0]),int(resolution[1]))
 	get_window().size = Vector2i(int(resolution[0]),int(resolution[1]))
 	get_window().move_to_center()
+
 	#Viewport.widt
