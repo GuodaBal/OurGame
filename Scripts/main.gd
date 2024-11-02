@@ -1,15 +1,37 @@
 extends Node
 
 
+var previousLevel = "";
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	previousLevel = "level"
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("menu"):
 		var instance = load("res://tscn_files/ui_popup_menu.tscn").instantiate()
-	#get_parent().add_child(settings_menu)
 		get_child(0).add_sibling(instance)
-		add_child(instance)
+		
+func changePreviousLevel(levelName):
+	print_debug(previousLevel)
+	print_debug(levelName)
+	previousLevel=levelName
+	
+	
+func getPreviousLevel():
+	print_debug(previousLevel)
+	return previousLevel
+	
+func switchLevel(nextLevel):
+	var instance = load("res://tscn_files/" + nextLevel + ".tscn").instantiate()
+	#get_parent().print_tree()
+	var deleteLevel = get_node("Level")
+	#remove_child(deleteLevel)
+	call_deferred(deleteLevel)
+	deleteLevel.queue_free()
+	#get_parent().print_tree()
+	add_child(instance)
+	previousLevel = nextLevel
+	#get_parent().print_tree()
+	#queue_free()

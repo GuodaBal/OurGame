@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2dh8so4rhtia"]
+
+[ext_resource type="Script" path="res://Scripts/health_drop.gd" id="1_b5fcq"]
+[ext_resource type="Texture2D" uid="uid://dfmtq612ixohd" path="res://Sprites/UI Sprite/Hearts.png" id="2_l116d"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vfhel"]
+radius = 90.0
+height = 252.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msl6o"]
+atlas = ExtResource("2_l116d")
+region = Rect2(512, 0, 256, 256)
+
+[node name="HealthDrop" type="Node2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_b5fcq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_vfhel")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_msl6o")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -1,33 +1,35 @@
 [gd_scene load_steps=5 format=3 uid="uid://7lbe4hly8swj"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_th8rd"]
-[ext_resource type="Texture2D" uid="uid://bco0ppp84efh7" path="res://Sprites/Generic_enemies/enemy.jpg" id="2_mtx1y"]
+[ext_resource type="Texture2D" uid="uid://yroqyi73jsm1" path="res://Sprites/Generic_enemies/enemy.png" id="2_kjm0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_du2wl"]
-size = Vector2(58.5, 48)
+size = Vector2(83.67, 56)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_eonvo"]
-size = Vector2(118, 119)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8kcm"]
+radius = 28.0
+height = 104.0
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("attackArea") groups=["Enemy"]]
-collision_layer = 2
-collision_mask = 6
+scale = Vector2(0.5, 0.5)
+collision_mask = 7
 script = ExtResource("1_th8rd")
 attackArea = NodePath("Sprite2D/Attack")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_mtx1y")
+texture = ExtResource("2_kjm0h")
 
 [node name="Attack" type="Area2D" parent="Sprite2D"]
 collision_mask = 5
 
 [node name="AttackCollision" type="CollisionShape2D" parent="Sprite2D/Attack"]
-position = Vector2(-49.75, 13)
+position = Vector2(-17.835, -9.53674e-07)
 shape = SubResource("RectangleShape2D_du2wl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
-position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_eonvo")
+position = Vector2(2, 4)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_u8kcm")
 
 [node name="FloorDetectorLeft" type="RayCast2D" parent="."]
 position = Vector2(-56, 44)
@@ -44,13 +46,13 @@ one_shot = true
 
 [node name="ObsticleDetectorLeft" type="RayCast2D" parent="."]
 position = Vector2(-14, -15)
-target_position = Vector2(-50, 0)
+target_position = Vector2(-40, 1)
 collision_mask = 7
 hit_from_inside = true
 
 [node name="ObsticleDetectorRight" type="RayCast2D" parent="."]
 position = Vector2(16, -16)
-target_position = Vector2(50, 0)
+target_position = Vector2(44, 0)
 collision_mask = 7
 hit_from_inside = true
 

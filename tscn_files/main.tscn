@@ -1,26 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://cp5yhk5ietk7x"]
+[gd_scene load_steps=5 format=3 uid="uid://cp5yhk5ietk7x"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_aq6xk"]
 [ext_resource type="PackedScene" uid="uid://b531g433jovph" path="res://tscn_files/level.tscn" id="1_xbav2"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_vhprj"]
-[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="3_s6sv0"]
 [ext_resource type="PackedScene" uid="uid://cm2o2u51ewval" path="res://tscn_files/ui_health_overlay.tscn" id="4_tic8s"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_aq6xk")
 
+[node name="MainCharacter" parent="." instance=ExtResource("2_vhprj")]
+position = Vector2(289, 674)
+
 [node name="Level" parent="." instance=ExtResource("1_xbav2")]
-scale = Vector2(1.61426, 1.61426)
-
-[node name="Main_character" parent="Level" instance=ExtResource("2_vhprj")]
-position = Vector2(476, 535)
-
-[node name="Enemy" parent="Level" instance=ExtResource("3_s6sv0")]
-position = Vector2(688, 538)
-scale = Vector2(0.5, 0.5)
-
-[node name="Enemy2" parent="Level" instance=ExtResource("3_s6sv0")]
-position = Vector2(940, 144)
-scale = Vector2(0.5, 0.5)
 
 [node name="UIOverlay" parent="." instance=ExtResource("4_tic8s")]

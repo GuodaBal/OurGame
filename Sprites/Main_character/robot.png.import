@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dd48bwwmaugmy"
-path="res://.godot/imported/P03 - duck(front).jpg-dd9344f1df15e956e7177b65bdedba37.ctex"
+uid="uid://dxf8yq0i5xm4b"
+path="res://.godot/imported/robot.png-aaefd1a6ebca91aec94903df7f9a1706.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Main_character/P03 - duck(front).jpg"
-dest_files=["res://.godot/imported/P03 - duck(front).jpg-dd9344f1df15e956e7177b65bdedba37.ctex"]
+source_file="res://Sprites/Main_character/robot.png"
+dest_files=["res://.godot/imported/robot.png-aaefd1a6ebca91aec94903df7f9a1706.ctex"]
 
 [params]
 

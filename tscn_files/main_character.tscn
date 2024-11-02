@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bo5x65xs813fn"]
+[gd_scene load_steps=12 format=3 uid="uid://bo5x65xs813fn"]
 
 [ext_resource type="Script" path="res://Main_character.gd" id="1_1g26s"]
-[ext_resource type="Texture2D" uid="uid://c45tldc21k54x" path="res://Sprites/Main_character/robot.jpg" id="2_0bxta"]
+[ext_resource type="Texture2D" uid="uid://dxf8yq0i5xm4b" path="res://Sprites/Main_character/robot.png" id="2_7ba2b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwdsa"]
-size = Vector2(26, 53)
+size = Vector2(35.05, 53)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_le66s"]
-size = Vector2(68, 68)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mq1j"]
+radius = 28.0
+height = 62.0001
 
 [sub_resource type="Animation" id="Animation_yxtd2"]
 length = 0.001
@@ -21,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_0bxta")]
+"values": [ExtResource("2_7ba2b")]
 }
 
 [sub_resource type="Animation" id="Animation_hlx7d"]
@@ -36,7 +37,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_0bxta"), ExtResource("2_0bxta")]
+"values": [ExtResource("2_7ba2b"), ExtResource("2_7ba2b")]
 }
 
 [sub_resource type="Animation" id="Animation_xde3m"]
@@ -51,7 +52,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_0bxta"), ExtResource("2_0bxta")]
+"values": [ExtResource("2_7ba2b"), ExtResource("2_7ba2b")]
 }
 
 [sub_resource type="Animation" id="Animation_8j370"]
@@ -69,29 +70,44 @@ _data = {
 "walk": SubResource("Animation_44enw")
 }
 
-[node name="MainCharacter" type="CharacterBody2D" node_paths=PackedStringArray("attackCollision") groups=["Player"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oopqj"]
+size = Vector2(41, 14)
+
+[node name="MainCharacter" type="CharacterBody2D" node_paths=PackedStringArray("attackCollision", "floorCollision") groups=["Player"]]
 collision_mask = 5
 platform_floor_layers = 4294967042
 platform_wall_layers = 4
 script = ExtResource("1_1g26s")
 attackCollision = NodePath("Sprite2D/Attack")
+floorCollision = NodePath("FloorCollision")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_0bxta")
+texture = ExtResource("2_7ba2b")
 
 [node name="Attack" type="Area2D" parent="Sprite2D"]
 collision_mask = 3
 
 [node name="AttackCollision" type="CollisionShape2D" parent="Sprite2D/Attack"]
-position = Vector2(47, -3.5)
+position = Vector2(32.475, -3.5)
 shape = SubResource("RectangleShape2D_bwdsa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.19209e-06, 1.3113e-06)
+position = Vector2(0, -1.93)
 scale = Vector2(0.999999, 0.999999)
-shape = SubResource("RectangleShape2D_le66s")
+shape = SubResource("CapsuleShape2D_8mq1j")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_bl27o")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="FloorCollision" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollision"]
+position = Vector2(-0.5, 29)
+shape = SubResource("RectangleShape2D_oopqj")
