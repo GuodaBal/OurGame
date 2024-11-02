@@ -1,18 +1,48 @@
-[gd_scene load_steps=3 format=3 uid="uid://n0byngr2sw2r"]
+[gd_scene load_steps=4 format=3 uid="uid://n0byngr2sw2r"]
 
 [ext_resource type="Texture2D" uid="uid://bscytrqig61pv" path="res://Sprites/Bosses/Gabija/Realistic_Cat_step-by-step_drawing_tutorial_step_10.webp" id="1_cwnkr"]
+[ext_resource type="Script" path="res://Scripts/gabija.gd" id="1_tjeds"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3satc"]
 radius = 227.0
 height = 716.0
 
-[node name="Gabija" type="CharacterBody2D"]
+[node name="Gabija" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(0.15, 0.15)
+collision_mask = 7
+script = ExtResource("1_tjeds")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3satc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_cwnkr")
 
-[node name="Area2D" type="Area2D" parent="Sprite2D"]
+[node name="DetectLeft" type="RayCast2D" parent="."]
+target_position = Vector2(300, 0)
+collision_mask = 5
+hit_from_inside = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
-shape = SubResource("CapsuleShape2D_3satc")
+[node name="JumpLeft" type="RayCast2D" parent="."]
+target_position = Vector2(1200, 0)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="JumpRight" type="RayCast2D" parent="."]
+target_position = Vector2(-1200, 0)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="DetectRight" type="RayCast2D" parent="."]
+target_position = Vector2(-300, 0)
+collision_mask = 5
+hit_from_inside = true
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
