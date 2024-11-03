@@ -40,6 +40,8 @@ func _physics_process(delta: float) -> void:
 		attackTimer.start()
 	if Input.is_key_pressed(KEY_K) and attackTimer.is_stopped():
 		spawn_fire_right()
+	if Input.is_key_pressed(KEY_J) and attackTimer.is_stopped():
+		spawn_fire_bottom()
 		attackTimer.start()
 	if jump_detector_right.is_colliding():
 		velocity = -300 * left - 300 * gravity_dir
@@ -131,3 +133,5 @@ func spawn_fire_left():
 	get_tree().current_scene.get_node("Level").spawn_fire_left()
 func spawn_fire_right():
 	get_tree().current_scene.get_node("Level").spawn_fire_right()
+func spawn_fire_bottom():
+	get_tree().current_scene.get_node("Level").spawn_fire_bottom()

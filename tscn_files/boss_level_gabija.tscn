@@ -47,3 +47,9 @@ position = Vector2(1480, 838)
 [node name="SpawnArea" parent="." instance=ExtResource("3_o3fik")]
 position = Vector2(449, 898)
 correctLevel = "level"
+
+[node name="BottomFireLeft" type="Node2D" parent="."]
+position = Vector2(128, 1346.86)
+
+[node name="BottomFireRight" type="Node2D" parent="."]
+position = Vector2(1728, 1344)
