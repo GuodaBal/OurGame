@@ -38,6 +38,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_L) and attackTimer.is_stopped():
 		spawn_fire_left()
 		attackTimer.start()
+	if Input.is_key_pressed(KEY_K) and attackTimer.is_stopped():
+		spawn_fire_right()
+		attackTimer.start()
 	if jump_detector_right.is_colliding():
 		velocity = -300 * left - 300 * gravity_dir
 	if jump_detector_left.is_colliding():
@@ -97,7 +100,6 @@ func switch_to_right():
 	gravity_dir = Vector2.RIGHT
 	gravity = Vector2(gravityStrength, 0)
 	rotation = deg_to_rad(-90)
-	print_debug("right")
 	left = Vector2(0, SPEED)
 	right = Vector2(0, -SPEED)
 	
@@ -106,7 +108,6 @@ func switch_to_left():
 	gravity_dir = Vector2.LEFT
 	gravity = Vector2(-gravityStrength, 0)
 	rotation = deg_to_rad(90)
-	print_debug("left")
 	left = Vector2(0, -SPEED)
 	right = Vector2(0, SPEED)
 
@@ -115,7 +116,6 @@ func switch_to_up():
 	gravity_dir = Vector2.UP
 	gravity = Vector2(0, -gravityStrength)
 	rotation = deg_to_rad(180)
-	print_debug("up")
 	left = Vector2(SPEED, 0)
 	right = Vector2(-SPEED, 0)
 
@@ -124,10 +124,10 @@ func switch_to_down():
 	gravity = Vector2(0, gravityStrength)
 	gravity_dir = Vector2.DOWN
 	rotation = deg_to_rad(0)
-	print_debug("down")
 	left = Vector2(-SPEED, 0)
 	right = Vector2(SPEED, 0)
 	
 func spawn_fire_left():
-	print_debug("spawn")
 	get_tree().current_scene.get_node("Level").spawn_fire_left()
+func spawn_fire_right():
+	get_tree().current_scene.get_node("Level").spawn_fire_right()
