@@ -1,7 +1,7 @@
 extends Node2D
 
-var speed = 0.2
-
+var sideSpeed = 0.2
+var bottomSpeed = 400
 
 @onready var path_left := $PathLeft/PathFollow2D as PathFollow2D
 @onready var path_right := $PathRight/PathFollow2D as PathFollow2D
@@ -25,28 +25,28 @@ var bottom_fire_right
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
 	if fire_left:
-		path_left.progress_ratio += speed * delta
+		path_left.progress_ratio += sideSpeed * delta
 		if(path_left.progress_ratio == 1):
 			path_left.progress_ratio = 0
 			fire_left=false
 			path_left.remove_child(path_left.get_child(0))
 	if fire_right:
-		path_right.progress_ratio += speed * delta
+		path_right.progress_ratio += sideSpeed * delta
 		if(path_right.progress_ratio == 1):
 			path_right.progress_ratio = 0
 			fire_right=false
 			path_right.remove_child(path_right.get_child(0))
 	if fire_down:
 		if bottom_fire_left.position.y > peak and !has_peaked:
-			bottom_fire_left.position.y-=delta*200
-			bottom_fire_right.position.y-=delta*200
+			bottom_fire_left.position.y-=delta*bottomSpeed
+			bottom_fire_right.position.y-=delta*bottomSpeed
 		elif !has_peaked and bottom_fire_left.position.y <= peak:
 			has_peaked = true
 		elif has_peaked and bottom_fire_left.position.y < valley:
-			bottom_fire_left.position.y+=delta*200
-			bottom_fire_right.position.y+=delta*200
+			bottom_fire_left.position.y+=delta*bottomSpeed
+			bottom_fire_right.position.y+=delta*bottomSpeed
 		elif has_peaked and bottom_fire_left.position.y >= valley:
-			print_debug(has_peaked)
+			has_peaked=false
 			if bottom_phase == "done":
 				bottomLeftSpawn.remove_child(bottomLeftSpawn.get_child(0))
 				bottomRightSpawn.remove_child(bottomRightSpawn.get_child(0))
@@ -67,6 +67,7 @@ func spawn_fire_right():
 	instance.rotation=deg_to_rad(180)
 	fire_right = true
 	path_right.progress_ratio = 0
+
 func spawn_fire_bottom():
 	fire_down=true
 	match bottom_phase:
@@ -76,16 +77,13 @@ func spawn_fire_bottom():
 			bottom_fire_right = load("res://tscn_files/fire.tscn").instantiate()
 			bottomRightSpawn.add_child(bottom_fire_right)
 			bottom_phase = "two"
-			has_peaked=false
 		"two":
 			bottom_fire_left.position.x+=distance
 			bottom_fire_right.position.x-=distance
-			has_peaked=false
 			bottom_phase = "three"
 		"three":
 			bottom_fire_left.position.x+=distance
 			bottom_fire_right.position.x-=distance
-			has_peaked=false
 			bottom_phase = "done"
 		"done":
 			bottom_phase="one"

@@ -14,13 +14,10 @@ func _process(delta: float) -> void:
 		get_child(0).add_sibling(instance)
 		
 func changePreviousLevel(levelName):
-	print_debug(previousLevel)
-	print_debug(levelName)
 	previousLevel=levelName
 	
 	
 func getPreviousLevel():
-	print_debug(previousLevel)
 	return previousLevel
 	
 func switchLevel(nextLevel):
