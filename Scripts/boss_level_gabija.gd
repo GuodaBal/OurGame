@@ -30,12 +30,14 @@ func _process(delta: float) -> void:
 			path_left.progress_ratio = 0
 			fire_left=false
 			path_left.remove_child(path_left.get_child(0))
+			$Gabija.not_attacking()
 	if fire_right:
 		path_right.progress_ratio += sideSpeed * delta
 		if(path_right.progress_ratio == 1):
 			path_right.progress_ratio = 0
 			fire_right=false
 			path_right.remove_child(path_right.get_child(0))
+			$Gabija.not_attacking()
 	if fire_down:
 		if bottom_fire_left.position.y > peak and !has_peaked:
 			bottom_fire_left.position.y-=delta*bottomSpeed
@@ -51,6 +53,7 @@ func _process(delta: float) -> void:
 				bottomLeftSpawn.remove_child(bottomLeftSpawn.get_child(0))
 				bottomRightSpawn.remove_child(bottomRightSpawn.get_child(0))
 				fire_down = false
+				$Gabija.not_attacking()
 			else:
 				spawn_fire_bottom()
 
