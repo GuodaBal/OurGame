@@ -17,6 +17,9 @@ var knockback = Vector2.ZERO
 @onready var attackTimer := $AttackTimer as Timer
 @onready var exhaustionTimer := $ExhaustionTimer as Timer
 @onready var isExhaustedTimer := $IsExhaustedTimer as Timer
+@onready var spikeSpawner := $SpikeSpawner as Node2D
+@onready var spikeTimer := $SpikeTimer as Timer
+@onready var spikeEndTimer := $SpikeEndTimer as Timer
 var gravityStrength = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var playerPostion = get_parent().get_parent().get_node("MainCharacter").position
@@ -34,6 +37,7 @@ var jumping = false
 var jump_direction
 var will_be_exhausted = false
 var attacking = false
+var spawning_spikes = false
 
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_UP):
@@ -59,6 +63,16 @@ func _physics_process(delta: float) -> void:
 		will_be_exhausted = false
 		switch_to_down()
 		isExhaustedTimer.start()
+	if spikeEndTimer.is_stopped():
+			spawning_spikes = false
+			attacking = false
+			for spike in spikeSpawner.get_children():
+				spikeSpawner.remove_child(spike)
+	if spawning_spikes and spikeTimer.is_stopped():
+		var instance = load("res://tscn_files/spike.tscn").instantiate()
+		spikeSpawner.add_child(instance)
+		instance.rotation = deg_to_rad(randf_range(-45, 45))
+		spikeTimer.start()
 	#gravity
 	velocity += gravity * delta
 	
@@ -232,11 +246,17 @@ func _on_attack_timer_timeout() -> void:
 		"right":
 			spawn_fire_left()
 		"up":
-			spawn_fire_bottom()
+			if randi() % 2 == 0:
+				spawn_spikes()
+			else:
+				spawn_fire_bottom()
 	if state != "down":
 		attacking = true
 	attackTimer.start()
-
+	
+func spawn_spikes():
+	spawning_spikes = true
+	spikeEndTimer.start()
 func not_attacking():
 	attacking = false
 func _on_exhaustion_timer_timeout() -> void:
