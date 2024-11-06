@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://b531g433jovph"]
+[gd_scene load_steps=6 format=4 uid="uid://b531g433jovph"]
 
 [ext_resource type="TileSet" uid="uid://bf6phwbrf1g57" path="res://Tilemap/tileset.tres" id="1_66yll"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="2_aci0e"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_giy53"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_yu6ge"]
+[ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="5_xx6jg"]
 
 [node name="Level" type="Node2D"]
 
@@ -21,12 +22,12 @@ position = Vector2(1852, 125)
 scale = Vector2(1, 1.32)
 nextLevel = "level_2_temp"
 
-[node name="Enemy" parent="." instance=ExtResource("4_yu6ge")]
-position = Vector2(713, 825)
-
 [node name="Enemy2" parent="." instance=ExtResource("4_yu6ge")]
 position = Vector2(1243, 432)
 
 [node name="LevelSwitcher2" parent="." instance=ExtResource("3_giy53")]
 position = Vector2(1588, 542)
 nextLevel = "boss_level_gabija"
+
+[node name="BatEnemy" parent="." instance=ExtResource("5_xx6jg")]
+position = Vector2(775, 768)

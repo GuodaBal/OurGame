@@ -23,7 +23,7 @@ var knockback = Vector2.ZERO
 var gravityStrength = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var playerPostion = get_parent().get_parent().get_node("MainCharacter").position
-var distance_margin = 20
+var distance_margin = 5
 var range = 700
 
 
@@ -71,7 +71,7 @@ func _physics_process(delta: float) -> void:
 	if spawning_spikes and spikeTimer.is_stopped():
 		var instance = load("res://tscn_files/spike.tscn").instantiate()
 		spikeSpawner.add_child(instance)
-		instance.rotation = deg_to_rad(randf_range(-45, 45))
+		instance.rotation = deg_to_rad(randf_range(-60, 60))
 		spikeTimer.start()
 	#gravity
 	velocity += gravity * delta
