@@ -15,12 +15,16 @@ region = Rect2(512, 0, 256, 256)
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_b5fcq")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+scale = Vector2(1, 1)
+collision_mask = 4
+mass = 0.2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_vfhel")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_msl6o")
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]
