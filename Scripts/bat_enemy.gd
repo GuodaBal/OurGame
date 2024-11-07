@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const FLY_SPEED = 100
+const FLY_SPEED = 100.0
 var hp = 3
 var damage = 1
 
@@ -18,23 +18,41 @@ var damage = 1
 
 var knockback = Vector2.ZERO
 
+var y_hover_offset = 0.0
+
+# Smoothing factor for lerp-based transitions
+const SMOOTHING_FACTOR = 0.5
+var movement_cooldown = 0.0
+const COOLDOWN_TIME = 0.2  # Cooldown before
+
 func _physics_process(delta: float) -> void:
 
 	playerPostion = get_parent().get_parent().get_node("MainCharacter").position
-	if !obsDetectorLeft.get_overlapping_bodies().is_empty():
-		velocity.y = -FLY_SPEED
-	elif !obsDetectorRight.get_overlapping_bodies().is_empty():
-		velocity.y = -FLY_SPEED
-	elif flyHeight.is_colliding():
-		velocity.y = -FLY_SPEED
-	else:
-		velocity.y = lerp(velocity.y, 0.0, 0.1)
-	if playerPostion.x - position.x > 1:
-		velocity.x = FLY_SPEED
-	elif playerPostion.x - position.x < -1:
-		velocity.x = -FLY_SPEED
-	else:
-		velocity.x = 0
+	
+	movement_cooldown -= delta  # Update cooldown timer
+		# Add a hover effect to make movement less robotic
+	y_hover_offset = sin(Time.get_ticks_msec() / 1000.0) * 5.0
+	if movement_cooldown <= 0.0:
+		if !obsDetectorLeft.get_overlapping_bodies().is_empty():
+			velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+			movement_cooldown = COOLDOWN_TIME
+		elif !obsDetectorRight.get_overlapping_bodies().is_empty():
+			velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+			movement_cooldown = COOLDOWN_TIME
+		elif flyHeight.is_colliding() and flyHeight.get_collider().get_class() != "CharacterBody2D":
+			velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+			movement_cooldown = COOLDOWN_TIME
+		elif position.y  - playerPostion.y < -100:
+			velocity.y = lerp(velocity.y, FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+			movement_cooldown = COOLDOWN_TIME
+		else:
+			velocity.y = lerp(velocity.y, y_hover_offset, SMOOTHING_FACTOR)
+		if playerPostion.x - position.x > 5:
+			velocity.x = FLY_SPEED
+		elif playerPostion.x - position.x < -5:
+			velocity.x = -FLY_SPEED
+		else:
+			velocity.x = 0
 		
 	velocity += knockback
 
@@ -52,7 +70,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage: int, knockback_strength: int, character_position: Vector2):
 	hp-=damage
 	var direction = position - character_position
-	knockback = direction * knockback_strength
+	knockback = direction.normalized() * knockback_strength*50
 	#knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	sprite.scale.y = -0.1
 	if hp <= 0:
@@ -67,12 +85,10 @@ func attack(body):
 	attackTimer.start()
 
 func _on_attack_body_entered(body):
-	print_debug("collision" + str(body))
 	if attackTimer.is_stopped() && body.is_in_group("Player"):
 		attack(body)
 		
 func _on_attack_timer_timeout():
 	for body in attackArea.get_overlapping_bodies():
-		print_debug("collision" + str(body))
 		if body.is_in_group("Player"):
 			attack(body)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://br6uins0i4hue"]
+[gd_scene load_steps=7 format=3 uid="uid://br6uins0i4hue"]
 
 [ext_resource type="Script" path="res://Scripts/bat_enemy.gd" id="1_awle0"]
 [ext_resource type="Texture2D" uid="uid://bj1jkwtb53hst" path="res://Sprites/Generic_enemies/4yxdvftqldnx9e850owigukaike3.png" id="2_n1fiq"]
@@ -13,6 +13,8 @@ height = 94.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yinq6"]
 size = Vector2(20, 41)
+
+[sub_resource type="Curve2D" id="Curve2D_anrps"]
 
 [node name="BatEnemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 7
@@ -34,6 +36,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_lph6i")
 
 [node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 autostart = true
 
@@ -54,6 +57,9 @@ shape = SubResource("RectangleShape2D_yinq6")
 [node name="FlyHeight" type="RayCast2D" parent="."]
 target_position = Vector2(0, 100)
 collision_mask = 4
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_anrps")
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

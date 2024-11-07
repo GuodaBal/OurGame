@@ -40,10 +40,13 @@ func add_HP(amount):
 				hearts[-1].play("two")
 			"four":
 				print_debug("heart" + str(hearts[-1]) + "full, added heart")
+				var lastHeart = true
 				for heart in full:
 					if heart not in hearts:
 						hearts.append(heart)
+						lastHeart = false
 						break
-				hearts[-1].play("one")
+				if !lastHeart:
+					hearts[-1].play("one")
 				print_debug(hearts[-1])
 		amount-=1
