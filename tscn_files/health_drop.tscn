@@ -4,27 +4,29 @@
 [ext_resource type="Texture2D" uid="uid://dfmtq612ixohd" path="res://Sprites/UI Sprite/Hearts.png" id="2_l116d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vfhel"]
-radius = 90.0
-height = 252.0
+radius = 17.0
+height = 50.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_msl6o"]
 atlas = ExtResource("2_l116d")
 region = Rect2(512, 0, 256, 256)
 
 [node name="HealthDrop" type="Node2D"]
-scale = Vector2(0.2, 0.2)
 script = ExtResource("1_b5fcq")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-scale = Vector2(1, 1)
-collision_mask = 4
+collision_layer = 2
+collision_mask = 5
 mass = 0.2
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-scale = Vector2(1, 1)
 shape = SubResource("CapsuleShape2D_vfhel")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.2, 0.2)
 texture = SubResource("AtlasTexture_msl6o")
 
 [connection signal="body_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_body_entered"]

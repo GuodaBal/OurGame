@@ -30,16 +30,12 @@ func add_HP(amount):
 	while(amount > 0):
 		match hearts[-1].animation:
 			"three":
-				print_debug("heart" + str(hearts[-1]) + "changed from three to four")
 				hearts[-1].play("four")
 			"two":
-				print_debug("heart" + str(hearts[-1])+ "changed from two to three")
 				hearts[-1].play("three")
 			"one":
-				print_debug("heart" + str(hearts[-1])+ "changed from one to two")
 				hearts[-1].play("two")
 			"four":
-				print_debug("heart" + str(hearts[-1]) + "full, added heart")
 				var lastHeart = true
 				for heart in full:
 					if heart not in hearts:

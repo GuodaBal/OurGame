@@ -22,12 +22,12 @@ position = Vector2(1852, 125)
 scale = Vector2(1, 1.32)
 nextLevel = "level_2_temp"
 
+[node name="BatEnemy" parent="." instance=ExtResource("5_xx6jg")]
+position = Vector2(788, 704)
+
 [node name="Enemy2" parent="." instance=ExtResource("4_yu6ge")]
-position = Vector2(1243, 432)
+position = Vector2(1241, 432)
 
 [node name="LevelSwitcher2" parent="." instance=ExtResource("3_giy53")]
 position = Vector2(1588, 542)
 nextLevel = "boss_level_gabija"
-
-[node name="BatEnemy" parent="." instance=ExtResource("5_xx6jg")]
-position = Vector2(775, 768)

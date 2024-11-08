@@ -61,7 +61,6 @@ text = " Controls"
 alignment = 0
 
 [node name="Graphics" type="GridContainer" parent="CanvasLayer"]
-visible = false
 offset_left = 900.0
 offset_top = 200.0
 offset_right = 1740.0
@@ -76,6 +75,7 @@ theme_override_font_sizes/font_size = 50
 text = "Resolution"
 
 [node name="ResolutionSelector" type="OptionButton" parent="CanvasLayer/Graphics"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 alignment = 1
@@ -106,17 +106,20 @@ theme_override_font_sizes/font_size = 50
 text = "on"
 
 [node name="BrightnessLabel" type="Label" parent="CanvasLayer/Graphics"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "Brightness"
 
 [node name="BrightnessSlider" type="HSlider" parent="CanvasLayer/Graphics"]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 4
 value = 50.0
 
 [node name="Sound" type="GridContainer" parent="CanvasLayer"]
+visible = false
 offset_left = 900.0
 offset_top = 200.0
 offset_right = 1792.0

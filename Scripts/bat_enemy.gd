@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 			elif !obsDetectorRight.get_overlapping_bodies().is_empty():
 				velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
 				movement_cooldown = COOLDOWN_TIME
-			elif flyHeight.is_colliding() and flyHeight.get_collider().get_class() != "CharacterBody2D":
+			elif flyHeight.is_colliding():# and flyHeight.get_collider().get_class() != "CharacterBody2D":
 				velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
 				movement_cooldown = COOLDOWN_TIME
 			elif position.y  - playerPostion.y < -100:

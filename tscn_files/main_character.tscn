@@ -73,7 +73,7 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oopqj"]
 size = Vector2(41, 14)
 
-[node name="MainCharacter" type="CharacterBody2D" node_paths=PackedStringArray("attackCollision", "floorCollision") groups=["Player"]]
+[node name="MainCharacter" type="CharacterBody2D" node_paths=PackedStringArray("attackCollision", "floorCollision") groups=["Persist", "Player"]]
 collision_mask = 5
 platform_floor_layers = 4294967042
 platform_wall_layers = 4
