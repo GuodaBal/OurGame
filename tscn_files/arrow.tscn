@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4o4ya0nsck28"]
+
+[ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_1e6l1"]
+[ext_resource type="Texture2D" uid="uid://0yup0hh5vgeo" path="res://Sprites/Main_character/distressed-sticker-of-a-quirky-hand-drawn-cartoon-burning-arrow-png.webp" id="2_c2h6h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qqw8o"]
+radius = 11.0
+height = 46.0
+
+[node name="Arrow" type="RigidBody2D"]
+mass = 0.1
+lock_rotation = true
+contact_monitor = true
+max_contacts_reported = 3
+script = ExtResource("1_1e6l1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qqw8o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_c2h6h")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
