@@ -5,17 +5,21 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qqw8o"]
 radius = 11.0
-height = 46.0
+height = 34.0
 
 [node name="Arrow" type="RigidBody2D"]
 collision_layer = 2
 collision_mask = 5
-mass = 0.1
+mass = 0.2
+center_of_mass_mode = 1
+center_of_mass = Vector2(10, 0)
+inertia = 1000.0
 contact_monitor = true
 max_contacts_reported = 3
 script = ExtResource("1_1e6l1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 0)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_qqw8o")
 
