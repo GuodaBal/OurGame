@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4o4ya0nsck28"]
+[gd_scene load_steps=6 format=3 uid="uid://c4o4ya0nsck28"]
 
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_1e6l1"]
 [ext_resource type="Texture2D" uid="uid://0yup0hh5vgeo" path="res://Sprites/Main_character/distressed-sticker-of-a-quirky-hand-drawn-cartoon-burning-arrow-png.webp" id="2_c2h6h"]
+[ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="3_8h342"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qqw8o"]
 radius = 11.0
 height = 34.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cqu6p"]
+blend_mode = 1
 
 [node name="Arrow" type="RigidBody2D"]
 collision_layer = 2
@@ -26,5 +30,11 @@ shape = SubResource("CapsuleShape2D_qqw8o")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_c2h6h")
+
+[node name="Glow" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_cqu6p")
+position = Vector2(11, -1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("3_8h342")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,9 +2,15 @@ extends Node
 
 
 var previousLevel = "";
+var currentLevel = "level"
+var savedPosition
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	previousLevel = "level"
+	var instance = load("res://tscn_files/" + currentLevel + ".tscn").instantiate()
+	add_child(instance)
+	get_node("MainCharacter").position = savedPosition
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
