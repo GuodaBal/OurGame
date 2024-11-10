@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://c4o4ya0nsck28"]
+[gd_scene load_steps=5 format=3 uid="uid://c4o4ya0nsck28"]
 
 [ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_1e6l1"]
 [ext_resource type="Texture2D" uid="uid://bpygk4i8odb1j" path="res://Game_Sprites/Abilities/Arrow.png" id="2_ft2i3"]
@@ -7,9 +7,6 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qqw8o"]
 radius = 11.0
 height = 34.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_cqu6p"]
-blend_mode = 1
 
 [node name="Arrow" type="RigidBody2D"]
 collision_layer = 2
@@ -31,10 +28,8 @@ shape = SubResource("CapsuleShape2D_qqw8o")
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_ft2i3")
 
-[node name="Glow" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_cqu6p")
-position = Vector2(12.49, -1.535)
-scale = Vector2(0.02, 0.02)
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.954391, 0.874654, 0.814692, 1)
 texture = ExtResource("3_8h342")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

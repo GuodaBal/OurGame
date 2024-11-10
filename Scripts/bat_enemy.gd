@@ -94,10 +94,10 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 	#knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	sprite.scale.y = -sprite_scale
 	if hp <= 0:
-		#if(randi_range(0,3) == 3): #1/4 chance FOR NOW
-		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
-		add_sibling(instance)
-		instance.position = position
+		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
+			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
+			add_sibling(instance)
+			instance.position = position
 		queue_free()
 		
 func attack(body):
