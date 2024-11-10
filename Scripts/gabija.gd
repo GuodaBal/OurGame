@@ -5,7 +5,7 @@ const SPEED = 200
 const JUMP_VELOCITY = 500.0
 const max_velocity = 350
 const max_fall_velocity = 600
-var hp = 20
+var hp = 30
 var knockback = Vector2.ZERO
 
 @onready var sprite := $Sprite2D as Sprite2D

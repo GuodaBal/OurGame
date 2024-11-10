@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://1sey47rltk7t"]
+[gd_scene load_steps=6 format=4 uid="uid://1sey47rltk7t"]
 
 [ext_resource type="TileSet" uid="uid://bf6phwbrf1g57" path="res://Tilemap/tileset.tres" id="1_mqoch"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="2_yvser"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_pjh0y"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_g06yk"]
+[ext_resource type="PackedScene" uid="uid://l442d7hfs4ha" path="res://tscn_files/health_boost.tscn" id="5_qkrnw"]
 
 [node name="Level" type="Node2D"]
 
@@ -27,3 +28,6 @@ position = Vector2(1241, 432)
 [node name="LevelSwitcher2" parent="." instance=ExtResource("3_pjh0y")]
 position = Vector2(1588, 542)
 nextLevel = "boss_level_gabija"
+
+[node name="Health_boost" parent="." instance=ExtResource("5_qkrnw")]
+position = Vector2(304, 441)

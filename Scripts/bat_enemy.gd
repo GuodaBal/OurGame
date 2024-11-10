@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const FLY_SPEED = 100.0
-var hp = 3
+var hp = 6
 var damage = 1
 
 #@onready var animation := $AnimationPlayer as AnimationPlayer

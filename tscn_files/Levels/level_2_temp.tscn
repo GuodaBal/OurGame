@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cng4oow8tm312"]
+[gd_scene load_steps=6 format=4 uid="uid://cng4oow8tm312"]
 
 [ext_resource type="TileSet" uid="uid://bf6phwbrf1g57" path="res://Tilemap/tileset.tres" id="1_uxv68"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="2_l20xa"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_qwdop"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_10qcn"]
+[ext_resource type="PackedScene" uid="uid://ncwroj8cc52h" path="res://tscn_files/damage_boost.tscn" id="5_m5ca3"]
 
 [node name="Level" type="Node2D"]
 
@@ -24,3 +25,6 @@ correctLevel = "level"
 
 [node name="Enemy2" parent="." instance=ExtResource("2_l20xa")]
 position = Vector2(1650, 140)
+
+[node name="Damage_boost" parent="." instance=ExtResource("5_m5ca3")]
+position = Vector2(465, 582)

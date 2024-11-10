@@ -4,10 +4,12 @@ extends CanvasLayer
 @onready var first := $first as AnimatedSprite2D
 @onready var second := $second as AnimatedSprite2D
 @onready var third := $third as AnimatedSprite2D
+@onready var fourth := $fourth as AnimatedSprite2D
+@onready var fifth := $fifth as AnimatedSprite2D
+@onready var sixth := $sixth as AnimatedSprite2D
 
 var hearts
 var full
-
 func _ready():
 	full = [first, second, third]
 	hearts = [first, second, third]
@@ -26,6 +28,7 @@ func remove_HP(amount):
 				hearts[-1].play("zero")
 				hearts.pop_back()
 		amount=-1
+
 func add_HP(amount):
 	while(amount > 0):
 		match hearts[-1].animation:
@@ -46,3 +49,13 @@ func add_HP(amount):
 					hearts[-1].play("one")
 				print_debug(hearts[-1])
 		amount-=1
+		
+func add_Heart():
+	var all = [first, second, third, fourth, fifth, sixth]
+	for heart in all:
+		if heart not in full:
+			full.append(heart)
+			#hearts.append(heart)
+			heart.play("zero")
+			heart.visible = true
+			break
