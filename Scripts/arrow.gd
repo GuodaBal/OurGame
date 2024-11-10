@@ -2,9 +2,11 @@ extends RigidBody2D
 
 @onready var sprite:=$Sprite2D as Sprite2D
 @onready var col:=$CollisionShape2D as CollisionShape2D
+
 var attack_damage = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+
 	pass
 	#look_at(Vector2(70000, -30000))
 	#apply_central_impulse(Vector2(200, -200))
