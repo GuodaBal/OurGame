@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7n5ik0tmnj1p"
-path="res://.godot/imported/hp1.png-e2b5b623382aa4c0a70441896cf654b1.ctex"
+uid="uid://h5l7448alyq3"
+path="res://.godot/imported/Background_symbol_Nature_God.png-e11b3e19f76d8b8e87d4225c25555d34.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/hp1.png"
-dest_files=["res://.godot/imported/hp1.png-e2b5b623382aa4c0a70441896cf654b1.ctex"]
+source_file="res://Game_Sprites/Background/Background_symbol_Nature_God.png"
+dest_files=["res://.godot/imported/Background_symbol_Nature_God.png-e11b3e19f76d8b8e87d4225c25555d34.ctex"]
 
 [params]
 

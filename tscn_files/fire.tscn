@@ -4,19 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://dhxgr0163ohwt" path="res://Sprites/Bosses/Gabija/pngtree-fire-illustration-png-image_6485204.png" id="2_dwlic"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4fa8q"]
-radius = 141.0
-height = 374.0
+radius = 132.8
+height = 343.2
 
 [node name="Fire" type="Node2D"]
-scale = Vector2(2, 2)
+scale = Vector2(2.5, 2.5)
 script = ExtResource("1_la3rp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 100)
 texture = ExtResource("2_dwlic")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 100)
 shape = SubResource("CapsuleShape2D_4fa8q")
 
 [node name="Timer" type="Timer" parent="."]

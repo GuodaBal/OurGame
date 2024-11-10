@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7yvn0s4sb37c"
-path="res://.godot/imported/hp3.png-7485675fcaf2f08df56fc79b699ee9f0.ctex"
+uid="uid://cisw1ib5g5g8u"
+path="res://.godot/imported/Bow.png-f322474a8054e458f5f70966875a1d9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/hp3.png"
-dest_files=["res://.godot/imported/hp3.png-7485675fcaf2f08df56fc79b699ee9f0.ctex"]
+source_file="res://Game_Sprites/Abilities/Bow.png"
+dest_files=["res://.godot/imported/Bow.png-f322474a8054e458f5f70966875a1d9f.ctex"]
 
 [params]
 

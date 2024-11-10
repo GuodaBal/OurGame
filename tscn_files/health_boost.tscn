@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://l442d7hfs4ha"]
+
+[ext_resource type="Script" path="res://Scripts/health_boost.gd" id="1_11mam"]
+[ext_resource type="Texture2D" uid="uid://bmo543glmjfi3" path="res://Sprites/pngtree-sparkle-sticker-icon-vector-png-image_10002001.png" id="2_2dt65"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ip7y7"]
+size = Vector2(236, 288)
+
+[node name="Health_boost" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_11mam")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, -9)
+shape = SubResource("RectangleShape2D_ip7y7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2dt65")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

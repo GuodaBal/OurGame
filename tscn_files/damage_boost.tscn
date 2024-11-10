@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ncwroj8cc52h"]
+
+[ext_resource type="Script" path="res://Scripts/damage_boost.gd" id="1_wlyha"]
+[ext_resource type="Texture2D" uid="uid://6qp0mhjtnklf" path="res://Sprites/8800708.png" id="2_ll0ww"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir78q"]
+size = Vector2(510, 446)
+
+[node name="Damage_boost" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+script = ExtResource("1_wlyha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -4)
+shape = SubResource("RectangleShape2D_ir78q")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_ll0ww")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

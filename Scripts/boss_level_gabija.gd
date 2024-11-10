@@ -1,7 +1,7 @@
 extends Node2D
 
 var sideSpeed = 0.2
-var bottomSpeed = 400
+var bottomSpeed = 450
 
 @onready var path_left := $PathLeft/PathFollow2D as PathFollow2D
 @onready var path_right := $PathRight/PathFollow2D as PathFollow2D
@@ -9,12 +9,13 @@ var bottomSpeed = 400
 @onready var bottomLeftSpawn := $BottomFireLeft as Node2D
 @onready var bottomRightSpawn := $BottomFireRight as Node2D 
 
+
 var fire_left = false
 var fire_right = false
 var fire_down = false
 
-var peak = -200
-var valley = 200
+var peak = -500
+var valley = 100
 var has_peaked = false
 var bottom_phase = "one"
 var distance = 300

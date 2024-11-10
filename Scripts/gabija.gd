@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 
-const SPEED = 100
-const JUMP_VELOCITY = 400.0
-const max_velocity = 200
+const SPEED = 200
+const JUMP_VELOCITY = 500.0
+const max_velocity = 350
 const max_fall_velocity = 600
-var hp = 3
+var hp = 30
 var knockback = Vector2.ZERO
 
 @onready var sprite := $Sprite2D as Sprite2D
@@ -20,6 +20,8 @@ var knockback = Vector2.ZERO
 @onready var spikeSpawner := $SpikeSpawner as Node2D
 @onready var spikeTimer := $SpikeTimer as Timer
 @onready var spikeEndTimer := $SpikeEndTimer as Timer
+@onready var jumpEndTimer := $JumpEndTimer as Timer
+@onready var attackBufferTimer := $AttackBufferTimer as Timer
 var gravityStrength = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var playerPostion = get_parent().get_parent().get_node("MainCharacter").position
@@ -36,8 +38,10 @@ var state = "down"
 var jumping = false
 var jump_direction
 var will_be_exhausted = false
-var attacking = false
+var attacking := [] as Array
 var spawning_spikes = false
+
+var sprite_scale = 0.4
 
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_UP):
@@ -58,21 +62,36 @@ func _input(event: InputEvent) -> void:
 		attackTimer.start()
 
 func _physics_process(delta: float) -> void:
-	
-	if will_be_exhausted and !attacking:
+	if !isExhaustedTimer.is_stopped() and !is_on_floor():
+		if playerPostion.x - position.x > distance_margin and !wall_detector_left.is_colliding():
+			velocity += left * delta
+			sprite.scale.x = -sprite_scale
+			#print_debug("g")
+		elif playerPostion.x - position.x < -distance_margin and !wall_detector_right.is_colliding():
+			velocity += right  * delta
+			sprite.scale.x = sprite_scale
+			#print_debug("h")
+	if !isExhaustedTimer.is_stopped() and is_on_floor():
+		velocity.x = lerp(velocity.x, 0.0, 0.1)
+	if jumpEndTimer.is_stopped() and is_on_floor():
+		jumping = false
+
+	if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped():
+		attackBufferTimer.start()
+		spawning_spikes = false
+	if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped():
+		#print_debug("stopped attacking is exhausted")
 		will_be_exhausted = false
 		switch_to_down()
 		isExhaustedTimer.start()
-	if spikeEndTimer.is_stopped():
-			spawning_spikes = false
-			attacking = false
-			for spike in spikeSpawner.get_children():
-				spikeSpawner.remove_child(spike)
-	if spawning_spikes and spikeTimer.is_stopped():
+	if spawning_spikes and spikeTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
+		#print_debug(spawning_spikes)
+		#print_debug("c")
 		var instance = load("res://tscn_files/spike.tscn").instantiate()
 		spikeSpawner.add_child(instance)
-		instance.rotation = deg_to_rad(randf_range(-60, 60))
+		instance.rotation = deg_to_rad(randf_range(-70, 70))
 		spikeTimer.start()
+		#print_debug("a")
 	#gravity
 	velocity += gravity * delta
 	
@@ -81,35 +100,60 @@ func _physics_process(delta: float) -> void:
 	#jump when close enough to wall
 	#falling speed needs to be faster than running speed, direction depends on gravity
 	if jumping:
-		velocity = JUMP_VELOCITY * jump_direction - 300 * gravity_dir
-	if state == "down":
+		#print_debug("d")
+		velocity = JUMP_VELOCITY * jump_direction - 500 * gravity_dir
+
+	if !attacking.is_empty():
+		#print_debug("e")
+		velocity.x  = lerp(velocity.x , 0.0, 0.1)
+		velocity.y  = lerp(velocity.y , 0.0, 0.1)
+	elif state == "down":
 		if abs(playerPostion - position).length() > range:
 			velocity.x  = lerp(velocity.x , 0.0, 0.1)
 		elif !jumping and isExhaustedTimer.is_stopped() and is_on_floor():
-			if playerPostion.x - position.x > distance_margin:
+			if playerPostion.x - position.x > distance_margin and !jump_detector_left.is_colliding():
 				velocity += left * delta
-			elif playerPostion.x - position.x < -distance_margin:
+				sprite.scale.x = -sprite_scale
+				#print_debug("g")
+			elif playerPostion.x - position.x < -distance_margin and !jump_detector_right.is_colliding():
 				velocity += right  * delta
+				sprite.scale.x = sprite_scale
+				#print_debug("h")
 		velocity.x = clamp(velocity.x, -max_velocity, max_velocity)
 		velocity.y = clamp(velocity.y, -max_fall_velocity, max_fall_velocity)
 		
 	elif state=="up":
 		if exhaustionTimer.is_stopped():
 			exhaustionTimer.start()
+		if position.x > 1050 and !jump_detector_right.is_colliding():
+			#print_debug("k")
+			velocity += right * delta
+			sprite.scale.x = sprite_scale
+		elif position.x < 700 and !jump_detector_left.is_colliding():
+			#print_debug("l")
+			velocity += left * delta
+			sprite.scale.x = -sprite_scale
 		velocity.x = clamp(velocity.x, -max_velocity, max_velocity)
 		velocity.y = clamp(velocity.y, -max_fall_velocity, max_fall_velocity)
-		velocity.x  = lerp(velocity.x , 0.0, 0.1)
+		#velocity.x  = lerp(velocity.x , 0.0, 0.1)
 	
 	elif state=="left":
 		if exhaustionTimer.is_stopped():
 			exhaustionTimer.start()
 		if abs(playerPostion - position).length() > range:
 			velocity.y = lerp(velocity.y , 0.0, 0.1)
+			#print_debug("m")
 		elif !jumping and isExhaustedTimer.is_stopped() and is_on_floor():
-			if playerPostion.y - position.y > distance_margin:
+			if playerPostion.y - position.y > distance_margin and !jump_detector_left.is_colliding():
 				velocity += left * delta
-			elif playerPostion.y - position.y < -distance_margin:
+				sprite.scale.x = -sprite_scale
+				#print_debug("n")
+			elif playerPostion.y - position.y < -distance_margin and !jump_detector_right.is_colliding():
 				velocity += right * delta
+				sprite.scale.x = sprite_scale
+				#print_debug("o")
+			else:
+				velocity.y = lerp(velocity.y , 0.0, 0.1)
 		velocity.y = clamp(velocity.y, -max_velocity, max_velocity)
 		velocity.x = clamp(velocity.x, -max_fall_velocity, max_fall_velocity)
 	
@@ -118,40 +162,65 @@ func _physics_process(delta: float) -> void:
 			exhaustionTimer.start()
 		if abs(playerPostion - position).length() > range:
 			velocity.y = lerp(velocity.y , 0.0, 0.1)
+			#print_debug("p")
 		elif !jumping and isExhaustedTimer.is_stopped() and is_on_floor():
 			if playerPostion.y - position.y > distance_margin and !jump_detector_right.is_colliding():
 				velocity += right * delta
+				sprite.scale.x = sprite_scale
+				#print_debug("q")
 			elif playerPostion.y - position.y < -distance_margin and !jump_detector_left.is_colliding():
 				velocity += left * delta
+				sprite.scale.x = -sprite_scale
+				#print_debug("r")
+			else:
+				velocity.y = lerp(velocity.y , 0.0, 0.1)
 		velocity.y = clamp(velocity.y, -max_velocity, max_velocity)
 		velocity.x = clamp(velocity.x, -max_fall_velocity, max_fall_velocity)
 	#move opposite direction of player
 	
 	if is_on_floor() and jumpTimer.is_stopped() and isExhaustedTimer.is_stopped():
-		if jump_detector_left.is_colliding() and jump_detector_left.get_collider().get_class() != "CharacterBody2D":
-			jumping = true
-			jumpTimer.start()
-			jump_direction = left
-		if jump_detector_right.is_colliding() and jump_detector_right.get_collider().get_class() != "CharacterBody2D":
-			jumping = true
-			jumpTimer.start()
-			jump_direction = right
+		if jump_detector_left.is_colliding() and jump_detector_left.get_collider() is TileMapLayer and player_is_to("right") and attacking.is_empty():
+			var tile_data=jump_detector_left.get_collider().get_cell_tile_data(jump_detector_left.get_collider().get_coords_for_body_rid(jump_detector_left.get_collider_rid()))
+			if tile_data.get_custom_data_by_layer_id(0)==1:
+				jumping = true
+				jumpTimer.start()
+				jumpEndTimer.start()
+				jump_direction = left
+				sprite.scale.x = -sprite_scale
+				#print_debug("s")
+		if jump_detector_right.is_colliding() and jump_detector_right.get_collider() is TileMapLayer and player_is_to("left") and attacking.is_empty():
+			var tile_data=jump_detector_right.get_collider().get_cell_tile_data(jump_detector_right.get_collider().get_coords_for_body_rid(jump_detector_right.get_collider_rid()))
+			if tile_data.get_custom_data_by_layer_id(0)==1:
+				jumping = true
+				jumpTimer.start()
+				jumpEndTimer.start()
+				jump_direction = right
+				sprite.scale.x = sprite_scale
+				#print_debug("t")
 	
 
 	#switch gravity when close enough to wall (after jump)
-	if wall_detector_left.is_colliding() and (jumping || knockback != Vector2.ZERO and isExhaustedTimer.is_stopped()):# and wall_detector_left.get_collider().get_class() != "CharacterBody2D":
-		switch_gravity("left")
-		jumping = false
-	if wall_detector_right.is_colliding() and (jumping || knockback != Vector2.ZERO and isExhaustedTimer.is_stopped()):# and !wall_detector_right.get_collider().get_class() != "CharacterBody2D":
-		switch_gravity("right")
-		jumping = false
+	if wall_detector_left.is_colliding() and wall_detector_left.get_collider() is TileMapLayer and jumping:# and wall_detector_left.get_collider().get_class() != "CharacterBody2D":
+		var tile_data=wall_detector_left.get_collider().get_cell_tile_data(wall_detector_left.get_collider().get_coords_for_body_rid(wall_detector_left.get_collider_rid()))
+		if tile_data.get_custom_data_by_layer_id(1)==1:
+			switch_gravity("left")
+			jumping = false
+			sprite.scale.x = -sprite_scale
+			#print_debug("u")
+	if wall_detector_right.is_colliding() and wall_detector_right.get_collider() is TileMapLayer and jumping:# and !wall_detector_right.get_collider().get_class() != "CharacterBody2D":
+		var tile_data=wall_detector_right.get_collider().get_cell_tile_data(wall_detector_right.get_collider().get_coords_for_body_rid(wall_detector_right.get_collider_rid()))
+		if tile_data.get_custom_data_by_layer_id(1)==1:
+			switch_gravity("right")
+			sprite.scale.x = sprite_scale
+			jumping = false
+			#print_debug("v")
 		
 	#adjust up direction for gravity to work normally
 	up_direction = -gravity_dir
 	#knockback MIGHT REMOVE
-	velocity += knockback
-
+	#velocity += knockback
 	move_and_slide()
+	
 
 func take_damage(damage, knockback_strength, player_position):
 	
@@ -240,28 +309,99 @@ func spawn_fire_bottom():
 
 #attacks depending on position
 func _on_attack_timer_timeout() -> void:
-	match state:
-		"left":
-			spawn_fire_right()
-		"right":
-			spawn_fire_left()
-		"up":
-			if randi() % 2 == 0:
-				spawn_spikes()
-			else:
-				spawn_fire_bottom()
-	if state != "down":
-		attacking = true
+	#print_debug(spawning_spikes)
+	if isExhaustedTimer.is_stopped() and !will_be_exhausted and is_on_floor():
+		match state:
+			"left":
+				spawn_fire_right()
+			"right":
+				spawn_fire_left()
+			"up":
+				if randi() % 2 == 0:
+					spawn_spikes()
+					#print_debug("start_spawn")
+				else:	
+					spawn_fire_bottom()
+		if state != "down":
+			attacking.append(0)
 	attackTimer.start()
 	
 func spawn_spikes():
 	spawning_spikes = true
 	spikeEndTimer.start()
 func not_attacking():
-	attacking = false
+	attacking.pop_back()
 func _on_exhaustion_timer_timeout() -> void:
-	if attacking:
+	if !attacking.is_empty():
 		will_be_exhausted = true
 	else:
 		switch_to_down()
 		isExhaustedTimer.start()
+
+
+func _on_spike_end_timer_timeout() -> void:
+	spawning_spikes = false
+	attacking.pop_back()
+	#print_debug("b")
+	
+	#for spike in spikeSpawner.get_children():
+		#spikeSpawner.remove_child(spike)
+
+
+func _on_jump_end_timer_timeout() -> void:
+	jumping = false
+	
+func player_is_to(direction: String):
+	match direction:
+		"left":
+			match state:
+				"down":
+					if playerPostion.x - position.x <= 0:
+						return true 
+				"up":
+					if playerPostion.x - position.x >= 0:
+						return true 
+				"left":
+					if playerPostion.y - position.y <= 0:
+						return true 
+				"right":
+					if playerPostion.y - position.y >= 0:
+						return true 
+		"right":
+			match state:
+				"down":
+					if playerPostion.x - position.x >= 0:
+						return true 
+				"up":
+					if playerPostion.x - position.x <= 0:
+						return true 
+				"left":
+					if playerPostion.y - position.y >= 0:
+						return true 
+				"right":
+					if playerPostion.y - position.y <= 0:
+						return true 
+	return false
+
+func _on_attack_buffer_timer_timeout() -> void:
+	#print_debug("timedout")
+	will_be_exhausted = false
+	switch_to_down()
+	isExhaustedTimer.start()
+	
+	
+#damage + knockback if player jumps on 
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player") and state == "down":
+		body.take_damage(1, 10, position)
+
+
+func _on_player_rebound_front_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player") and ((state == "left" and sprite.scale.x == -sprite_scale) or (state == "right" and sprite.scale.x == sprite_scale)):
+		body.take_damage(1, 10, position)
+
+
+func _on_player_rebound_back_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Player") and ((state == "left" and sprite.scale.x == sprite_scale) or (state == "right" and sprite.scale.x == -sprite_scale)):
+		body.take_damage(1, 10, position)

@@ -1,43 +1,44 @@
 [gd_scene load_steps=5 format=3 uid="uid://7lbe4hly8swj"]
 
 [ext_resource type="Script" path="res://Enemy.gd" id="1_th8rd"]
-[ext_resource type="Texture2D" uid="uid://yroqyi73jsm1" path="res://Sprites/Generic_enemies/enemy.png" id="2_kjm0h"]
+[ext_resource type="Texture2D" uid="uid://c3ahgddnb8j4a" path="res://Game_Sprites/Enemy/Wolf.png" id="2_157uu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_du2wl"]
-size = Vector2(83.67, 56)
+size = Vector2(1700, 1000)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8kcm"]
 radius = 28.0
-height = 104.0
+height = 98.0
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("attackArea") groups=["Enemy"]]
-scale = Vector2(0.5, 0.5)
 collision_mask = 7
 script = ExtResource("1_th8rd")
 attackArea = NodePath("Sprite2D/Attack")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_kjm0h")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_157uu")
 
 [node name="Attack" type="Area2D" parent="Sprite2D"]
 collision_mask = 5
 
 [node name="AttackCollision" type="CollisionShape2D" parent="Sprite2D/Attack"]
-position = Vector2(-17.835, -9.53674e-07)
+position = Vector2(-250, 99.9999)
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_du2wl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Enemy"]]
-position = Vector2(2, 4)
+position = Vector2(1, 10)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_u8kcm")
 
 [node name="FloorDetectorLeft" type="RayCast2D" parent="."]
-position = Vector2(-56, 44)
+position = Vector2(-42, 27)
 scale = Vector2(0.77, 0.77)
 collision_mask = 6
 
 [node name="FloorDetectorRight" type="RayCast2D" parent="."]
-position = Vector2(49, 43)
+position = Vector2(44, 29)
 scale = Vector2(0.7, 0.7)
 collision_mask = 6
 
@@ -45,14 +46,14 @@ collision_mask = 6
 one_shot = true
 
 [node name="ObsticleDetectorLeft" type="RayCast2D" parent="."]
-position = Vector2(-14, -15)
-target_position = Vector2(-40, 1)
+position = Vector2(-16, -14)
+target_position = Vector2(-37, 1)
 collision_mask = 7
 hit_from_inside = true
 
 [node name="ObsticleDetectorRight" type="RayCast2D" parent="."]
-position = Vector2(16, -16)
-target_position = Vector2(44, 0)
+position = Vector2(24, -14)
+target_position = Vector2(37, 0)
 collision_mask = 7
 hit_from_inside = true
 
