@@ -3,13 +3,13 @@ extends Node
 
 var previousLevel = "";
 var currentLevel = "level"
-var savedPosition
+#var savedPosition
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	previousLevel = "level"
-	var instance = load("res://tscn_files/" + currentLevel + ".tscn").instantiate()
-	add_child(instance)
-	get_node("MainCharacter").position = savedPosition
+	#var instance = load("res://tscn_files/" + currentLevel + ".tscn").instantiate()
+	#add_child(instance)
+	#get_node("MainCharacter").position = savedPosition
 	
 
 
@@ -27,7 +27,7 @@ func getPreviousLevel():
 	return previousLevel
 	
 func switchLevel(nextLevel):
-	var instance = load("res://tscn_files/" + nextLevel + ".tscn").instantiate()
+	var instance = load("res://tscn_files/Levels/" + nextLevel + ".tscn").instantiate()
 	#get_parent().print_tree()
 	var deleteLevel = get_node("Level")
 	remove_child(deleteLevel)
