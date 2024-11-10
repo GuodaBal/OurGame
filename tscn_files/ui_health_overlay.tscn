@@ -86,3 +86,24 @@ position = Vector2(208, 48)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
 animation = &"four"
+
+[node name="fourth" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(288, 48)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_4f781")
+animation = &"four"
+
+[node name="fifth" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(368, 48)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_4f781")
+animation = &"four"
+
+[node name="sixth" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(448, 48)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_4f781")
+animation = &"four"

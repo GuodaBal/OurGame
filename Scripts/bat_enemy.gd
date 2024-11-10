@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const FLY_SPEED = 100.0
-var hp = 3
+const FLY_SPEED = 150.0
+var hp = 6
 var damage = 1
 
 #@onready var animation := $AnimationPlayer as AnimationPlayer
@@ -21,7 +21,7 @@ var damage = 1
 
 
 var swoop_target : Vector2
-var swoop_duration = 1
+var swoop_duration = 0.5
 
 var knockback = Vector2.ZERO
 
@@ -32,11 +32,19 @@ const SMOOTHING_FACTOR = 0.5
 var movement_cooldown = 0.0
 const COOLDOWN_TIME = 0.2  # Cooldown before
 
+var sprite_scale
+var margin = 7
+var initial
+
+func _ready() -> void:
+	sprite_scale = sprite.scale.x
+
 
 func _physics_process(delta: float) -> void:
 
 	playerPostion = get_parent().get_parent().get_node("MainCharacter").position
 	playerPostion.y-=30
+	playerPostion.x+=10
 	
 	movement_cooldown -= delta  # Update cooldown timer
 		# Add a hover effect to make movement less robotic
@@ -57,23 +65,23 @@ func _physics_process(delta: float) -> void:
 				movement_cooldown = COOLDOWN_TIME
 			else:
 				velocity.y = lerp(velocity.y, y_hover_offset, SMOOTHING_FACTOR)
-			if playerPostion.x - position.x > 5:
+			if playerPostion.x - position.x > margin:
 				velocity.x = FLY_SPEED
-			elif playerPostion.x - position.x < -5:
+			elif playerPostion.x - position.x < -margin:
 				velocity.x = -FLY_SPEED
 			else:
 				velocity.x = 0
 		if velocity.x > 0:
 		#print_debug(velocity.x)
-			sprite.scale.x = -0.1
+			sprite.scale.x = -sprite_scale
 		elif velocity.x < 0:
 	#		print_debug(velocity.x)
-			sprite.scale.x = 0.1
+			sprite.scale.x = sprite_scale
 		velocity += knockback
-	if attackAreaLeft.has_overlapping_bodies() and attackAreaLeft.get_overlapping_bodies().any(Check_if_player) and attackAreaLeft.get_overlapping_bodies().all(Check_if_obstacle):
+	if swoopTimer.is_stopped() and attackTimer.is_stopped() and attackAreaLeft.has_overlapping_bodies() and attackAreaLeft.get_overlapping_bodies().any(Check_if_player) and attackAreaLeft.get_overlapping_bodies().all(Check_if_obstacle):
 		swoopTimer.start()
 		start_attack()
-	if attackAreaRight.has_overlapping_bodies() and attackAreaRight.get_overlapping_bodies().any(Check_if_player) and attackAreaRight.get_overlapping_bodies().all(Check_if_obstacle):
+	if swoopTimer.is_stopped() and attackTimer.is_stopped() and attackAreaRight.has_overlapping_bodies() and attackAreaRight.get_overlapping_bodies().any(Check_if_player) and attackAreaRight.get_overlapping_bodies().all(Check_if_obstacle):
 		swoopTimer.start()
 		start_attack()
 	move_and_slide()
@@ -84,12 +92,12 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 	var direction = position - character_position
 	knockback = direction.normalized() * knockback_strength*50
 	#knockback = lerp(knockback, Vector2.ZERO, 0.1)
-	sprite.scale.y = -0.1
+	sprite.scale.y = -sprite_scale
 	if hp <= 0:
-		#if(randi_range(0,3) == 3): #1/4 chance FOR NOW
-		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
-		add_sibling(instance)
-		instance.position = position
+		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
+			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
+			add_sibling(instance)
+			instance.position = position
 		queue_free()
 		
 func attack(body):
@@ -112,6 +120,15 @@ func Check_if_obstacle(body):
 	return body.get_class() != "TileMapLayer"
 	
 func start_attack():
+	initial = position
+	var newPosition = Vector2(playerPostion.x, playerPostion.y - 48)
+	initial.x= playerPostion.x + playerPostion.x - position.x
 	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", playerPostion, swoop_duration)
+	tween.tween_property(self, "position", newPosition, swoop_duration)
+	tween.set_ease(Tween.EASE_IN_OUT)
+
+
+func _on_swoop_timer_timeout() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "position", initial, swoop_duration)
 	tween.set_ease(Tween.EASE_IN_OUT)

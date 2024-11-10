@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dpe3njprx8q42"
-path="res://.godot/imported/hp2.png-aefcea7566097247123879b18373f971.ctex"
+uid="uid://bdt0qu1eknavs"
+path="res://.godot/imported/Spawnpoint.png-4fd3182d673827b7cca8382b0cd528c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/hp2.png"
-dest_files=["res://.godot/imported/hp2.png-aefcea7566097247123879b18373f971.ctex"]
+source_file="res://Game_Sprites/UI/Spawnpoint.png"
+dest_files=["res://.godot/imported/Spawnpoint.png-4fd3182d673827b7cca8382b0cd528c5.ctex"]
 
 [params]
 
