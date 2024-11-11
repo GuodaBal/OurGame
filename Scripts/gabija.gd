@@ -82,11 +82,11 @@ func _physics_process(delta: float) -> void:
 	if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped():
 		attackBufferTimer.start()
 		spawning_spikes = false
-	if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped():
+	#if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped():
 		#print_debug("stopped attacking is exhausted")
-		will_be_exhausted = false
-		switch_to_down()
-		isExhaustedTimer.start()
+		#will_be_exhausted = false
+		#switch_to_down()
+		#isExhaustedTimer.start()
 	if spawning_spikes and spikeTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
 		#print_debug(spawning_spikes)
 		print_debug("c")
@@ -128,11 +128,11 @@ func _physics_process(delta: float) -> void:
 	elif state=="up":
 		if exhaustionTimer.is_stopped():
 			exhaustionTimer.start()
-		if position.x > 1050 and !jump_detector_right.is_colliding():
+		if position.x > 1300 and !jump_detector_right.is_colliding():
 			print_debug("k")
 			velocity += right * delta
 			sprite.scale.x = sprite_scale
-		elif position.x < 700 and !jump_detector_left.is_colliding():
+		elif position.x < 650 and !jump_detector_left.is_colliding():
 			print_debug("l")
 			velocity += left * delta
 			sprite.scale.x = -sprite_scale
@@ -403,23 +403,3 @@ func _on_attack_buffer_timer_timeout() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and state == "down":
 		body.take_damage(1, 10, position)
-
-
-func _on_player_rebound_front_body_entered(body: Node2D) -> void:
-	#print_debug("entered front")
-	#print_debug(state)
-	#print_debug(sprite.scale.x == sprite_scale)
-	#print_debug(sprite.scale.x == -sprite_scale)
-	if body.is_in_group("Player") and ((state == "left" and sprite.scale.x == sprite_scale) or (state == "right" and sprite.scale.x == -sprite_scale)):
-		body.take_damage(1, 10, position)
-		#print_debug("Took damage")
-
-
-func _on_player_rebound_back_body_entered(body: Node2D) -> void:
-	#print_debug("entered back")
-	#print_debug(state)
-	#print_debug(sprite.scale.x == sprite_scale)
-	#print_debug(sprite.scale.x == -sprite_scale)
-	if body.is_in_group("Player") and ((state == "left" and sprite.scale.x == -sprite_scale) or (state == "right" and sprite.scale.x == sprite_scale)):
-		body.take_damage(1, 10, position)
-		#print_debug("Took damage")

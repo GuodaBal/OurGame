@@ -19,7 +19,7 @@ nextLevel = "N_1"
 [node name="LevelSwitcher2" parent="." instance=ExtResource("3_t5iol")]
 position = Vector2(2292, 501)
 scale = Vector2(1, 1.91)
-nextLevel = "F_1"
+nextLevel = "boss_level_gabija"
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(-271, 831)
@@ -27,7 +27,7 @@ correctLevel = "N_1"
 
 [node name="SpawnArea2" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(2154, 646)
-correctLevel = "F_1"
+correctLevel = "boss_level_gabija"
 
 [node name="DetailLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AADa/28AAAADAAEAAADf/3AAAAADAAAAAAAiAUEAAAAAAAAAAFAiAUUAAAABAAAAAFAiAUkAAAABAAAAAFAiAVkAAAABAAAAAFAiAV0AAAACAAAAAFAiAVEAAAABAAAAAFA=")

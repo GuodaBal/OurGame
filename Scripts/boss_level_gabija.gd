@@ -14,7 +14,7 @@ var fire_left = false
 var fire_right = false
 var fire_down = false
 
-var peak = -500
+var peak = -600
 var valley = 100
 var has_peaked = false
 var bottom_phase = "one"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://n0byngr2sw2r"]
+[gd_scene load_steps=5 format=3 uid="uid://n0byngr2sw2r"]
 
 [ext_resource type="Script" path="res://Scripts/gabija.gd" id="1_tjeds"]
 [ext_resource type="Texture2D" uid="uid://eu33635j17s2" path="res://Game_Sprites/Boss/Fire_God.png" id="2_8ayfh"]
@@ -9,12 +9,6 @@ height = 1690.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cceqb"]
 size = Vector2(1000, 220)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ciid7"]
-size = Vector2(260, 890)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wt4t1"]
-size = Vector2(240, 880)
 
 [node name="Gabija" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(0.2, 0.2)
@@ -31,21 +25,25 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_8ayfh")
 
 [node name="DetectRight" type="RayCast2D" parent="."]
+position = Vector2(0, 100)
 target_position = Vector2(1200, 0)
 collision_mask = 5
 hit_from_inside = true
 
 [node name="JumpRight" type="RayCast2D" parent="."]
+position = Vector2(0, 100)
 target_position = Vector2(2000, 0)
 collision_mask = 5
 hit_from_inside = true
 
 [node name="JumpLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 100)
 target_position = Vector2(-2000, 0)
 collision_mask = 5
 hit_from_inside = true
 
 [node name="DetectLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 100)
 target_position = Vector2(-1200, 0)
 collision_mask = 5
 hit_from_inside = true
@@ -55,12 +53,12 @@ wait_time = 2.0
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 8.0
 one_shot = true
 autostart = true
 
 [node name="ExhaustionTimer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 25.0
 one_shot = true
 
 [node name="IsExhaustedTimer" type="Timer" parent="."]
@@ -68,7 +66,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="SpikeSpawner" type="Node2D" parent="."]
-position = Vector2(0, -450)
+position = Vector2(0, -700)
 
 [node name="SpikeTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -76,7 +74,7 @@ one_shot = true
 autostart = true
 
 [node name="SpikeEndTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 4.0
 one_shot = true
 
 [node name="JumpEndTimer" type="Timer" parent="."]
@@ -93,24 +91,9 @@ shape = SubResource("RectangleShape2D_cceqb")
 [node name="AttackBufferTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Player_rebound_front" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_rebound_front"]
-position = Vector2(790, 75.0001)
-scale = Vector2(0.999999, 0.999999)
-shape = SubResource("RectangleShape2D_ciid7")
-
-[node name="Player_rebound_back" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player_rebound_back"]
-position = Vector2(-800, 80)
-shape = SubResource("RectangleShape2D_wt4t1")
-
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ExhaustionTimer" to="." method="_on_exhaustion_timer_timeout"]
 [connection signal="timeout" from="SpikeEndTimer" to="." method="_on_spike_end_timer_timeout"]
 [connection signal="timeout" from="JumpEndTimer" to="." method="_on_jump_end_timer_timeout"]
 [connection signal="body_entered" from="Player_rebound_top" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="AttackBufferTimer" to="." method="_on_attack_buffer_timer_timeout"]
-[connection signal="body_entered" from="Player_rebound_front" to="." method="_on_player_rebound_front_body_entered"]
-[connection signal="body_entered" from="Player_rebound_back" to="." method="_on_player_rebound_back_body_entered"]
