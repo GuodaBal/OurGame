@@ -4,7 +4,10 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
-	get_parent().get_node("Level").get_tree().paused = true
+	for child in get_parent().get_children():
+		if "Level" in child.name:
+			child.get_tree().paused = true
+	#get_parent().get_node("Level").get_tree().paused = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
