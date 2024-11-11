@@ -13,6 +13,7 @@ func _ready() -> void:
 	#get_node("MainCharacter").position = savedPosition
 	AudioManager.current_music = audio
 	AudioManager.play_music(audio.stream)
+
 	
 
 
