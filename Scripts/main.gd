@@ -37,7 +37,10 @@ func getPreviousLevel():
 func switchLevel(nextLevel):
 	var instance = load("res://tscn_files/Levels/" + nextLevel + ".tscn").instantiate()
 	#get_parent().print_tree()
-	var deleteLevel = get_node("Level")
+	var deleteLevel# = get_node("Level")
+	for child in get_children():
+		if "Level" in child.name:
+			deleteLevel = child
 	remove_child(deleteLevel)
 	#call_deferred(deleteLevel)
 	deleteLevel.queue_free()
