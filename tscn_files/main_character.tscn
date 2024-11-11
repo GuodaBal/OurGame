@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bo5x65xs813fn"]
+[gd_scene load_steps=18 format=3 uid="uid://bo5x65xs813fn"]
 
 [ext_resource type="Script" path="res://Main_character.gd" id="1_1g26s"]
 [ext_resource type="Texture2D" uid="uid://dxf8yq0i5xm4b" path="res://Sprites/Main_character/robot.png" id="2_7ba2b"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cvdk634iy67tf" path="res://Audio/SFX/jump.wav" id="5_rudhk"]
 [ext_resource type="AudioStream" uid="uid://bna72oiw5hrvs" path="res://Audio/SFX/movement_mixdown.wav" id="6_at0vb"]
 [ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="7_b70m6"]
+[ext_resource type="AudioStream" uid="uid://cyysis5jelice" path="res://Audio/SFX/slash.wav" id="8_xg6aw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwdsa"]
 size = Vector2(35.05, 53)
@@ -135,9 +136,11 @@ show_percentage = false
 
 [node name="FireArrow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_q8j6a")
+bus = &"SFX"
 
 [node name="PrepareArrow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_56k4n")
+bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_rudhk")
@@ -147,6 +150,12 @@ bus = &"SFX"
 [node name="Move" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_at0vb")
 volume_db = 2.0
+bus = &"SFX"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture = ExtResource("7_b70m6")
+
+[node name="Slash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_xg6aw")
+volume_db = -5.538
+bus = &"SFX"

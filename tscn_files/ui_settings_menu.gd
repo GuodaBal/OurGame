@@ -170,7 +170,6 @@ func _on_misc_slider_ready() -> void:
 	$CanvasLayer/Sound/MiscSlider.value = db_to_linear( AudioManager.get_SFX_volume())
 
 func _on_mute_button_ready() -> void:
-	print('mute ll: ',$CanvasLayer/Sound/MuteButton.button_pressed)
 
 	$CanvasLayer/Sound/MuteButton.button_pressed = mute_press
 	AudioServer.set_bus_mute(Master_Bus_ID, mute_press)  # pritaikykite būseną garsui
