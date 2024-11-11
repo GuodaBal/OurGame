@@ -61,8 +61,8 @@ func _physics_process(delta: float) -> void:
 	if jumpEndTimer.is_stopped() and is_on_floor():
 		jumping = false
 
-	if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped() and spawning_spikes:
-		#print_debug("start_attack_buffer")
+	if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped():
+		print_debug("start_attack_buffer")
 		attackBufferTimer.start()
 		spawning_spikes = false
 	#if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped() and !spawning_spikes:
@@ -88,11 +88,14 @@ func _physics_process(delta: float) -> void:
 	if jumping:
 		#print_debug("d")
 		velocity = JUMP_VELOCITY * jump_direction - 500 * gravity_dir
-
+	
+	#slow down to stop when attacking
 	if !attacking.is_empty():
 		#print_debug("e")
 		velocity.x  = lerp(velocity.x , 0.0, 0.1)
 		velocity.y  = lerp(velocity.y , 0.0, 0.1)
+	
+	#move opposite direction of player
 	elif state == "down":
 		if abs(playerPostion - position).length() > range:
 			velocity.x  = lerp(velocity.x , 0.0, 0.1)
@@ -111,14 +114,16 @@ func _physics_process(delta: float) -> void:
 	elif state=="up":
 		if exhaustionTimer.is_stopped():
 			exhaustionTimer.start()
-		if position.x > 1300 and !jump_detector_right.is_colliding():
+		if position.x > 1200 and !jump_detector_right.is_colliding():
 			#print_debug("k")
 			velocity += right * delta
 			sprite.scale.x = sprite_scale
-		elif position.x < 650 and !jump_detector_left.is_colliding():
+		elif position.x < 750 and !jump_detector_left.is_colliding():
 			#print_debug("l")
 			velocity += left * delta
 			sprite.scale.x = -sprite_scale
+		else:
+			velocity.x = lerp(velocity.x, 0.0, 0.05)
 		velocity.x = clamp(velocity.x, -max_velocity, max_velocity)
 		velocity.y = clamp(velocity.y, -max_fall_velocity, max_fall_velocity)
 		#velocity.x  = lerp(velocity.x , 0.0, 0.1)
@@ -162,8 +167,9 @@ func _physics_process(delta: float) -> void:
 				velocity.y = lerp(velocity.y , 0.0, 0.1)
 		velocity.y = clamp(velocity.y, -max_velocity, max_velocity)
 		velocity.x = clamp(velocity.x, -max_fall_velocity, max_fall_velocity)
-	#move opposite direction of player
 	
+	
+	#jumping
 	if is_on_floor() and jumpTimer.is_stopped() and isExhaustedTimer.is_stopped():
 		if jump_detector_left.is_colliding() and jump_detector_left.get_collider() is TileMapLayer and player_is_to("right") and attacking.is_empty():
 			var tile_data=jump_detector_left.get_collider().get_cell_tile_data(jump_detector_left.get_collider().get_coords_for_body_rid(jump_detector_left.get_collider_rid()))
@@ -203,8 +209,7 @@ func _physics_process(delta: float) -> void:
 		
 	#adjust up direction for gravity to work normally
 	up_direction = -gravity_dir
-	#knockback MIGHT REMOVE
-	#velocity += knockback
+
 	move_and_slide()
 	
 
@@ -307,9 +312,14 @@ func _on_attack_timer_timeout() -> void:
 			"right":
 				spawn_fire_left()
 			"up":
-				if randi() % 2 == 0:
+				if position.x < 300:
+					spawn_fire_right()
+				elif position.x > 1600:
+					spawn_fire_right()
+				elif randi() % 2 == 0:
 					spawn_spikes()
 					print_debug("start_spawn")
+					print_debug(spawning_spikes)
 				else:	
 					spawn_fire_bottom()
 		if state != "down":
@@ -319,12 +329,17 @@ func _on_attack_timer_timeout() -> void:
 func spawn_spikes():
 	spawning_spikes = true
 	spikeEndTimer.start()
+	spikeTimer.start()
+	
 func not_attacking():
 	attacking.pop_back()
+
 func _on_exhaustion_timer_timeout() -> void:
 	if !attacking.is_empty():
 		will_be_exhausted = true
+		print_debug("will be exhausted")
 	else:
+		print_debug("down from timer")
 		switch_to_down()
 		isExhaustedTimer.start()
 
@@ -332,10 +347,8 @@ func _on_exhaustion_timer_timeout() -> void:
 func _on_spike_end_timer_timeout() -> void:
 	spawning_spikes = false
 	attacking.pop_back()
-	print_debug("spike timeout")
-	
-	#for spike in spikeSpawner.get_children():
-		#spikeSpawner.remove_child(spike)
+	if will_be_exhausted and attackBufferTimer.is_stopped():
+		attackBufferTimer.start()
 
 
 func _on_jump_end_timer_timeout() -> void:
@@ -374,7 +387,8 @@ func player_is_to(direction: String):
 	return false
 
 func _on_attack_buffer_timer_timeout() -> void:
-	#print_debug("timedout")
+	print_debug(spawning_spikes)
+	print_debug("buffer timeout")
 	will_be_exhausted = false
 	switch_to_down()
 	isExhaustedTimer.start()
@@ -388,9 +402,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_spike_timer_timeout() -> void:
-	if spawning_spikes and !spikeEndTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
-		#print_debug(spawning_spikes)
-		#print_debug("c")
+	if spikeEndTimer.is_stopped():
+		return
+	if spawning_spikes and attackBufferTimer.is_stopped() and !spikeEndTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
+		print_debug(spawning_spikes)
+		print_debug("c")
 		var instance = load("res://tscn_files/spike.tscn").instantiate()
 		spikeSpawner.add_child(instance)
 		instance.rotation = deg_to_rad(randf_range(-70, 70))

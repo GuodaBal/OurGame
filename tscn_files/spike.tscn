@@ -17,6 +17,7 @@ curve = SubResource("Curve2D_8anm8")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 rotation = -1.5708
+loop = false
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
 rotation = 1.5708
