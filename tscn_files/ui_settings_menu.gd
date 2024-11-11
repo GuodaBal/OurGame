@@ -14,6 +14,10 @@ extends Control
 @onready var Ability3Button := $CanvasLayer/ControlsScroll/Controls/Ability3Button
 @onready var MenuOpenButton := $CanvasLayer/ControlsScroll/Controls/MenuButton
 
+var Music_Bus_ID = AudioManager.get_MusicID()
+var SFX_Bus_ID = AudioManager.get_SFXID()
+var Master_Bus_ID = AudioManager.get_MasterID()
+var mute_press = AudioManager.get_mute_state()  # atkurkite išsaugotą būseną
 var waiting_for_input: bool = false
 var button
 var action
@@ -145,3 +149,37 @@ func _on_resolution_selector_item_selected(index: int) -> void:
 	var resolution = $CanvasLayer/Graphics/ResolutionSelector.get_item_text(index).split("x")
 	get_window().size = Vector2i(int(resolution[0]),int(resolution[1]))
 	get_window().move_to_center()
+
+
+func _on_music_slider_value_changed(value: float) -> void:
+	AudioManager.set_music_volume(linear_to_db(value))
+	AudioServer.set_bus_volume_db(Music_Bus_ID, linear_to_db(value))
+	AudioServer.set_bus_mute(Music_Bus_ID, value < .05)
+
+
+func _on_misc_slider_value_changed(value: float) -> void:
+	AudioManager.set_SFX_volume(linear_to_db(value))
+	AudioServer.set_bus_volume_db(SFX_Bus_ID, linear_to_db(value))
+	AudioServer.set_bus_mute(SFX_Bus_ID, value < .05)
+
+func _on_music_slider_ready() -> void:
+	$CanvasLayer/Sound/MusicSlider.value = db_to_linear( AudioManager.get_music_volume())
+	
+
+func _on_misc_slider_ready() -> void:
+	$CanvasLayer/Sound/MiscSlider.value = db_to_linear( AudioManager.get_SFX_volume())
+
+func _on_mute_button_ready() -> void:
+	print('mute ll: ',$CanvasLayer/Sound/MuteButton.button_pressed)
+
+	$CanvasLayer/Sound/MuteButton.button_pressed = mute_press
+	AudioServer.set_bus_mute(Master_Bus_ID, mute_press)  # pritaikykite būseną garsui
+
+
+func _on_mute_button_pressed() -> void:
+	print('mute: ',mute_press)
+	var mute_pressed = $CanvasLayer/Sound/MuteButton.button_pressed
+	print('mute po: ',mute_press)
+	
+	AudioManager.set_mute_state(mute_pressed)  # išsaugokite naują būseną
+	AudioServer.set_bus_mute(Master_Bus_ID, mute_pressed)  # pritaikykite naują būseną garsui

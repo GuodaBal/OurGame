@@ -92,7 +92,7 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 	var direction = position - character_position
 	knockback = direction.normalized() * knockback_strength*50
 	#knockback = lerp(knockback, Vector2.ZERO, 0.1)
-	sprite.scale.y = -sprite_scale
+	#sprite.scale.y = -sprite_scale
 	if hp <= 0:
 		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
 			var instance = load("res://tscn_files/health_drop.tscn").instantiate()

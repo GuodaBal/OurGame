@@ -96,14 +96,12 @@ one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_rebound_front"]
 position = Vector2(385, -2.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ciid7")
 
 [node name="Player_rebound_back" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_rebound_back"]
 position = Vector2(-385, -2.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wt4t1")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
