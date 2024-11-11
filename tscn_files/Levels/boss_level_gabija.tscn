@@ -34,7 +34,7 @@ curve = SubResource("Curve2D_hn5tq")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PathLeft"]
 position = Vector2(-301.505, 578.637)
-rotation = 0.0773858
+rotation = 0.0773855
 progress = 210.688
 loop = false
 
