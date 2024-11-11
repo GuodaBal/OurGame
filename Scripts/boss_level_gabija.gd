@@ -1,7 +1,7 @@
 extends Node2D
 
 var sideSpeed = 0.2
-var bottomSpeed = 450
+var bottomSpeed = 500
 
 @onready var path_left := $PathLeft/PathFollow2D as PathFollow2D
 @onready var path_right := $PathRight/PathFollow2D as PathFollow2D

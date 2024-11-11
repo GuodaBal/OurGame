@@ -49,11 +49,11 @@ collision_mask = 5
 hit_from_inside = true
 
 [node name="JumpTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 1.5
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 10.0
 one_shot = true
 autostart = true
 
@@ -74,7 +74,7 @@ one_shot = true
 autostart = true
 
 [node name="SpikeEndTimer" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 5.0
 one_shot = true
 
 [node name="JumpEndTimer" type="Timer" parent="."]

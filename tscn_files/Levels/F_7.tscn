@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://bark8g8v6u1hr"]
+[gd_scene load_steps=2 format=4 uid="uid://bark8g8v6u1hr"]
 
 [ext_resource type="TileSet" uid="uid://ddxp2wtfvpun5" path="res://Game_Sprites/Tilemaps/fire_area_V2.tres" id="1_i6xmw"]
 
@@ -6,4 +6,5 @@
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAAdAA4AAgACAAMAAAAcAA4AAgABAAMAAgAbAA4AAgABAAMAAgAaAA4AAgABAAMAAAAZAA4AAgACAAMAAwAdABAAAgACAAMAAgAcABAAAgABAAMAAgAbABAAAgABAAMAAgAaABAAAgABAAMAAAAZABAAAgACAAMAAwA=")
 tile_set = ExtResource("1_i6xmw")

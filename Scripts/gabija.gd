@@ -46,55 +46,38 @@ var sprite_scale
 func _ready() -> void:
 	sprite_scale = sprite.scale.x
 
-func _input(event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_UP):
-		switch_to_up()
-	if Input.is_key_pressed(KEY_LEFT):
-		switch_to_left()
-	if Input.is_key_pressed(KEY_DOWN):
-		switch_to_down()
-	if Input.is_key_pressed(KEY_RIGHT):
-		switch_to_right()
-	if Input.is_key_pressed(KEY_L) and attackTimer.is_stopped():
-		spawn_fire_left()
-		attackTimer.start()
-	if Input.is_key_pressed(KEY_K) and attackTimer.is_stopped():
-		spawn_fire_right()
-	if Input.is_key_pressed(KEY_J) and attackTimer.is_stopped():
-		spawn_fire_bottom()
-		attackTimer.start()
-
 func _physics_process(delta: float) -> void:
 	if !isExhaustedTimer.is_stopped() and !is_on_floor():
 		if playerPostion.x - position.x > distance_margin and !wall_detector_left.is_colliding():
 			velocity += left * delta
 			sprite.scale.x = -sprite_scale
-			print_debug("g")
+			#print_debug("g")
 		elif playerPostion.x - position.x < -distance_margin and !wall_detector_right.is_colliding():
 			velocity += right  * delta
 			sprite.scale.x = sprite_scale
-			print_debug("h")
+			#print_debug("h")
 	if !isExhaustedTimer.is_stopped() and is_on_floor():
 		velocity.x = lerp(velocity.x, 0.0, 0.1)
 	if jumpEndTimer.is_stopped() and is_on_floor():
 		jumping = false
 
-	if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped():
+	if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped() and spawning_spikes:
+		#print_debug("start_attack_buffer")
 		attackBufferTimer.start()
 		spawning_spikes = false
-	#if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped():
-		#print_debug("stopped attacking is exhausted")
-		#will_be_exhausted = false
-		#switch_to_down()
-		#isExhaustedTimer.start()
-	if spawning_spikes and spikeTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
+	#if will_be_exhausted and attacking.is_empty() and attackBufferTimer.is_stopped() and !spawning_spikes:
+	#	#print_debug("stopped attacking is exhausted")
+	#	will_be_exhausted = false
+	#	switch_to_down()
+	#	isExhaustedTimer.start()
+	if spawning_spikes and !spikeEndTimer.is_stopped() and spikeTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
 		#print_debug(spawning_spikes)
-		print_debug("c")
+		#print_debug("c")
 		var instance = load("res://tscn_files/spike.tscn").instantiate()
 		spikeSpawner.add_child(instance)
 		instance.rotation = deg_to_rad(randf_range(-70, 70))
 		spikeTimer.start()
-		print_debug("a")
+		#print_debug("a")
 	#gravity
 	velocity += gravity * delta
 	
@@ -103,11 +86,11 @@ func _physics_process(delta: float) -> void:
 	#jump when close enough to wall
 	#falling speed needs to be faster than running speed, direction depends on gravity
 	if jumping:
-		print_debug("d")
+		#print_debug("d")
 		velocity = JUMP_VELOCITY * jump_direction - 500 * gravity_dir
 
 	if !attacking.is_empty():
-		print_debug("e")
+		#print_debug("e")
 		velocity.x  = lerp(velocity.x , 0.0, 0.1)
 		velocity.y  = lerp(velocity.y , 0.0, 0.1)
 	elif state == "down":
@@ -117,11 +100,11 @@ func _physics_process(delta: float) -> void:
 			if playerPostion.x - position.x > distance_margin and !jump_detector_left.is_colliding():
 				velocity += left * delta
 				sprite.scale.x = -sprite_scale
-				print_debug("g")
+				#print_debug("g")
 			elif playerPostion.x - position.x < -distance_margin and !jump_detector_right.is_colliding():
 				velocity += right * delta
 				sprite.scale.x = sprite_scale
-				print_debug("h")
+				#print_debug("h")
 		velocity.x = clamp(velocity.x, -max_velocity, max_velocity)
 		velocity.y = clamp(velocity.y, -max_fall_velocity, max_fall_velocity)
 		
@@ -129,11 +112,11 @@ func _physics_process(delta: float) -> void:
 		if exhaustionTimer.is_stopped():
 			exhaustionTimer.start()
 		if position.x > 1300 and !jump_detector_right.is_colliding():
-			print_debug("k")
+			#print_debug("k")
 			velocity += right * delta
 			sprite.scale.x = sprite_scale
 		elif position.x < 650 and !jump_detector_left.is_colliding():
-			print_debug("l")
+			#print_debug("l")
 			velocity += left * delta
 			sprite.scale.x = -sprite_scale
 		velocity.x = clamp(velocity.x, -max_velocity, max_velocity)
@@ -308,7 +291,6 @@ func switch_to_down():
 
 #calls boss level to spawn fire
 func spawn_fire_left():
-	
 	get_tree().current_scene.get_node("Level").spawn_fire_left()
 func spawn_fire_right():
 	get_tree().current_scene.get_node("Level").spawn_fire_right()
@@ -327,7 +309,7 @@ func _on_attack_timer_timeout() -> void:
 			"up":
 				if randi() % 2 == 0:
 					spawn_spikes()
-					#print_debug("start_spawn")
+					print_debug("start_spawn")
 				else:	
 					spawn_fire_bottom()
 		if state != "down":
@@ -350,7 +332,7 @@ func _on_exhaustion_timer_timeout() -> void:
 func _on_spike_end_timer_timeout() -> void:
 	spawning_spikes = false
 	attacking.pop_back()
-	#print_debug("b")
+	print_debug("spike timeout")
 	
 	#for spike in spikeSpawner.get_children():
 		#spikeSpawner.remove_child(spike)
