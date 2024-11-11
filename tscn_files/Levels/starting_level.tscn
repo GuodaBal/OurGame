@@ -9,7 +9,7 @@
 [node name="Level" type="Node2D"]
 
 [node name="DetailLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAiAUEAAAAAAAAAAFAiAUUAAAABAAAAAFAiAUkAAAABAAAAAFAiAVkAAAABAAAAAFAiAV0AAAACAAAAAFAiAVEAAAABAAAAAFDT/1EAAAACAAAAAGDT/20AAAAAAAAAAGDT/1kAAAABAAAAAGDT/2EAAAABAAAAAGDT/2cAAAABAAAAAGA=")
+tile_map_data = PackedByteArray("AAAiAUEAAAAAAAAAAFAiAUUAAAABAAAAAFAiAUkAAAABAAAAAFAiAVkAAAABAAAAAFAiAV0AAAACAAAAAFAiAVEAAAABAAAAAFDT/1EAAAACAAAAAGDT/20AAAAAAAAAAGDT/1kAAAABAAAAAGDT/2EAAAABAAAAAGDT/2cAAAABAAAAAGDtAG8AAAADAAEAAAD6AF4AAAAAAAIAAADxAG4AAAAAAAIAAADd/24AAAAAAAIAAADf/3AAAAAAAAIAAADb/3AAAAAAAAIAAABVAG8AAAAAAAIAAABQAHIAAAAAAAIAABBoAHEAAAAAAAIAABBmAG4AAAAAAAIAAACvAHAAAAAAAAIAAACrAG4AAAACAAEAAABSAG4AAAACAAEAAABnAG8AAAACAAEAABA=")
 tile_set = ExtResource("5_c6jit")
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
@@ -25,15 +25,10 @@ position = Vector2(-323, 624)
 scale = Vector2(1, 2.015)
 nextLevel = "N_1"
 
-[node name="LevelSwitcher3" parent="." instance=ExtResource("3_t5iol")]
-position = Vector2(501, 585)
-scale = Vector2(1, 2.015)
-nextLevel = "boss_level_gabija"
-
 [node name="LevelSwitcher2" parent="." instance=ExtResource("3_t5iol")]
 position = Vector2(2292, 501)
 scale = Vector2(1, 1.91)
-nextLevel = "F_2"
+nextLevel = "F_1"
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(-220, 818)
