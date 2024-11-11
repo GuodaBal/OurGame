@@ -4,4 +4,4 @@ extends Node2D
 
 func _on_ready() -> void:
 	AudioManager.play_music(audio.stream)
-	AudioManager.current_music = audio
+	print("stream", AudioManager.current_music)

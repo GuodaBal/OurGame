@@ -10,7 +10,6 @@ var saved_SFX_volume = 1.0
 var mute_pressed: bool = false
 var current_music: AudioStreamPlayer = null
 
-
 func get_MusicID():
 	return Music_Bus_ID
 

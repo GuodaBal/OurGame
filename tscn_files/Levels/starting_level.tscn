@@ -47,6 +47,7 @@ script = ExtResource("6_u6smp")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_n4237")
+autoplay = true
 bus = &"Music"
 
 [connection signal="ready" from="Node2D" to="Node2D" method="_on_ready"]
