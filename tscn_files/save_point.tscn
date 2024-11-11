@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxjgj16g2vqjt"]
+[gd_scene load_steps=5 format=3 uid="uid://dxjgj16g2vqjt"]
 
 [ext_resource type="Script" path="res://Scripts/save_point.gd" id="1_fh2po"]
 [ext_resource type="Texture2D" uid="uid://bdt0qu1eknavs" path="res://Game_Sprites/UI/Spawnpoint.png" id="2_xywkf"]
+[ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="3_avc60"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ux4t"]
 size = Vector2(710, 930)
@@ -12,8 +13,12 @@ script = ExtResource("1_fh2po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-5.00001, -4.99998)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_5ux4t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_xywkf")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, -80)
+scale = Vector2(2, 2)
+texture = ExtResource("3_avc60")

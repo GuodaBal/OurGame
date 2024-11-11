@@ -1,10 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://bo5x65xs813fn"]
+[gd_scene load_steps=18 format=3 uid="uid://bo5x65xs813fn"]
 
 [ext_resource type="Script" path="res://Main_character.gd" id="1_1g26s"]
 [ext_resource type="Texture2D" uid="uid://dxf8yq0i5xm4b" path="res://Sprites/Main_character/robot.png" id="2_7ba2b"]
 [ext_resource type="AudioStream" uid="uid://50pr2qfnk5sq" path="res://Audio/SFX/Arrow2_mixdown.wav" id="3_q8j6a"]
 [ext_resource type="AudioStream" uid="uid://ei6aovdi5qle" path="res://Audio/SFX/Arrow1_mixdown.wav" id="4_56k4n"]
 [ext_resource type="AudioStream" uid="uid://cvdk634iy67tf" path="res://Audio/SFX/jump.wav" id="5_rudhk"]
+[ext_resource type="AudioStream" uid="uid://bna72oiw5hrvs" path="res://Audio/SFX/movement_mixdown.wav" id="6_at0vb"]
+[ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="7_b70m6"]
+[ext_resource type="AudioStream" uid="uid://cyysis5jelice" path="res://Audio/SFX/slash.wav" id="8_xg6aw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwdsa"]
 size = Vector2(35.05, 53)
@@ -76,14 +79,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oopqj"]
 size = Vector2(41, 14)
 
-[node name="MainCharacter" type="CharacterBody2D" node_paths=PackedStringArray("attackCollision", "floorCollision") groups=["Persist", "Player"]]
+[node name="MainCharacter" type="CharacterBody2D" groups=["Persist", "Player"]]
 visibility_layer = 3
 collision_mask = 5
 platform_floor_layers = 4294967042
 platform_wall_layers = 4
 script = ExtResource("1_1g26s")
-attackCollision = NodePath("Sprite2D/Attack")
-floorCollision = NodePath("FloorCollision")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_7ba2b")
@@ -106,6 +107,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -100)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
@@ -134,9 +136,26 @@ show_percentage = false
 
 [node name="FireArrow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_q8j6a")
+bus = &"SFX"
 
 [node name="PrepareArrow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_56k4n")
+bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_rudhk")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="Move" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_at0vb")
+volume_db = 2.0
+bus = &"SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("7_b70m6")
+
+[node name="Slash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_xg6aw")
+volume_db = -5.538
+bus = &"SFX"

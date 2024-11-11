@@ -1,7 +1,7 @@
 extends Node2D
 
 var sideSpeed = 0.2
-var bottomSpeed = 450
+var bottomSpeed = 500
 
 @onready var path_left := $PathLeft/PathFollow2D as PathFollow2D
 @onready var path_right := $PathRight/PathFollow2D as PathFollow2D
@@ -9,12 +9,14 @@ var bottomSpeed = 450
 @onready var bottomLeftSpawn := $BottomFireLeft as Node2D
 @onready var bottomRightSpawn := $BottomFireRight as Node2D 
 
+@onready var GabijaBe = $GabijaBe.stream
+@onready var GabijaAF = $GabijaAf.stream
 
 var fire_left = false
 var fire_right = false
 var fire_down = false
 
-var peak = -500
+var peak = -600
 var valley = 100
 var has_peaked = false
 var bottom_phase = "one"
@@ -93,3 +95,10 @@ func spawn_fire_bottom():
 			bottom_phase="one"
 			spawn_fire_bottom()
 	
+
+
+func _on_ready() -> void:
+	if(AudioManager.beat_Gabija):
+		AudioManager.play_music(GabijaAF)
+	else:
+		AudioManager.play_music(GabijaBe)		

@@ -4,9 +4,11 @@ extends Node
 @onready var SFX_Bus_ID = AudioServer.get_bus_index("SFX")
 @onready var Master_Bus_ID = AudioServer.get_bus_index("Master")
 
+var beat_Gabija: bool = false
 var saved_music_volume = 1.0
 var saved_SFX_volume = 1.0
 var mute_pressed: bool = false
+var current_music: AudioStreamPlayer = null
 
 func get_MusicID():
 	return Music_Bus_ID
@@ -38,3 +40,15 @@ func set_SFX_volume(value: float) -> void:
 # Funkcija gauti reikšmę
 func get_SFX_volume() -> float:
 	return saved_SFX_volume
+	
+
+# Reference to the existing AudioStreamPlayer node with settings applied
+
+func play_music(music_stream: AudioStream):
+	# Stop current music if it's playing
+	if current_music.playing:
+		current_music.stop()
+	
+	# Set the new music stream and play it with the existing settings
+	current_music.stream = music_stream
+	current_music.play()
