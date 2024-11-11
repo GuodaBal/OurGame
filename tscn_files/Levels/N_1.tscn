@@ -64,7 +64,6 @@ tile_set = ExtResource("6_jgrbp")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_kgurr")
-autoplay = true
 bus = &"Music"
 
 [node name="Node2D" type="Node2D" parent="."]
