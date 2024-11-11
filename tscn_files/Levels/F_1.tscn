@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://ix2qjy0bbbvf" path="res://Game_Sprites/Tilemaps/in_between_V2.tres" id="6_8jae4"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="6_sl7w2"]
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 
 [node name="SpawnArea" parent="." instance=ExtResource("3_yccts")]
 position = Vector2(-997, 848)

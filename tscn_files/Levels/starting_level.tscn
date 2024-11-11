@@ -6,7 +6,7 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="5_c6jit"]
 [ext_resource type="TileSet" uid="uid://dnd6gsiwkj58u" path="res://Game_Sprites/Tilemaps/starting_area_V2.tres" id="5_n3lro"]
 
-[node name="Level" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="DetailLayer" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAAiAUEAAAAAAAAAAFAiAUUAAAABAAAAAFAiAUkAAAABAAAAAFAiAVkAAAABAAAAAFAiAV0AAAACAAAAAFAiAVEAAAABAAAAAFDT/1EAAAACAAAAAGDT/20AAAAAAAAAAGDT/1kAAAABAAAAAGDT/2EAAAABAAAAAGDT/2cAAAABAAAAAGDtAG8AAAADAAEAAAD6AF4AAAAAAAIAAADxAG4AAAAAAAIAAADd/24AAAAAAAIAAADf/3AAAAAAAAIAAADb/3AAAAAAAAIAAABVAG8AAAAAAAIAAABQAHIAAAAAAAIAABBoAHEAAAAAAAIAABBmAG4AAAAAAAIAAACvAHAAAAAAAAIAAACrAG4AAAACAAEAAABSAG4AAAACAAEAAABnAG8AAAACAAEAABA=")
@@ -29,6 +29,11 @@ nextLevel = "N_1"
 position = Vector2(2292, 501)
 scale = Vector2(1, 1.91)
 nextLevel = "F_1"
+
+[node name="LevelSwitcher3" parent="." instance=ExtResource("3_t5iol")]
+position = Vector2(350, 604)
+scale = Vector2(1, 1.91)
+nextLevel = "boss_level_gabija"
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(-220, 818)

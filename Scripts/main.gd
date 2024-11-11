@@ -3,7 +3,7 @@ extends Node
 
 var previousLevel = "";
 var currentLevel = "level"
-@onready var audio = $AudioStreamPlayer.stream
+@onready var audio = $AudioStreamPlayer
 #var savedPosition
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,7 +11,8 @@ func _ready() -> void:
 	#var instance = load("res://tscn_files/" + currentLevel + ".tscn").instantiate()
 	#add_child(instance)
 	#get_node("MainCharacter").position = savedPosition
-	AudioManager.play_music(audio)
+	AudioManager.current_music = audio
+	AudioManager.play_music(audio.stream)
 	
 
 
