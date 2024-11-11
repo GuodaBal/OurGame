@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://bo5x65xs813fn"]
+[gd_scene load_steps=15 format=3 uid="uid://bo5x65xs813fn"]
 
 [ext_resource type="Script" path="res://Main_character.gd" id="1_1g26s"]
 [ext_resource type="Texture2D" uid="uid://dxf8yq0i5xm4b" path="res://Sprites/Main_character/robot.png" id="2_7ba2b"]
 [ext_resource type="AudioStream" uid="uid://50pr2qfnk5sq" path="res://Audio/SFX/Arrow2_mixdown.wav" id="3_q8j6a"]
 [ext_resource type="AudioStream" uid="uid://ei6aovdi5qle" path="res://Audio/SFX/Arrow1_mixdown.wav" id="4_56k4n"]
+[ext_resource type="AudioStream" uid="uid://cvdk634iy67tf" path="res://Audio/SFX/jump.wav" id="5_rudhk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwdsa"]
 size = Vector2(35.05, 53)
@@ -136,3 +137,6 @@ stream = ExtResource("3_q8j6a")
 
 [node name="PrepareArrow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_56k4n")
+
+[node name="Jump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rudhk")
