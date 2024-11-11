@@ -70,13 +70,13 @@ func _physics_process(delta: float) -> void:
 	#	will_be_exhausted = false
 	#	switch_to_down()
 	#	isExhaustedTimer.start()
-	if spawning_spikes and !spikeEndTimer.is_stopped() and spikeTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
+	#if spawning_spikes and !spikeEndTimer.is_stopped() and spikeTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
 		#print_debug(spawning_spikes)
 		#print_debug("c")
-		var instance = load("res://tscn_files/spike.tscn").instantiate()
-		spikeSpawner.add_child(instance)
-		instance.rotation = deg_to_rad(randf_range(-70, 70))
-		spikeTimer.start()
+	#	var instance = load("res://tscn_files/spike.tscn").instantiate()
+	#	spikeSpawner.add_child(instance)
+	#	instance.rotation = deg_to_rad(randf_range(-70, 70))
+	#	spikeTimer.start()
 		#print_debug("a")
 	#gravity
 	velocity += gravity * delta
@@ -385,3 +385,13 @@ func _on_attack_buffer_timer_timeout() -> void:
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and state == "down":
 		body.take_damage(1, 10, position)
+
+
+func _on_spike_timer_timeout() -> void:
+	if spawning_spikes and !spikeEndTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
+		#print_debug(spawning_spikes)
+		#print_debug("c")
+		var instance = load("res://tscn_files/spike.tscn").instantiate()
+		spikeSpawner.add_child(instance)
+		instance.rotation = deg_to_rad(randf_range(-70, 70))
+		spikeTimer.start()
