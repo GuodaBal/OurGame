@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 
-const SPEED = 200
-const JUMP_VELOCITY = 500.0
+const SPEED = 500
+const JUMP_VELOCITY = 1500.0
 const max_velocity = 350
 const max_fall_velocity = 600
-var hp = 30
+var hp = 40
 var knockback = Vector2.ZERO
 
 @onready var sprite := $Sprite2D as Sprite2D
@@ -25,8 +25,8 @@ var knockback = Vector2.ZERO
 var gravityStrength = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var playerPostion = get_parent().get_parent().get_node("MainCharacter").position
-var distance_margin = 5
-var range = 700
+var distance_margin = 20
+var range = 1000
 
 
 var gravity = Vector2(0, gravityStrength)
@@ -41,7 +41,10 @@ var will_be_exhausted = false
 var attacking := [] as Array
 var spawning_spikes = false
 
-var sprite_scale = 0.4
+var sprite_scale
+
+func _ready() -> void:
+	sprite_scale = sprite.scale.x
 
 func _input(event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_UP):
@@ -66,11 +69,11 @@ func _physics_process(delta: float) -> void:
 		if playerPostion.x - position.x > distance_margin and !wall_detector_left.is_colliding():
 			velocity += left * delta
 			sprite.scale.x = -sprite_scale
-			#print_debug("g")
+			print_debug("g")
 		elif playerPostion.x - position.x < -distance_margin and !wall_detector_right.is_colliding():
 			velocity += right  * delta
 			sprite.scale.x = sprite_scale
-			#print_debug("h")
+			print_debug("h")
 	if !isExhaustedTimer.is_stopped() and is_on_floor():
 		velocity.x = lerp(velocity.x, 0.0, 0.1)
 	if jumpEndTimer.is_stopped() and is_on_floor():
@@ -86,12 +89,12 @@ func _physics_process(delta: float) -> void:
 		isExhaustedTimer.start()
 	if spawning_spikes and spikeTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
 		#print_debug(spawning_spikes)
-		#print_debug("c")
+		print_debug("c")
 		var instance = load("res://tscn_files/spike.tscn").instantiate()
 		spikeSpawner.add_child(instance)
 		instance.rotation = deg_to_rad(randf_range(-70, 70))
 		spikeTimer.start()
-		#print_debug("a")
+		print_debug("a")
 	#gravity
 	velocity += gravity * delta
 	
@@ -100,11 +103,11 @@ func _physics_process(delta: float) -> void:
 	#jump when close enough to wall
 	#falling speed needs to be faster than running speed, direction depends on gravity
 	if jumping:
-		#print_debug("d")
+		print_debug("d")
 		velocity = JUMP_VELOCITY * jump_direction - 500 * gravity_dir
 
 	if !attacking.is_empty():
-		#print_debug("e")
+		print_debug("e")
 		velocity.x  = lerp(velocity.x , 0.0, 0.1)
 		velocity.y  = lerp(velocity.y , 0.0, 0.1)
 	elif state == "down":
@@ -114,11 +117,11 @@ func _physics_process(delta: float) -> void:
 			if playerPostion.x - position.x > distance_margin and !jump_detector_left.is_colliding():
 				velocity += left * delta
 				sprite.scale.x = -sprite_scale
-				#print_debug("g")
+				print_debug("g")
 			elif playerPostion.x - position.x < -distance_margin and !jump_detector_right.is_colliding():
-				velocity += right  * delta
+				velocity += right * delta
 				sprite.scale.x = sprite_scale
-				#print_debug("h")
+				print_debug("h")
 		velocity.x = clamp(velocity.x, -max_velocity, max_velocity)
 		velocity.y = clamp(velocity.y, -max_fall_velocity, max_fall_velocity)
 		
@@ -126,11 +129,11 @@ func _physics_process(delta: float) -> void:
 		if exhaustionTimer.is_stopped():
 			exhaustionTimer.start()
 		if position.x > 1050 and !jump_detector_right.is_colliding():
-			#print_debug("k")
+			print_debug("k")
 			velocity += right * delta
 			sprite.scale.x = sprite_scale
 		elif position.x < 700 and !jump_detector_left.is_colliding():
-			#print_debug("l")
+			print_debug("l")
 			velocity += left * delta
 			sprite.scale.x = -sprite_scale
 		velocity.x = clamp(velocity.x, -max_velocity, max_velocity)
@@ -268,6 +271,7 @@ func switch_gravity(direction):
 
 #switches gravity (global)
 func switch_to_right():
+	print_debug("switched to right")
 	state = "right"
 	gravity_dir = Vector2.RIGHT
 	gravity = Vector2(gravityStrength, 0)
@@ -276,6 +280,7 @@ func switch_to_right():
 	right = Vector2(0, -SPEED)
 	
 func switch_to_left():
+	print_debug("switched to left")
 	state = "left"
 	gravity_dir = Vector2.LEFT
 	gravity = Vector2(-gravityStrength, 0)
@@ -284,6 +289,7 @@ func switch_to_left():
 	right = Vector2(0, SPEED)
 
 func switch_to_up():
+	print_debug("switched to up")
 	state = "up"
 	gravity_dir = Vector2.UP
 	gravity = Vector2(0, -gravityStrength)
@@ -292,6 +298,7 @@ func switch_to_up():
 	right = Vector2(-SPEED, 0)
 
 func switch_to_down():
+	print_debug("switched to down")
 	state = "down"
 	gravity = Vector2(0, gravityStrength)
 	gravity_dir = Vector2.DOWN
@@ -301,6 +308,7 @@ func switch_to_down():
 
 #calls boss level to spawn fire
 func spawn_fire_left():
+	
 	get_tree().current_scene.get_node("Level").spawn_fire_left()
 func spawn_fire_right():
 	get_tree().current_scene.get_node("Level").spawn_fire_right()
@@ -398,10 +406,20 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 
 func _on_player_rebound_front_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and ((state == "left" and sprite.scale.x == -sprite_scale) or (state == "right" and sprite.scale.x == sprite_scale)):
+	#print_debug("entered front")
+	#print_debug(state)
+	#print_debug(sprite.scale.x == sprite_scale)
+	#print_debug(sprite.scale.x == -sprite_scale)
+	if body.is_in_group("Player") and ((state == "left" and sprite.scale.x == sprite_scale) or (state == "right" and sprite.scale.x == -sprite_scale)):
 		body.take_damage(1, 10, position)
+		#print_debug("Took damage")
 
 
 func _on_player_rebound_back_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player") and ((state == "left" and sprite.scale.x == sprite_scale) or (state == "right" and sprite.scale.x == -sprite_scale)):
+	#print_debug("entered back")
+	#print_debug(state)
+	#print_debug(sprite.scale.x == sprite_scale)
+	#print_debug(sprite.scale.x == -sprite_scale)
+	if body.is_in_group("Player") and ((state == "left" and sprite.scale.x == -sprite_scale) or (state == "right" and sprite.scale.x == sprite_scale)):
 		body.take_damage(1, 10, position)
+		#print_debug("Took damage")

@@ -4,17 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://eu33635j17s2" path="res://Game_Sprites/Boss/Fire_God.png" id="2_8ayfh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3satc"]
-radius = 325.0
-height = 830.0
+radius = 630.0
+height = 1690.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cceqb"]
-size = Vector2(445, 55.0001)
+size = Vector2(1000, 220)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ciid7"]
-size = Vector2(85, 435)
+size = Vector2(260, 890)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wt4t1"]
-size = Vector2(84.9999, 435)
+size = Vector2(240, 880)
 
 [node name="Gabija" type="CharacterBody2D" groups=["Enemy"]]
 scale = Vector2(0.2, 0.2)
@@ -22,30 +22,31 @@ collision_mask = 7
 script = ExtResource("1_tjeds")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 50)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3satc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("2_8ayfh")
 
 [node name="DetectRight" type="RayCast2D" parent="."]
-target_position = Vector2(800, 0)
+target_position = Vector2(1200, 0)
 collision_mask = 5
 hit_from_inside = true
 
 [node name="JumpRight" type="RayCast2D" parent="."]
-target_position = Vector2(1500, 0)
+target_position = Vector2(2000, 0)
 collision_mask = 5
 hit_from_inside = true
 
 [node name="JumpLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-1500, 0)
+target_position = Vector2(-2000, 0)
 collision_mask = 5
 hit_from_inside = true
 
 [node name="DetectLeft" type="RayCast2D" parent="."]
-target_position = Vector2(-800, 0)
+target_position = Vector2(-1200, 0)
 collision_mask = 5
 hit_from_inside = true
 
@@ -85,7 +86,7 @@ one_shot = true
 [node name="Player_rebound_top" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_rebound_top"]
-position = Vector2(2.5, -317.5)
+position = Vector2(3.81469e-05, -565)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_cceqb")
 
@@ -95,13 +96,14 @@ one_shot = true
 [node name="Player_rebound_front" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_rebound_front"]
-position = Vector2(385, -2.5)
+position = Vector2(790, 75.0001)
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_ciid7")
 
 [node name="Player_rebound_back" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_rebound_back"]
-position = Vector2(-385, -2.5)
+position = Vector2(-800, 80)
 shape = SubResource("RectangleShape2D_wt4t1")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
