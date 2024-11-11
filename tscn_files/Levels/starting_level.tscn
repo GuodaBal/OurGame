@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=4 uid="uid://btnbw77n5dw1u"]
+[gd_scene load_steps=8 format=4 uid="uid://btnbw77n5dw1u"]
 
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="2_6s6y2"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_t5iol"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_oxnbh"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="5_c6jit"]
 [ext_resource type="TileSet" uid="uid://dnd6gsiwkj58u" path="res://Game_Sprites/Tilemaps/starting_area_V2.tres" id="5_n3lro"]
+[ext_resource type="Script" path="res://Scripts/node_2d.gd" id="6_u6smp"]
+[ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_n4237"]
 
 [node name="Level3" type="Node2D"]
 
@@ -37,3 +39,14 @@ correctLevel = "N_1"
 [node name="SpawnArea2" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(2154, 646)
 correctLevel = "F_1"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-323, 624)
+scale = Vector2(1, 2.015)
+script = ExtResource("6_u6smp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_n4237")
+bus = &"Music"
+
+[connection signal="ready" from="Node2D" to="Node2D" method="_on_ready"]
