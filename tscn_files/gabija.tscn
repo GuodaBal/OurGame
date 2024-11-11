@@ -49,7 +49,6 @@ collision_mask = 5
 hit_from_inside = true
 
 [node name="JumpTimer" type="Timer" parent="."]
-wait_time = 1.5
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
