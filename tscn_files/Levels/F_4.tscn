@@ -43,5 +43,5 @@ position = Vector2(2310, 857)
 position = Vector2(2718, 1818)
 
 [node name="Details" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AADPAZIAAAAAAAAAAFDPAZgAAAABAAAAAFDPAZ4AAAACAAAAAFA=")
+tile_map_data = PackedByteArray("AADPAZIAAAAAAAAAAFDPAZgAAAABAAAAAFDPAZ4AAAACAAAAAFAdAAEAAAACAAAAAGAdABYAAAAAAAAAAGAdAAkAAAABAAAAAGAdABAAAAABAAAAAGA=")
 tile_set = ExtResource("5_knusv")

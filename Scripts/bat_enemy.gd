@@ -63,6 +63,9 @@ func _physics_process(delta: float) -> void:
 			elif position.y  - playerPostion.y < -100:
 				velocity.y = lerp(velocity.y, FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
 				movement_cooldown = COOLDOWN_TIME
+			elif position.y  - playerPostion.y > 100:
+				velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+				movement_cooldown = COOLDOWN_TIME
 			else:
 				velocity.y = lerp(velocity.y, y_hover_offset, SMOOTHING_FACTOR)
 			if playerPostion.x - position.x > margin:
