@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://c83o4uejxjvsx"]
+[gd_scene load_steps=8 format=4 uid="uid://c83o4uejxjvsx"]
 
 [ext_resource type="Script" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
 [ext_resource type="TileSet" uid="uid://ddxp2wtfvpun5" path="res://Game_Sprites/Tilemaps/fire_area_V2.tres" id="2_k4axs"]
 [ext_resource type="PackedScene" uid="uid://n0byngr2sw2r" path="res://tscn_files/gabija.tscn" id="3_0oha5"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_hgj5o"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="6_ij6ja"]
-[ext_resource type="AudioStream" uid="uid://c647i37lqy6er" path="res://Audio/Music/GabijaBe.wav" id="6_nb1fa"]
-[ext_resource type="AudioStream" uid="uid://divv83lg7clup" path="res://Audio/Music/GabijaAf.wav" id="7_njy1q"]
 
 [sub_resource type="Curve2D" id="Curve2D_hn5tq"]
 _data = {
@@ -69,12 +67,10 @@ scale = Vector2(1, 2.285)
 nextLevel = "F_6"
 
 [node name="GabijaBe" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_nb1fa")
+autoplay = true
 bus = &"Music"
 
 [node name="GabijaAf" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_njy1q")
 bus = &"Music"
 
 [connection signal="ready" from="." to="." method="_on_ready"]
-[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

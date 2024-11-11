@@ -8,6 +8,7 @@ var beat_Gabija: bool = false
 var saved_music_volume = 1.0
 var saved_SFX_volume = 1.0
 var mute_pressed: bool = false
+var current_music : AudioStreamPlayer = null
 
 func get_MusicID():
 	return Music_Bus_ID
@@ -39,3 +40,17 @@ func set_SFX_volume(value: float) -> void:
 # Funkcija gauti reikšmę
 func get_SFX_volume() -> float:
 	return saved_SFX_volume
+	
+# Nuoroda į dabartinį muzikos grotuvo objektą
+
+
+func play_music(music_stream: AudioStream):
+	# Sustabdo dabartinę muziką, jei tokia groja
+	if current_music and current_music.playing:
+		current_music.stop()
+	
+	# Sukuria naują muzikos grotuvo objektą ir paleidžia naują muziką
+	current_music = AudioStreamPlayer.new()
+	add_child(current_music)
+	current_music.stream = music_stream
+	current_music.play()

@@ -25,10 +25,15 @@ position = Vector2(-323, 624)
 scale = Vector2(1, 2.015)
 nextLevel = "N_1"
 
+[node name="LevelSwitcher3" parent="." instance=ExtResource("3_t5iol")]
+position = Vector2(501, 585)
+scale = Vector2(1, 2.015)
+nextLevel = "boss_level_gabija"
+
 [node name="LevelSwitcher2" parent="." instance=ExtResource("3_t5iol")]
 position = Vector2(2292, 501)
 scale = Vector2(1, 1.91)
-nextLevel = "boss_level_gabija"
+nextLevel = "F_2"
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(-220, 818)
