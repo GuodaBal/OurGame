@@ -9,6 +9,8 @@ var bottomSpeed = 500
 @onready var bottomLeftSpawn := $BottomFireLeft as Node2D
 @onready var bottomRightSpawn := $BottomFireRight as Node2D 
 
+@onready var GabijaBe = $GabijaBe
+@onready var GabijaAF = $GabijaAf
 
 var fire_left = false
 var fire_right = false
@@ -93,3 +95,8 @@ func spawn_fire_bottom():
 			bottom_phase="one"
 			spawn_fire_bottom()
 	
+
+
+func _on_ready() -> void:
+	if(AudioManager.beat_Gabija == false):
+		GabijaBe.play()

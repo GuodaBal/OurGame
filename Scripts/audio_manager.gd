@@ -4,6 +4,7 @@ extends Node
 @onready var SFX_Bus_ID = AudioServer.get_bus_index("SFX")
 @onready var Master_Bus_ID = AudioServer.get_bus_index("Master")
 
+var beat_Gabija: bool = false
 var saved_music_volume = 1.0
 var saved_SFX_volume = 1.0
 var mute_pressed: bool = false

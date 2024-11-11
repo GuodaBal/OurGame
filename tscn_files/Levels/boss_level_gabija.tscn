@@ -65,3 +65,12 @@ correctLevel = "F_6"
 position = Vector2(-363, 703)
 scale = Vector2(1, 2.285)
 nextLevel = "F_6"
+
+[node name="GabijaBe" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = &"Music"
+
+[node name="GabijaAf" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[connection signal="ready" from="." to="." method="_on_ready"]
