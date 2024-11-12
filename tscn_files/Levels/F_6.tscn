@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://bh0qmf4m78rpp"]
+[gd_scene load_steps=7 format=4 uid="uid://bh0qmf4m78rpp"]
 
 [ext_resource type="TileSet" uid="uid://ddxp2wtfvpun5" path="res://Game_Sprites/Tilemaps/fire_area_V2.tres" id="1_g74rl"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_3t2iy"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_ynoj7"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="4_ts6q1"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="5_ea6u6"]
+[ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="6_ccl8g"]
 
 [node name="Level" type="Node2D"]
 
@@ -49,3 +50,8 @@ position = Vector2(902, 905)
 
 [node name="Enemy2" parent="." instance=ExtResource("5_ea6u6")]
 position = Vector2(239, 148)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ccl8g")
+autoplay = true
+bus = &"Music"

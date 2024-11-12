@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwu0uom3tq46e"]
+[gd_scene load_steps=4 format=3 uid="uid://bwu0uom3tq46e"]
 
 [ext_resource type="Theme" uid="uid://j45wqqn7h7xh" path="res://Sprites/UI Sprite/UI.tres" id="1_74qny"]
 [ext_resource type="Script" path="res://Scripts/ui_popup_menu.gd" id="1_cpjbp"]
+[ext_resource type="AudioStream" uid="uid://dyimm10xksvic" path="res://Audio/SFX/ButtonClick.wav" id="3_khxtl"]
 
 [node name="ui_popup_menu" type="Control"]
 process_mode = 3
@@ -55,7 +56,16 @@ layout_mode = 2
 theme = ExtResource("1_74qny")
 text = "Exit"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_khxtl")
+volume_db = -10.0
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/VBoxContainer/Continue" to="." method="_on_continue_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Continue" to="." method="_on_continue_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/VBoxContainer/Settings" to="." method="_on_settings_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/VBoxContainer/Main menu" to="." method="_on_main_menu_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Main menu" to="." method="_on_main_menu_pressed"]
+[connection signal="mouse_entered" from="CanvasLayer/ColorRect/VBoxContainer/Exit" to="." method="_on_exit_mouse_entered"]
 [connection signal="pressed" from="CanvasLayer/ColorRect/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://cp4kne7equl0a"]
+[gd_scene load_steps=7 format=4 uid="uid://cp4kne7equl0a"]
 
 [ext_resource type="TileSet" uid="uid://dnd6gsiwkj58u" path="res://Game_Sprites/Tilemaps/starting_area_V2.tres" id="1_ttwj6"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_525d6"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_uwi0w"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_o33ix"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="5_af0tq"]
+[ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="6_ggfcn"]
 
-[node name="Level" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -47,3 +48,8 @@ position = Vector2(-52, 1137)
 [node name="Details" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AABY/04AAAAAAAAAAGBY/zkAAAACAAAAAGBY/0EAAAABAAAAAGBY/0YAAAABAAAAAGAWAUkAAAAAAAAAAFAWAV4AAAACAAAAAFAWAVEAAAABAAAAAFAWAVcAAAABAAAAAFA=")
 tile_set = ExtResource("5_af0tq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ggfcn")
+autoplay = true
+bus = &"Music"

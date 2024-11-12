@@ -1,12 +1,13 @@
-[gd_scene load_steps=6 format=4 uid="uid://6xk5k5bm1cb7"]
+[gd_scene load_steps=7 format=4 uid="uid://6xk5k5bm1cb7"]
 
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="1_mlrjv"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="2_bitpq"]
 [ext_resource type="TileSet" uid="uid://ix2qjy0bbbvf" path="res://Game_Sprites/Tilemaps/in_between_V2.tres" id="3_vjf12"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="5_dv5l0"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="6_8lo6v"]
+[ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="6_lcoeo"]
 
-[node name="Level" type="Node2D"]
+[node name="Level6" type="Node2D"]
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("1_mlrjv")]
 position = Vector2(-22, 0)
@@ -43,3 +44,8 @@ position = Vector2(2096, 664)
 
 [node name="Enemy3" parent="." instance=ExtResource("6_8lo6v")]
 position = Vector2(2580, 1625)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lcoeo")
+autoplay = true
+bus = &"Music"

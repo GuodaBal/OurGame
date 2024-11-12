@@ -1,13 +1,15 @@
-[gd_scene load_steps=7 format=4 uid="uid://ixq4hr2e35l5"]
+[gd_scene load_steps=9 format=4 uid="uid://ixq4hr2e35l5"]
 
 [ext_resource type="TileSet" uid="uid://dnd6gsiwkj58u" path="res://Game_Sprites/Tilemaps/starting_area_V2.tres" id="1_p61py"]
+[ext_resource type="Script" path="res://Scripts/n_1.gd" id="1_tybgp"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_t1dvb"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_0pxxw"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_5dykh"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="5_art3a"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="6_jgrbp"]
+[ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="8_kgurr"]
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.5, 0.5)
@@ -59,3 +61,14 @@ position = Vector2(-2540, 777)
 [node name="TileMapLayer2" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAABAUkAAAAAAAAAAFABAV4AAAACAAAAAFABAVAAAAABAAAAAFABAVcAAAABAAAAAFDZ/3H/AAACAAAAAGDZ/4b/AAAAAAAAAGDZ/3n/AAABAAAAAGDZ/4D/AAABAAAAAGA=")
 tile_set = ExtResource("6_jgrbp")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kgurr")
+autoplay = true
+bus = &"Music"
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_tybgp")
+
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="ready" from="Node2D" to="Node2D" method="_on_ready"]

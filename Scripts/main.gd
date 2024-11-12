@@ -11,8 +11,13 @@ func _ready() -> void:
 	#var instance = load("res://tscn_files/" + currentLevel + ".tscn").instantiate()
 	#add_child(instance)
 	#get_node("MainCharacter").position = savedPosition
-	AudioManager.current_music = audio
-	AudioManager.play_music(audio.stream)
+	AudioPlayer.stop()
+	if(AudioManager.current_music == null):	
+		AudioManager.current_music = audio
+		AudioManager.play_music(audio.stream)
+	else:
+		AudioManager.play_music(audio.stream)
+
 	
 
 
@@ -32,7 +37,10 @@ func getPreviousLevel():
 func switchLevel(nextLevel):
 	var instance = load("res://tscn_files/Levels/" + nextLevel + ".tscn").instantiate()
 	#get_parent().print_tree()
-	var deleteLevel = get_node("Level")
+	var deleteLevel# = get_node("Level")
+	for child in get_children():
+		if "Level" in child.name:
+			deleteLevel = child
 	remove_child(deleteLevel)
 	#call_deferred(deleteLevel)
 	deleteLevel.queue_free()

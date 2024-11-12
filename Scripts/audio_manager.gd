@@ -4,12 +4,14 @@ extends Node
 @onready var SFX_Bus_ID = AudioServer.get_bus_index("SFX")
 @onready var Master_Bus_ID = AudioServer.get_bus_index("Master")
 
+const MainMenu = preload("res://Audio/Music/MainMenuwav.wav")
+
 var beat_Gabija: bool = false
 var saved_music_volume = 1.0
 var saved_SFX_volume = 1.0
 var mute_pressed: bool = false
 var current_music: AudioStreamPlayer = null
-
+	
 func get_MusicID():
 	return Music_Bus_ID
 
@@ -52,3 +54,4 @@ func play_music(music_stream: AudioStream):
 	# Set the new music stream and play it with the existing settings
 	current_music.stream = music_stream
 	current_music.play()
+	

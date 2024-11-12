@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://r4ohillk204q"]
+[gd_scene load_steps=7 format=4 uid="uid://r4ohillk204q"]
 
 [ext_resource type="TileSet" uid="uid://ddxp2wtfvpun5" path="res://Game_Sprites/Tilemaps/fire_area_V2.tres" id="1_kmvom"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_nopuu"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_trng1"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_26be5"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="5_knusv"]
+[ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="6_mxs3i"]
 
 [node name="Level" type="Node2D"]
 
@@ -45,3 +46,8 @@ position = Vector2(2718, 1818)
 [node name="Details" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AADPAZIAAAAAAAAAAFDPAZgAAAABAAAAAFDPAZ4AAAACAAAAAFAdAAEAAAACAAAAAGAdABYAAAAAAAAAAGAdAAkAAAABAAAAAGAdABAAAAABAAAAAGA=")
 tile_set = ExtResource("5_knusv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_mxs3i")
+autoplay = true
+bus = &"Music"
