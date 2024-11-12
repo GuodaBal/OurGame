@@ -58,7 +58,7 @@ text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_khxtl")
-volume_db = -2.0
+volume_db = -10.0
 bus = &"SFX"
 
 [connection signal="mouse_entered" from="CanvasLayer/ColorRect/VBoxContainer/Continue" to="." method="_on_continue_mouse_entered"]

@@ -141,7 +141,7 @@ text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_hhkaw")
-volume_db = -2.0
+volume_db = -10.0
 bus = &"SFX"
 
 [connection signal="mouse_entered" from="VBoxContainer3/StartButton" to="." method="_on_start_button_mouse_entered"]
