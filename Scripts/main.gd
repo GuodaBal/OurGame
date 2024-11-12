@@ -11,7 +11,7 @@ func _ready() -> void:
 	#var instance = load("res://tscn_files/" + currentLevel + ".tscn").instantiate()
 	#add_child(instance)
 	#get_node("MainCharacter").position = savedPosition
-	print("stream", AudioManager.current_music)
+	AudioPlayer.stop()
 	if(AudioManager.current_music == null):	
 		AudioManager.current_music = audio
 		AudioManager.play_music(audio.stream)

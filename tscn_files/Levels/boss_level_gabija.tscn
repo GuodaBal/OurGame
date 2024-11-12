@@ -70,10 +70,13 @@ nextLevel = "F_6"
 
 [node name="GabijaBe" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_nb1fa")
+volume_db = -4.0
+autoplay = true
 bus = &"Music"
 
 [node name="GabijaAf" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_njy1q")
+volume_db = -4.0
 bus = &"Music"
 
 [connection signal="ready" from="." to="." method="_on_ready"]

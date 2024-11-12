@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://fvcxk3ymmrkr"]
+[gd_scene load_steps=8 format=4 uid="uid://fvcxk3ymmrkr"]
 
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_yccts"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_ixqpu"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://dnd6gsiwkj58u" path="res://Game_Sprites/Tilemaps/starting_area_V2.tres" id="5_vvby8"]
 [ext_resource type="TileSet" uid="uid://ix2qjy0bbbvf" path="res://Game_Sprites/Tilemaps/in_between_V2.tres" id="6_8jae4"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="6_sl7w2"]
+[ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="7_71gbe"]
 
 [node name="Level2" type="Node2D"]
 
@@ -67,3 +68,8 @@ tile_set = ExtResource("5_vvby8")
 scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAA/AA8AAgAAAAMAAgBAAA8AAgAGAAEAAABBAA8AAgAJAAIAAQBBAA4AAgALAAIAAgBAAA4AAgALAAAAAQA1ABcAAgACAAMAAQA2ABgAAgALAAIAAQA3ABgAAgAKAAAACwA2ABcAAgAGAAEAAgA3ABcAAgAKAAAACAA4ABcAAgAFAAAAAAA5ABcAAgABAAMAAQA6ABcAAgACAAMAAAA4ABgAAgAJAAAAAwAVAPr/AgAJAAIAAgAWAPr/AgAJAAIAAwAVAPv/AgAFAAAAAwAWAPv/AgAFAAEAAADz/xAAAgAAAAMAAgD0/xAAAgAFAAAAAQD4/xAAAgAKAAMAAAD4/xEAAgAJAAAAAwD3/xEAAgAKAAAACgD0/xEAAgALAAIAAQD1/xAAAgAKAAMAAwD1/xEAAgAKAAAACwD2/xEAAgAKAAAACgAbAPP/AgAJAAEAAwAbAPT/AgALAAEACAAbAPX/AgAJAAEAAwAbAPb/AgAJAAEAAAAcAPX/AgAKAAEAAwD3/xAAAgAKAAEAAgD2/xAAAgAKAAEAAAD5/xAAAgALAAAAAgD5/w8AAgAJAAAAAQD4/w8AAgAKAAIAAwD3/w8AAgAKAAIABAD2/w8AAgAKAAAAAAD1/w8AAgAJAAIAAgAcAPP/AgAJAAEABAAcAPT/AgAIAAMAAAAcAPb/AgAKAAEAAwAbAPL/AgALAAAAAQAcAPL/AgALAAIAAgAdAPT/AgAJAAAAAQAdAPX/AgALAAEAAAAdAPb/AgAJAAEABAAUAPv/AgABAAMAAwATAPv/AgAAAAMAAAAbAPf/AgALAAIAAQAcAPf/AgAKAAMAAQAdAPf/AgALAAEABwAdAPj/AgAJAAEAAgAdAPn/AgAJAAEABAAdAPr/AgAJAAEABAAcAPr/AgAKAAMAAwAcAPv/AgAKAAEAAgAbAPv/AgAKAAEAAgAbAPz/AgAKAAIAAgAaAPz/AgAKAAAACgAZAPz/AgAKAAIAAgAYAPz/AgAKAAAACgAXAPz/AgAJAAIAAAAXAPv/AgAGAAEAAgAYAPv/AgAKAAIABAAZAPv/AgAJAAMAAAAZAPr/AgAJAAAAAAAaAPr/AgAKAAIAAwAbAPr/AgAKAAIAAwAcAPn/AgAJAAEAAAAcAPj/AgAJAAEAAwAaAPv/AgAKAAEAAwAdAPv/AgAJAAEABAAdAPz/AgALAAIAAAAcAPz/AgAKAAAACgDn//X/AgAJAAAAAgDo//X/AgAKAAAACgDp//X/AgAKAAIAAgDp//T/AgAKAAEAAgDq//T/AgAKAAEAAADr//T/AgAKAAEAAADr//P/AgAKAAIAAwDs//P/AgAKAAIABADn//T/AgALAAIAAwDo//T/AgAKAAMAAwDo//P/AgAJAAAAAADp//P/AgAKAAIAAwDq//P/AgAKAAAAAADn//n/AgAHAAMAAgDq//X/AgAKAAIAAgDr//X/AgAKAAAACwDs//X/AgALAAIAAADs//T/AgAIAAMAAgDt//P/AgAKAAIABADu//P/AgAKAAAAAADv//P/AgAKAAAACADw//P/AgAJAAAAAQDw//T/AgAJAAIAAQDv//T/AgAKAAAACwDu//T/AgAKAAIAAADt//T/AgAKAAAACwA=")
 tile_set = ExtResource("6_8jae4")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_71gbe")
+autoplay = true
+bus = &"Music"
