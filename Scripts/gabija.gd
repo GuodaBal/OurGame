@@ -296,11 +296,17 @@ func switch_to_down():
 
 #calls boss level to spawn fire
 func spawn_fire_left():
-	get_tree().current_scene.get_node("Level").spawn_fire_left()
+	for child in get_tree().current_scene.get_children():
+		if "Level" in child.name:
+			child.spawn_fire_left()
 func spawn_fire_right():
-	get_tree().current_scene.get_node("Level").spawn_fire_right()
+	for child in get_tree().current_scene.get_children():
+		if "Level" in child.name:
+			child.spawn_fire_right()
 func spawn_fire_bottom():
-	get_tree().current_scene.get_node("Level").spawn_fire_bottom()
+	for child in get_tree().current_scene.get_children():
+		if "Level" in child.name:
+			child.spawn_fire_bottom()
 
 #attacks depending on position
 func _on_attack_timer_timeout() -> void:

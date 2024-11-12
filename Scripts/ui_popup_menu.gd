@@ -22,7 +22,9 @@ func _process(delta: float) -> void:
 
 
 func _on_continue_pressed() -> void:
-	get_parent().get_node("Level").get_tree().paused = false
+	for child in get_parent().get_children():
+			if "Level" in child.name:
+				child.get_tree().paused = false
 	queue_free()
 
 

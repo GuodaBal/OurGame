@@ -48,10 +48,11 @@ func get_SFX_volume() -> float:
 
 func play_music(music_stream: AudioStream):
 	# Stop current music if it's playing
-	if current_music.playing:
+	if current_music != null and current_music.playing:
 		current_music.stop()
 	
 	# Set the new music stream and play it with the existing settings
-	current_music.stream = music_stream
-	current_music.play()
+	if current_music != null:
+		current_music.stream = music_stream
+		current_music.play()
 	

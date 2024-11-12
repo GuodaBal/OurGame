@@ -48,13 +48,13 @@ one_shot = true
 
 [node name="ObsticleDetectorLeft" type="RayCast2D" parent="."]
 position = Vector2(-16, -14)
-target_position = Vector2(-37, 1)
+target_position = Vector2(-35, 1)
 collision_mask = 7
 hit_from_inside = true
 
 [node name="ObsticleDetectorRight" type="RayCast2D" parent="."]
 position = Vector2(24, -14)
-target_position = Vector2(37, 0)
+target_position = Vector2(30, 0)
 collision_mask = 7
 hit_from_inside = true
 
