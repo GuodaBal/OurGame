@@ -7,7 +7,7 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="5_af0tq"]
 [ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="6_ggfcn"]
 
-[node name="Level" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
