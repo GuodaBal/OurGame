@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg6xkwun78ucg"]
+
+[ext_resource type="Texture2D" uid="uid://cisw1ib5g5g8u" path="res://Game_Sprites/Abilities/Bow.png" id="1_wn346"]
+
+[node name="Bow" type="Sprite2D"]
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("1_wn346")
