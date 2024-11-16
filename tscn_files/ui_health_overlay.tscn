@@ -88,7 +88,6 @@ sprite_frames = SubResource("SpriteFrames_4f781")
 animation = &"four"
 
 [node name="fourth" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(288, 48)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")

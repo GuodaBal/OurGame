@@ -1,7 +1,7 @@
 extends Node2D
 
 var damage = 1
-var speed = 0.7
+var speed = 0.4
 @onready var path := $Path2D/PathFollow2D as PathFollow2D
 
 func _ready() -> void:

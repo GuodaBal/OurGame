@@ -11,8 +11,8 @@ extends CanvasLayer
 var hearts
 var full
 func _ready():
-	full = [first, second, third]
-	hearts = [first, second, third]
+	full = [first, second, third, fourth]
+	hearts = [first, second, third, fourth]
 
 
 func remove_HP(amount):

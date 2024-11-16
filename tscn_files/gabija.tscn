@@ -52,7 +52,7 @@ hit_from_inside = true
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 8.0
 one_shot = true
 autostart = true
 
@@ -68,7 +68,6 @@ one_shot = true
 position = Vector2(0, -700)
 
 [node name="SpikeTimer" type="Timer" parent="."]
-wait_time = 0.1
 one_shot = true
 autostart = true
 
@@ -87,13 +86,9 @@ position = Vector2(3.81469e-05, -565)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_cceqb")
 
-[node name="AttackBufferTimer" type="Timer" parent="."]
-one_shot = true
-
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ExhaustionTimer" to="." method="_on_exhaustion_timer_timeout"]
 [connection signal="timeout" from="SpikeTimer" to="." method="_on_spike_timer_timeout"]
 [connection signal="timeout" from="SpikeEndTimer" to="." method="_on_spike_end_timer_timeout"]
 [connection signal="timeout" from="JumpEndTimer" to="." method="_on_jump_end_timer_timeout"]
 [connection signal="body_entered" from="Player_rebound_top" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="AttackBufferTimer" to="." method="_on_attack_buffer_timer_timeout"]
