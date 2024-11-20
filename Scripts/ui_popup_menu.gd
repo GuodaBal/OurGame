@@ -33,13 +33,17 @@ func _on_settings_pressed() -> void:
 	#get_parent().add_child(settings_menu)
 	add_sibling(settings_menu)
 	get_parent().print_tree()
-	get_parent().get_node("Level").get_tree().paused = true
+	for child in get_parent().get_children():
+			if "Level" in child.name:
+				child.get_tree().paused = true
 	#get_tree().change_scene_to_file("res://tscn_files/ui_settings_menu.tscn")
 
 
 func _on_main_menu_pressed() -> void:
 	AudioPlayer.play()
-	get_parent().get_node("Level").get_tree().paused = false
+	for child in get_parent().get_children():
+		if "Level" in child.name:
+			child.get_tree().paused = false
 	get_tree().change_scene_to_file("res://tscn_files/ui_main_menu.tscn")
 
 
