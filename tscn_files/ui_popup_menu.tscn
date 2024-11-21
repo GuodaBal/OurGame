@@ -39,13 +39,11 @@ grow_vertical = 2
 [node name="Continue" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_74qny")
-theme_override_colors/font_color = Color(0, 0.415686, 0.490196, 1)
 text = "Continue"
 
 [node name="Settings" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_74qny")
-theme_override_colors/font_color = Color(0, 0.415686, 0.490196, 1)
 text = "Settings"
 
 [node name="Main menu" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
@@ -57,7 +55,6 @@ text = "Main menu"
 [node name="Exit" type="Button" parent="CanvasLayer/ColorRect/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_74qny")
-theme_override_colors/font_color = Color(0, 0.415686, 0.490196, 1)
 text = "Exit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

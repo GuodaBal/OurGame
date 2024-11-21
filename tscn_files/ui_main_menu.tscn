@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://cv71vm2eqy6um"]
 
 [ext_resource type="Texture2D" uid="uid://kmanoughgb5k" path="res://Sprites/UI Sprite/Game_Name.png" id="1_odsw1"]
-[ext_resource type="Theme" uid="uid://j45wqqn7h7xh" path="res://Sprites/UI Sprite/UI.tres" id="2_xe2il"]
+[ext_resource type="Theme" uid="uid://bjbttb5s3tf0h" path="res://Sprites/UI Sprite/UI2.tres" id="2_ylukf"]
 [ext_resource type="Texture2D" uid="uid://bdt0qu1eknavs" path="res://Game_Sprites/UI/Spawnpoint.png" id="3_isntg"]
 [ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="4_n5twp"]
 
@@ -104,30 +104,26 @@ grow_vertical = 0
 
 [node name="StartButton" type="Button" parent="VBoxContainer3"]
 layout_mode = 2
-theme = ExtResource("2_xe2il")
-theme_override_colors/font_color = Color(0, 0.4165, 0.49, 1)
+theme = ExtResource("2_ylukf")
 theme_override_font_sizes/font_size = 70
 text = "Start"
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer3"]
 layout_mode = 2
-theme = ExtResource("2_xe2il")
-theme_override_colors/font_color = Color(0, 0.415686, 0.490196, 1)
+theme = ExtResource("2_ylukf")
 theme_override_font_sizes/font_size = 70
 text = "Continue
 "
 
 [node name="OptionsButton" type="Button" parent="VBoxContainer3"]
 layout_mode = 2
-theme = ExtResource("2_xe2il")
-theme_override_colors/font_color = Color(0, 0.419608, 0.490196, 1)
+theme = ExtResource("2_ylukf")
 theme_override_font_sizes/font_size = 70
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer3"]
 layout_mode = 2
-theme = ExtResource("2_xe2il")
-theme_override_colors/font_color = Color(0, 0.419608, 0.490196, 1)
+theme = ExtResource("2_ylukf")
 theme_override_font_sizes/font_size = 70
 text = "Quit"
 

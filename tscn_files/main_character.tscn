@@ -1,4 +1,4 @@
-[gd_scene load_steps=219 format=3 uid="uid://bo5x65xs813fn"]
+[gd_scene load_steps=218 format=3 uid="uid://bo5x65xs813fn"]
 
 [ext_resource type="Script" path="res://Main_character.gd" id="1_1g26s"]
 [ext_resource type="Texture2D" uid="uid://b5ksyuqjbmhsc" path="res://Game_Sprites/Animation_New/Niya_Animation_Running_Start.png" id="2_6bxp1"]
@@ -1450,10 +1450,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwdsa"]
 size = Vector2(172.222, 350)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d72sm"]
-atlas = ExtResource("2_6bxp1")
-region = Rect2(0, 0, 512, 512)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mq1j"]
 radius = 20.03
 height = 75.5401
@@ -1487,11 +1483,6 @@ collision_mask = 3
 [node name="AttackCollision" type="CollisionShape2D" parent="AnimatedSprite2D/Attack"]
 position = Vector2(141.667, 41.6667)
 shape = SubResource("RectangleShape2D_bwdsa")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.18, 0.18)
-texture = SubResource("AtlasTexture_d72sm")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false

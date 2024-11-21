@@ -13,7 +13,6 @@ var damage = 1
 @onready var obsDetectorLeft := $ObstacleDetectorLeft as Area2D
 @onready var obsDetectorRight := $ObstacleDetectorRight as Area2D
 @onready var flyHeight := $FlyHeight as RayCast2D
-@onready var path := $PathFollow2D as PathFollow2D
 @onready var attackArea := $AttackArea as Area2D
 @onready var attackAreaLeft := $AttackAreaLeft as Area2D
 @onready var attackAreaRight := $AttackAreaRight as Area2D

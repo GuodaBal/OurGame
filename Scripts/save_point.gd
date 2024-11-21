@@ -19,3 +19,4 @@ func save_data():
 		var json_string = JSON.stringify(node_data)
 		# Store the save dictionary as a new line in the save file.
 		save_file.store_line(json_string)
+	GlobalVariables.save_data()
