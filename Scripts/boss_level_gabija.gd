@@ -9,6 +9,9 @@ var bottomSpeed = 550
 @onready var bottomLeftSpawn := $BottomFireLeft as Node2D
 @onready var bottomRightSpawn := $BottomFireRight as Node2D 
 
+@onready var levelBe = $TileMapLayer as TileMapLayer
+@onready var levelAf = $TileMapLayer2 as TileMapLayer
+
 @onready var GabijaBe = $GabijaBe.stream
 @onready var GabijaAF = $GabijaAf.stream
 
@@ -24,6 +27,15 @@ var distance = 300
 
 var bottom_fire_left
 var bottom_fire_right
+
+func _ready() -> void:
+	if GlobalVariables.GabijaDone:
+		levelBe.visible = false
+		levelBe.collision_enabled = false
+		get_node("Gabija").queue_free()
+	else:
+		levelAf.visible = false
+		levelAf.visible = false
 
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
@@ -95,7 +107,11 @@ func spawn_fire_bottom():
 			bottom_phase="one"
 			spawn_fire_bottom()
 	
-
+func switch_scene():
+	levelBe.visible = false
+	levelBe.collision_enabled = false
+	levelAf.visible = true
+	levelAf.visible = true
 
 func _on_ready() -> void:
 	if(AudioManager.beat_Gabija):

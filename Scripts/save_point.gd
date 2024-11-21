@@ -10,11 +10,11 @@ func save_data():
 			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
 			continue
 		# Check the node has a save function.
-		if !node.has_method("save"):
+		if !node.has_method("save_data"):
 			print("persistent node '%s' is missing a save() function, skipped" % node.name)
 			continue
 		# Call the node's save function.
-		var node_data = node.call("save")
+		var node_data = node.call("save_data")
 		# JSON provides a static method to serialized JSON string.
 		var json_string = JSON.stringify(node_data)
 		# Store the save dictionary as a new line in the save file.

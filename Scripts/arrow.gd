@@ -31,4 +31,6 @@ func _on_body_entered(body: Node) -> void:
 	#print_debug(inertia)
 	if body.is_in_group("Enemy") or body.is_in_group("Player"):
 		body.take_damage(attack_damage, 3, position)
+	if body.is_in_group("Burnable"):
+		body.burn()
 	queue_free()

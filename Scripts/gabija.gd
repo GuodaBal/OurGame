@@ -149,6 +149,10 @@ func take_damage(damage, knockback_strength, player_position):
 	print_debug(hp)
 	var direction = position - player_position
 	if hp <= 0:
+		GlobalVariables.GabijaDone = true
+		for child in get_tree().current_scene.get_children():
+			if "Level" in child.name:
+				child.switch_scene()
 		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 		add_sibling(instance)
 		instance.position = position

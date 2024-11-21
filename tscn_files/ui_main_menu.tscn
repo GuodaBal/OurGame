@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 
 
 func _on_start_button_pressed() -> void:
-	GlobalVariables.load = false
+	GlobalVariables.reset()
 	get_tree().change_scene_to_file(\"res://tscn_files/main.tscn\")
 
 
@@ -106,12 +106,14 @@ grow_vertical = 0
 layout_mode = 2
 theme = ExtResource("2_xe2il")
 theme_override_colors/font_color = Color(0, 0.4165, 0.49, 1)
+theme_override_font_sizes/font_size = 70
 text = "Start"
 
 [node name="ContinueButton" type="Button" parent="VBoxContainer3"]
 layout_mode = 2
 theme = ExtResource("2_xe2il")
 theme_override_colors/font_color = Color(0, 0.415686, 0.490196, 1)
+theme_override_font_sizes/font_size = 70
 text = "Continue
 "
 
@@ -119,12 +121,14 @@ text = "Continue
 layout_mode = 2
 theme = ExtResource("2_xe2il")
 theme_override_colors/font_color = Color(0, 0.419608, 0.490196, 1)
+theme_override_font_sizes/font_size = 70
 text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer3"]
 layout_mode = 2
 theme = ExtResource("2_xe2il")
 theme_override_colors/font_color = Color(0, 0.419608, 0.490196, 1)
+theme_override_font_sizes/font_size = 70
 text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
