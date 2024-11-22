@@ -24,18 +24,11 @@ func save_data():
 	
 func load_data():
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.READ)
-	while save_file.get_position() < save_file.get_length():
-		var json_string = save_file.get_line()
-		# Creates the helper class to interact with JSON.
-		var json = JSON.new()
-		# Check if there is any error while parsing the JSON string, skip in case of failure.
-		var parse_result = json.parse(json_string)
-		if not parse_result == OK:
-			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+	var json_string = save_file.get_as_text()
+	save_file.close()
+	var json = JSON.parse_string(json_string)
+	var data = json["global"]
+	for i in data.keys():
+		if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 			continue
-		# Get the data from the JSON object.
-		var node_data = json.data
-		# Firstly, we need to create the object and add it to the tree and set its position.
-		# Now we set the remaining variables.
-		for i in node_data.keys():
-			set(i, node_data[i])
+		set(i, data[i])

@@ -107,14 +107,19 @@ func spawn_fire_bottom():
 			bottom_phase="one"
 			spawn_fire_bottom()
 	
+#Activated when Gabija dies
 func switch_scene():
 	levelBe.visible = false
 	levelBe.collision_enabled = false
 	levelAf.visible = true
 	levelAf.visible = true
+	AudioManager.play_music(GabijaAF)
 
 func _on_ready() -> void:
-	if(AudioManager.beat_Gabija):
+	print_debug(GlobalVariables.GabijaDone)
+	print_debug(AudioManager.current_music)
+	if(GlobalVariables.GabijaDone):
 		AudioManager.play_music(GabijaAF)
+		
 	else:
-		AudioManager.play_music(GabijaBe)		
+		AudioManager.play_music(GabijaBe)

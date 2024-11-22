@@ -13,6 +13,7 @@ func _ready() -> void:
 		var save_nodes = get_tree().get_nodes_in_group("Persist")
 		for i in save_nodes:
 			i.load_data()
+		GlobalVariables.load_data()
 	
 	previousLevel = str(GlobalVariables.starting_level)
 	#add level

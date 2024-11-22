@@ -6,7 +6,6 @@ extends Node
 
 const MainMenu = preload("res://Audio/Music/MainMenuwav.wav")
 
-var beat_Gabija: bool = false
 var saved_music_volume = 1.0
 var saved_SFX_volume = 1.0
 var mute_pressed: bool = false

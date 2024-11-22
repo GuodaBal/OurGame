@@ -11,7 +11,8 @@ script/source = "extends Control
 @onready var click = $AudioStreamPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	if !FileAccess.file_exists(\"user://savegame.save\"):
+		$VBoxContainer3/ContinueButton.disabled = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -32,21 +33,15 @@ func _on_quit_button_pressed() -> void:
 
 func _on_continue_button_pressed() -> void:
 	GlobalVariables.load = true 
-	#print_debug(GlobalVariables.starting_level)
 	if FileAccess.file_exists(\"user://savegame.save\"):
 		var save_file = FileAccess.open(\"user://savegame.save\", FileAccess.READ)
 		var json_string = save_file.get_as_text()
 		save_file.close()
-		# Parse the JSON string
 		var json = JSON.parse_string(json_string)
-		print_debug(json_string)
-		GlobalVariables.starting_level = json[\"level\"]
-		#print_debug(GlobalVariables.starting_level)
+		GlobalVariables.starting_level = json[\"global\"][\"starting_level\"]
 	else:
 		print(\"File does not exist: \", \"user://savegame.save\")
 	get_tree().change_scene_to_file(\"res://tscn_files/main.tscn\")
-	
-	
 
 
 func _on_start_button_mouse_entered() -> void:
