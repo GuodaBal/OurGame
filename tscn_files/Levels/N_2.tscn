@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=4 uid="uid://cp4kne7equl0a"]
+[gd_scene load_steps=7 format=4 uid="uid://cp4kne7equl0a"]
 
+[ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_17a0a"]
 [ext_resource type="TileSet" uid="uid://dnd6gsiwkj58u" path="res://Game_Sprites/Tilemaps/starting_area_V2.tres" id="1_ttwj6"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_525d6"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_uwi0w"]
@@ -7,6 +8,8 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="5_af0tq"]
 
 [node name="Level" type="Node2D"]
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_17a0a")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false

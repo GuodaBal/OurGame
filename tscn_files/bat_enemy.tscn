@@ -3,13 +3,11 @@
 [ext_resource type="Script" path="res://Scripts/bat_enemy.gd" id="1_awle0"]
 [ext_resource type="Texture2D" uid="uid://dfycwik6nig78" path="res://Game_Sprites/Enemy/Bat.png" id="2_crus4"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_54u5p"]
-radius = 40.0
-height = 80.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_jnnao"]
+radius = 39.2046
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lph6i"]
-radius = 48.0
-height = 96.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_hdckm"]
+radius = 49.163
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yinq6"]
 size = Vector2(24, 78)
@@ -30,14 +28,14 @@ texture = ExtResource("2_crus4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_54u5p")
+shape = SubResource("CircleShape2D_jnnao")
 
 [node name="AttackArea" type="Area2D" parent="."]
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_lph6i")
+shape = SubResource("CircleShape2D_hdckm")
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -78,6 +76,10 @@ shape = SubResource("RectangleShape2D_owvyb")
 
 [node name="SwoopTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

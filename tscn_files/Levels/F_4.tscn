@@ -1,12 +1,15 @@
-[gd_scene load_steps=6 format=4 uid="uid://r4ohillk204q"]
+[gd_scene load_steps=7 format=4 uid="uid://r4ohillk204q"]
 
 [ext_resource type="TileSet" uid="uid://ddxp2wtfvpun5" path="res://Game_Sprites/Tilemaps/fire_area_V2.tres" id="1_kmvom"]
+[ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_m67bj"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_nopuu"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_trng1"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_26be5"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="5_knusv"]
 
 [node name="Level" type="Node2D"]
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_m67bj")]
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("2_nopuu")]
 position = Vector2(242, -8)

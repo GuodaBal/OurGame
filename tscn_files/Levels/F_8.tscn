@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=4 uid="uid://cjwus661nek68"]
+[gd_scene load_steps=8 format=4 uid="uid://cjwus661nek68"]
 
 [ext_resource type="TileSet" uid="uid://ddxp2wtfvpun5" path="res://Game_Sprites/Tilemaps/fire_area_V2.tres" id="1_if6nq"]
+[ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_ohiwe"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_s77op"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_epn3b"]
 [ext_resource type="PackedScene" uid="uid://l442d7hfs4ha" path="res://tscn_files/health_boost.tscn" id="4_fyk8p"]
@@ -8,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="6_xw6bp"]
 
 [node name="Level" type="Node2D"]
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_ohiwe")]
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("2_s77op")]
 position = Vector2(-131, 703)

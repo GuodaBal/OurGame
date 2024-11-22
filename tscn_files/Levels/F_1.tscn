@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://fvcxk3ymmrkr"]
+[gd_scene load_steps=10 format=4 uid="uid://fvcxk3ymmrkr"]
 
+[ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_nlglg"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_yccts"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_ixqpu"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_yk3c6"]
@@ -10,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="8_sscdr"]
 
 [node name="Level2" type="Node2D"]
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_nlglg")]
 
 [node name="SpawnArea" parent="." instance=ExtResource("3_yccts")]
 position = Vector2(-997, 848)

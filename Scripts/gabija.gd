@@ -22,7 +22,7 @@ var hp = 40
 @onready var jumpEndTimer := $JumpEndTimer as Timer
 var gravityStrength = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var playerPostion = get_parent().get_parent().get_node("MainCharacter").position
+@onready var playerPostion = get_parent().get_node("MainCharacter").position
 var distance_margin = 20
 var range = 1000
 
@@ -63,7 +63,7 @@ func _physics_process(delta: float) -> void:
 		isExhaustedTimer.start()
 	velocity += gravity * delta
 	
-	playerPostion = get_parent().get_parent().get_node("MainCharacter").position
+	playerPostion = get_parent().get_node("MainCharacter").position
 	
 	#jump when close enough to wall
 	#falling speed needs to be faster than running speed, direction depends on gravity

@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp5yhk5ietk7x"]
+[gd_scene load_steps=4 format=3 uid="uid://cp5yhk5ietk7x"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_aq6xk"]
-[ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_vhprj"]
 [ext_resource type="PackedScene" uid="uid://cm2o2u51ewval" path="res://tscn_files/ui_health_overlay.tscn" id="4_tic8s"]
 [ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="5_p83lu"]
 
@@ -9,9 +8,6 @@
 script = ExtResource("1_aq6xk")
 
 [node name="UIOverlay" parent="." instance=ExtResource("4_tic8s")]
-
-[node name="MainCharacter" parent="." instance=ExtResource("2_vhprj")]
-position = Vector2(332, 853)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_p83lu")

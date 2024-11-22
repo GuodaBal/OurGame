@@ -10,15 +10,13 @@ func _ready() -> void:
 		print_debug("loaded")
 		if not FileAccess.file_exists("user://savegame.save"):
 			print_debug("no file")
-		var save_nodes = get_tree().get_nodes_in_group("Persist")
-		for i in save_nodes:
-			i.load_data()
 		GlobalVariables.load_data()
-	
 	previousLevel = str(GlobalVariables.starting_level)
 	#add level
 	var instance = load("res://tscn_files/Levels/" + str(GlobalVariables.starting_level) + ".tscn").instantiate()
 	add_child(instance)
+	if GlobalVariables.load:
+		get_tree().get_nodes_in_group("Player")[0].load_data()
 	AudioPlayer.stop()
 	if(AudioManager.current_music == null):	
 		AudioManager.current_music = audio
@@ -42,10 +40,30 @@ func switchLevel(nextLevel):
 func switchLevelDeferred(nextLevel):
 	var instance = load("res://tscn_files/Levels/" + nextLevel + ".tscn").instantiate()
 	var deleteLevel
+	var newLevel
 	for child in get_children():
 		if "Level" in child.name:
 			deleteLevel = child
+	#Saving enemies that are alive in scene
+	GlobalVariables.AliveEnemies[str(deleteLevel.scene_file_path)] = []
+	for child in deleteLevel.get_children():
+		if child.is_in_group("Enemy"):
+			GlobalVariables.AliveEnemies[str(deleteLevel.scene_file_path)].append(child.name)
 	remove_child(deleteLevel)
 	deleteLevel.queue_free()
 	add_child(instance)
 	previousLevel = nextLevel
+	#Getting rid of enemies that are dead in new scene
+	for child in get_children():
+		if "Level" in child.name:
+			newLevel = child
+	if GlobalVariables.AliveEnemies.has(str(newLevel.scene_file_path)):
+		#If there are no enemies, chance to respawn
+		if GlobalVariables.AliveEnemies[str(newLevel.scene_file_path)].is_empty():
+			for child in newLevel.get_children():
+				if child.is_in_group("Enemy") and randf_range(0,1) > 0.2:
+					child.queue_free()
+		else:
+			for child in newLevel.get_children():
+				if child.is_in_group("Enemy") and !GlobalVariables.AliveEnemies[str(newLevel.scene_file_path)].has(child.name):
+					child.queue_free()

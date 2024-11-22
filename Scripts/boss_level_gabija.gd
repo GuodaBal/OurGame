@@ -116,10 +116,7 @@ func switch_scene():
 	AudioManager.play_music(GabijaAF)
 
 func _on_ready() -> void:
-	print_debug(GlobalVariables.GabijaDone)
-	print_debug(AudioManager.current_music)
 	if(GlobalVariables.GabijaDone):
 		AudioManager.play_music(GabijaAF)
-		
 	else:
 		AudioManager.play_music(GabijaBe)

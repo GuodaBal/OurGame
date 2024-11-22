@@ -5,6 +5,7 @@ var starting_level = "starting_level"
 var GabijaDone = false
 var MedeinaDone = false
 var PerkunasDone = false
+var AliveEnemies = {}
 
 func reset():
 	load = false
@@ -12,13 +13,15 @@ func reset():
 	GabijaDone = false
 	MedeinaDone = false
 	PerkunasDone = false
+	AliveEnemies = {}
 	
 func save_data():
 	var save_dict = {
 		"starting_level" : starting_level,
 		"GabijaDone" : GabijaDone,
 		"MedeinaDone" : MedeinaDone,
-		"PerkunasDone" : PerkunasDone
+		"PerkunasDone" : PerkunasDone,
+		"AliveEnemies" : AliveEnemies
 	}
 	return save_dict
 	

@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://biofrt6isi87b"]
+[gd_scene load_steps=9 format=4 uid="uid://biofrt6isi87b"]
 
+[ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_dplmf"]
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="1_wijav"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_pkpfv"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_gjyb2"]
@@ -9,6 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_cn058"]
 
 [node name="Level2" type="Node2D"]
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_dplmf")]
+position = Vector2(0.000244141, 0.00012207)
+scale = Vector2(1, 1)
 
 [node name="Area2D" parent="." instance=ExtResource("1_wijav")]
 position = Vector2(2892, 1216)

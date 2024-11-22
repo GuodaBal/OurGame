@@ -9,7 +9,7 @@ var damage = 1
 @onready var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var sprite := $Sprite2D as Sprite2D
 @onready var attackTimer := $AttackTimer as Timer
-@onready var playerPostion = get_parent().get_parent().get_node("MainCharacter").position
+@onready var playerPostion = get_parent().get_node("MainCharacter").position
 @onready var obsDetectorLeft := $ObstacleDetectorLeft as Area2D
 @onready var obsDetectorRight := $ObstacleDetectorRight as Area2D
 @onready var flyHeight := $FlyHeight as RayCast2D
@@ -17,7 +17,7 @@ var damage = 1
 @onready var attackAreaLeft := $AttackAreaLeft as Area2D
 @onready var attackAreaRight := $AttackAreaRight as Area2D
 @onready var swoopTimer := $SwoopTimer as Timer
-
+@onready var navigation := $NavigationAgent2D as NavigationAgent2D
 
 var swoop_target : Vector2
 var swoop_duration = 0.5
@@ -35,57 +35,66 @@ var sprite_scale
 var margin = 7
 var initial
 
+var attackRange = 100
+
 func _ready() -> void:
 	sprite_scale = sprite.scale.x
 
 
 func _physics_process(delta: float) -> void:
 
-	playerPostion = get_parent().get_parent().get_node("MainCharacter").position
+	playerPostion = get_parent().get_node("MainCharacter").position
 	playerPostion.y-=30
 	playerPostion.x+=10
 	
-	movement_cooldown -= delta  # Update cooldown timer
-		# Add a hover effect to make movement less robotic
-	y_hover_offset = sin(Time.get_ticks_msec() / 1000.0) * 5.0
-	if swoopTimer.is_stopped():
-		if movement_cooldown <= 0.0:
-			if !obsDetectorLeft.get_overlapping_bodies().is_empty():
-				velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				movement_cooldown = COOLDOWN_TIME
-			elif !obsDetectorRight.get_overlapping_bodies().is_empty():
-				velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				movement_cooldown = COOLDOWN_TIME
-			elif flyHeight.is_colliding():# and flyHeight.get_collider().get_class() != "CharacterBody2D":
-				velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				movement_cooldown = COOLDOWN_TIME
-			elif position.y  - playerPostion.y < -100:
-				velocity.y = lerp(velocity.y, FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				movement_cooldown = COOLDOWN_TIME
-			elif position.y  - playerPostion.y > 100:
-				velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				movement_cooldown = COOLDOWN_TIME
-			else:
-				velocity.y = lerp(velocity.y, y_hover_offset, SMOOTHING_FACTOR)
-			if playerPostion.x - position.x > margin:
-				velocity.x = FLY_SPEED
-			elif playerPostion.x - position.x < -margin:
-				velocity.x = -FLY_SPEED
-			else:
-				velocity.x = 0
-		if velocity.x > 0:
-		#print_debug(velocity.x)
-			sprite.scale.x = -sprite_scale
-		elif velocity.x < 0:
-	#		print_debug(velocity.x)
-			sprite.scale.x = sprite_scale
-		velocity += knockback
-	if swoopTimer.is_stopped() and attackTimer.is_stopped() and attackAreaLeft.has_overlapping_bodies() and attackAreaLeft.get_overlapping_bodies().any(Check_if_player) and attackAreaLeft.get_overlapping_bodies().all(Check_if_obstacle):
-		swoopTimer.start()
-		start_attack()
-	if swoopTimer.is_stopped() and attackTimer.is_stopped() and attackAreaRight.has_overlapping_bodies() and attackAreaRight.get_overlapping_bodies().any(Check_if_player) and attackAreaRight.get_overlapping_bodies().all(Check_if_obstacle):
-		swoopTimer.start()
-		start_attack()
+	navigation.target_position = playerPostion
+	if (position - playerPostion).length() < attackRange:
+		velocity = Vector2.ZERO
+	else:
+		var dir = position.direction_to(navigation.get_next_path_position()).normalized()
+		velocity = dir * FLY_SPEED
+	
+	#movement_cooldown -= delta  # Update cooldown timer
+		## Add a hover effect to make movement less robotic
+	#y_hover_offset = sin(Time.get_ticks_msec() / 1000.0) * 5.0
+	#if swoopTimer.is_stopped():
+		#if movement_cooldown <= 0.0:
+			#if !obsDetectorLeft.get_overlapping_bodies().is_empty():
+				#velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+				#movement_cooldown = COOLDOWN_TIME
+			#elif !obsDetectorRight.get_overlapping_bodies().is_empty():
+				#velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+				#movement_cooldown = COOLDOWN_TIME
+			#elif flyHeight.is_colliding():# and flyHeight.get_collider().get_class() != "CharacterBody2D":
+				#velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+				#movement_cooldown = COOLDOWN_TIME
+			#elif position.y  - playerPostion.y < -100:
+				#velocity.y = lerp(velocity.y, FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+				#movement_cooldown = COOLDOWN_TIME
+			#elif position.y  - playerPostion.y > 100:
+				#velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
+				#movement_cooldown = COOLDOWN_TIME
+			#else:
+				#velocity.y = lerp(velocity.y, y_hover_offset, SMOOTHING_FACTOR)
+			#if playerPostion.x - position.x > margin:
+				#velocity.x = FLY_SPEED
+			#elif playerPostion.x - position.x < -margin:
+				#velocity.x = -FLY_SPEED
+			#else:
+				#velocity.x = 0
+		#if velocity.x > 0:
+		##print_debug(velocity.x)
+			#sprite.scale.x = -sprite_scale
+		#elif velocity.x < 0:
+	##		print_debug(velocity.x)
+			#sprite.scale.x = sprite_scale
+		#velocity += knockback
+	#if swoopTimer.is_stopped() and attackTimer.is_stopped() and attackAreaLeft.has_overlapping_bodies() and attackAreaLeft.get_overlapping_bodies().any(Check_if_player) and attackAreaLeft.get_overlapping_bodies().all(Check_if_obstacle):
+		#swoopTimer.start()
+		#start_attack()
+	#if swoopTimer.is_stopped() and attackTimer.is_stopped() and attackAreaRight.has_overlapping_bodies() and attackAreaRight.get_overlapping_bodies().any(Check_if_player) and attackAreaRight.get_overlapping_bodies().all(Check_if_obstacle):
+		#swoopTimer.start()
+		#start_attack()
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 	
@@ -122,15 +131,17 @@ func Check_if_obstacle(body):
 	return body.get_class() != "TileMapLayer"
 	
 func start_attack():
-	initial = position
-	var newPosition = Vector2(playerPostion.x, playerPostion.y - 48)
-	initial.x= playerPostion.x + playerPostion.x - position.x
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", newPosition, swoop_duration)
-	tween.set_ease(Tween.EASE_IN_OUT)
+	#initial = position
+	#var newPosition = Vector2(playerPostion.x, playerPostion.y - 48)
+	#initial.x= playerPostion.x + playerPostion.x - position.x
+	#var tween = get_tree().create_tween()
+	#tween.tween_property(self, "position", newPosition, swoop_duration)
+	#tween.set_ease(Tween.EASE_IN_OUT)
+	pass
 
 
 func _on_swoop_timer_timeout() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "position", initial, swoop_duration)
-	tween.set_ease(Tween.EASE_IN_OUT)
+	#var tween = get_tree().create_tween()
+	#tween.tween_property(self, "position", initial, swoop_duration)
+	#tween.set_ease(Tween.EASE_IN_OUT)
+	pass

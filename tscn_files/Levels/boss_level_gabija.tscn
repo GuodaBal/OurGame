@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://c83o4uejxjvsx"]
+[gd_scene load_steps=11 format=4 uid="uid://c83o4uejxjvsx"]
 
 [ext_resource type="Script" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
+[ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_20n8p"]
 [ext_resource type="TileSet" uid="uid://ddxp2wtfvpun5" path="res://Game_Sprites/Tilemaps/fire_area_V2.tres" id="2_k4axs"]
 [ext_resource type="PackedScene" uid="uid://n0byngr2sw2r" path="res://tscn_files/gabija.tscn" id="3_0oha5"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_hgj5o"]
@@ -22,6 +23,8 @@ point_count = 3
 
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_cdcpk")
+
+[node name="MainCharacter" parent="." instance=ExtResource("2_20n8p")]
 
 [node name="BottomFireRight" type="Node2D" parent="."]
 position = Vector2(1728, 1344)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://1sey47rltk7t"]
+[gd_scene load_steps=7 format=4 uid="uid://pmgyv3qhyncu"]
 
 [ext_resource type="TileSet" uid="uid://cq2hddhv66jv7" path="res://Game_Sprites/Tilemaps/fire_area_prev.tres" id="1_r7r4y"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="2_yvser"]
