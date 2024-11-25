@@ -3,6 +3,7 @@ extends Node
 
 var previousLevel = "";
 @onready var audio = $AudioStreamPlayer
+@onready var transition = $AnimationPlayer as AnimationPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#load data
@@ -35,8 +36,15 @@ func changePreviousLevel(levelName):
 func getPreviousLevel():
 	return previousLevel
 	
+func done():
+	transition.play("Fade_in")
 func switchLevel(nextLevel):
+	transition.play("Fade_out")
+	await transition.animation_finished
 	call_deferred("switchLevelDeferred", nextLevel)
+
+	
+	#transition.play("Fade_out")
 func switchLevelDeferred(nextLevel):
 	var instance = load("res://tscn_files/Levels/" + nextLevel + ".tscn").instantiate()
 	var deleteLevel
