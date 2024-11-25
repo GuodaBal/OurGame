@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://br6uins0i4hue"]
+[gd_scene load_steps=5 format=3 uid="uid://br6uins0i4hue"]
 
 [ext_resource type="Script" path="res://Scripts/bat_enemy.gd" id="1_awle0"]
 [ext_resource type="Texture2D" uid="uid://dfycwik6nig78" path="res://Game_Sprites/Enemy/Bat.png" id="2_crus4"]
@@ -8,15 +8,6 @@ radius = 39.2046
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hdckm"]
 radius = 49.163
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yinq6"]
-size = Vector2(24, 78)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2ask"]
-size = Vector2(106, 123)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_owvyb"]
-size = Vector2(103, 123)
 
 [node name="BatEnemy" type="CharacterBody2D" groups=["Enemy"]]
 collision_mask = 7
@@ -42,45 +33,15 @@ wait_time = 2.0
 one_shot = true
 autostart = true
 
-[node name="ObstacleDetectorRight" type="Area2D" parent="."]
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetectorRight"]
-position = Vector2(44, 0)
-shape = SubResource("RectangleShape2D_yinq6")
-
-[node name="ObstacleDetectorLeft" type="Area2D" parent="."]
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ObstacleDetectorLeft"]
-position = Vector2(-36, -0.5)
-shape = SubResource("RectangleShape2D_yinq6")
-
-[node name="FlyHeight" type="RayCast2D" parent="."]
-target_position = Vector2(0, 100)
-collision_mask = 4
-
-[node name="AttackAreaLeft" type="Area2D" parent="."]
-collision_mask = 7
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackAreaLeft"]
-position = Vector2(-86, 37.5)
-shape = SubResource("RectangleShape2D_m2ask")
-
-[node name="AttackAreaRight" type="Area2D" parent="."]
-collision_mask = 7
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackAreaRight"]
-position = Vector2(86.5, 37.5)
-shape = SubResource("RectangleShape2D_owvyb")
-
-[node name="SwoopTimer" type="Timer" parent="."]
-one_shot = true
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
 debug_enabled = true
 
+[node name="UpdateTarget" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
-[connection signal="timeout" from="SwoopTimer" to="." method="_on_swoop_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
+[connection signal="timeout" from="UpdateTarget" to="." method="_on_update_target_timeout"]

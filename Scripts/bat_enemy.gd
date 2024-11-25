@@ -1,109 +1,52 @@
 extends CharacterBody2D
 
 
-const FLY_SPEED = 150.0
+const SPEED_WANDER = 100.0
+const SPEED_FOLLOW = 150.0
+const SPEED_ATTACK = 200.0
+var current_speed
 var hp = 6
 var damage = 1
 
 #@onready var animation := $AnimationPlayer as AnimationPlayer
-@onready var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
 @onready var sprite := $Sprite2D as Sprite2D
-@onready var attackTimer := $AttackTimer as Timer
-@onready var playerPostion = get_parent().get_node("MainCharacter").position
-@onready var obsDetectorLeft := $ObstacleDetectorLeft as Area2D
-@onready var obsDetectorRight := $ObstacleDetectorRight as Area2D
-@onready var flyHeight := $FlyHeight as RayCast2D
+@onready var attackTimer := $AttackTimer as Timer #Time between attacks
+@onready var playerPosition = get_parent().get_node("MainCharacter").position
 @onready var attackArea := $AttackArea as Area2D
-@onready var attackAreaLeft := $AttackAreaLeft as Area2D
-@onready var attackAreaRight := $AttackAreaRight as Area2D
-@onready var swoopTimer := $SwoopTimer as Timer
 @onready var navigation := $NavigationAgent2D as NavigationAgent2D
 
-var swoop_target : Vector2
-var swoop_duration = 0.5
-
 var knockback = Vector2.ZERO
-
-var y_hover_offset = 0.0
-
-# Smoothing factor for lerp-based transitions
-const SMOOTHING_FACTOR = 0.5
-var movement_cooldown = 0.0
-const COOLDOWN_TIME = 0.2  # Cooldown before
-
 var sprite_scale
-var margin = 7
-var initial
 
-var attackRange = 100
+var attackRange = 200
+var range = 600
+var attacking = false
 
 func _ready() -> void:
 	sprite_scale = sprite.scale.x
+	var rndpos = Vector2(position.x + randf_range(-200, 200), position.y + randf_range(-100, 100)) 
+	navigation.target_position = rndpos
+	current_speed = SPEED_WANDER
 
 
 func _physics_process(delta: float) -> void:
 
-	playerPostion = get_parent().get_node("MainCharacter").position
-	playerPostion.y-=30
-	playerPostion.x+=10
+	playerPosition = get_parent().get_node("MainCharacter").position
+	playerPosition.y-=30
+	playerPosition.x+=10
 	
-	navigation.target_position = playerPostion
-	if (position - playerPostion).length() < attackRange:
-		velocity = Vector2.ZERO
-	else:
-		var dir = position.direction_to(navigation.get_next_path_position()).normalized()
-		velocity = dir * FLY_SPEED
-	
-	#movement_cooldown -= delta  # Update cooldown timer
-		## Add a hover effect to make movement less robotic
-	#y_hover_offset = sin(Time.get_ticks_msec() / 1000.0) * 5.0
-	#if swoopTimer.is_stopped():
-		#if movement_cooldown <= 0.0:
-			#if !obsDetectorLeft.get_overlapping_bodies().is_empty():
-				#velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				#movement_cooldown = COOLDOWN_TIME
-			#elif !obsDetectorRight.get_overlapping_bodies().is_empty():
-				#velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				#movement_cooldown = COOLDOWN_TIME
-			#elif flyHeight.is_colliding():# and flyHeight.get_collider().get_class() != "CharacterBody2D":
-				#velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				#movement_cooldown = COOLDOWN_TIME
-			#elif position.y  - playerPostion.y < -100:
-				#velocity.y = lerp(velocity.y, FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				#movement_cooldown = COOLDOWN_TIME
-			#elif position.y  - playerPostion.y > 100:
-				#velocity.y = lerp(velocity.y, -FLY_SPEED + y_hover_offset, SMOOTHING_FACTOR)
-				#movement_cooldown = COOLDOWN_TIME
-			#else:
-				#velocity.y = lerp(velocity.y, y_hover_offset, SMOOTHING_FACTOR)
-			#if playerPostion.x - position.x > margin:
-				#velocity.x = FLY_SPEED
-			#elif playerPostion.x - position.x < -margin:
-				#velocity.x = -FLY_SPEED
-			#else:
-				#velocity.x = 0
-		#if velocity.x > 0:
-		##print_debug(velocity.x)
-			#sprite.scale.x = -sprite_scale
-		#elif velocity.x < 0:
-	##		print_debug(velocity.x)
-			#sprite.scale.x = sprite_scale
-		#velocity += knockback
-	#if swoopTimer.is_stopped() and attackTimer.is_stopped() and attackAreaLeft.has_overlapping_bodies() and attackAreaLeft.get_overlapping_bodies().any(Check_if_player) and attackAreaLeft.get_overlapping_bodies().all(Check_if_obstacle):
-		#swoopTimer.start()
-		#start_attack()
-	#if swoopTimer.is_stopped() and attackTimer.is_stopped() and attackAreaRight.has_overlapping_bodies() and attackAreaRight.get_overlapping_bodies().any(Check_if_player) and attackAreaRight.get_overlapping_bodies().all(Check_if_obstacle):
-		#swoopTimer.start()
-		#start_attack()
+	if (position - playerPosition).length() < attackRange && attackTimer.is_stopped():
+		current_speed = SPEED_ATTACK
+		attacking = true
+	var dir = position.direction_to(navigation.get_next_path_position()).normalized()
+	velocity = dir * current_speed
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
-	
+
 func take_damage(damage: int, knockback_strength: int, character_position: Vector2):
 	hp-=damage
 	var direction = position - character_position
 	knockback = direction.normalized() * knockback_strength*50
-	#knockback = lerp(knockback, Vector2.ZERO, 0.1)
-	#sprite.scale.y = -sprite_scale
 	if hp <= 0:
 		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
 			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
@@ -112,6 +55,7 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 		queue_free()
 		
 func attack(body):
+	attacking = false
 	body.take_damage(damage, 5, position)
 	attackTimer.start()
 
@@ -124,24 +68,20 @@ func _on_attack_timer_timeout():
 		if body.is_in_group("Player"):
 			attack(body)
 			
-func Check_if_player(body):
-	return body.is_in_group("Player")
-
-func Check_if_obstacle(body):
-	return body.get_class() != "TileMapLayer"
+func _on_update_target_timeout() -> void:
+	if !attacking:
+		if (position - playerPosition).length() < range && attackTimer.is_stopped():
+			navigation.target_position = playerPosition
+			current_speed = SPEED_FOLLOW
+		#Checks if previous target has been reached, or if the bat has stopped (gotten stuck in a corner)
+		elif abs((position - navigation.target_position).length()) < attackRange || get_real_velocity().length() < 6:
+			var rndpos = Vector2(position.x + randf_range(-500, 500), position.y + randf_range(-500, 500)) 
+			navigation.target_position = rndpos
+			current_speed = SPEED_WANDER
+	else:
+		navigation.target_position = playerPosition
 	
-func start_attack():
-	#initial = position
-	#var newPosition = Vector2(playerPostion.x, playerPostion.y - 48)
-	#initial.x= playerPostion.x + playerPostion.x - position.x
-	#var tween = get_tree().create_tween()
-	#tween.tween_property(self, "position", newPosition, swoop_duration)
-	#tween.set_ease(Tween.EASE_IN_OUT)
-	pass
 
 
-func _on_swoop_timer_timeout() -> void:
-	#var tween = get_tree().create_tween()
-	#tween.tween_property(self, "position", initial, swoop_duration)
-	#tween.set_ease(Tween.EASE_IN_OUT)
-	pass
+func _on_navigation_agent_2d_target_reached() -> void:
+	attacking = false
