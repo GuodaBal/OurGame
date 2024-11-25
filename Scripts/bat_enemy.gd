@@ -39,14 +39,14 @@ func _physics_process(delta: float) -> void:
 		current_speed = SPEED_ATTACK
 		attacking = true
 	var dir = position.direction_to(navigation.get_next_path_position()).normalized()
-	velocity = dir * current_speed
+	velocity = dir * current_speed + knockback
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 
 func take_damage(damage: int, knockback_strength: int, character_position: Vector2):
 	hp-=damage
 	var direction = position - character_position
-	knockback = direction.normalized() * knockback_strength*50
+	knockback = direction.normalized() * knockback_strength*200
 	if hp <= 0:
 		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
 			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
