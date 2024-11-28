@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://btnbw77n5dw1u"]
+[gd_scene load_steps=10 format=4 uid="uid://btnbw77n5dw1u"]
 
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_s418v"]
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="2_6s6y2"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" path="res://Scripts/node_2d.gd" id="6_u6smp"]
 [ext_resource type="TileSet" uid="uid://ix2qjy0bbbvf" path="res://Game_Sprites/Tilemaps/in_between_V2.tres" id="7_3w1qs"]
 [ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_n4237"]
-[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="10_ddxra"]
 
 [node name="Level5" type="Node2D"]
 
@@ -63,8 +62,5 @@ tile_set = ExtResource("5_n3lro")
 [node name="SpawnArea3" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(942, 851)
 correctLevel = "starting_level"
-
-[node name="Spider" parent="." instance=ExtResource("10_ddxra")]
-position = Vector2(606, 817)
 
 [connection signal="ready" from="Node2D" to="Node2D" method="_on_ready"]
