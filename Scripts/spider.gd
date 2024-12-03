@@ -18,25 +18,22 @@ var knockback = Vector2.ZERO
 var margin = 100 #How far away the player has to be to follow
 var range = 300 #Range to start following player
 var last_direction = 0
-var shoot_force = 2000
+var shoot_force = 1000
 
 func _physics_process(delta: float) -> void:
 	playerPosition = get_parent().get_node("MainCharacter").position
 	velocity.y += gravity * delta
-	if abs(playerPosition.y - position.y) < range:
-		if floor_detector.is_colliding() and not obsticle_detector.is_colliding():
-			if abs(playerPosition.x - position.x) > margin:
-				last_direction = sign(playerPosition.x - position.x)
-				velocity.x = WALK_SPEED * last_direction
-				flip.scale.x = -last_direction
-			else:
-				velocity.x = 0
-		#If can't move forward and player is in opposite direction, flip
-		elif (last_direction > 0 and playerPosition.x - position.x < -margin) or (last_direction < 0 and playerPosition.x - position.x > margin):
-			velocity.x = WALK_SPEED * -last_direction
-			flip.scale.x = last_direction
+	if abs(playerPosition.y - position.y) < range and floor_detector.is_colliding() and not obsticle_detector.is_colliding():
+		if abs(playerPosition.x - position.x) > margin:
+			last_direction = sign(playerPosition.x - position.x)
+			velocity.x = WALK_SPEED * last_direction
+			flip.scale.x = -last_direction
 		else:
 			velocity.x = 0
+	#If can't move forward and player is in opposite direction, flip
+	elif (last_direction > 0 and playerPosition.x - position.x < -margin) or (last_direction < 0 and playerPosition.x - position.x > margin):
+		velocity.x = WALK_SPEED * -last_direction
+		flip.scale.x = last_direction
 	else:
 		velocity.x = 0
 	velocity += knockback
@@ -60,7 +57,7 @@ func _on_attack_timer_timeout():
 	if abs(playerPosition.y - position.y) < range:
 		var projectile = preload("res://tscn_files/poison_projectile.tscn").instantiate()
 		spawner.add_child(projectile)
-		projectile.apply_impulse(Vector2(last_direction, 0)*shoot_force)
+		projectile.apply_impulse(Vector2(last_direction, -0.2)*shoot_force)
 		#Guarantees player cannot stand on enemy without taking damage
 		for body in rebound.get_overlapping_bodies():
 			if body.is_in_group("Player"):
