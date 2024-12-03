@@ -37,13 +37,26 @@ func getPreviousLevel():
 	return previousLevel
 	
 func done():
+	var can_play = true
+	for node in get_tree().current_scene.get_children():
+		print_debug(node)
+		if "Level" in node.name:
+			print_debug("children")
+			for child in node.get_children():
+				print_debug(child)
+				if child is CanvasModulate:
+					can_play = false
+	if can_play:
+		print_debug("can")
+		transition.play("Fade_in")
+	else:
+		print_debug("cannot")
+		transition.play("Hide")
 	transition.play("Fade_in")
 func switchLevel(nextLevel):
 	transition.play("Fade_out")
 	await transition.animation_finished
 	call_deferred("switchLevelDeferred", nextLevel)
-
-	
 	#transition.play("Fade_out")
 func switchLevelDeferred(nextLevel):
 	var instance = load("res://tscn_files/Levels/" + nextLevel + ".tscn").instantiate()

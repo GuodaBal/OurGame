@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://cg6xkwun78ucg"]
+[gd_scene load_steps=24 format=3 uid="uid://cg6xkwun78ucg"]
 
 [ext_resource type="Texture2D" uid="uid://s4ttrlyfkedb" path="res://Game_Sprites/Animation_New/Bow_Animation_End.png" id="1_ubkdt"]
 [ext_resource type="Texture2D" uid="uid://dhdt38r7524uw" path="res://Game_Sprites/Animation_New/Bow_Animation_Start.png" id="2_6wh02"]
+[ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="3_q247v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7npp"]
 atlas = ExtResource("1_ubkdt")
@@ -153,3 +154,8 @@ animations = [{
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_slui3")
 animation = &"Start"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(200, -30)
+scale = Vector2(10, 10)
+texture = ExtResource("3_q247v")
