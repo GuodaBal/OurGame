@@ -52,7 +52,6 @@ func done():
 	else:
 		print_debug("cannot")
 		transition.play("Hide")
-	transition.play("Fade_in")
 func switchLevel(nextLevel):
 	transition.play("Fade_out")
 	await transition.animation_finished
