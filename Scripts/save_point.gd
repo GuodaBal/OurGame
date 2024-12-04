@@ -3,6 +3,7 @@ extends Area2D
 
 func save_data():
 	print_debug("saved")
+	GlobalVariables.load = true 
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_data = {}
 	# Save nodes in the "Persist" group.
