@@ -1,6 +1,6 @@
 [gd_scene load_steps=218 format=3 uid="uid://bo5x65xs813fn"]
 
-[ext_resource type="Script" path="res://Main_character.gd" id="1_1g26s"]
+[ext_resource type="Script" path="res://Scripts/main_character.gd" id="1_7nded"]
 [ext_resource type="Texture2D" uid="uid://b5ksyuqjbmhsc" path="res://Game_Sprites/Animation_New/Niya_Animation_Running_Start.png" id="2_6bxp1"]
 [ext_resource type="Texture2D" uid="uid://d245at48hdqhu" path="res://Game_Sprites/Animation_New/Niya_Animation_Attack_With_1.png" id="2_m5lbk"]
 [ext_resource type="Texture2D" uid="uid://ideivgou7fmp" path="res://Game_Sprites/Animation_New/Niya_Animation_Attack_With_2.png" id="3_ccxpc"]
@@ -1451,18 +1451,18 @@ animations = [{
 size = Vector2(172.222, 350)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mq1j"]
-radius = 20.03
+radius = 22.0
 height = 75.5401
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oopqj"]
-size = Vector2(40, 15.5)
+size = Vector2(42, 15.5)
 
 [node name="MainCharacter" type="CharacterBody2D" groups=["Persist", "Player"]]
 visibility_layer = 3
 collision_mask = 5
 platform_floor_layers = 4294967042
 platform_wall_layers = 4
-script = ExtResource("1_1g26s")
+script = ExtResource("1_7nded")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 show_behind_parent = true
@@ -1475,7 +1475,7 @@ color = Color(0.16, 0.2, 0.198, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_hlje6")
-animation = &"Idle"
+animation = &"Running"
 
 [node name="Attack" type="Area2D" parent="AnimatedSprite2D"]
 collision_mask = 3
@@ -1488,7 +1488,7 @@ shape = SubResource("RectangleShape2D_bwdsa")
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.9, 6.23)
+position = Vector2(-4.76837e-07, 5)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("CapsuleShape2D_8mq1j")
 
@@ -1501,7 +1501,7 @@ position_smoothing_speed = 10.0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollision"]
-position = Vector2(-2, 37.25)
+position = Vector2(0, 37.25)
 shape = SubResource("RectangleShape2D_oopqj")
 
 [node name="AttackTimer" type="Timer" parent="."]

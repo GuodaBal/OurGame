@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cm2o2u51ewval"]
 
-[ext_resource type="Script" path="res://tscn_files/ui_overlay.gd" id="1_efi5x"]
+[ext_resource type="Script" path="res://Scripts/ui_overlay.gd" id="1_nv50j"]
 [ext_resource type="Texture2D" uid="uid://dfmtq612ixohd" path="res://Sprites/UI Sprite/Hearts.png" id="2_g4xl5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cueww"]
@@ -67,7 +67,7 @@ animations = [{
 }]
 
 [node name="UIOverlay" type="CanvasLayer"]
-script = ExtResource("1_efi5x")
+script = ExtResource("1_nv50j")
 
 [node name="first" type="AnimatedSprite2D" parent="."]
 position = Vector2(48, 48)

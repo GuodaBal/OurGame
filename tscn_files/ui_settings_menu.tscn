@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://biff12c7vb888"]
 
-[ext_resource type="Script" path="res://tscn_files/ui_settings_menu.gd" id="1_cmsfx"]
+[ext_resource type="Script" path="res://Scripts/ui_settings_menu.gd" id="1_2ejto"]
 
 [sub_resource type="Theme" id="Theme_8yoo2"]
 CheckButton/constants/icon_max_width = 500
@@ -16,7 +16,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_cmsfx")
+script = ExtResource("1_2ejto")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 2
