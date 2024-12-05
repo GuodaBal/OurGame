@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2a6p8rxv1igu"]
+
+[ext_resource type="Texture2D" uid="uid://47qrxft02imd" path="res://Game_Sprites/Boss/Nature_God.png" id="1_gyjvb"]
+[ext_resource type="Script" path="res://Scripts/medeina.gd" id="2_226k6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nnis1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gyjvb")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Medeina" type="AnimatedSprite2D"]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_nnis1")
+animation = &"idle"
+script = ExtResource("2_226k6")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="StageTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -29,8 +29,12 @@ func _on_body_entered(body: Node) -> void:
 	#print_debug("hit")
 	#print_debug(center_of_mass.x)
 	#print_debug(inertia)
+	print_debug("a")
+	for group in body.get_groups():
+		print_debug(group)
 	if body.is_in_group("Enemy") or body.is_in_group("Player"):
 		body.take_damage(attack_damage, 3, position)
 	if body.is_in_group("Burnable"):
+		print_debug("send burn")
 		body.burn()
 	queue_free()
