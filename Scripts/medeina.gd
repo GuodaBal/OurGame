@@ -58,6 +58,8 @@ func _on_attack_timer_timeout() -> void:
 func changeStage():
 	if stage == 3: #Fight ends
 		queue_free()
+		GlobalVariables.MedeinaDone = true
+		get_parent().stop_attacks()
 	else:
 		stage+=1
 		get_parent().block_sun()

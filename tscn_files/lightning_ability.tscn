@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cea5n48jbtdkj"]
+
+[ext_resource type="Script" path="res://Scripts/lightning_ability.gd" id="1_1e61e"]
+[ext_resource type="Texture2D" uid="uid://8jxxkv0ln2v1" path="res://Game_Sprites/Abilities/Lightning.png" id="1_8mfqf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6rko"]
+radius = 135.03
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kt3eu"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("1_8mfqf")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 5.0
+}]
+
+[node name="LightningAbility" type="Area2D"]
+script = ExtResource("1_1e61e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_f6rko")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_kt3eu")
+animation = &"spawn"
+frame_progress = 1.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

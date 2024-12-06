@@ -11,7 +11,7 @@ func _process(delta: float) -> void:
 	else:
 		animation.play()
 func move(direction, coef):
-	animation.play("move_"+direction, -1, 20)
+	animation.play("move_"+direction, -1, 7/coef)
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

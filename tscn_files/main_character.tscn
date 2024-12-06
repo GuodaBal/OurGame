@@ -1485,6 +1485,13 @@ collision_mask = 3
 position = Vector2(141.667, 41.6667)
 shape = SubResource("RectangleShape2D_bwdsa")
 
+[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
+position = Vector2(1061.11, 0)
+scale = Vector2(5.55, 5.55)
+target_position = Vector2(0, 400)
+collision_mask = 4
+hit_from_inside = true
+
 [node name="PointLight2D" type="PointLight2D" parent="."]
 visible = false
 
@@ -1495,6 +1502,7 @@ shape = SubResource("CapsuleShape2D_8mq1j")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(0, -100)
+zoom = Vector2(1.2, 1.2)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 

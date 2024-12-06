@@ -6,6 +6,9 @@ var GabijaDone = false
 var MedeinaDone = false
 var PerkunasDone = false
 var AliveEnemies = {}
+var attack_damage = 2
+var arrow_damage = 1
+var thunder_damage = 3
 
 func reset():
 	load = false
@@ -14,6 +17,9 @@ func reset():
 	MedeinaDone = false
 	PerkunasDone = false
 	AliveEnemies = {}
+	var attack_damage = 2
+	var arrow_damage = 1
+	var thunder_damage = 3
 	
 func save_data():
 	var save_dict = {
