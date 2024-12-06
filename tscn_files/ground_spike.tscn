@@ -3,57 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://3cat06o2fndd" path="res://Sprites/Bosses/Gabija/small_metal_spike_03.png" id="1_7nlhn"]
 [ext_resource type="Script" path="res://Scripts/ground_spike.gd" id="1_jg1gg"]
 
-[sub_resource type="Animation" id="Animation_xb86o"]
-resource_name = "spawn"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.3, 0.0151515), Vector2(0.3, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 32.5), Vector2(0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionPolygon2D:polygon")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [PackedVector2Array(0, 33, -8, 33, 8, 33), PackedVector2Array(0, -24, -9, 26, 9, 26)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HitArea/CollisionPolygon2D:polygon")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [PackedVector2Array(-9, 33, 0, 33, 9, 33), PackedVector2Array(-10, 26, 0, -28, 10, 26)]
-}
-
 [sub_resource type="Animation" id="Animation_wf1xe"]
 length = 0.001
 tracks/0/type = "value"
@@ -95,14 +44,65 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HitArea/CollisionPolygon2D:polygon")
+tracks/3/path = NodePath("HitArea:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-9, 33, 0, 33, 9, 33)]
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xb86o"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.3, 0.0151515), Vector2(0.3, 0.080808), Vector2(0.3, 0.289715), Vector2(0.3, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 32.5), Vector2(0, 30.3333), Vector2(0, 23.4394), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionPolygon2D:polygon")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(0, 33, -8, 33, 8, 33), PackedVector2Array(0, 29.2, -8.06667, 32.5333, 8.06667, 32.5333), PackedVector2Array(0, 17.1091, -8.27879, 31.0485, 8.27879, 31.0485), PackedVector2Array(0, -24, -9, 26, 9, 26)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitArea:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.766667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 59), Vector2(0, 55.2), Vector2(-1.49012e-08, 40.6), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fisdj"]
@@ -131,7 +131,7 @@ polygon = PackedVector2Array(0, -27, -10, 26, 10, 26)
 [node name="HitArea" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitArea"]
-polygon = PackedVector2Array(-9, 33, 0, 33, 9, 33)
+polygon = PackedVector2Array(-1, -21, 0, -26, 1, -21)
 
 [node name="DeathTimer" type="Timer" parent="."]
 wait_time = 3.0

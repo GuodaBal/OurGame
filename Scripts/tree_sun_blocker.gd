@@ -9,5 +9,4 @@ func burn():
 	animation.play("burning")
 	await animation.animation_finished
 	get_parent().unblock_sun()
-	print_debug("should_burn")
 	#queue_free()

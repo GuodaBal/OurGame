@@ -9,6 +9,8 @@ var state = "wait"
 var attackLength = 10
 var waitLength = 3
 
+var lastWasDark = false #If last attack was darkness, don't cast it again (gets repetitive)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -25,14 +27,24 @@ func _on_attack_timer_timeout() -> void:
 		match whichAttack:
 			0:
 				get_parent().start_spike_attack()
-				attackTimer.start(10)
+				attackTimer.start(15)
+				lastWasDark = false
 			1:
-				get_parent().block_sun()
-				attackTimer.start(2)
+				get_parent().start_rabbit_attack()
+				lastWasDark = false
+				attackTimer.start(15)
+			2:
+				attackTimer.start(0.1)
+				if !lastWasDark:
+					get_parent().block_sun()
+					lastWasDark = true
+					attackTimer.start(0.1)
 		state = "attack"
 	#Finished attacking, switching to waiting
 	elif state == "attack":
 		attackTimer.start(3)
+		if lastWasDark:
+			attackTimer.start(1.5)
 		if !stageTimer.is_stopped():
 			state = "wait"
 		else:
@@ -40,13 +52,18 @@ func _on_attack_timer_timeout() -> void:
 		get_parent().stop_attacks()
 	elif state == "changeStage":
 		changeStage()
-		attackTimer.start(3)
+		attackTimer.start(5)
 		state = "wait"
 
 func changeStage():
-	stage+=1
-	print_debug("aaaaaaaa")
-	#Environment changes
-	#Attack speed changes
-	get_parent().coef = stage
-	stageTimer.start()
+	if stage == 3: #Fight ends
+		queue_free()
+	else:
+		stage+=1
+		get_parent().block_sun()
+		#Attack speed changes
+		get_parent().coef *= 1.4
+		stageTimer.start()
+		#Environment changes
+		await get_tree().process_frame
+		get_parent().change_environment(stage)
