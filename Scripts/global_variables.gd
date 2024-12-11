@@ -1,7 +1,8 @@
 extends Node
 
-var load = false
-var starting_level = "starting_level"
+var load = false #If a save file is being loaded
+var starting_level = "starting_level" #Level that the player spawns in
+#Progress
 var GabijaDone = false
 var MedeinaDone = false
 var PerkunasDone = false
@@ -17,9 +18,9 @@ func reset():
 	MedeinaDone = false
 	PerkunasDone = false
 	AliveEnemies = {}
-	var attack_damage = 2
-	var arrow_damage = 1
-	var thunder_damage = 3
+	attack_damage = 2
+	arrow_damage = 1
+	thunder_damage = 3
 	
 func save_data():
 	var save_dict = {
@@ -27,7 +28,10 @@ func save_data():
 		"GabijaDone" : GabijaDone,
 		"MedeinaDone" : MedeinaDone,
 		"PerkunasDone" : PerkunasDone,
-		"AliveEnemies" : AliveEnemies
+		"AliveEnemies" : AliveEnemies,
+		"attack_damage" : attack_damage,
+		"arrow_damage" : arrow_damage,
+		"thunder_damage" : thunder_damage
 	}
 	return save_dict
 	

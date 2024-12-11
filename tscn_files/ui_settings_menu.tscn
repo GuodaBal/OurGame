@@ -61,6 +61,7 @@ text = " Controls"
 alignment = 0
 
 [node name="Graphics" type="GridContainer" parent="CanvasLayer"]
+visible = false
 offset_left = 900.0
 offset_top = 200.0
 offset_right = 1740.0
@@ -105,18 +106,19 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "on"
 
-[node name="BrightnessLabel" type="Label" parent="CanvasLayer/Graphics"]
-visible = false
+[node name="ZoomLabel" type="Label" parent="CanvasLayer/Graphics"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
-text = "Brightness"
+text = "Camera zoom"
 
-[node name="BrightnessSlider" type="HSlider" parent="CanvasLayer/Graphics"]
-visible = false
+[node name="ZoomSlider" type="HSlider" parent="CanvasLayer/Graphics"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 4
-value = 50.0
+min_value = 0.5
+max_value = 1.5
+step = 0.05
+value = 1.0
 
 [node name="Sound" type="GridContainer" parent="CanvasLayer"]
 visible = false
@@ -166,7 +168,6 @@ vertical_icon_alignment = 0
 expand_icon = true
 
 [node name="ControlsScroll" type="ScrollContainer" parent="CanvasLayer"]
-visible = false
 custom_minimum_size = Vector2(892, 800)
 offset_left = 900.0
 offset_top = 200.0
@@ -270,6 +271,7 @@ text = "Back"
 [connection signal="pressed" from="CanvasLayer/Options/Controls" to="." method="_on_controls_pressed"]
 [connection signal="item_selected" from="CanvasLayer/Graphics/ResolutionSelector" to="." method="_on_resolution_selector_item_selected"]
 [connection signal="pressed" from="CanvasLayer/Graphics/FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Graphics/ZoomSlider" to="." method="_on_zoom_slider_value_changed"]
 [connection signal="ready" from="CanvasLayer/Sound/MusicSlider" to="." method="_on_music_slider_ready"]
 [connection signal="value_changed" from="CanvasLayer/Sound/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="visibility_changed" from="CanvasLayer/Sound/MusicSlider" to="." method="_on_music_slider_visibility_changed"]

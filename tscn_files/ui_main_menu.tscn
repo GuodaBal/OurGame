@@ -13,6 +13,9 @@ script/source = "extends Control
 func _ready() -> void:
 	if !FileAccess.file_exists(\"user://savegame.save\"):
 		$VBoxContainer3/ContinueButton.disabled = true
+	if FileAccess.file_exists(\"user://settings.save\"):
+		Settings.load_data()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

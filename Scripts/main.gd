@@ -8,7 +8,6 @@ var previousLevel = "";
 func _ready() -> void:
 	#load data
 	if GlobalVariables.load:
-		print_debug("loaded")
 		if not FileAccess.file_exists("user://savegame.save"):
 			print_debug("no file")
 		GlobalVariables.load_data()

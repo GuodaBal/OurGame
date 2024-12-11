@@ -5,6 +5,9 @@ extends Control
 @onready var SoundMenu := $CanvasLayer/Sound
 @onready var ControlsMenu := $CanvasLayer/ControlsScroll
 
+@onready var Fullscreen := $CanvasLayer/Graphics/FullscreenButton
+@onready var ResolutionSelector := $CanvasLayer/Graphics/ResolutionSelector
+
 @onready var LeftButton := $CanvasLayer/ControlsScroll/Controls/LeftButton
 @onready var RightButton := $CanvasLayer/ControlsScroll/Controls/RightButton
 @onready var JumpButton := $CanvasLayer/ControlsScroll/Controls/JumpButton
@@ -33,10 +36,14 @@ func _ready() -> void:
 	$CanvasLayer/Options/Graphics.button_group = group
 	$CanvasLayer/Options/Sound.button_group = group
 	$CanvasLayer/Options/Controls.button_group = group
+	#Makes the setting buttons display the chosen settings
 	if DisplayServer.window_get_mode() == 3:
-		$CanvasLayer/Graphics/FullscreenButton.text = "On"
+		Fullscreen.text = "On"
 	else:
-		$CanvasLayer/Graphics/FullscreenButton.text = "Off"
+		Fullscreen.text = "Off"
+	for index in ResolutionSelector.item_count:
+		if ResolutionSelector.get_item_text(index) == str(Settings.resolution_x)+"x"+str(Settings.resolution_y):
+			ResolutionSelector.select(index)
 	LeftButton.text = InputMap.action_get_events("move_left")[0].as_text().replace("(Physical)", "")
 	RightButton.text = InputMap.action_get_events("move_right")[0].as_text().replace("(Physical)", "")
 	JumpButton.text = InputMap.action_get_events("jump")[0].as_text().replace("(Physical)", "")
@@ -45,6 +52,9 @@ func _ready() -> void:
 	Ability2Button.text = InputMap.action_get_events("nature_ability")[0].as_text().replace("(Physical)", "")
 	Ability3Button.text = InputMap.action_get_events("thunder_ability")[0].as_text().replace("(Physical)", "")
 	MenuOpenButton.text = InputMap.action_get_events("menu")[0].as_text().replace("(Physical)", "")
+	$CanvasLayer/Graphics/ZoomSlider.value = Settings.zoom
+	$CanvasLayer/Sound/MusicSlider.value = Settings.music_volume
+	$CanvasLayer/Sound/MiscSlider.value = Settings.misc_volume
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -70,6 +80,10 @@ func _on_controls_pressed() -> void:
 	ControlsMenu.visible = true
 
 func _on_back_pressed() -> void:
+	var save_file = FileAccess.open("user://settings.save", FileAccess.WRITE)
+	var save_data = {}
+	save_data["settings"] = Settings.save_data()
+	save_file.store_string(JSON.stringify(save_data))
 	if get_parent().get_parent() == null:
 		get_tree().change_scene_to_file("res://tscn_files/ui_main_menu.tscn")
 	else:
@@ -79,14 +93,17 @@ func _on_back_pressed() -> void:
 func _on_fullscreen_button_pressed() -> void:
 	if DisplayServer.window_get_mode() == 3:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		$CanvasLayer/Graphics/FullscreenButton.text = "Off"
+		Fullscreen.text = "Off"
+		Settings.fullscreen = false
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		$CanvasLayer/Graphics/FullscreenButton.text = "On"
-	var index = $CanvasLayer/Graphics/ResolutionSelector.get_selected_id()
-	var resolution = $CanvasLayer/Graphics/ResolutionSelector.get_item_text(index).split("x")
+		Fullscreen.text = "On"
+		Settings.fullscreen = true
+	var index = ResolutionSelector.get_selected_id()
+	var resolution = ResolutionSelector.get_item_text(index).split("x")
 	get_window().size = Vector2i(int(resolution[0]),int(resolution[1]))
 	get_window().move_to_center()
+
 
 
 func _on_left_button_pressed() -> void:
@@ -142,29 +159,33 @@ func _input(event: InputEvent) -> void:
 		InputMap.action_add_event(action, userPressedKey)
 		waiting_for_input = false
 		button.text = userPressedKey.as_text()
+		Settings.controls[action] = userPressedKey.as_text()
 		
 
 
 func _on_resolution_selector_item_selected(index: int) -> void:
-	var resolution = $CanvasLayer/Graphics/ResolutionSelector.get_item_text(index).split("x")
+	var resolution = ResolutionSelector.get_item_text(index).split("x")
 	get_window().size = Vector2i(int(resolution[0]),int(resolution[1]))
 	get_window().move_to_center()
+	Settings.resolution_x = resolution[0]
+	Settings.resolution_y = resolution[1]
 
 
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioManager.set_music_volume(linear_to_db(value))
 	AudioServer.set_bus_volume_db(Music_Bus_ID, linear_to_db(value))
 	AudioServer.set_bus_mute(Music_Bus_ID, value < .05)
+	Settings.music_volume = value
 
 
 func _on_misc_slider_value_changed(value: float) -> void:
 	AudioManager.set_SFX_volume(linear_to_db(value))
 	AudioServer.set_bus_volume_db(SFX_Bus_ID, linear_to_db(value))
 	AudioServer.set_bus_mute(SFX_Bus_ID, value < .05)
+	Settings.misc_volume = value
 
 func _on_music_slider_ready() -> void:
 	$CanvasLayer/Sound/MusicSlider.value = db_to_linear( AudioManager.get_music_volume())
-	
 
 func _on_misc_slider_ready() -> void:
 	$CanvasLayer/Sound/MiscSlider.value = db_to_linear( AudioManager.get_SFX_volume())
@@ -182,3 +203,11 @@ func _on_mute_button_pressed() -> void:
 	
 	AudioManager.set_mute_state(mute_pressed)  # išsaugokite naują būseną
 	AudioServer.set_bus_mute(Master_Bus_ID, mute_pressed)  # pritaikykite naują būseną garsui
+	Settings.mute = mute_pressed
+
+
+func _on_zoom_slider_value_changed(value: float) -> void:
+	for node in get_parent().get_children():
+		if "Level" in node.name:
+			node.get_node("MainCharacter").change_zoom(value)
+	Settings.zoom = value

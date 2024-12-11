@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxbqwn7b3j37q"]
+
+[ext_resource type="Texture2D" uid="uid://cebgthnaeapbq" path="res://Sprites/Bosses/Screenshot 2024-12-11 163142.png" id="1_byfmc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rbk8q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_byfmc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Angel" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_rbk8q")
+animation = &"idle"
