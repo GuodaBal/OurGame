@@ -11,6 +11,11 @@ var platforms= [[975, null], [925, null], [875, null]] as Array #Platforms spawn
 #three heights. Stores platforms or null if line not busy
 
 
+func _ready() -> void:
+	if GlobalVariables.MedeinaDone:
+		end_level()
+		$Medeina.queue_free()
+
 func start_spike_attack():
 	spikeIntervalTimer.start()
 func start_rabbit_attack():
