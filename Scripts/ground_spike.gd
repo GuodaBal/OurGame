@@ -12,3 +12,7 @@ func _on_hit_area_body_entered(body: Node2D) -> void:
 
 func _on_death_timer_timeout() -> void:
 	queue_free()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	$DeathTimer.start()

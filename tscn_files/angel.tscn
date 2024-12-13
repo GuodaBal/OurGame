@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cxbqwn7b3j37q"]
+[gd_scene load_steps=4 format=3 uid="uid://cxbqwn7b3j37q"]
 
 [ext_resource type="Texture2D" uid="uid://cebgthnaeapbq" path="res://Sprites/Bosses/Screenshot 2024-12-11 163142.png" id="1_byfmc"]
+[ext_resource type="Script" path="res://Scripts/angel.gd" id="2_sguas"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rbk8q"]
 animations = [{
@@ -16,3 +17,15 @@ animations = [{
 [node name="Angel" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_rbk8q")
 animation = &"idle"
+script = ExtResource("2_sguas")
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="SpeedCoef" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="SpeedCoef" to="." method="_on_speed_coef_timeout"]

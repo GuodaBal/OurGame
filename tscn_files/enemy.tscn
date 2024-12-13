@@ -1,28 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://7lbe4hly8swj"]
+[gd_scene load_steps=6 format=3 uid="uid://7lbe4hly8swj"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_beq4l"]
 [ext_resource type="Texture2D" uid="uid://c3ahgddnb8j4a" path="res://Game_Sprites/Enemy/Wolf.png" id="2_157uu"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_6vk4a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_157uu")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_157uu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_du2wl"]
-size = Vector2(1700, 1000)
+size = Vector2(12800, 20800)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8kcm"]
 radius = 28.0
 height = 98.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
-collision_mask = 7
+collision_mask = 5
 script = ExtResource("1_beq4l")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_157uu")
+sprite_frames = SubResource("SpriteFrames_6vk4a")
+animation = &"attack"
 
-[node name="Attack" type="Area2D" parent="Sprite2D"]
+[node name="Attack" type="Area2D" parent="AnimatedSprite2D"]
+scale = Vector2(0.05, 0.05)
 collision_mask = 5
 
-[node name="AttackCollision" type="CollisionShape2D" parent="Sprite2D/Attack"]
-position = Vector2(-250, 99.9999)
+[node name="AttackCollision" type="CollisionShape2D" parent="AnimatedSprite2D/Attack"]
+position = Vector2(-18000, 4000)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_du2wl")
 
@@ -57,5 +78,5 @@ target_position = Vector2(30, 0)
 collision_mask = 7
 hit_from_inside = true
 
-[connection signal="body_entered" from="Sprite2D/Attack" to="." method="_on_attack_body_entered"]
+[connection signal="body_entered" from="AnimatedSprite2D/Attack" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -2,14 +2,17 @@ extends Node
 
 var load = false #If a save file is being loaded
 var starting_level = "starting_level" #Level that the player spawns in
-#Progress
+
 var GabijaDone = false
 var MedeinaDone = false
 var PerkunasDone = false
 var AliveEnemies = {}
-var attack_damage = 2
-var arrow_damage = 1
-var thunder_damage = 3
+#neccessary to keep player consistant between screens
+var attack_damage = 10.125
+var arrow_damage = 3.375
+var thunder_damage = 6.75
+var currentHP = 24
+var maxHP = 24
 
 func reset():
 	load = false
@@ -18,10 +21,11 @@ func reset():
 	MedeinaDone = false
 	PerkunasDone = false
 	AliveEnemies = {}
-	attack_damage = 2
-	arrow_damage = 1
-	thunder_damage = 3
-	
+	attack_damage = 10.125
+	arrow_damage = 3.375
+	thunder_damage = 6.75
+	currentHP = 24
+	maxHP = 24
 func save_data():
 	var save_dict = {
 		"starting_level" : starting_level,
@@ -31,7 +35,9 @@ func save_data():
 		"AliveEnemies" : AliveEnemies,
 		"attack_damage" : attack_damage,
 		"arrow_damage" : arrow_damage,
-		"thunder_damage" : thunder_damage
+		"thunder_damage" : thunder_damage,
+		"currentHP" : currentHP,
+		"maxHP" : maxHP
 	}
 	return save_dict
 	

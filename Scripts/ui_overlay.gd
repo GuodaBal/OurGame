@@ -24,8 +24,9 @@ func set_hp(amount):
 		all[i].play("4")
 		i+=1
 	amount -= floor(amount/4)*4
-	all[i].play(str(amount))
-	i+=1
-	while i < all.size():
-		all[i].play("0")
+	if i != 6:
+		all[i].play(str(amount))
 		i+=1
+		while i < all.size():
+			all[i].play("0")
+			i+=1

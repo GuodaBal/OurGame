@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://fvcxk3ymmrkr"]
+[gd_scene load_steps=11 format=4 uid="uid://fvcxk3ymmrkr"]
 
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_nlglg"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_yccts"]
@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="6_sl7w2"]
 [ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="7_71gbe"]
 [ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="8_sscdr"]
+[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="10_5a16s"]
 
 [node name="Level2" type="Node2D"]
 
@@ -17,9 +18,6 @@
 [node name="SpawnArea" parent="." instance=ExtResource("3_yccts")]
 position = Vector2(-997, 848)
 correctLevel = "starting_level"
-
-[node name="Enemy" parent="." instance=ExtResource("4_ixqpu")]
-position = Vector2(2575, 1494)
 
 [node name="Enemy2" parent="." instance=ExtResource("4_ixqpu")]
 position = Vector2(4939, 588)
@@ -83,3 +81,6 @@ position = Vector2(1935, -1253)
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("8_sscdr")]
 position = Vector2(1144, 1691)
+
+[node name="Wendigo" parent="." instance=ExtResource("10_5a16s")]
+position = Vector2(2445, 1452)

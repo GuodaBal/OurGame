@@ -1,26 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://csmu3pwabn6vc"]
+[gd_scene load_steps=7 format=3 uid="uid://csmu3pwabn6vc"]
 
+[ext_resource type="Script" path="res://Scripts/wendigo.gd" id="1_2s4nl"]
 [ext_resource type="Texture2D" uid="uid://qrxtqo70s41f" path="res://Game_Sprites/Enemy/Vendigo.png" id="1_htkws"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ford3"]
-size = Vector2(375, 1062.5)
+size = Vector2(450, 1062.5)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8ou75"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_htkws")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_htkws")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_liqxb"]
 radius = 725.0
 height = 1850.0
 
-[node name="Wendigo" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_hafxt"]
+radius = 51.0392
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Wendigo" type="CharacterBody2D" groups=["Enemy"]]
+collision_mask = 5
+script = ExtResource("1_2s4nl")
+
+[node name="Flip" type="Node2D" parent="."]
+
+[node name="Attack" type="Area2D" parent="Flip"]
 scale = Vector2(0.08, 0.08)
-texture = ExtResource("1_htkws")
 
-[node name="Attack" type="Area2D" parent="Sprite2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Attack"]
-position = Vector2(-775, 6.24999)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Flip/Attack"]
+position = Vector2(-737.5, 6.24999)
 shape = SubResource("RectangleShape2D_ford3")
+
+[node name="FloorDetector" type="RayCast2D" parent="Flip"]
+position = Vector2(-64, 0)
+scale = Vector2(0.08, 0.08)
+target_position = Vector2(0, 987.5)
+collision_mask = 4
+
+[node name="ObstacleDetector" type="RayCast2D" parent="Flip"]
+position = Vector2(0, -34.37)
+scale = Vector2(0.08, 0.08)
+target_position = Vector2(-900, 0)
+collision_mask = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flip"]
+scale = Vector2(0.08, 0.08)
+sprite_frames = SubResource("SpriteFrames_8ou75")
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.08, 0.08)
 shape = SubResource("CapsuleShape2D_liqxb")
+
+[node name="Rebound" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rebound"]
+position = Vector2(0, -33)
+shape = SubResource("CircleShape2D_hafxt")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Flip/Attack" to="." method="_on_attack_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

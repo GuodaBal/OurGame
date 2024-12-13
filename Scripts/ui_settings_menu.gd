@@ -16,6 +16,7 @@ extends Control
 @onready var Ability2Button := $CanvasLayer/ControlsScroll/Controls/Ability2Button
 @onready var Ability3Button := $CanvasLayer/ControlsScroll/Controls/Ability3Button
 @onready var MenuOpenButton := $CanvasLayer/ControlsScroll/Controls/MenuButton
+@onready var SaveButton := $CanvasLayer/ControlsScroll/Controls/SaveButton
 
 var Music_Bus_ID = AudioManager.get_MusicID()
 var SFX_Bus_ID = AudioManager.get_SFXID()
@@ -36,6 +37,7 @@ func _ready() -> void:
 	$CanvasLayer/Options/Graphics.button_group = group
 	$CanvasLayer/Options/Sound.button_group = group
 	$CanvasLayer/Options/Controls.button_group = group
+	
 	#Makes the setting buttons display the chosen settings
 	if DisplayServer.window_get_mode() == 3:
 		Fullscreen.text = "On"
@@ -52,27 +54,20 @@ func _ready() -> void:
 	Ability2Button.text = InputMap.action_get_events("nature_ability")[0].as_text().replace("(Physical)", "")
 	Ability3Button.text = InputMap.action_get_events("thunder_ability")[0].as_text().replace("(Physical)", "")
 	MenuOpenButton.text = InputMap.action_get_events("menu")[0].as_text().replace("(Physical)", "")
+	SaveButton.text = InputMap.action_get_events("save")[0].as_text().replace("(Physical)", "")
 	$CanvasLayer/Graphics/ZoomSlider.value = Settings.zoom
 	$CanvasLayer/Sound/MusicSlider.value = Settings.music_volume
 	$CanvasLayer/Sound/MiscSlider.value = Settings.misc_volume
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 
 func _on_graphics_pressed() -> void:
 	GraphicsMenu.visible = true
 	SoundMenu.visible = false
 	ControlsMenu.visible = false
 
-
 func _on_sound_pressed() -> void:
 	GraphicsMenu.visible = false
 	SoundMenu.visible = true
 	ControlsMenu.visible = false
-
 
 func _on_controls_pressed() -> void:
 	GraphicsMenu.visible = false
@@ -89,7 +84,6 @@ func _on_back_pressed() -> void:
 	else:
 		queue_free()
 
-
 func _on_fullscreen_button_pressed() -> void:
 	if DisplayServer.window_get_mode() == 3:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
@@ -104,8 +98,6 @@ func _on_fullscreen_button_pressed() -> void:
 	get_window().size = Vector2i(int(resolution[0]),int(resolution[1]))
 	get_window().move_to_center()
 
-
-
 func _on_left_button_pressed() -> void:
 	waiting_for_input = true
 	action = "move_left"
@@ -116,42 +108,41 @@ func _on_right_button_pressed() -> void:
 	action = "move_right"
 	button = RightButton
 
-
 func _on_jump_button_pressed() -> void:
 	waiting_for_input = true
 	action = "jump"
 	button = JumpButton
-
 
 func _on_attack_button_pressed() -> void:
 	waiting_for_input = true
 	action = "attack"
 	button = AttackButton
 
-
 func _on_ability_1_button_pressed() -> void:
 	waiting_for_input = true
 	action = "fire_ability"
 	button = Ability1Button
-
 
 func _on_ability_2_button_pressed() -> void:
 	waiting_for_input = true
 	action = "nature_ability"
 	button = Ability2Button
 
-
 func _on_ability_3_button_pressed() -> void:
 	waiting_for_input = true
 	action = "thunder_ability"
 	button = Ability3Button
 
-
 func _on_menu_button_pressed() -> void:
 	waiting_for_input = true
 	action = "menu"
 	button = MenuOpenButton
-
+	
+func _on_save_button_pressed() -> void:
+	waiting_for_input = true
+	action = "save"
+	button = SaveButton
+	
 func _input(event: InputEvent) -> void:
 	if (waiting_for_input and event is InputEventKey and event.pressed) or (waiting_for_input and event is InputEventMouseButton and event.pressed):
 		var userPressedKey = event
@@ -162,7 +153,6 @@ func _input(event: InputEvent) -> void:
 		Settings.controls[action] = userPressedKey.as_text()
 		
 
-
 func _on_resolution_selector_item_selected(index: int) -> void:
 	var resolution = ResolutionSelector.get_item_text(index).split("x")
 	get_window().size = Vector2i(int(resolution[0]),int(resolution[1]))
@@ -170,13 +160,11 @@ func _on_resolution_selector_item_selected(index: int) -> void:
 	Settings.resolution_x = resolution[0]
 	Settings.resolution_y = resolution[1]
 
-
 func _on_music_slider_value_changed(value: float) -> void:
 	AudioManager.set_music_volume(linear_to_db(value))
 	AudioServer.set_bus_volume_db(Music_Bus_ID, linear_to_db(value))
 	AudioServer.set_bus_mute(Music_Bus_ID, value < .05)
 	Settings.music_volume = value
-
 
 func _on_misc_slider_value_changed(value: float) -> void:
 	AudioManager.set_SFX_volume(linear_to_db(value))
@@ -191,10 +179,8 @@ func _on_misc_slider_ready() -> void:
 	$CanvasLayer/Sound/MiscSlider.value = db_to_linear( AudioManager.get_SFX_volume())
 
 func _on_mute_button_ready() -> void:
-
 	$CanvasLayer/Sound/MuteButton.button_pressed = mute_press
 	AudioServer.set_bus_mute(Master_Bus_ID, mute_press)  # pritaikykite būseną garsui
-
 
 func _on_mute_button_pressed() -> void:
 	print('mute: ',mute_press)
@@ -204,7 +190,6 @@ func _on_mute_button_pressed() -> void:
 	AudioManager.set_mute_state(mute_pressed)  # išsaugokite naują būseną
 	AudioServer.set_bus_mute(Master_Bus_ID, mute_pressed)  # pritaikykite naują būseną garsui
 	Settings.mute = mute_pressed
-
 
 func _on_zoom_slider_value_changed(value: float) -> void:
 	for node in get_parent().get_children():

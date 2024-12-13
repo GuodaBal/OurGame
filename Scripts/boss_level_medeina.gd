@@ -20,6 +20,7 @@ func stop_attacks():
 	spikeIntervalTimer.stop()
 	platformIntervalTimer.stop()
 	rabbitIntervalTimer.stop()
+	platforms[0] = [975, 925, 875]
 func block_sun():
 	if !sunBlocker.visible:
 		sunBlocker.grow()
@@ -35,24 +36,23 @@ func unblock_sun():
 func _on_spike_interval_timer_timeout() -> void:
 	var instance = load("res://tscn_files/ground_spike.tscn").instantiate()
 	add_child(instance)
-	move_child(instance, 2)
+	move_child(instance, -5)
 	#Some spawn under player, some in random spots
 	if randi()%3 == 0:
-		instance.position = Vector2(get_node("MainCharacter").position.x, 980)
+		instance.position = Vector2(get_node("MainCharacter").position.x, 945)
 	else:
-		instance.position = Vector2(randf_range(500, 1700), 960)
+		instance.position = Vector2(randf_range(500, 1700), 945)
 	instance.spawn(coef)
 	spikeIntervalTimer.start(randf_range(0.9, 1.6)/coef)
 
 
 func _on_platform_interval_timer_timeout() -> void:
-	platforms.shuffle()
 	for platform in platforms:
 		if platform[1] == null:
 			platform[1] =  load("res://tscn_files/moving_platform.tscn").instantiate()
 			add_child(platform[1])
 			platform[1].position.y = platform[0]
-			move_child(platform[1], 2)
+			move_child(platform[1], -5)
 			#Spawns randomly from left or right
 			if randi()%2 == 0:
 				platform[1].move("left", coef)
@@ -60,6 +60,7 @@ func _on_platform_interval_timer_timeout() -> void:
 				platform[1].move("right", coef)
 			break
 	platformIntervalTimer.start(2.5)
+	platforms.shuffle()
 
 
 func _on_rabbit_interval_timer_timeout() -> void:
@@ -77,4 +78,12 @@ func _on_rabbit_interval_timer_timeout() -> void:
 	
 #When stage changes
 func change_environment(stage):
+	await animation.animation_finished or sunBlocker.visible == false
 	get_node("Stage"+str(stage)+"BG").visible = true
+	
+func end_level():
+	stop_attacks()
+	$Before.visible = false
+	$After.visible = true
+	for i in range(1,3):
+		get_node("Stage"+str(i)+"BG").visible = false

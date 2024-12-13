@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_blhjc"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_7844q"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="4_8y3bt"]
-[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="5_hvkwc"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="6_qccta"]
 [ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="7_ws38f"]
+[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="8_0s7mh"]
 
 [node name="Level" type="Node2D"]
 
@@ -31,9 +31,6 @@ nextLevel = "F_10"
 position = Vector2(-905, 1390)
 correctLevel = "F_10"
 
-[node name="Enemy" parent="." instance=ExtResource("5_hvkwc")]
-position = Vector2(80, 1360)
-
 [node name="BatEnemy" parent="." instance=ExtResource("6_qccta")]
 position = Vector2(946, 633)
 
@@ -48,3 +45,6 @@ tile_set = ExtResource("1_4my8k")
 
 [node name="StaticBody2D" parent="." instance=ExtResource("7_ws38f")]
 position = Vector2(-956, 1366)
+
+[node name="Wendigo" parent="." instance=ExtResource("8_0s7mh")]
+position = Vector2(279, 1337)

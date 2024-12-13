@@ -5,14 +5,15 @@
 [ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="3_avc60"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ux4t"]
-size = Vector2(710, 930)
+size = Vector2(710, 955)
 
 [node name="Area2D" type="Area2D" groups=["save_point"]]
 scale = Vector2(0.2, 0.2)
+collision_layer = 4
 script = ExtResource("1_fh2po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5.00001, -4.99998)
+position = Vector2(-5.00001, 7.49997)
 shape = SubResource("RectangleShape2D_5ux4t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

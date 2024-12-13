@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://cp4kne7equl0a"]
+[gd_scene load_steps=8 format=4 uid="uid://cp4kne7equl0a"]
 
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_17a0a"]
 [ext_resource type="TileSet" uid="uid://dnd6gsiwkj58u" path="res://Game_Sprites/Tilemaps/starting_area_V2.tres" id="1_ttwj6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_uwi0w"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_o33ix"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="5_af0tq"]
+[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="7_j8313"]
 
 [node name="Level" type="Node2D"]
 
@@ -35,9 +36,6 @@ nextLevel = "N_3"
 position = Vector2(-1244, 549)
 correctLevel = "N_3"
 
-[node name="Enemy" parent="." instance=ExtResource("4_o33ix")]
-position = Vector2(733, 1237)
-
 [node name="Enemy2" parent="." instance=ExtResource("4_o33ix")]
 position = Vector2(-52, 1137)
 
@@ -51,6 +49,8 @@ tile_map_data = PackedByteArray("AAAjAAwAAgAKAAIAAwAiAAwAAgAKAAIAAwAhAAwAAgAKAAI
 tile_set = ExtResource("1_ttwj6")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 visibility_layer = 33791
 color = Color(0.0253638, 0.0253638, 0.0253638, 1)
+
+[node name="Wendigo" parent="." instance=ExtResource("7_j8313")]
+position = Vector2(656, 1202)

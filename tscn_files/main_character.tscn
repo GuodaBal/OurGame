@@ -1448,7 +1448,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bwdsa"]
-size = Vector2(172.222, 350)
+size = Vector2(277.777, 350)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8mq1j"]
 radius = 22.0
@@ -1476,13 +1476,14 @@ color = Color(0.16, 0.2, 0.198, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_hlje6")
-animation = &"Running"
+animation = &"Attack_w_char_1"
 
 [node name="Attack" type="Area2D" parent="AnimatedSprite2D"]
 collision_mask = 3
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AnimatedSprite2D/Attack"]
-position = Vector2(141.667, 41.6667)
+position = Vector2(194.445, 41.6667)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bwdsa")
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]

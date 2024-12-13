@@ -11,14 +11,6 @@ var waitLength = 3
 
 var lastWasDark = false #If last attack was darkness, don't cast it again (gets repetitive)
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_attack_timer_timeout() -> void:
 	#Finished waiting, switching to attacking
@@ -57,9 +49,9 @@ func _on_attack_timer_timeout() -> void:
 
 func changeStage():
 	if stage == 3: #Fight ends
-		queue_free()
 		GlobalVariables.MedeinaDone = true
-		get_parent().stop_attacks()
+		get_parent().end_level()
+		queue_free()
 	else:
 		stage+=1
 		get_parent().block_sun()

@@ -13,4 +13,6 @@ func _on_try_again_pressed():
 		save_file.close()
 		var json = JSON.parse_string(json_string)
 		GlobalVariables.starting_level = json["global"]["starting_level"]
+	else:
+		GlobalVariables.reset()
 	get_tree().change_scene_to_file("res://tscn_files/main.tscn")
