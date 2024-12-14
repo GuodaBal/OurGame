@@ -7,7 +7,7 @@ const max_velocity = 350
 const max_fall_velocity = 600
 var hp = 40
 
-@onready var sprite := $Sprite2D as Sprite2D
+@onready var animation := $AnimatedSprite2D as AnimatedSprite2D
 @onready var wall_detector_left := $DetectLeft as RayCast2D
 @onready var wall_detector_right := $DetectRight as RayCast2D
 @onready var jump_detector_left := $JumpLeft as RayCast2D
@@ -42,17 +42,17 @@ var spawning_spikes = false
 var sprite_scale
 
 func _ready() -> void:
-	sprite_scale = sprite.scale.x
+	sprite_scale = animation.scale.x
 
 func _physics_process(delta: float) -> void:
 	#If it's falling after becoming exhausted, it falls to the opposite direction of the player, so as to not land on them
 	if !isExhaustedTimer.is_stopped() and !is_on_floor():
 		if player_is_to("right") and !wall_detector_left.is_colliding():
 			velocity += left * delta
-			sprite.scale.x = -sprite_scale
+			animation.scale.x = -sprite_scale
 		elif player_is_to("left") and !wall_detector_right.is_colliding():
 			velocity += right  * delta
-			sprite.scale.x = sprite_scale
+			animation.scale.x = sprite_scale
 	#If it's exhausted and on the floor, stops moving
 	if !isExhaustedTimer.is_stopped() and is_on_floor():
 		velocity.x = lerp(velocity.x, 0.0, 0.1)
@@ -79,10 +79,10 @@ func _physics_process(delta: float) -> void:
 			exhaustionTimer.start()
 		if position.x > 1200 and !jump_detector_right.is_colliding():
 			velocity += right * delta
-			sprite.scale.x = sprite_scale
+			animation.scale.x = sprite_scale
 		elif position.x < 750 and !jump_detector_left.is_colliding():
 			velocity += left * delta
-			sprite.scale.x = -sprite_scale
+			animation.scale.x = -sprite_scale
 		else:
 			velocity.x = lerp(velocity.x, 0.0, 0.05)
 	#move opposite direction of player
@@ -93,10 +93,10 @@ func _physics_process(delta: float) -> void:
 		elif !jumping and isExhaustedTimer.is_stopped() and is_on_floor():
 			if player_is_to("left") and !jump_detector_right.is_colliding():
 				velocity += right * delta
-				sprite.scale.x = sprite_scale
+				animation.scale.x = sprite_scale
 			elif player_is_to("right") and !jump_detector_left.is_colliding():
 				velocity += left * delta
-				sprite.scale.x = -sprite_scale
+				animation.scale.x = -sprite_scale
 			else:
 				if state == "down":
 					velocity.x = lerp(velocity.x , 0.0, 0.1)
@@ -117,7 +117,7 @@ func _physics_process(delta: float) -> void:
 				jumpTimer.start()
 				jumpEndTimer.start()
 				jump_direction = left
-				sprite.scale.x = -sprite_scale
+				animation.scale.x = -sprite_scale
 		if jump_detector_right.is_colliding() and jump_detector_right.get_collider() is TileMapLayer and player_is_to("left") and attacking.is_empty():
 			var tile_data=jump_detector_right.get_collider().get_cell_tile_data(jump_detector_right.get_collider().get_coords_for_body_rid(jump_detector_right.get_collider_rid()))
 			if tile_data.get_custom_data_by_layer_id(0)==1:
@@ -125,19 +125,19 @@ func _physics_process(delta: float) -> void:
 				jumpTimer.start()
 				jumpEndTimer.start()
 				jump_direction = right
-				sprite.scale.x = sprite_scale
+				animation.scale.x = sprite_scale
 				
 	#switch gravity when close enough to wall (after jump)
 	if wall_detector_left.is_colliding() and wall_detector_left.get_collider() is TileMapLayer and jumping:# and wall_detector_left.get_collider().get_class() != "CharacterBody2D":
 		var tile_data=wall_detector_left.get_collider().get_cell_tile_data(wall_detector_left.get_collider().get_coords_for_body_rid(wall_detector_left.get_collider_rid()))
 		if tile_data.get_custom_data_by_layer_id(1)==1:
 			switch_gravity("left")
-			sprite.scale.x = -sprite_scale
+			animation.scale.x = -sprite_scale
 	if wall_detector_right.is_colliding() and wall_detector_right.get_collider() is TileMapLayer and jumping:# and !wall_detector_right.get_collider().get_class() != "CharacterBody2D":
 		var tile_data=wall_detector_right.get_collider().get_cell_tile_data(wall_detector_right.get_collider().get_coords_for_body_rid(wall_detector_right.get_collider_rid()))
 		if tile_data.get_custom_data_by_layer_id(1)==1:
 			switch_gravity("right")
-			sprite.scale.x = sprite_scale
+			animation.scale.x = sprite_scale
 		
 	#adjust up direction for gravity to work normally
 	up_direction = -gravity_dir
@@ -156,6 +156,8 @@ func take_damage(damage, knockback_strength, player_position):
 		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 		add_sibling(instance)
 		instance.position = position
+		animation.play("death")
+		await animation.animation_finished
 		queue_free()
 
 #left or right is relative to cat rotation - converts to global

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/save_point.gd" id="1_fh2po"]
 [ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="3_avc60"]
-[ext_resource type="Texture2D" uid="uid://7nuogvgi6uwo" path="res://Game_Sprites/Animation/Campfire/Campfire.png" id="4_u6obr"]
+[ext_resource type="Texture2D" uid="uid://7nuogvgi6uwo" path="res://Game_Sprites/Animation/UI/Campfire.png" id="4_u6obr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ux4t"]
 size = Vector2(710, 955)

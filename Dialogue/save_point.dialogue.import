@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dbdwg2lkbmsqg"
+path="res://.godot/imported/save_point.dialogue-230fada2dd9a97dc157985bf2f38016f.tres"
+
+[deps]
+
+source_file="res://Dialogue/save_point.dialogue"
+dest_files=["res://.godot/imported/save_point.dialogue-230fada2dd9a97dc157985bf2f38016f.tres"]
+
+[params]
+
+defaults=true

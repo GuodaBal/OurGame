@@ -16,3 +16,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		body.take_damage(damage, 0, position)
 	queue_free()
+
+func change_spike_sprite():
+	$Path2D/PathFollow2D/Sprite2D.visible = false
+	$Path2D/PathFollow2D/Sprite2D2.visible = true

@@ -23,6 +23,7 @@ var range = 800
 
 
 func _ready() -> void:
+	animation.play("flying")
 	sprite_scale = animation.scale.x
 	var rndpos = Vector2(position.x + randf_range(-200, 200), position.y + randf_range(-100, 100)) 
 	navigation.target_position = rndpos
@@ -43,6 +44,8 @@ func _physics_process(delta: float) -> void:
 			animation.scale.x = -sprite_scale
 		elif dir.x < -0.2:
 			animation.scale.x = sprite_scale
+	if velocity.length() > 0 and hp > 0:
+		animation.play("flying")
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 
@@ -55,13 +58,15 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 			add_sibling(instance)
 			instance.position = position
+		animation.play("death")
+		await animation.animation_finished
 		queue_free()
 		
 func attack(body):
 	body.take_damage(damage, 5, position)
 	
 func _on_attack_timer_timeout():
-	if (playerPosition - position).length() < attackRange:
+	if (playerPosition - position).length() < attackRange and hp > 0:
 		var spike = preload("res://tscn_files/spike.tscn").instantiate()
 		spawner.add_child(spike)
 		#The position used for navigation is different from the real character position
@@ -70,6 +75,7 @@ func _on_attack_timer_timeout():
 		spike.rotation = position.angle_to_point(charPosition) + deg_to_rad(90)
 		spike.scale = Vector2(0.2, 0.2)
 		spike.speed = 0.5
+		spike.change_spike_sprite()
 		animation.play("attack")
 	attackTimer.start()
 	
@@ -87,6 +93,6 @@ func _on_update_target_timeout() -> void:
 
 
 func _on_attack_area_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and  hp > 0:
 		attack(body)
 		attackTimer.start()

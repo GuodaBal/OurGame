@@ -3,7 +3,7 @@ extends Area2D
 func _ready() -> void:
 	$AnimatedSprite2D.play("default")
 func save_data():
-	print_debug("saved")
+	DialogueManager.show_dialogue_balloon(load("res://Dialogue/save_point.dialogue"), "start")
 	GlobalVariables.load = true 
 	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_data = {}

@@ -1,8 +1,9 @@
-[gd_scene load_steps=52 format=3 uid="uid://b2a6p8rxv1igu"]
+[gd_scene load_steps=64 format=3 uid="uid://b2a6p8rxv1igu"]
 
 [ext_resource type="Texture2D" uid="uid://dvibdmr8tdfgk" path="res://Game_Sprites/Animation/Bosses/NatureBoss/CallingBunnies_NatureBoss.png" id="1_481mr"]
 [ext_resource type="Script" path="res://Scripts/medeina.gd" id="2_226k6"]
 [ext_resource type="Texture2D" uid="uid://bf8hojuep5qck" path="res://Game_Sprites/Animation/Bosses/NatureBoss/CallingSpikes_NatureBoss.png" id="2_ypptx"]
+[ext_resource type="Texture2D" uid="uid://c6mt7qejugg3y" path="res://Game_Sprites/Animation/Death/NatureBoss_Death.png" id="3_wyl0q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7d67"]
 atlas = ExtResource("1_481mr")
@@ -192,6 +193,50 @@ region = Rect2(2048, 1536, 512, 512)
 atlas = ExtResource("2_ypptx")
 region = Rect2(0, 2048, 512, 512)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxnol"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24hjt"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k54d1"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_woa4i"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn0ab"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l2dj"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xflkb"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4o2hi"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mceg"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0eyl0"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkce1"]
+atlas = ExtResource("3_wyl0q")
+region = Rect2(1024, 1024, 512, 512)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_nnis1"]
 animations = [{
 "frames": [{
@@ -344,12 +389,50 @@ animations = [{
 "loop": false,
 "name": &"calling_spikes",
 "speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxnol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24hjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k54d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_woa4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn0ab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l2dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xflkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4o2hi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mceg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0eyl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkce1")
+}],
+"loop": false,
+"name": &"death",
+"speed": 24.0
 }]
 
 [node name="Medeina" type="AnimatedSprite2D"]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_nnis1")
-animation = &"calling_bunnies"
+animation = &"death"
 script = ExtResource("2_226k6")
 
 [node name="AttackTimer" type="Timer" parent="."]

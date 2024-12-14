@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7nuogvgi6uwo"
-path="res://.godot/imported/Campfire.png-a1589451b8c4e8d2b7888b539d62de48.ctex"
+uid="uid://bvhcwkg77wlg1"
+path="res://.godot/imported/Spider_Death.png-34932c0ca03b3ef1f32a1652782b009a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation/UI/Campfire.png"
-dest_files=["res://.godot/imported/Campfire.png-a1589451b8c4e8d2b7888b539d62de48.ctex"]
+source_file="res://Game_Sprites/Animation/Death/Spider_Death.png"
+dest_files=["res://.godot/imported/Spider_Death.png-34932c0ca03b3ef1f32a1652782b009a.ctex"]
 
 [params]
 

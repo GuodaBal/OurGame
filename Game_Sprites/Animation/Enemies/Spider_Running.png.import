@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7nuogvgi6uwo"
-path="res://.godot/imported/Campfire.png-a1589451b8c4e8d2b7888b539d62de48.ctex"
+uid="uid://cjb15tttykulf"
+path="res://.godot/imported/Spider_Running.png-e7e497da612a9304f20fc81eae3e5d97.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation/UI/Campfire.png"
-dest_files=["res://.godot/imported/Campfire.png-a1589451b8c4e8d2b7888b539d62de48.ctex"]
+source_file="res://Game_Sprites/Animation/Enemies/Spider_Running.png"
+dest_files=["res://.godot/imported/Spider_Running.png-e7e497da612a9304f20fc81eae3e5d97.ctex"]
 
 [params]
 

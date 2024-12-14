@@ -13,6 +13,7 @@ var damage = 1
 @onready var attackTimer := $AttackTimer as Timer #How often it shoots the projectile
 @onready var spawner := $Flip/PoisonSpawner as Node2D #Projectile spawn position
 @onready var rebound := $Rebound as Area2D #Stops player from standing on it
+@onready var animation := $Flip/AnimatedSprite2D as AnimatedSprite2D
 
 var knockback = Vector2.ZERO
 var margin = 100 #How far away the player has to be to follow
@@ -36,6 +37,11 @@ func _physics_process(delta: float) -> void:
 		flip.scale.x = last_direction
 	else:
 		velocity.x = 0
+		
+	if velocity.x == 0 and hp > 0:
+		animation.play("standing") 
+	elif !(animation.is_playing() and animation.animation == "running") and hp > 0:
+		animation.play("running") 
 	velocity += knockback
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
@@ -50,6 +56,8 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 			add_sibling(instance)
 			instance.position = position
+		animation.play("death")
+		await animation.animation_finished
 		queue_free()
 
 func _on_attack_timer_timeout():

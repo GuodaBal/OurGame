@@ -1,8 +1,53 @@
-[gd_scene load_steps=49 format=3 uid="uid://cxbqwn7b3j37q"]
+[gd_scene load_steps=61 format=3 uid="uid://cxbqwn7b3j37q"]
 
 [ext_resource type="Texture2D" uid="uid://ccddxm2g1k550" path="res://Game_Sprites/Animation/Bosses/AngelBoss/Flying_AngelBoss.png" id="1_1u14g"]
+[ext_resource type="Texture2D" uid="uid://cqy7slngmcb3v" path="res://Game_Sprites/Animation/Death/AngelBoss_Death.png" id="1_g570j"]
 [ext_resource type="Texture2D" uid="uid://bl13m8nsb52hr" path="res://Game_Sprites/Animation/Bosses/AngelBoss/SpawningEnemies_AngelBoss.png" id="2_bbnbr"]
 [ext_resource type="Script" path="res://Scripts/angel.gd" id="2_sguas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uw8qx"]
+atlas = ExtResource("1_g570j")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmnn8"]
+atlas = ExtResource("1_g570j")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l0ts"]
+atlas = ExtResource("1_g570j")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gd5ti"]
+atlas = ExtResource("1_g570j")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjq66"]
+atlas = ExtResource("1_g570j")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hambu"]
+atlas = ExtResource("1_g570j")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0r80"]
+atlas = ExtResource("1_g570j")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgdnv"]
+atlas = ExtResource("1_g570j")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46h28"]
+atlas = ExtResource("1_g570j")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdb5y"]
+atlas = ExtResource("1_g570j")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kk60n"]
+atlas = ExtResource("1_g570j")
+region = Rect2(1024, 1024, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_13h4p"]
 atlas = ExtResource("1_1u14g")
@@ -184,6 +229,44 @@ region = Rect2(0, 2048, 512, 512)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_uw8qx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmnn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l0ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gd5ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjq66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hambu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0r80")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgdnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46h28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdb5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kk60n")
+}],
+"loop": false,
+"name": &"death",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_13h4p")
 }, {
 "duration": 1.0,
@@ -328,7 +411,7 @@ animations = [{
 [node name="Angel" type="AnimatedSprite2D"]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_rbk8q")
-animation = &"spawning"
+animation = &"death"
 script = ExtResource("2_sguas")
 
 [node name="SpawnTimer" type="Timer" parent="."]

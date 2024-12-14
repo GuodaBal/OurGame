@@ -9,7 +9,7 @@ var hp = 6
 var damage = 1
 
 #@onready var animation := $AnimationPlayer as AnimationPlayer
-@onready var sprite := $Sprite2D as Sprite2D
+@onready var animation := $AnimatedSprite2D as AnimatedSprite2D
 @onready var attackTimer := $AttackTimer as Timer #Time between attacks
 @onready var playerPosition = get_parent().get_node("MainCharacter").position
 @onready var attackArea := $AttackArea as Area2D
@@ -23,10 +23,11 @@ var range = 600
 var attacking = false
 
 func _ready() -> void:
-	sprite_scale = sprite.scale.x
+	sprite_scale = animation.scale.x
 	var rndpos = Vector2(position.x + randf_range(-200, 200), position.y + randf_range(-100, 100)) 
 	navigation.target_position = rndpos
 	current_speed = SPEED_WANDER
+	animation.play("flying")
 
 
 func _physics_process(delta: float) -> void:
@@ -41,9 +42,9 @@ func _physics_process(delta: float) -> void:
 	var dir = position.direction_to(navigation.get_next_path_position()).normalized()
 	velocity = dir * current_speed + knockback
 	if dir.x > 0.2:
-		sprite.scale.x = -sprite_scale
+		animation.scale.x = -sprite_scale
 	elif dir.x < -0.2:
-		sprite.scale.x = sprite_scale
+		animation.scale.x = sprite_scale
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 
@@ -56,6 +57,8 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 			add_sibling(instance)
 			instance.position = position
+		animation.play("death")
+		await animation.animation_finished
 		queue_free()
 		
 func attack(body):

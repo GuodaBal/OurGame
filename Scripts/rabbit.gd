@@ -24,6 +24,7 @@ var state = "running"
 
 func _ready() -> void:
 	sprite_scale = animation.scale.x
+	animation.play("running")
 
 func _physics_process(delta: float) -> void:
 	if state == "jumping" and is_on_floor():
@@ -56,6 +57,8 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 			add_sibling(instance)
 			instance.position = position
+		animation.play("death")
+		await animation.animation_finished
 		queue_free()
 		
 func attack(body):

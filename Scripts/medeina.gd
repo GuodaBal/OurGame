@@ -53,6 +53,8 @@ func changeStage():
 	if stage == 3: #Fight ends
 		GlobalVariables.MedeinaDone = true
 		get_parent().end_level()
+		play("death")
+		await animation_finished
 		queue_free()
 	else:
 		stage+=1

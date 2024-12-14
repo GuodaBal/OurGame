@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://by42b1g5ps2df"]
+[gd_scene load_steps=6 format=3 uid="uid://by42b1g5ps2df"]
 
 [ext_resource type="Script" path="res://Scripts/spike.gd" id="1_41pcs"]
-[ext_resource type="Texture2D" uid="uid://3cat06o2fndd" path="res://Sprites/Bosses/Gabija/small_metal_spike_03.png" id="2_lfll7"]
+[ext_resource type="Texture2D" uid="uid://cj7cmgoa866dt" path="res://Game_Sprites/Tilemaps/Assets/Assets.png" id="2_swrvo"]
 
 [sub_resource type="Curve2D" id="Curve2D_8anm8"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -10000)
 }
 point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0tbt"]
+atlas = ExtResource("2_swrvo")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhqqe"]
+atlas = ExtResource("2_swrvo")
+region = Rect2(640, 128, 128, 128)
 
 [node name="Spike" type="Node2D"]
 script = ExtResource("1_41pcs")
@@ -24,10 +32,15 @@ rotation = 1.5708
 collision_mask = 5
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Path2D/PathFollow2D/Area2D"]
-polygon = PackedVector2Array(33, 28, -33, 28, 0, -28)
+polygon = PackedVector2Array(33, 28, -33, 28, -0.000157356, -44)
 
 [node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
 rotation = 1.5708
-texture = ExtResource("2_lfll7")
+texture = SubResource("AtlasTexture_w0tbt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Path2D/PathFollow2D"]
+visible = false
+rotation = 1.5708
+texture = SubResource("AtlasTexture_hhqqe")
 
 [connection signal="body_entered" from="Path2D/PathFollow2D/Area2D" to="." method="_on_area_2d_body_entered"]

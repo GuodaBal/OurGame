@@ -1,11 +1,120 @@
-[gd_scene load_steps=5 format=3 uid="uid://n0byngr2sw2r"]
+[gd_scene load_steps=19 format=3 uid="uid://n0byngr2sw2r"]
 
 [ext_resource type="Script" path="res://Scripts/gabija.gd" id="1_tjeds"]
-[ext_resource type="Texture2D" uid="uid://eu33635j17s2" path="res://Game_Sprites/Boss/Fire_God.png" id="2_8ayfh"]
+[ext_resource type="Texture2D" uid="uid://c2et521s82vsw" path="res://Game_Sprites/Animation/Death/FireBoss_Death.png" id="2_xdtr6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3satc"]
 radius = 630.0
 height = 1690.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdh2x"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3nry"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85td6"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a6443"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7oujj"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jg24j"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3xq53"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb5xm"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8c21"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rex6r"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm3lb"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fscdq"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tot7"]
+atlas = ExtResource("2_xdtr6")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lgu78"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdh2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3nry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85td6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a6443")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7oujj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jg24j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3xq53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb5xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8c21")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rex6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm3lb")
+}],
+"loop": false,
+"name": &"death",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fscdq")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tot7")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 24.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cceqb"]
 size = Vector2(1000, 220)
@@ -20,9 +129,10 @@ position = Vector2(0, 50)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_3satc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_8ayfh")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3.2, 3.2)
+sprite_frames = SubResource("SpriteFrames_lgu78")
+animation = &"death"
 
 [node name="DetectRight" type="RayCast2D" parent="."]
 position = Vector2(0, 100)

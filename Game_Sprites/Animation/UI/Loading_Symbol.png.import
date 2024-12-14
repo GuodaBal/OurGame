@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7nuogvgi6uwo"
-path="res://.godot/imported/Campfire.png-a1589451b8c4e8d2b7888b539d62de48.ctex"
+uid="uid://dpsq15wh6ja1w"
+path="res://.godot/imported/Loading_Symbol.png-9957bb56f4b3baa007720b3dce47ef50.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation/UI/Campfire.png"
-dest_files=["res://.godot/imported/Campfire.png-a1589451b8c4e8d2b7888b539d62de48.ctex"]
+source_file="res://Game_Sprites/Animation/UI/Loading_Symbol.png"
+dest_files=["res://.godot/imported/Loading_Symbol.png-9957bb56f4b3baa007720b3dce47ef50.ctex"]
 
 [params]
 

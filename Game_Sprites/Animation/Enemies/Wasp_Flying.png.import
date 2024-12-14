@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7nuogvgi6uwo"
-path="res://.godot/imported/Campfire.png-a1589451b8c4e8d2b7888b539d62de48.ctex"
+uid="uid://brkmxn6afl3qj"
+path="res://.godot/imported/Wasp_Flying.png-3bd123fe24ca0870d1258610cddfc1a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation/UI/Campfire.png"
-dest_files=["res://.godot/imported/Campfire.png-a1589451b8c4e8d2b7888b539d62de48.ctex"]
+source_file="res://Game_Sprites/Animation/Enemies/Wasp_Flying.png"
+dest_files=["res://.godot/imported/Wasp_Flying.png-3bd123fe24ca0870d1258610cddfc1a7.ctex"]
 
 [params]
 
