@@ -18,7 +18,7 @@ var damage = 1
 var knockback = Vector2.ZERO
 var sprite_scale
 var margin = 10
-var range = 300
+var range = 650
 var last_direction = 0
 
 func _physics_process(delta: float) -> void:
@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		playerPosition = get_parent().get_node("MainCharacter").position
 		velocity.y += gravity * delta
-		if abs(playerPosition.y - position.y) < range and floor_detector.is_colliding() and not obsticle_detector.is_colliding():
+		if (playerPosition - position).length() < range and floor_detector.is_colliding() and not obsticle_detector.is_colliding():
 			if abs(playerPosition.x - position.x) > margin:
 				last_direction = sign(playerPosition.x - position.x)
 				velocity.x = WALK_SPEED * last_direction

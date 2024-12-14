@@ -1,0 +1,67 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1ic8r1mfi8ss"]
+
+[ext_resource type="Texture2D" uid="uid://bqcmoqtav37aq" path="res://Game_Sprites/Enemy/Bunny_Down_256.png" id="1_f428x"]
+[ext_resource type="Script" path="res://Scripts/rabbit.gd" id="1_ujdan"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_llcad"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f428x")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kje64"]
+radius = 15.0
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lnc8y"]
+radius = 18.0
+height = 54.0
+
+[node name="Rabbit" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_ujdan")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_llcad")
+animation = &"idle"
+
+[node name="FloorDetector" type="RayCast2D" parent="AnimatedSprite2D"]
+position = Vector2(-121.375, 70.755)
+target_position = Vector2(0, 100)
+collision_mask = 4
+
+[node name="ObstacleDetector" type="RayCast2D" parent="AnimatedSprite2D"]
+target_position = Vector2(-650, 0)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_kje64")
+
+[node name="HitArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+shape = SubResource("CapsuleShape2D_lnc8y")
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="SwitchDirections" type="Timer" parent="."]
+wait_time = 7.0
+one_shot = true
+autostart = true
+
+[node name="StuckTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="SwitchDirections" to="." method="_on_switch_directions_timeout"]
+[connection signal="timeout" from="StuckTimer" to="." method="_on_stuck_timer_timeout"]
