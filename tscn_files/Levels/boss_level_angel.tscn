@@ -1785,7 +1785,7 @@ tile_map_data = PackedByteArray("AAAFABIAAgAKAAIABAAGABIAAgAKAAAAAAAHABIAAgAKAAA
 tile_set = ExtResource("4_v3i2m")
 
 [node name="Angel" parent="." instance=ExtResource("3_x4sya")]
-position = Vector2(1067, 503)
+position = Vector2(1015.23, 503)
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_gqt1s")]
 position = Vector2(986, 1048)
