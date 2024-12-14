@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dr5aln025dsa3"
-path="res://.godot/imported/Attack_Animation_WithoutCharacter_SMALLER.png-b2af5ca6acb8b6414b924745adb6036c.ctex"
+path="res://.godot/imported/Attack_Animation_WithoutCharacter_SMALLER.png-2e21618d7413fea043164523c7e5feb2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation/Attack_Animation_WithoutCharacter_SMALLER.png"
-dest_files=["res://.godot/imported/Attack_Animation_WithoutCharacter_SMALLER.png-b2af5ca6acb8b6414b924745adb6036c.ctex"]
+source_file="res://Game_Sprites/Animation/Character/Attack_Animation_WithoutCharacter_SMALLER.png"
+dest_files=["res://.godot/imported/Attack_Animation_WithoutCharacter_SMALLER.png-2e21618d7413fea043164523c7e5feb2.ctex"]
 
 [params]
 

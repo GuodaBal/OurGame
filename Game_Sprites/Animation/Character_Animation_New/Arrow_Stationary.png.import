@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dj4xvavb3lnh4"
-path="res://.godot/imported/Arrow_Stationary.png-61170f9f98a8dbcfe8a4cfd0262a6514.ctex"
+path="res://.godot/imported/Arrow_Stationary.png-214e6cda1b751a4967c2757e127cccd7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation_New/Arrow_Stationary.png"
-dest_files=["res://.godot/imported/Arrow_Stationary.png-61170f9f98a8dbcfe8a4cfd0262a6514.ctex"]
+source_file="res://Game_Sprites/Animation/Character_Animation_New/Arrow_Stationary.png"
+dest_files=["res://.godot/imported/Arrow_Stationary.png-214e6cda1b751a4967c2757e127cccd7.ctex"]
 
 [params]
 

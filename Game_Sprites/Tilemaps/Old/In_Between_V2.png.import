@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://chukwac3wgpjl"
-path="res://.godot/imported/In_Between_V2.png-f205aaa060c3458e4bf441c91c4504ec.ctex"
+path="res://.godot/imported/In_Between_V2.png-f950a1f0b665d53b017a5d950552f807.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Tilemaps/In_Between_V2.png"
-dest_files=["res://.godot/imported/In_Between_V2.png-f205aaa060c3458e4bf441c91c4504ec.ctex"]
+source_file="res://Game_Sprites/Tilemaps/Old/In_Between_V2.png"
+dest_files=["res://.godot/imported/In_Between_V2.png-f950a1f0b665d53b017a5d950552f807.ctex"]
 
 [params]
 

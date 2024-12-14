@@ -1,23 +1,23 @@
 [gd_scene load_steps=218 format=3 uid="uid://bo5x65xs813fn"]
 
 [ext_resource type="Script" path="res://Scripts/main_character.gd" id="1_7nded"]
-[ext_resource type="Texture2D" uid="uid://b5ksyuqjbmhsc" path="res://Game_Sprites/Animation_New/Niya_Animation_Running_Start.png" id="2_6bxp1"]
-[ext_resource type="Texture2D" uid="uid://d245at48hdqhu" path="res://Game_Sprites/Animation_New/Niya_Animation_Attack_With_1.png" id="2_m5lbk"]
-[ext_resource type="Texture2D" uid="uid://ideivgou7fmp" path="res://Game_Sprites/Animation_New/Niya_Animation_Attack_With_2.png" id="3_ccxpc"]
+[ext_resource type="Texture2D" uid="uid://b5ksyuqjbmhsc" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_Running_Start.png" id="2_6bxp1"]
+[ext_resource type="Texture2D" uid="uid://d245at48hdqhu" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_Attack_With_1.png" id="2_m5lbk"]
+[ext_resource type="Texture2D" uid="uid://ideivgou7fmp" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_Attack_With_2.png" id="3_ccxpc"]
 [ext_resource type="AudioStream" uid="uid://50pr2qfnk5sq" path="res://Audio/SFX/Arrow2_mixdown.wav" id="3_q8j6a"]
 [ext_resource type="AudioStream" uid="uid://ei6aovdi5qle" path="res://Audio/SFX/Arrow1_mixdown.wav" id="4_56k4n"]
-[ext_resource type="Texture2D" uid="uid://cabwf2siwbanp" path="res://Game_Sprites/Animation_New/Niya_Animation_Attack_with_3.png" id="4_gritw"]
-[ext_resource type="Texture2D" uid="uid://vghd0kk5ioy3" path="res://Game_Sprites/Animation_New/Attack_Animation_1.png" id="5_ltegu"]
-[ext_resource type="Texture2D" uid="uid://dw3xhtrtuok28" path="res://Game_Sprites/Animation_New/Niya_Animation_Idle.png" id="5_pehg7"]
+[ext_resource type="Texture2D" uid="uid://cabwf2siwbanp" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_Attack_with_3.png" id="4_gritw"]
+[ext_resource type="Texture2D" uid="uid://vghd0kk5ioy3" path="res://Game_Sprites/Animation/Character_Animation_New/Attack_Animation_1.png" id="5_ltegu"]
+[ext_resource type="Texture2D" uid="uid://dw3xhtrtuok28" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_Idle.png" id="5_pehg7"]
 [ext_resource type="AudioStream" uid="uid://cvdk634iy67tf" path="res://Audio/SFX/jump.wav" id="5_rudhk"]
-[ext_resource type="Texture2D" uid="uid://tjxe4v75bnab" path="res://Game_Sprites/Animation_New/Niya_Animation_Running.png" id="6_88xva"]
+[ext_resource type="Texture2D" uid="uid://tjxe4v75bnab" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_Running.png" id="6_88xva"]
 [ext_resource type="AudioStream" uid="uid://bna72oiw5hrvs" path="res://Audio/SFX/movement_mixdown.wav" id="6_at0vb"]
-[ext_resource type="Texture2D" uid="uid://c5gfba3vthfan" path="res://Game_Sprites/Animation_New/Attack_Animation_2.png" id="6_wlm2y"]
-[ext_resource type="Texture2D" uid="uid://clc3n7fijuk5r" path="res://Game_Sprites/Animation_New/Attack_Animation_3.png" id="7_h2rdx"]
-[ext_resource type="Texture2D" uid="uid://c74ohuvybf1g1" path="res://Game_Sprites/Animation_New/Niya_Animation_Running_End.png" id="7_kqn7o"]
-[ext_resource type="Texture2D" uid="uid://cfdeewaiavyjb" path="res://Game_Sprites/Animation_New/Niya_Animation_CastingSpell.png" id="8_hk4sc"]
+[ext_resource type="Texture2D" uid="uid://c5gfba3vthfan" path="res://Game_Sprites/Animation/Character_Animation_New/Attack_Animation_2.png" id="6_wlm2y"]
+[ext_resource type="Texture2D" uid="uid://clc3n7fijuk5r" path="res://Game_Sprites/Animation/Character_Animation_New/Attack_Animation_3.png" id="7_h2rdx"]
+[ext_resource type="Texture2D" uid="uid://c74ohuvybf1g1" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_Running_End.png" id="7_kqn7o"]
+[ext_resource type="Texture2D" uid="uid://cfdeewaiavyjb" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_CastingSpell.png" id="8_hk4sc"]
 [ext_resource type="AudioStream" uid="uid://cyysis5jelice" path="res://Audio/SFX/slash.wav" id="8_xg6aw"]
-[ext_resource type="Texture2D" uid="uid://cu3pu18hblrdp" path="res://Game_Sprites/Animation_New/Niya_Animation_TakingDamage.png" id="13_px31y"]
+[ext_resource type="Texture2D" uid="uid://cu3pu18hblrdp" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_TakingDamage.png" id="13_px31y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jf7fm"]
 atlas = ExtResource("2_m5lbk")
@@ -1483,7 +1483,6 @@ collision_mask = 3
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AnimatedSprite2D/Attack"]
 position = Vector2(194.445, 41.6667)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bwdsa")
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]

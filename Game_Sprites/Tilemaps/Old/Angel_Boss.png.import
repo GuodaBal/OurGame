@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c1ru2m1u53vb4"
-path="res://.godot/imported/Angel_Boss.png-523ed83640733ac7bda6d9b5d5b3beaa.ctex"
+path="res://.godot/imported/Angel_Boss.png-c3b1ce0d1ce61dc67db53259df814693.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Tilemaps/Angel_Boss.png"
-dest_files=["res://.godot/imported/Angel_Boss.png-523ed83640733ac7bda6d9b5d5b3beaa.ctex"]
+source_file="res://Game_Sprites/Tilemaps/Old/Angel_Boss.png"
+dest_files=["res://.godot/imported/Angel_Boss.png-c3b1ce0d1ce61dc67db53259df814693.ctex"]
 
 [params]
 

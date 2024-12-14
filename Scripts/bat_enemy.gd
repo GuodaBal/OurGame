@@ -40,6 +40,10 @@ func _physics_process(delta: float) -> void:
 		attacking = true
 	var dir = position.direction_to(navigation.get_next_path_position()).normalized()
 	velocity = dir * current_speed + knockback
+	if dir.x > 0.2:
+		sprite.scale.x = -sprite_scale
+	elif dir.x < -0.2:
+		sprite.scale.x = sprite_scale
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 

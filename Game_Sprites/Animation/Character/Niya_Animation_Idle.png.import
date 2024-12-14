@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cnjv8wmn513gm"
-path="res://.godot/imported/Niya_Animation_Idle.png-ec63746441c23c33a4c9b067ad8e1da7.ctex"
+path="res://.godot/imported/Niya_Animation_Idle.png-91f184800f80f54b411ec7810f26e983.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation/Niya_Animation_Idle.png"
-dest_files=["res://.godot/imported/Niya_Animation_Idle.png-ec63746441c23c33a4c9b067ad8e1da7.ctex"]
+source_file="res://Game_Sprites/Animation/Character/Niya_Animation_Idle.png"
+dest_files=["res://.godot/imported/Niya_Animation_Idle.png-91f184800f80f54b411ec7810f26e983.ctex"]
 
 [params]
 

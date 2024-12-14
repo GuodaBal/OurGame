@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://qlt6ukmm2rbv"
-path="res://.godot/imported/Bow_Stationary.png-791ee5c38c9d8d11b5ef6d875906dec4.ctex"
+path="res://.godot/imported/Bow_Stationary.png-5a13f3dbc8e866760effc420de1f7911.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation_New/Bow_Stationary.png"
-dest_files=["res://.godot/imported/Bow_Stationary.png-791ee5c38c9d8d11b5ef6d875906dec4.ctex"]
+source_file="res://Game_Sprites/Animation/Character_Animation_New/Bow_Stationary.png"
+dest_files=["res://.godot/imported/Bow_Stationary.png-5a13f3dbc8e866760effc420de1f7911.ctex"]
 
 [params]
 

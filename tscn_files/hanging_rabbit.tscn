@@ -1,0 +1,157 @@
+[gd_scene load_steps=23 format=3 uid="uid://hq5bhglrtmhp"]
+
+[ext_resource type="Texture2D" uid="uid://beyoxqn1t533s" path="res://Game_Sprites/Animation/Bosses/NatureBoss/HangingBunnies.png" id="1_f85c2"]
+[ext_resource type="Script" path="res://Scripts/hanging_rabbit.gd" id="2_n8gon"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ktyt"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(0, 0, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fshpw"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(256, 0, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tofso"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(512, 0, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gytt"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(768, 0, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpep2"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(1024, 0, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lenjg"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(0, 512, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7qox"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(256, 512, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6ew0"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(512, 512, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gaxhs"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(768, 512, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w72i5"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(1024, 512, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c2rw"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(0, 1024, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ococ2"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(256, 1024, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciyxo"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(512, 1024, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0x1c"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(768, 1024, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ntl5b"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(1024, 1024, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pow0"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(0, 1536, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6pvh"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(256, 1536, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mx71r"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(512, 1536, 256, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_86ctw"]
+atlas = ExtResource("1_f85c2")
+region = Rect2(768, 1536, 256, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76okp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ktyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fshpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tofso")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gytt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpep2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lenjg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h7qox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6ew0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gaxhs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w72i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c2rw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ococ2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciyxo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0x1c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ntl5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pow0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6pvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mx71r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_86ctw")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 24.0
+}]
+
+[node name="hanging_rabbit" type="AnimatedSprite2D"]
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_76okp")
+animation = &"idle"
+frame = 18
+frame_progress = 1.0
+script = ExtResource("2_n8gon")
+
+[node name="AnimationTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_animation_timer_timeout"]

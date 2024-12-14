@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://w3kcsoo60qhn"
-path="res://.godot/imported/Fire_Area.png-1cf90fd8d25c7b9833daeb96a00808d4.ctex"
+path="res://.godot/imported/Fire_Area.png-576a3be44271a9b021c42ece0c39dca9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Tilemaps/Fire_Area.png"
-dest_files=["res://.godot/imported/Fire_Area.png-1cf90fd8d25c7b9833daeb96a00808d4.ctex"]
+source_file="res://Game_Sprites/Tilemaps/Old/Fire_Area.png"
+dest_files=["res://.godot/imported/Fire_Area.png-576a3be44271a9b021c42ece0c39dca9.ctex"]
 
 [params]
 

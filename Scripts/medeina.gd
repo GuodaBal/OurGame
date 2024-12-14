@@ -18,10 +18,12 @@ func _on_attack_timer_timeout() -> void:
 		var whichAttack = randi()%3
 		match whichAttack:
 			0:
+				play("calling_spikes")
 				get_parent().start_spike_attack()
 				attackTimer.start(15)
 				lastWasDark = false
 			1:
+				play("calling_bunnies")
 				get_parent().start_rabbit_attack()
 				lastWasDark = false
 				attackTimer.start(15)
@@ -54,6 +56,7 @@ func changeStage():
 		queue_free()
 	else:
 		stage+=1
+		lastWasDark = true
 		get_parent().block_sun()
 		#Attack speed changes
 		get_parent().coef *= 1.4
