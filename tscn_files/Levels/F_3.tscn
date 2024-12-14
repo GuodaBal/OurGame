@@ -8,15 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="5_i2exb"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_gwd18"]
 [ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_cn058"]
-[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="9_xf3t2"]
+[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="7_fa3lj"]
 
 [node name="Level2" type="Node2D"]
 
-[node name="MainCharacter" parent="." instance=ExtResource("1_dplmf")]
-position = Vector2(0.000244141, 0.00012207)
-
 [node name="Area2D" parent="." instance=ExtResource("1_wijav")]
 position = Vector2(2892, 1216)
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_dplmf")]
+position = Vector2(0.000244141, 0.00012207)
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("2_pkpfv")]
 position = Vector2(-73, -2)
@@ -65,8 +65,8 @@ stream = ExtResource("7_cn058")
 autoplay = true
 bus = &"Music"
 
-[node name="Wendigo" parent="." instance=ExtResource("9_xf3t2")]
-position = Vector2(1113, 1470)
+[node name="Spider" parent="." instance=ExtResource("7_fa3lj")]
+position = Vector2(5308, 197)
 
 [node name="Details" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAARAN8AAAADAAAAAADSAgkAAAAAAAAAAFDSAh0AAAACAAAAAFDSAhEAAAABAAAAAFDSAhYAAAABAAAAAFAsAdr/AAAAAAAAAFAsAe7/AAACAAAAAFAsAeb/AAABAAAAAFAsAeL/AAABAAAAAFAYABcAAAAAAAIAAAAZABcAAAAAAAEAAACLAEgAAAACAAIAAACIAEcAAAACAAEAAACbAG8AAAACAAEAABDfAGgAAAADAAAAAADgAGcAAAAAAAIAAADgAGQAAAAAAAIAAADiAGcAAAAAAAIAAAD1/wEAAAACAAAAAGD1/wgAAAABAAAAAGD1/w4AAAABAAAAAGD1/xYAAAAAAAAAAGA7AbgAAAADAAEAAACLAlgAAAACAAIAAACCAub/AAACAAIAABCMAlcAAAAAAAIAAAC3Ah8AAAAAAAIAAAA8AkAAAAAAAAIAAAA+AkAAAAAAAAIAAACMAh8AAAACAAEAAADEAZ8AAAACAAEAAACJAL8AAAACAAEAAACNAL8AAAAAAAIAAACIAOYAAAAAAAIAAAA=")

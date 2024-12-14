@@ -1907,6 +1907,7 @@ correctLevel = "N_10"
 position = Vector2(1026, 562)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 position = Vector2(18, 43)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

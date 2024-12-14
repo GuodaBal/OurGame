@@ -73,26 +73,38 @@ func switchLevelDeferred(nextLevel):
 	for child in get_children():
 		if "Level" in child.name:
 			deleteLevel = child
-	#Saving enemies that are alive in scene
 	GlobalVariables.AliveEnemies[str(deleteLevel.scene_file_path)] = []
+	GlobalVariables.NotBurnedObjects[str(deleteLevel.scene_file_path)] = []
+	GlobalVariables.NotObtainedBoosts[str(deleteLevel.scene_file_path)] = []
 	for child in deleteLevel.get_children():
+		#Saving enemies that are alive in scene
 		if child.is_in_group("Enemy"):
 			GlobalVariables.AliveEnemies[str(deleteLevel.scene_file_path)].append(child.name)
+		#Saving objects that weren't burned
+		if child.is_in_group("Burnable"):
+			GlobalVariables.NotBurnedObjects[str(deleteLevel.scene_file_path)].append(child.name)
+		#Saving boosts that weren't obtained
+		if child.is_in_group("Boost"):
+			GlobalVariables.NotObtainedBoosts[str(deleteLevel.scene_file_path)].append(child.name)
 	remove_child(deleteLevel)
 	deleteLevel.queue_free()
 	add_child(instance)
 	previousLevel = nextLevel
-	#Getting rid of enemies that are dead in new scene
 	for child in get_children():
 		if "Level" in child.name:
 			newLevel = child
+	#Need to confirm data was saved for level before accessing
 	if GlobalVariables.AliveEnemies.has(str(newLevel.scene_file_path)):
-		#If there are no enemies, chance to respawn
-		if GlobalVariables.AliveEnemies[str(newLevel.scene_file_path)].is_empty():
-			for child in newLevel.get_children():
+		for child in newLevel.get_children():
+			#If there are no enemies, chance to respawn
+			if GlobalVariables.AliveEnemies[str(newLevel.scene_file_path)].is_empty():
 				if child.is_in_group("Enemy") and randf_range(0,1) > 0.2:
 					child.queue_free()
-		else:
-			for child in newLevel.get_children():
+			else:
+				#If enemy not in save file, it is dead and will be erased, same for others
 				if child.is_in_group("Enemy") and !GlobalVariables.AliveEnemies[str(newLevel.scene_file_path)].has(child.name):
+					child.queue_free()
+				if child.is_in_group("Burnable") and !GlobalVariables.NotBurnedObjects[str(newLevel.scene_file_path)].has(child.name):
+					child.queue_free()
+				if child.is_in_group("Boost") and !GlobalVariables.NotObtainedBoosts[str(newLevel.scene_file_path)].has(child.name):
 					child.queue_free()
