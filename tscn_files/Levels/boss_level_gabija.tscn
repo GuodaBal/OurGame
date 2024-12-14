@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_20n8p"]
-[ext_resource type="TileSet" path="res://Game_Sprites/Tilemaps/Old/fire_area_V2.tres" id="2_k4axs"]
+[ext_resource type="TileSet" uid="uid://c6m1mht10nx3r" path="res://Game_Sprites/Tilemaps/Old/fire_area_V2.tres" id="2_k4axs"]
 [ext_resource type="Texture2D" uid="uid://cx62ywpb0xxyc" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Fire_God_NEW.png" id="2_odbf3"]
 [ext_resource type="PackedScene" uid="uid://n0byngr2sw2r" path="res://tscn_files/gabija.tscn" id="3_0oha5"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_hgj5o"]

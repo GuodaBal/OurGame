@@ -1,13 +1,13 @@
 [gd_scene load_steps=11 format=4 uid="uid://ixq4hr2e35l5"]
 
-[ext_resource type="TileSet" uid="uid://dnd6gsiwkj58u" path="res://Game_Sprites/Tilemaps/starting_area_V2.tres" id="1_p61py"]
+[ext_resource type="TileSet" uid="uid://bo7g00k05y07v" path="res://Game_Sprites/Tilemaps/Old/starting_area_V2.tres" id="1_p61py"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_q0aw3"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_t1dvb"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_0pxxw"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_5dykh"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="5_art3a"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="6_jgrbp"]
-[ext_resource type="TileSet" uid="uid://ix2qjy0bbbvf" path="res://Game_Sprites/Tilemaps/in_between_V2.tres" id="8_pok0n"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_jgrbp"]
+[ext_resource type="TileSet" uid="uid://cdalo16iiw5g" path="res://Game_Sprites/Tilemaps/Old/in_between_V2.tres" id="8_pok0n"]
 [ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="9_7p3uv"]
 [ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/wasp.tscn" id="10_3w4x5"]
 
@@ -77,4 +77,4 @@ tile_set = ExtResource("6_jgrbp")
 position = Vector2(847, 1346)
 
 [node name="Wasp" parent="." instance=ExtResource("10_3w4x5")]
-position = Vector2(926, 504)
+position = Vector2(849, 702)

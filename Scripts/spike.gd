@@ -9,6 +9,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	path.progress_ratio += speed * delta
+	if path.progress_ratio >= 1:
+		queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
