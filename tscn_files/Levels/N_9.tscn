@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_o03v0"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_msc8g"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_bbma3"]
-[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="5_ija3r"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="6_ei5b1"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_icyvg"]
+[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/rabbit.tscn" id="7_xk55b"]
 
 [node name="Level" type="Node2D"]
 
@@ -31,11 +31,11 @@ nextLevel = "N_8"
 position = Vector2(132, 1396)
 correctLevel = "N_8"
 
-[node name="Wendigo" parent="." instance=ExtResource("5_ija3r")]
-position = Vector2(2133, 314)
-
 [node name="BatEnemy" parent="." instance=ExtResource("6_ei5b1")]
 position = Vector2(831, 485)
+
+[node name="Rabbit" parent="." instance=ExtResource("7_xk55b")]
+position = Vector2(2206, 348)
 
 [node name="Details" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAD//6IAAAACAAAAAGD//7YAAAAAAAAAAGD//6oAAAABAAAAAGD//64AAAABAAAAAGBxAQkAAAAAAAAAAFBxAR4AAAACAAAAAFBxAREAAAABAAAAAFBxARgAAAABAAAAAFA=")

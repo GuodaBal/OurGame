@@ -1,26 +1,16 @@
-[gd_scene load_steps=8 format=4 uid="uid://tnu0vlfyhepe"]
+[gd_scene load_steps=7 format=4 uid="uid://tnu0vlfyhepe"]
 
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_fsw6j"]
-[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="2_fmbrp"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_lsnqp"]
-[ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="4_fq0up"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="5_hpb3r"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_2qdva"]
+[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/rabbit.tscn" id="6_gsept"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="6_nfjky"]
 
 [node name="Level" type="Node2D"]
 
-[node name="Wendigo" parent="." instance=ExtResource("2_fmbrp")]
-position = Vector2(4356, 1718)
-
 [node name="MainCharacter" parent="." instance=ExtResource("3_lsnqp")]
 position = Vector2(3964, 1078)
-
-[node name="Wendigo2" parent="." instance=ExtResource("2_fmbrp")]
-position = Vector2(4243, 385)
-
-[node name="BatEnemy" parent="." instance=ExtResource("4_fq0up")]
-position = Vector2(5029, 1253)
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("5_hpb3r")]
 position = Vector2(6360, 569)
@@ -38,6 +28,18 @@ correctLevel = "N_6"
 [node name="SpawnArea2" parent="." instance=ExtResource("6_nfjky")]
 position = Vector2(6162, 636)
 correctLevel = "boss_level_medeina"
+
+[node name="Rabbit" parent="." instance=ExtResource("6_gsept")]
+position = Vector2(5280, 675)
+
+[node name="Rabbit2" parent="." instance=ExtResource("6_gsept")]
+position = Vector2(4299, 1754)
+
+[node name="Rabbit4" parent="." instance=ExtResource("6_gsept")]
+position = Vector2(4236, 418)
+
+[node name="Rabbit3" parent="." instance=ExtResource("6_gsept")]
+position = Vector2(2506, 537)
 
 [node name="Details" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AADBAEEAAAACAAAAAGDBAFcAAAAAAAAAAGDBAEkAAAABAAAAAGDBAE8AAAABAAAAAGAeA0oAAAAAAAAAAFAeA1cAAAACAAAAAFAeA08AAAABAAAAAFA=")

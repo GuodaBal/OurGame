@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://cgxlloschbhnj"]
+[gd_scene load_steps=7 format=4 uid="uid://cgxlloschbhnj"]
 
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_hbkrw"]
-[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="2_6sqr1"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_fxxjw"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="4_6bsqd"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="5_yb07h"]
@@ -10,9 +9,6 @@
 
 [node name="Level" type="Node2D"]
 
-[node name="Enemy" parent="." instance=ExtResource("2_6sqr1")]
-position = Vector2(1601, 576)
-
 [node name="MainCharacter" parent="." instance=ExtResource("3_fxxjw")]
 position = Vector2(1440, 1196)
 
@@ -20,7 +16,6 @@ position = Vector2(1440, 1196)
 position = Vector2(441, 656)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0.051971, 0.051971, 0.051971, 1)
 
 [node name="SpawnArea" parent="." instance=ExtResource("5_yb07h")]
@@ -40,6 +35,9 @@ correctLevel = "N_4"
 position = Vector2(-895, 513)
 scale = Vector2(1, 1.335)
 nextLevel = "N_4"
+
+[node name="BatEnemy2" parent="." instance=ExtResource("4_6bsqd")]
+position = Vector2(1396, 380)
 
 [node name="Detail" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AACN/1YAAAAAAAAAAGCN/0IAAAACAAAAAGCN/0oAAAABAAAAAGCN/04AAAABAAAAAGB8ARkAAAAAAAAAAFB8AS4AAAACAAAAAFB8ASAAAAABAAAAAFB8ASYAAAABAAAAAFA=")

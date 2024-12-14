@@ -4,17 +4,11 @@
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="1_ttwj6"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_525d6"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_uwi0w"]
-[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="4_o33ix"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="5_af0tq"]
-[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="7_j8313"]
+[ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="6_nuq46"]
+[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/rabbit.tscn" id="7_kc1hb"]
 
 [node name="Level" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -1721.0
-offset_right = 2767.0
-offset_bottom = 1532.0
-color = Color(0.160784, 0.2, 0.196078, 1)
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_17a0a")]
 
@@ -36,16 +30,15 @@ nextLevel = "N_3"
 position = Vector2(-1244, 549)
 correctLevel = "N_3"
 
-[node name="Enemy2" parent="." instance=ExtResource("4_o33ix")]
-position = Vector2(-52, 1137)
-
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 visibility_layer = 33791
 color = Color(0.0253638, 0.0253638, 0.0253638, 1)
 
-[node name="Wendigo" parent="." instance=ExtResource("7_j8313")]
-position = Vector2(656, 1202)
+[node name="BatEnemy" parent="." instance=ExtResource("6_nuq46")]
+position = Vector2(809, 592)
+
+[node name="Rabbit" parent="." instance=ExtResource("7_kc1hb")]
+position = Vector2(370, 1178)
 
 [node name="Details" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AABY/04AAAAAAAAAAGBY/zkAAAACAAAAAGBY/0EAAAABAAAAAGBY/0YAAAABAAAAAGAWAUkAAAAAAAAAAFAWAV4AAAACAAAAAFAWAVEAAAABAAAAAFAWAVcAAAABAAAAAFB7/28AAAAAAAEAAAD0/18AAAAAAAMAAAB+/24AAAACAAEAAACw/38AAAADAAEAAAC3/38AAAACAAEAAADD/64AAAACAAIAAADE/64AAAACAAEAAAAWAK4AAAAAAAMAAAAXAK4AAAACAAEAAAA4AJ8AAAADAAEAAAB0AJ4AAAACAAEAAACaAJgAAAADAAAAAACSAJYAAAACAAEAAACVAJYAAAAAAAMAABAHAX4AAAAAAAEAABAGAX4AAAACAAEAABC5ADcAAAADAAEAAADU/04AAAACAAEAAADWAGcAAAACAAIAAADaAGoAAAADAAEAAACVAFsAAAADAAEAAAA=")

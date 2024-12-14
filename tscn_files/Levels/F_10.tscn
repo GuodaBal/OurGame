@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_i7qqi"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_5pv1f"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_brrbi"]
-[ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="5_3lara"]
-[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="6_hrcyp"]
+[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="4_dtmp3"]
+[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="5_hwjyn"]
 
 [node name="Level" type="Node2D"]
 
@@ -31,14 +31,17 @@ nextLevel = "F_1"
 position = Vector2(-2883, 745)
 correctLevel = "F_1"
 
-[node name="BatEnemy" parent="." instance=ExtResource("5_3lara")]
-position = Vector2(-1759, 372)
+[node name="Spider" parent="." instance=ExtResource("4_dtmp3")]
+position = Vector2(286, -168)
 
-[node name="Wendigo" parent="." instance=ExtResource("6_hrcyp")]
-position = Vector2(232, 293)
+[node name="Enemy" parent="." instance=ExtResource("5_hwjyn")]
+position = Vector2(305, 340)
+
+[node name="Enemy2" parent="." instance=ExtResource("5_hwjyn")]
+position = Vector2(-1848, 470)
 
 [node name="Details" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AACI/lEAAAACAAAAAGCI/mYAAAAAAAAAAGCI/lkAAAABAAAAAGCI/l0AAAABAAAAAGAWAQkAAAAAAAAAAFAWAR4AAAACAAAAAFAWARAAAAABAAAAAFAWARYAAAABAAAAAFA=")
+tile_map_data = PackedByteArray("AACI/lEAAAACAAAAAGCI/mYAAAAAAAAAAGCI/lkAAAABAAAAAGCI/l0AAAABAAAAAGAWAQkAAAAAAAAAAFAWAR4AAAACAAAAAFAWARAAAAABAAAAAFAWARYAAAABAAAAAFDT/1YAAAAAAAIAAADd/08AAAAAAAIAABAz/wcAAAAAAAIAABDX/lAAAAAAAAIAABDT/k8AAAACAAEAAAA//yoAAAADAAEAAAA8/77/AAAAAAIAAAA5/8D/AAAAAAIAABA5/8H/AAADAAEAAADb/6b/AAACAAEAAADo/97/AAACAAEAAADo/9//AAAAAAIAAABLAPH/AAAAAAIAAABIAPD/AAAAAAIAAAAHAR8AAAAAAAIAAAAJAR8AAAAAAAIAABDvADcAAAAAAAIAABDyADoAAAADAAEAAAA8AT8AAAACAAEAAACMAF8AAAACAAEAAACLAF8AAAAAAAIAAAA=")
 tile_set = ExtResource("2_em4vw")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
