@@ -4,9 +4,9 @@ uniform vec4 base_color : source_color;
 
 void fragment()
 	{
-		// Each uv coordinate is moved differently overtime
-		vec2 uv1 = UV + vec2(TIME * 0.1, -TIME * 0.05);
-		vec2 uv2 = UV * 0.5 + vec2(0.5, 0.5) * TIME * 0.01;
+		// Each uv coordinate is moved at different speeds overtime
+		vec2 uv1 = UV + vec2(TIME * 0.05, -TIME * 0.05);
+		vec2 uv2 = UV * 0.5 + vec2(0.5, 0.5) * TIME * 0.02;
 		vec2 uv3 = UV * vec2(0.75, 1.0) - vec2(0.25, TIME * 0.02);
 
 		//Get separate noise textures
