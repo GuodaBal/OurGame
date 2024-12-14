@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=4 uid="uid://cc3r7d6j8bws7"]
 
-[ext_resource type="TileSet" uid="uid://ddyvtxsbruqrl" path="res://Game_Sprites/Tilemaps/nature_area.tres" id="1_ofp0l"]
+[ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_ofp0l"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="2_2ldxe"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/details.tres" id="3_c1yer"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="3_c1yer"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_353y6"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="5_u4clv"]
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="6_tv4y7"]
@@ -12,10 +12,6 @@
 
 [node name="BatEnemy" parent="." instance=ExtResource("2_2ldxe")]
 position = Vector2(1446, 956)
-
-[node name="Detail" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AABmAZgAAAAAAAAAAFBmAa8AAAACAAAAAFBmAaAAAAABAAAAAFBmAacAAAABAAAAAFDfACEAAAAAAAAAAFDfADgAAAACAAAAAFDfACkAAAABAAAAAFDfADEAAAABAAAAAFD0/7YAAAAAAAAAAGD0/6kAAAABAAAAAGD0/64AAAABAAAAAGD0/6IAAAACAAAAAGA=")
-tile_set = ExtResource("3_c1yer")
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_353y6")]
 position = Vector2(2755, 1322)
@@ -48,6 +44,10 @@ nextLevel = "N_5"
 position = Vector2(1212, 1108)
 
 [node name="MainCharacter" parent="." instance=ExtResource("7_0ap4t")]
+
+[node name="Detail" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AABmAZgAAAAAAAAAAFBmAa8AAAACAAAAAFBmAaAAAAABAAAAAFBmAacAAAABAAAAAFDfACEAAAAAAAAAAFDfADgAAAACAAAAAFDfACkAAAABAAAAAFDfADEAAAABAAAAAFD0/7YAAAAAAAAAAGD0/6kAAAABAAAAAGD0/64AAAABAAAAAGD0/6IAAAACAAAAAGA=")
+tile_set = ExtResource("3_c1yer")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.5, 0.5)
