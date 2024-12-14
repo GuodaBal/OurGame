@@ -12,11 +12,11 @@
 
 [node name="Level2" type="Node2D"]
 
-[node name="MainCharacter" parent="." instance=ExtResource("1_dplmf")]
-position = Vector2(0.000244141, 0.00012207)
-
 [node name="Area2D" parent="." instance=ExtResource("1_wijav")]
 position = Vector2(2892, 1216)
+
+[node name="MainCharacter" parent="." instance=ExtResource("1_dplmf")]
+position = Vector2(0.000244141, 0.00012207)
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("2_pkpfv")]
 position = Vector2(-73, -2)

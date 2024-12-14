@@ -1824,10 +1824,11 @@ tile_set = SubResource("TileSet_ts6hr")
 
 [node name="Fog" type="TextureRect" parent="."]
 material = SubResource("ShaderMaterial_ky46v")
-offset_left = -1774.0
-offset_top = -287.0
-offset_right = 4128.0
-offset_bottom = 1599.0
+offset_left = -1627.0
+offset_top = -757.0
+offset_right = -1115.0
+offset_bottom = -245.0
+scale = Vector2(11.425, 4.97)
 texture = ExtResource("11_l64np")
 stretch_mode = 1
 

@@ -57,7 +57,7 @@ func _on_attack_timer_timeout():
 	if (playerPosition - position).length() < range:
 		var projectile = preload("res://tscn_files/poison_projectile.tscn").instantiate()
 		spawner.add_child(projectile)
-		projectile.apply_impulse(Vector2(last_direction, -0.2)*shoot_force)
+		projectile.apply_impulse(Vector2(last_direction, -0.3)*shoot_force)
 		#Guarantees player cannot stand on enemy without taking damage
 		for body in rebound.get_overlapping_bodies():
 			if body.is_in_group("Player"):

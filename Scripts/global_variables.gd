@@ -7,6 +7,8 @@ var GabijaDone = false
 var MedeinaDone = false
 var PerkunasDone = false
 var AliveEnemies = {}
+var NotBurnedObjects = {}
+var NotObtainedBoosts = {}
 #neccessary to keep player consistant between screens
 var attack_damage = 10.125
 var arrow_damage = 3.375
@@ -21,6 +23,7 @@ func reset():
 	MedeinaDone = false
 	PerkunasDone = false
 	AliveEnemies = {}
+	NotBurnedObjects = {}
 	attack_damage = 10.125
 	arrow_damage = 3.375
 	thunder_damage = 6.75
@@ -33,6 +36,8 @@ func save_data():
 		"MedeinaDone" : MedeinaDone,
 		"PerkunasDone" : PerkunasDone,
 		"AliveEnemies" : AliveEnemies,
+		"NotBurnedObjects" : NotBurnedObjects,
+		"NotObtainedBoosts" : NotObtainedBoosts,
 		"attack_damage" : attack_damage,
 		"arrow_damage" : arrow_damage,
 		"thunder_damage" : thunder_damage,

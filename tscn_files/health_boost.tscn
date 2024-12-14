@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ip7y7"]
 size = Vector2(236, 288)
 
-[node name="Health_boost" type="Area2D"]
+[node name="Health_boost" type="Area2D" groups=["Boost"]]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_11mam")
 

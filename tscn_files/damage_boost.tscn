@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir78q"]
 size = Vector2(510, 446)
 
-[node name="Damage_boost" type="Area2D"]
+[node name="Damage_boost" type="Area2D" groups=["Boost"]]
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_wlyha")
 
