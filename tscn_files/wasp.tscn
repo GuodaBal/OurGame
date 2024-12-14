@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cenfxhlt2eegv"]
+
+[ext_resource type="Script" path="res://Scripts/wasp.gd" id="1_kvwfk"]
+[ext_resource type="Texture2D" uid="uid://cn5sroncsln18" path="res://Game_Sprites/Enemy/Wasp_256.png" id="2_iql44"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dvtqo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iql44")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rmdsx"]
+radius = 35.0
+height = 128.0
+
+[node name="Wasp" type="CharacterBody2D"]
+collision_mask = 5
+script = ExtResource("1_kvwfk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+sprite_frames = SubResource("SpriteFrames_dvtqo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 18)
+shape = SubResource("CapsuleShape2D_rmdsx")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="UpdateTarget" type="Timer" parent="."]
+wait_time = 0.1
+autostart = true
+
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="UpdateTarget" to="." method="_on_update_target_timeout"]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dapkiheuho6in"
-path="res://.godot/imported/Niya_Animation_Spell_casting.png-e78f6f0533c0861a09dbe9f1ed9cb80b.ctex"
+path="res://.godot/imported/Niya_Animation_Spell_casting.png-413b727eb8809c253b2049a016035622.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation/Niya_Animation_Spell_casting.png"
-dest_files=["res://.godot/imported/Niya_Animation_Spell_casting.png-e78f6f0533c0861a09dbe9f1ed9cb80b.ctex"]
+source_file="res://Game_Sprites/Animation/Character/Niya_Animation_Spell_casting.png"
+dest_files=["res://.godot/imported/Niya_Animation_Spell_casting.png-413b727eb8809c253b2049a016035622.ctex"]
 
 [params]
 

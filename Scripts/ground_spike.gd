@@ -2,6 +2,7 @@ extends AnimatableBody2D
 
 @onready var animation := $AnimationPlayer as AnimationPlayer
 
+
 func spawn(speed):
 	animation.play("spawn", -1 , speed)
 

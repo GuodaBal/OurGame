@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cs3fggvfabmlo"
-path="res://.godot/imported/Niya_Animation_Runing_Start.png-38ccf623bffd15d70cfd7cbf346b26a4.ctex"
+path="res://.godot/imported/Niya_Animation_Runing_Start.png-87adafa37de5a0bb7a6676873952d0be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation/Niya_Animation_Runing_Start.png"
-dest_files=["res://.godot/imported/Niya_Animation_Runing_Start.png-38ccf623bffd15d70cfd7cbf346b26a4.ctex"]
+source_file="res://Game_Sprites/Animation/Character/Niya_Animation_Runing_Start.png"
+dest_files=["res://.godot/imported/Niya_Animation_Runing_Start.png-87adafa37de5a0bb7a6676873952d0be.ctex"]
 
 [params]
 

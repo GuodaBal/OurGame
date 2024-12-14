@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://s4ttrlyfkedb"
-path="res://.godot/imported/Bow_Animation_End.png-69c3378e43163ea5e76adfcb5e72cce5.ctex"
+path="res://.godot/imported/Bow_Animation_End.png-35082623be549002c7b0835795364790.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation_New/Bow_Animation_End.png"
-dest_files=["res://.godot/imported/Bow_Animation_End.png-69c3378e43163ea5e76adfcb5e72cce5.ctex"]
+source_file="res://Game_Sprites/Animation/Character_Animation_New/Bow_Animation_End.png"
+dest_files=["res://.godot/imported/Bow_Animation_End.png-35082623be549002c7b0835795364790.ctex"]
 
 [params]
 

@@ -1,6 +1,7 @@
 extends Area2D
 
-
+func _ready() -> void:
+	$AnimatedSprite2D.play("default")
 func save_data():
 	print_debug("saved")
 	GlobalVariables.load = true 

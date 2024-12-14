@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=4 uid="uid://b5cnnwjdprlnn"]
 
 [ext_resource type="PackedScene" uid="uid://b2a6p8rxv1igu" path="res://tscn_files/medeina.tscn" id="1_0sq2h"]
-[ext_resource type="TileSet" uid="uid://ddyvtxsbruqrl" path="res://Game_Sprites/Tilemaps/nature_area.tres" id="1_exbw0"]
+[ext_resource type="TileSet" uid="uid://ddyvtxsbruqrl" path="res://Game_Sprites/Tilemaps/Old/nature_area.tres" id="1_exbw0"]
 [ext_resource type="Script" path="res://Scripts/boss_level_medeina.gd" id="1_rpm1e"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_2jj0m"]
-[ext_resource type="Texture2D" uid="uid://h5l7448alyq3" path="res://Game_Sprites/Background/Background_symbol_Nature_God.png" id="2_52021"]
+[ext_resource type="Texture2D" uid="uid://et7gqtpukuo" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Nature_God_NEW.png" id="2_nd5yb"]
+[ext_resource type="PackedScene" uid="uid://hq5bhglrtmhp" path="res://tscn_files/hanging_rabbit.tscn" id="3_x1ok3"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_xwv45"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="4_pj58x"]
 [ext_resource type="PackedScene" uid="uid://1okjlshefdnc" path="res://tscn_files/tree_sun_blocker.tscn" id="7_7kh2i"]
-[ext_resource type="Texture2D" uid="uid://dtodxhauyfcv8" path="res://Sprites/Bosses/Screenshot (446).png" id="9_ipfqr"]
 
 [sub_resource type="Animation" id="Animation_7rnif"]
 resource_name = "Fade_to_dark"
@@ -75,109 +75,77 @@ color = Color(0.174434, 0.19641, 0.193237, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1032, 563)
-texture = ExtResource("2_52021")
+texture = ExtResource("2_nd5yb")
 
 [node name="Stage1BG" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Stage1BG"]
-position = Vector2(589, 831)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit" parent="Stage1BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(463, 356)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Stage1BG"]
-position = Vector2(1434, 499)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit2" parent="Stage1BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(1560, 439)
 
-[node name="Sprite2D3" type="Sprite2D" parent="Stage1BG"]
-position = Vector2(428, 427)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit3" parent="Stage1BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(1454, 798)
 
-[node name="Sprite2D4" type="Sprite2D" parent="Stage1BG"]
-position = Vector2(695, 534)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit4" parent="Stage1BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(503, 813)
 
-[node name="Sprite2D5" type="Sprite2D" parent="Stage1BG"]
-position = Vector2(1274, 812)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit5" parent="Stage1BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(670, 567)
 
 [node name="Stage2BG" type="Node2D" parent="."]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Stage2BG"]
-position = Vector2(1562, 849)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit" parent="Stage2BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(432, 581)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Stage2BG"]
-position = Vector2(1533, 652)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit2" parent="Stage2BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(1561, 187)
 
-[node name="Sprite2D3" type="Sprite2D" parent="Stage2BG"]
-position = Vector2(497, 634)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit3" parent="Stage2BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(1200, 883)
 
-[node name="Sprite2D4" type="Sprite2D" parent="Stage2BG"]
-position = Vector2(850, 853)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit4" parent="Stage2BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(1324, 380)
 
-[node name="Sprite2D5" type="Sprite2D" parent="Stage2BG"]
-position = Vector2(1659, 358)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit5" parent="Stage2BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(927, 788)
 
 [node name="Stage3BG" type="Node2D" parent="."]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Stage3BG"]
-position = Vector2(1343, 383)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit" parent="Stage3BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(738, 300)
 
-[node name="Sprite2D2" type="Sprite2D" parent="Stage3BG"]
-position = Vector2(452, 862)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit2" parent="Stage3BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(1627, 659)
 
-[node name="Sprite2D3" type="Sprite2D" parent="Stage3BG"]
-position = Vector2(1666, 523)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit3" parent="Stage3BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(587, 181)
 
-[node name="Sprite2D4" type="Sprite2D" parent="Stage3BG"]
-position = Vector2(1378, 656)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit4" parent="Stage3BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(722, 914)
 
-[node name="Sprite2D5" type="Sprite2D" parent="Stage3BG"]
-position = Vector2(1144, 886)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit6" parent="Stage3BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(1407, 572)
 
-[node name="Sprite2D6" type="Sprite2D" parent="Stage3BG"]
-position = Vector2(598, 441)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("9_ipfqr")
+[node name="hanging_rabbit5" parent="Stage3BG" instance=ExtResource("3_x1ok3")]
+position = Vector2(1373, 171)
 
 [node name="MainCharacter" parent="." instance=ExtResource("4_pj58x")]
-position = Vector2(1369, 967)
+position = Vector2(1249, 1065)
 
 [node name="SpawnArea" parent="." instance=ExtResource("3_xwv45")]
 position = Vector2(229, 1059)
-correctLevel = "N_7"
+correctLevel = "starting_level"
 
 [node name="SpawnArea2" parent="." instance=ExtResource("3_xwv45")]
 position = Vector2(1870, 1057)
 correctLevel = "N_10"
 
 [node name="Medeina" parent="." instance=ExtResource("1_0sq2h")]
-position = Vector2(1022, 563)
+position = Vector2(1026, 562)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(18, 43)
@@ -196,9 +164,7 @@ position = Vector2(2094, 947)
 nextLevel = "N_10"
 
 [node name="TreeSunBlocker" parent="." instance=ExtResource("7_7kh2i")]
-visible = false
-position = Vector2(1547, 300)
-rotation = 1.5708
+position = Vector2(1600, 489)
 collision_layer = 0
 
 [node name="SpikeIntervalTimer" type="Timer" parent="."]

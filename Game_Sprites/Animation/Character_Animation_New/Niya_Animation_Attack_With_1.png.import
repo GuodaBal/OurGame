@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d245at48hdqhu"
-path="res://.godot/imported/Niya_Animation_Attack_With_1.png-875cab6522c8e4ebc094bdf64314667c.ctex"
+path="res://.godot/imported/Niya_Animation_Attack_With_1.png-ec1e3e39412bc08b10b8bb6107ffd13d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation_New/Niya_Animation_Attack_With_1.png"
-dest_files=["res://.godot/imported/Niya_Animation_Attack_With_1.png-875cab6522c8e4ebc094bdf64314667c.ctex"]
+source_file="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_Attack_With_1.png"
+dest_files=["res://.godot/imported/Niya_Animation_Attack_With_1.png-ec1e3e39412bc08b10b8bb6107ffd13d.ctex"]
 
 [params]
 

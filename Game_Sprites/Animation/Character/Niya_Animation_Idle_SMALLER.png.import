@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://li5qbri1hsfu"
-path="res://.godot/imported/Niya_Animation_Idle_SMALLER.png-961c522522a5134c0e9db3389e9f473d.ctex"
+path="res://.godot/imported/Niya_Animation_Idle_SMALLER.png-2eeadd7f65b6babcd2db776b7b74b439.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game_Sprites/Animation/Niya_Animation_Idle_SMALLER.png"
-dest_files=["res://.godot/imported/Niya_Animation_Idle_SMALLER.png-961c522522a5134c0e9db3389e9f473d.ctex"]
+source_file="res://Game_Sprites/Animation/Character/Niya_Animation_Idle_SMALLER.png"
+dest_files=["res://.godot/imported/Niya_Animation_Idle_SMALLER.png-2eeadd7f65b6babcd2db776b7b74b439.ctex"]
 
 [params]
 
