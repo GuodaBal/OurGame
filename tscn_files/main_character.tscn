@@ -1562,7 +1562,7 @@ sprite_frames = SubResource("SpriteFrames_hlje6")
 animation = &"Casting_spell"
 
 [node name="Attack" type="Area2D" parent="AnimatedSprite2D"]
-collision_mask = 3
+collision_mask = 10
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AnimatedSprite2D/Attack"]
 position = Vector2(194.445, 41.6667)

@@ -52,17 +52,11 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 	knockback = direction * knockback_strength
 	knockback.y = 0
 	if hp <= 0:
-		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
-			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
-			add_sibling(instance)
-			instance.position = position
-		animation.play("death")
-		await animation.animation_finished
-		queue_free()
+		die()
 
 func _on_attack_timer_timeout():
 	#shoots poison projectile
-	if (playerPosition - position).length() < range:
+	if (playerPosition - position).length() < range and hp > 0:
 		var projectile = preload("res://tscn_files/poison_projectile.tscn").instantiate()
 		spawner.add_child(projectile)
 		projectile.apply_impulse(Vector2(last_direction, -0.3)*shoot_force)
@@ -75,3 +69,13 @@ func _on_attack_timer_timeout():
 func _on_rebound_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		body.take_damage(damage, 5, position)
+		
+
+func die():
+	if(randi_range(0,3) == 3):
+		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
+		add_sibling(instance)
+		instance.position = position
+	animation.play("death")
+	await animation.animation_finished
+	queue_free()

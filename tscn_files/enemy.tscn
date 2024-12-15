@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://7lbe4hly8swj"]
+[gd_scene load_steps=33 format=3 uid="uid://7lbe4hly8swj"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_beq4l"]
+[ext_resource type="Texture2D" uid="uid://duydonb3fqyv" path="res://Game_Sprites/Animation/Enemies/Wolf_Walking.png" id="3_be773"]
 [ext_resource type="Texture2D" uid="uid://bm6ync6uom6wy" path="res://Game_Sprites/Animation/Death/Wolf_Death.png" id="3_m0dkn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4nk6"]
@@ -54,6 +55,58 @@ region = Rect2(512, 512, 256, 256)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rhrja"]
 atlas = ExtResource("3_m0dkn")
 region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8n55"]
+atlas = ExtResource("3_be773")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xhl6"]
+atlas = ExtResource("3_be773")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_my6l5"]
+atlas = ExtResource("3_be773")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43j58"]
+atlas = ExtResource("3_be773")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kspjj"]
+atlas = ExtResource("3_be773")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ve5a"]
+atlas = ExtResource("3_be773")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_016mq"]
+atlas = ExtResource("3_be773")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vft4a"]
+atlas = ExtResource("3_be773")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdfgr"]
+atlas = ExtResource("3_be773")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4m46j"]
+atlas = ExtResource("3_be773")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x26fn"]
+atlas = ExtResource("3_be773")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qttx2"]
+atlas = ExtResource("3_be773")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qb5w7"]
+atlas = ExtResource("3_be773")
+region = Rect2(0, 768, 256, 256)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6vk4a"]
 animations = [{
@@ -110,6 +163,50 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8n55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xhl6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_my6l5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43j58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kspjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ve5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_016mq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vft4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdfgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4m46j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x26fn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qttx2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qb5w7")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 24.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_du2wl"]
@@ -120,13 +217,15 @@ radius = 28.0
 height = 98.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_beq4l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_6vk4a")
-animation = &"idle"
+animation = &"walking"
+frame_progress = 0.996511
 
 [node name="Attack" type="Area2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.05, 0.05)

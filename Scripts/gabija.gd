@@ -47,6 +47,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#If it's falling after becoming exhausted, it falls to the opposite direction of the player, so as to not land on them
 	if !isExhaustedTimer.is_stopped() and !is_on_floor():
+		animation.stop()
 		if player_is_to("right") and !wall_detector_left.is_colliding():
 			velocity += left * delta
 			animation.scale.x = -sprite_scale
@@ -118,6 +119,7 @@ func _physics_process(delta: float) -> void:
 				jumpEndTimer.start()
 				jump_direction = left
 				animation.scale.x = -sprite_scale
+				animation.play("jump_start")
 		if jump_detector_right.is_colliding() and jump_detector_right.get_collider() is TileMapLayer and player_is_to("left") and attacking.is_empty():
 			var tile_data=jump_detector_right.get_collider().get_cell_tile_data(jump_detector_right.get_collider().get_coords_for_body_rid(jump_detector_right.get_collider_rid()))
 			if tile_data.get_custom_data_by_layer_id(0)==1:
@@ -126,6 +128,7 @@ func _physics_process(delta: float) -> void:
 				jumpEndTimer.start()
 				jump_direction = right
 				animation.scale.x = sprite_scale
+				animation.play("jump_start")
 				
 	#switch gravity when close enough to wall (after jump)
 	if wall_detector_left.is_colliding() and wall_detector_left.get_collider() is TileMapLayer and jumping:# and wall_detector_left.get_collider().get_class() != "CharacterBody2D":
@@ -133,16 +136,25 @@ func _physics_process(delta: float) -> void:
 		if tile_data.get_custom_data_by_layer_id(1)==1:
 			switch_gravity("left")
 			animation.scale.x = -sprite_scale
+			animation.play("jump_end")
 	if wall_detector_right.is_colliding() and wall_detector_right.get_collider() is TileMapLayer and jumping:# and !wall_detector_right.get_collider().get_class() != "CharacterBody2D":
 		var tile_data=wall_detector_right.get_collider().get_cell_tile_data(wall_detector_right.get_collider().get_coords_for_body_rid(wall_detector_right.get_collider_rid()))
 		if tile_data.get_custom_data_by_layer_id(1)==1:
 			switch_gravity("right")
 			animation.scale.x = sprite_scale
-		
+			animation.play("jump_end")
+	
+
 	#adjust up direction for gravity to work normally
 	up_direction = -gravity_dir
-	
+	if !animation.is_playing() and !jumping and is_on_floor():
+		if velocity.length() > 70:  
+			animation.play("walking")
+	if velocity.length() <= 50 and animation.is_playing() and animation.animation == "walking":
+		animation.stop()
 	move_and_slide()
+
+
 
 func take_damage(damage, knockback_strength, player_position):
 	hp-=damage
@@ -263,6 +275,7 @@ func _on_attack_timer_timeout() -> void:
 	attackTimer.start()
 	
 func spawn_spikes():
+	animation.play("spike_attack_start")
 	spawning_spikes = true
 	spikeEndTimer.start()
 	spikeTimer.start()
@@ -283,13 +296,16 @@ func _on_exhaustion_timer_timeout() -> void:
 func _on_spike_end_timer_timeout() -> void:
 	spawning_spikes = false
 	attacking.pop_back()
+	animation.play("spike_attack_end")
 	if will_be_exhausted:
+		await animation.animation_finished
 		will_be_exhausted = false
 		switch_to_down()
 		isExhaustedTimer.start()
 
 func _on_jump_end_timer_timeout() -> void:
 	jumping = false
+	animation.play("jump_end")
 	
 func player_is_to(direction: String):
 	if abs(playerPostion - position).length() > range:

@@ -11,8 +11,13 @@ func _ready() -> void:
 	spawnLocations = [enemySpawnLocation1, enemySpawnLocation2, enemySpawnLocation3, enemySpawnLocation4]
 
 func spawn_random_enemy():
+	print_debug("spawning")
 	var spawnPoint = randi_range(1, 4)
 	var enemy
+	#If player is too close to selected floor spawnpoint, pick different one to prevent spawning on player
+	if spawnPoint <= 2 and abs(spawnLocations[spawnPoint-1] - get_node("MainCharacter").position).length() < 150:
+		spawn_random_enemy()
+		return
 	#FloorEnemies
 	if spawnPoint <= 2:
 		match randi_range(1, 4):
@@ -31,12 +36,13 @@ func spawn_random_enemy():
 				enemy =  load("res://tscn_files/bat_enemy.tscn").instantiate()
 			2:
 				enemy =  load("res://tscn_files/wasp.tscn").instantiate()
-	enemy.hp *= 1.3
+	#enemy.hp *= 1.3
 	add_child(enemy)
 	enemy.position = spawnLocations[spawnPoint-1]
+	enemy.range = 40000
 	move_child(enemy, 1)
 
 
 func _on_child_exiting_tree(node: Node) -> void:
-	if node.is_in_group("Enemy"):
+	if node.is_in_group("Enemy") and get_node("Angel") != null:
 		$Angel.take_damage(1)

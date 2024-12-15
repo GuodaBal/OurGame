@@ -3723,7 +3723,7 @@ position = Vector2(937, 866)
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_hgj5o")]
 position = Vector2(-16, 957)
-correctLevel = "F_6"
+correctLevel = "starting_level"
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("6_ij6ja")]
 position = Vector2(-363, 703)
