@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://cmdla7i1bwh5c"
+=======
+uid="uid://dxbptj7ldthx"
+>>>>>>> Stashed changes
 path="res://.godot/imported/FireBoss_JumpEnd.png-de1618bb4903b4204a3e301690fd2ea7.ctex"
 metadata={
 "vram_texture": false

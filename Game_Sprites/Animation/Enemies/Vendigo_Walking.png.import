@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://bpv0v0qqv537a"
+=======
+uid="uid://dvhxva5dsaopr"
+>>>>>>> Stashed changes
 path="res://.godot/imported/Vendigo_Walking.png-39f19a7b8f6832572a8821369ab60a09.ctex"
 metadata={
 "vram_texture": false

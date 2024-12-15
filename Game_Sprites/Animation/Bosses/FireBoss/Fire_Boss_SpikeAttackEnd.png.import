@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< Updated upstream
 uid="uid://cqtcivl3jf0my"
+=======
+uid="uid://chienjd1eutvw"
+>>>>>>> Stashed changes
 path="res://.godot/imported/Fire_Boss_SpikeAttackEnd.png-bf21fe966ad8cb069a5d5819206eabcd.ctex"
 metadata={
 "vram_texture": false
