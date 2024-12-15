@@ -1,17 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyaneafq12qav"]
+[gd_scene load_steps=7 format=3 uid="uid://dyaneafq12qav"]
 
 [ext_resource type="Script" path="res://Scripts/burnable_blocker.gd" id="1_nvnxe"]
-[ext_resource type="Texture2D" uid="uid://ds1sy38d6yjit" path="res://Sprites/rb_59028.png" id="1_rygwe"]
-[ext_resource type="Texture2D" uid="uid://bmo543glmjfi3" path="res://Sprites/pngtree-sparkle-sticker-icon-vector-png-image_10002001.png" id="2_31mlf"]
+[ext_resource type="Texture2D" uid="uid://cj7cmgoa866dt" path="res://Game_Sprites/Tilemaps/Assets/Assets.png" id="2_spy65"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7lmq1"]
+atlas = ExtResource("2_spy65")
+region = Rect2(640, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu7xl"]
+atlas = ExtResource("2_spy65")
+region = Rect2(640, 256, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i0k4s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_rygwe")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_31mlf")
+"texture": SubResource("AtlasTexture_7lmq1")
 }],
 "loop": false,
 "name": &"burning",
@@ -19,24 +23,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_rygwe")
+"texture": SubResource("AtlasTexture_cu7xl")
 }],
 "loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_08kem"]
-radius = 27.0
-height = 236.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55gmv"]
+size = Vector2(85, 155)
 
 [node name="StaticBody2D" type="StaticBody2D" groups=["Burnable"]]
 script = ExtResource("1_nvnxe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_i0k4s")
+animation = &"burning"
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 1)
-shape = SubResource("CapsuleShape2D_08kem")
+position = Vector2(-2.5, 2.5)
+shape = SubResource("RectangleShape2D_55gmv")

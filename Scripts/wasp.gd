@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 const SPEED_WANDER = 95.0
-const SPEED_FOLLOW = 140.0
+const SPEED_FOLLOW = 150.0
 var current_speed
 var hp = 6
 var damage = 1
