@@ -15,7 +15,7 @@ func spawn_random_enemy():
 	var enemy
 	#FloorEnemies
 	if spawnPoint <= 2:
-		match randi_range(1, 3):
+		match randi_range(1, 4):
 			1:
 				enemy =  load("res://tscn_files/enemy.tscn").instantiate()
 			2:
@@ -23,16 +23,14 @@ func spawn_random_enemy():
 			3:
 				enemy =  load("res://tscn_files/spider.tscn").instantiate()
 			4:
-				#Eventually rabbit
-				enemy = load("res://tscn_files/rabbit.gd").instantiate()
+				enemy = load("res://tscn_files/rabbit.tscn").instantiate()
 	#FlyingEnemies
 	else:
-		match randi_range(1, 1):
+		match randi_range(1, 2):
 			1:
 				enemy =  load("res://tscn_files/bat_enemy.tscn").instantiate()
 			2:
-				#Eventually wasp
-				enemy =  load("res://tscn_files/.tscn").instantiate()
+				enemy =  load("res://tscn_files/wasp.tscn").instantiate()
 	enemy.hp *= 1.3
 	add_child(enemy)
 	enemy.position = spawnLocations[spawnPoint-1]

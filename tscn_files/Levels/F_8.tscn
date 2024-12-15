@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://cjwus661nek68"]
+[gd_scene load_steps=10 format=4 uid="uid://cjwus661nek68"]
 
 [ext_resource type="TileSet" uid="uid://dmel105g6rnl8" path="res://Game_Sprites/Tilemaps/New/Fire_area.tres" id="1_if6nq"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_ohiwe"]
@@ -8,6 +8,7 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="5_mfg1d"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="6_xw6bp"]
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="8_m51se"]
+[ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_mlhoh"]
 
 [node name="Level" type="Node2D"]
 
@@ -39,3 +40,10 @@ tile_set = ExtResource("1_if6nq")
 
 [node name="Spider" parent="." instance=ExtResource("8_m51se")]
 position = Vector2(660, -36)
+
+[node name="Fog" parent="." instance=ExtResource("9_mlhoh")]
+offset_left = -1338.0
+offset_top = -1056.0
+offset_right = -826.0
+offset_bottom = -544.0
+scale = Vector2(8.265, 4.87)

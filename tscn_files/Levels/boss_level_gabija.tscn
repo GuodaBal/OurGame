@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c83o4uejxjvsx"]
+[gd_scene load_steps=17 format=4 uid="uid://c83o4uejxjvsx"]
 
 [ext_resource type="Script" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_20n8p"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://c647i37lqy6er" path="res://Audio/Music/GabijaBe.wav" id="6_nb1fa"]
 [ext_resource type="Texture2D" uid="uid://bt1ldi6fqmy3f" path="res://Game_Sprites/Tilemaps/New/Fire_Area_Final.png" id="7_3pgsm"]
 [ext_resource type="AudioStream" uid="uid://divv83lg7clup" path="res://Audio/Music/GabijaAf.wav" id="7_njy1q"]
+[ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_3u04n"]
 
 [sub_resource type="Curve2D" id="Curve2D_hn5tq"]
 _data = {
@@ -3751,6 +3752,13 @@ process_mode = 3
 stream = ExtResource("7_njy1q")
 volume_db = -10.0
 bus = &"Music"
+
+[node name="Fog" parent="." instance=ExtResource("10_3u04n")]
+offset_left = -1504.0
+offset_top = -539.0
+offset_right = -992.0
+offset_bottom = -27.0
+scale = Vector2(9.445, 4.31)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

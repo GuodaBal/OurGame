@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx5hwtyvddfas"]
+
+[ext_resource type="Shader" path="res://Game_Sprites/Shaders/moving_fog.gdshader" id="1_mltjq"]
+[ext_resource type="Texture2D" uid="uid://diabvwd1lmeor" path="res://Game_Sprites/Shaders/fog_texture.tres" id="2_tp2q8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t5oo8"]
+shader = ExtResource("1_mltjq")
+shader_parameter/base_color = Color(0.568973, 0.568973, 0.568973, 1)
+
+[node name="Fog" type="TextureRect"]
+process_mode = 1
+material = SubResource("ShaderMaterial_t5oo8")
+offset_right = 512.0
+offset_bottom = 512.0
+texture = ExtResource("2_tp2q8")
+stretch_mode = 1
