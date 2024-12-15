@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://bwf0jbtpago7x"
+path="res://.godot/imported/perkunas.dialogue-bd5f722d1b8f903b45bdd6d63d0aa17d.tres"
+
+[deps]
+
+source_file="res://Dialogue/perkunas.dialogue"
+dest_files=["res://.godot/imported/perkunas.dialogue-bd5f722d1b8f903b45bdd6d63d0aa17d.tres"]
+
+[params]
+
+defaults=true

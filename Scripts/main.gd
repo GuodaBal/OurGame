@@ -18,11 +18,8 @@ func _ready() -> void:
 	if GlobalVariables.load:
 		get_tree().get_nodes_in_group("Player")[0].load_data()
 		#Checks if enemies were killed
-		print_debug(str(instance.scene_file_path))
-		print_debug("trying")
 		if GlobalVariables.AliveEnemies.has(str(instance.scene_file_path)):
 		#If there are no enemies, chance to respawn
-			print_debug("in")
 			if GlobalVariables.AliveEnemies[str(instance.scene_file_path)].is_empty():
 				for child in instance.get_children():
 					if child.is_in_group("Enemy") and randf_range(0,1) > 0.2:

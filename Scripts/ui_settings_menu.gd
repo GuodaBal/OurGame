@@ -17,6 +17,8 @@ extends Control
 @onready var Ability3Button := $CanvasLayer/ControlsScroll/Controls/Ability3Button
 @onready var MenuOpenButton := $CanvasLayer/ControlsScroll/Controls/MenuButton
 @onready var SaveButton := $CanvasLayer/ControlsScroll/Controls/SaveButton
+@onready var AdvanceButton := $CanvasLayer/ControlsScroll/Controls/AdvanceButton
+@onready var SkipButton := $CanvasLayer/ControlsScroll/Controls/SkipButton
 
 var Music_Bus_ID = AudioManager.get_MusicID()
 var SFX_Bus_ID = AudioManager.get_SFXID()
@@ -55,6 +57,8 @@ func _ready() -> void:
 	Ability3Button.text = InputMap.action_get_events("thunder_ability")[0].as_text().replace("(Physical)", "")
 	MenuOpenButton.text = InputMap.action_get_events("menu")[0].as_text().replace("(Physical)", "")
 	SaveButton.text = InputMap.action_get_events("save")[0].as_text().replace("(Physical)", "")
+	AdvanceButton.text = InputMap.action_get_events("continue_dialogue")[0].as_text().replace("(Physical)", "")
+	SkipButton.text = InputMap.action_get_events("skip_dialogue")[0].as_text().replace("(Physical)", "")
 	$CanvasLayer/Graphics/ZoomSlider.value = Settings.zoom
 	$CanvasLayer/Sound/MusicSlider.value = Settings.music_volume
 	$CanvasLayer/Sound/MiscSlider.value = Settings.misc_volume
@@ -142,6 +146,16 @@ func _on_save_button_pressed() -> void:
 	waiting_for_input = true
 	action = "save"
 	button = SaveButton
+	
+func _on_advance_button_pressed() -> void:
+	waiting_for_input = true
+	action = "continue_dialogue"
+	button = AdvanceButton
+
+func _on_skip_button_pressed() -> void:
+	waiting_for_input = true
+	action = "skip_dialogue"
+	button = SkipButton
 	
 func _input(event: InputEvent) -> void:
 	if (waiting_for_input and event is InputEventKey and event.pressed) or (waiting_for_input and event is InputEventMouseButton and event.pressed):

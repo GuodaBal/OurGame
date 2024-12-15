@@ -19,6 +19,7 @@ var is_waiting_for_input: bool = false
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
 
+
 var _locale: String = TranslationServer.get_locale()
 
 ## The current line
@@ -30,6 +31,9 @@ var dialogue_line: DialogueLine:
 
 		# The dialogue has finished so close the balloon
 		if not next_dialogue_line:
+			for child in get_parent().get_children():
+				if "Level" in child.name:
+					child.get_tree().paused = false
 			queue_free()
 			return
 
@@ -110,7 +114,11 @@ func _notification(what: int) -> void:
 
 
 ## Start some dialogue
-func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+func start(dialogue_resource: DialogueResource, title: String, pause: bool, extra_game_states: Array = []) -> void:
+	if pause:
+		for child in get_parent().get_children():
+			if "Level" in child.name:
+				child.get_tree().paused = true
 	temporary_game_states =  [self] + extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
@@ -151,9 +159,10 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	# When there are no response options the balloon itself is the clickable thing
 	get_viewport().set_input_as_handled()
 
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		next(dialogue_line.next_id)
-	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
+	#if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		#next(dialogue_line.next_id)
+	#print_debug(event)
+	if event.is_action_pressed(next_action):# and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 
 

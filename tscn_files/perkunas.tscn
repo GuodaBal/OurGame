@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://d201y4ym3cyrh"]
+[gd_scene load_steps=35 format=3 uid="uid://d201y4ym3cyrh"]
 
 [ext_resource type="Texture2D" uid="uid://qvjsdgq2dp1u" path="res://Game_Sprites/Animation/Bosses/WaterBoss/Idle_WaterBoss.png" id="1_wetw4"]
+[ext_resource type="Script" path="res://Scripts/perkunas.gd" id="2_blpax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hogcl"]
 atlas = ExtResource("1_wetw4")
@@ -230,3 +231,4 @@ animations = [{
 [node name="Perkunas" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_8qb4k")
 animation = &"idle"
+script = ExtResource("2_blpax")

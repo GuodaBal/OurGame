@@ -3718,7 +3718,7 @@ progress = 1292.57
 loop = false
 
 [node name="Gabija" parent="." instance=ExtResource("3_0oha5")]
-position = Vector2(1704, 511)
+position = Vector2(937, 866)
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_hgj5o")]
 position = Vector2(-16, 957)
@@ -3740,12 +3740,14 @@ tile_map_data = PackedByteArray("AAACABAAAgAKAAIABAADABAAAgAKAAAACAAEABAAAgAKAAI
 tile_set = SubResource("TileSet_rdaqr")
 
 [node name="GabijaBe" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("6_nb1fa")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
 
 [node name="GabijaAf" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("7_njy1q")
 volume_db = -10.0
 bus = &"Music"

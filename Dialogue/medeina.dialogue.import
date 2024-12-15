@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://dprp0mmg4gc8q"
+path="res://.godot/imported/medeina.dialogue-3d2dfe1ed57aa9b8e08b1f45d50c759c.tres"
+
+[deps]
+
+source_file="res://Dialogue/medeina.dialogue"
+dest_files=["res://.godot/imported/medeina.dialogue-3d2dfe1ed57aa9b8e08b1f45d50c759c.tres"]
+
+[params]
+
+defaults=true

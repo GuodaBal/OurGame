@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_13"
+type="Resource"
+uid="uid://if3hgagc5ek0"
+path="res://.godot/imported/gabija.dialogue-e6ada059174b04e09af6c120869aae59.tres"
+
+[deps]
+
+source_file="res://Dialogue/gabija.dialogue"
+dest_files=["res://.godot/imported/gabija.dialogue-e6ada059174b04e09af6c120869aae59.tres"]
+
+[params]
+
+defaults=true

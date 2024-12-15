@@ -3,6 +3,7 @@ extends Node
 var load = false #If a save file is being loaded
 var starting_level = "starting_level" #Level that the player spawns in
 
+var StartDialogueDone = false
 var GabijaDone = false
 var MedeinaDone = false
 var PerkunasDone = false
@@ -19,6 +20,7 @@ var maxHP = 24
 func reset():
 	load = false
 	starting_level = "starting_level"
+	StartDialogueDone = false
 	GabijaDone = false
 	MedeinaDone = false
 	PerkunasDone = false
@@ -32,6 +34,7 @@ func reset():
 func save_data():
 	var save_dict = {
 		"starting_level" : starting_level,
+		"StartDialogueDone" : StartDialogueDone,
 		"GabijaDone" : GabijaDone,
 		"MedeinaDone" : MedeinaDone,
 		"PerkunasDone" : PerkunasDone,

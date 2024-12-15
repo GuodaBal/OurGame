@@ -1,0 +1,22 @@
+~ fire_ability
+You have gained a gift from the Goddess of Fire.
+Press {{Settings.controls["fire_ability"]}} to give it a try.
+=> END
+
+~ nature_ability
+You have gained a gift from the Goddess of Nature.
+Press {{Settings.controls["nature_ability"]}} to give it a try.
+=> END
+
+~ thunder_ability
+You have gained a gift from the God of Thunder.
+Press {{Settings.controls["thunder_ability"]}} to give it a try.
+=> END
+
+~ health_boost
+You feel yourself getting more resilient.
+=> END
+
+~ attack_boost
+You feel yourself getting stronger.
+=> END

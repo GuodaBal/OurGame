@@ -88,7 +88,10 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [node name="ExampleBalloon" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_36de5")
+next_action = &"continue_dialogue"
+skip_action = &"skip_dialogue"
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true

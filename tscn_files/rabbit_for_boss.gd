@@ -15,12 +15,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+	
+	
 	move_and_slide()
 	if get_real_velocity().length() < 5:
 		queue_free()
-
-
+		
+func set_direction(dir):
+	direction = dir
+	animation.scale.x *= -direction
 func _on_damage_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		body.take_damage(1, 1, position)

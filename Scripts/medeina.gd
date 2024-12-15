@@ -53,6 +53,7 @@ func changeStage():
 	if stage == 3: #Fight ends
 		GlobalVariables.MedeinaDone = true
 		get_parent().end_level()
+		DialogueManager.show_dialogue_balloon(load("res://Dialogue/medeina.dialogue"), "death")
 		play("death")
 		await animation_finished
 		queue_free()

@@ -6,6 +6,8 @@ extends Node2D
 @onready var platformIntervalTimer := $PlatformIntervalTimer as Timer
 @onready var sunBlocker := $TreeSunBlocker as AnimatableBody2D #Tree that blocks sun
 @onready var animation := $AnimationPlayer as AnimationPlayer 
+@onready var before := $Before as TileMapLayer
+@onready var after := $After as TileMapLayer
 var coef = 1
 var platforms= [[975, null], [925, null], [875, null]] as Array #Platforms spawn in one of 
 #three heights. Stores platforms or null if line not busy
@@ -17,8 +19,13 @@ var lastSpikeAtPlayer = false #If last spike was spawned under player, don't spa
 func _ready() -> void:
 	animation.play("Remove_dark")
 	if GlobalVariables.MedeinaDone:
+		before.visible = false
+		before.collision_enabled = false
 		end_level()
 		$Medeina.queue_free()
+	else:
+		after.visible = false
+		after.collision_enabled = false
 
 func start_spike_attack():
 	spikeIntervalTimer.start()
@@ -81,10 +88,10 @@ func _on_rabbit_interval_timer_timeout() -> void:
 	instance.SPEED*=coef
 	if randi()%2 == 0:
 		instance.position = Vector2(150, 1050)
-		instance.direction = 1
+		instance.set_direction(1)
 	else:
 		instance.position = Vector2(1800, 1050)
-		instance.direction = -1
+		instance.set_direction(-1) 
 	move_child(instance, 2)
 	rabbitIntervalTimer.start(randf_range(0.6, 1.2)/coef)
 	

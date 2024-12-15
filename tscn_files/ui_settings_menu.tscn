@@ -61,9 +61,9 @@ text = " Controls"
 alignment = 0
 
 [node name="Graphics" type="GridContainer" parent="CanvasLayer"]
-offset_left = 900.0
+offset_left = 750.0
 offset_top = 200.0
-offset_right = 1740.0
+offset_right = 1850.0
 offset_bottom = 664.0
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 100
@@ -121,9 +121,9 @@ value = 1.0
 
 [node name="Sound" type="GridContainer" parent="CanvasLayer"]
 visible = false
-offset_left = 900.0
+offset_left = 750.0
 offset_top = 200.0
-offset_right = 1792.0
+offset_right = 1850.0
 offset_bottom = 664.0
 theme_override_constants/h_separation = 50
 theme_override_constants/v_separation = 100
@@ -168,10 +168,10 @@ expand_icon = true
 
 [node name="ControlsScroll" type="ScrollContainer" parent="CanvasLayer"]
 visible = false
-custom_minimum_size = Vector2(892, 800)
-offset_left = 900.0
+custom_minimum_size = Vector2(1100, 800)
+offset_left = 750.0
 offset_top = 200.0
-offset_right = 1792.0
+offset_right = 1856.93
 offset_bottom = 1000.0
 
 [node name="Controls" type="GridContainer" parent="CanvasLayer/ControlsScroll"]
@@ -187,6 +187,7 @@ text = "Move left"
 
 [node name="LeftButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "A"
 
@@ -197,6 +198,7 @@ text = "Move right"
 
 [node name="RightButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "D"
 
@@ -207,6 +209,7 @@ text = "Jump"
 
 [node name="JumpButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "Space"
 
@@ -217,6 +220,7 @@ text = "Attack"
 
 [node name="AttackButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "Left Mouse Button"
 
@@ -227,6 +231,7 @@ text = "Ability 1"
 
 [node name="Ability1Button" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "Right Mouse Button"
 
@@ -237,6 +242,7 @@ text = "Ability 2"
 
 [node name="Ability2Button" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "Q"
 
@@ -247,6 +253,7 @@ text = "Ability 3"
 
 [node name="Ability3Button" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "E"
 
@@ -257,6 +264,7 @@ text = "Open menu"
 
 [node name="MenuButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "Escape"
 
@@ -267,6 +275,29 @@ text = "Save game"
 
 [node name="SaveButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
 layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "Escape"
+
+[node name="AdvanceLabel" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Advance dialogue"
+
+[node name="AdvanceButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 50
+text = "Escape"
+
+[node name="SkipLabel" type="Label" parent="CanvasLayer/ControlsScroll/Controls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Fast-forward dialogue"
+
+[node name="SkipButton" type="Button" parent="CanvasLayer/ControlsScroll/Controls"]
+layout_mode = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 50
 text = "Escape"
 
@@ -299,4 +330,6 @@ text = "Back"
 [connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/Ability3Button" to="." method="_on_ability_3_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/SaveButton" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/AdvanceButton" to="." method="_on_advance_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ControlsScroll/Controls/SkipButton" to="." method="_on_skip_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Back" to="." method="_on_back_pressed"]

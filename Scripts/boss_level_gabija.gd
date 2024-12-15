@@ -34,6 +34,8 @@ func _ready() -> void:
 		levelBe.collision_enabled = false
 		get_node("Gabija").queue_free()
 	else:
+		await get_parent().get_node("AnimationPlayer").animation_finished
+		DialogueManager.show_dialogue_balloon(load("res://Dialogue/gabija.dialogue"), "meet")
 		levelAf.visible = false
 		levelAf.visible = false
 

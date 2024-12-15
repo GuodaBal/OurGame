@@ -14,7 +14,10 @@ var controls = {
 	"attack" : "Left Mouse Button",
 	"fire_ability" : "Right Mouse Button",
 	"nature_ability" : "Q",
-	"thunder_ability" : "E"
+	"thunder_ability" : "E",
+	"save" : "S",
+	"continue_dialogue" : "ENTER",
+	"skip_dialogue" : "SPACE"
 }
 
 #Godot can't convert from string to input code
@@ -44,7 +47,10 @@ func reset():
 		"attack" : "Left Mouse Button",
 		"fire_ability" : "Right Mouse Button",
 		"nature_ability" : "Q",
-		"thunder_ability" : "E"
+		"thunder_ability" : "E",
+		"save" : "S",
+		"continue_dialogue" : "ENTER",
+		"skip_dialogue" : "SPACE"
 	}
 	
 func save_data():
