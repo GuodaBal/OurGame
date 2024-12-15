@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="2_6s6y2"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_t5iol"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_oxnbh"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="5_c6jit"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Old/details.tres" id="5_c6jit"]
 [ext_resource type="Script" path="res://Scripts/node_2d.gd" id="6_u6smp"]
 [ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_n4237"]
 [ext_resource type="Texture2D" uid="uid://de2b5wx7rrtk8" path="res://Game_Sprites/Tilemaps/Old/Starting area_V2.png" id="9_pey2b"]
@@ -1790,7 +1790,7 @@ correctLevel = "N_1"
 [node name="LevelSwitcher2" parent="." instance=ExtResource("3_t5iol")]
 position = Vector2(2627, 507)
 scale = Vector2(1, 1.91)
-nextLevel = "F_1"
+nextLevel = "boss_level_angel"
 
 [node name="SpawnArea2" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(2464, 677)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dek3hypbets8v"]
+[gd_scene load_steps=9 format=4 uid="uid://dek3hypbets8v"]
 
 [ext_resource type="Script" path="res://Scripts/boss_level_angel.gd" id="1_uwy1p"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_6de1d"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://c8q5d3oyujb2m" path="res://Game_Sprites/Tilemaps/New/Angel_boss.tres" id="4_v3i2m"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_8brmy"]
 [ext_resource type="Texture2D" uid="uid://b3duwd2fopvue" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Angel_Boss_NEW.png" id="7_cbc4v"]
+[ext_resource type="AudioStream" uid="uid://cgqelm0icu4yl" path="res://Audio/Music/final_mixdown.wav" id="8_h6pym"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_uwy1p")
@@ -54,5 +55,10 @@ offset_top = -673.0
 offset_right = -732.0
 offset_bottom = -161.0
 scale = Vector2(8.915, 4.8)
+
+[node name="FinalSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_h6pym")
+autoplay = true
+bus = &"Music"
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
