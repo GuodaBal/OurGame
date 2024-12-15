@@ -1,9 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://dmcrboumpymth"]
+[gd_scene load_steps=34 format=3 uid="uid://dmcrboumpymth"]
 
 [ext_resource type="Script" path="res://Scripts/spider.gd" id="1_2cmbd"]
 [ext_resource type="Texture2D" uid="uid://dkydsg7w0aqv0" path="res://Game_Sprites/Enemy/Spider_256.png" id="2_h0wtt"]
 [ext_resource type="Texture2D" uid="uid://bvhcwkg77wlg1" path="res://Game_Sprites/Animation/Death/Spider_Death.png" id="2_nagwb"]
 [ext_resource type="Texture2D" uid="uid://cjb15tttykulf" path="res://Game_Sprites/Animation/Enemies/Spider_Running.png" id="4_jjluc"]
+[ext_resource type="AudioStream" uid="uid://dqygxwku4msua" path="res://Audio/SFX/SpiderWalking.wav" id="5_1bx4o"]
+[ext_resource type="AudioStream" uid="uid://b0uh31ovxre2t" path="res://Audio/SFX/SpiderAttack.wav" id="5_kcdll"]
+[ext_resource type="AudioStream" uid="uid://qqulxn7am0w" path="res://Audio/SFX/SpiderTakeDamage.wav" id="7_g4q18"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kk885"]
 atlas = ExtResource("2_nagwb")
@@ -237,6 +240,21 @@ autostart = true
 position = Vector2(1, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_8k2u7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_1bx4o")
+autoplay = true
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kcdll")
+bus = &"SFX"
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_g4q18")
+volume_db = 2.0
+bus = &"SFX"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="Rebound" to="." method="_on_rebound_body_entered"]
