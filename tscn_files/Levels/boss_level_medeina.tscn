@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://b5cnnwjdprlnn"]
+[gd_scene load_steps=20 format=4 uid="uid://b5cnnwjdprlnn"]
 
 [ext_resource type="PackedScene" uid="uid://b2a6p8rxv1igu" path="res://tscn_files/medeina.tscn" id="1_0sq2h"]
 [ext_resource type="Script" path="res://Scripts/boss_level_medeina.gd" id="1_rpm1e"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="4_pj58x"]
 [ext_resource type="PackedScene" uid="uid://1okjlshefdnc" path="res://tscn_files/tree_sun_blocker.tscn" id="7_7kh2i"]
 [ext_resource type="Texture2D" uid="uid://dynnfse2atnmr" path="res://Game_Sprites/Tilemaps/Old/Nature_Area.png" id="9_05ary"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="10_ouxmr"]
 [ext_resource type="Texture2D" uid="uid://cj7cmgoa866dt" path="res://Game_Sprites/Tilemaps/Assets/Assets.png" id="11_p4joh"]
 
 [sub_resource type="Animation" id="Animation_7rnif"]
@@ -1944,6 +1945,10 @@ one_shot = true
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(1040, 422)
 texture = SubResource("AtlasTexture_hb8qv")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AACBAAwAAQAHAAEAAACBABwAAQAHAAIAAAA=")
+tile_set = ExtResource("10_ouxmr")
 
 [node name="Before" type="TileMapLayer" parent="."]
 scale = Vector2(0.5, 0.5)

@@ -1,10 +1,32 @@
-[gd_scene load_steps=4 format=3 uid="uid://ncwroj8cc52h"]
+[gd_scene load_steps=7 format=3 uid="uid://ncwroj8cc52h"]
 
 [ext_resource type="Script" path="res://Scripts/damage_boost.gd" id="1_wlyha"]
-[ext_resource type="Texture2D" uid="uid://6qp0mhjtnklf" path="res://Sprites/8800708.png" id="2_ll0ww"]
+[ext_resource type="Texture2D" uid="uid://cj7cmgoa866dt" path="res://Game_Sprites/Tilemaps/Assets/Assets.png" id="3_ixwgf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir78q"]
 size = Vector2(510, 446)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkvkk"]
+atlas = ExtResource("3_ixwgf")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7mty"]
+atlas = ExtResource("3_ixwgf")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7wag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkvkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7mty")
+}],
+"loop": false,
+"name": &"open",
+"speed": 2.0
+}]
 
 [node name="Damage_boost" type="Area2D" groups=["Boost"]]
 scale = Vector2(0.2, 0.2)
@@ -14,7 +36,9 @@ script = ExtResource("1_wlyha")
 position = Vector2(1, -4)
 shape = SubResource("RectangleShape2D_ir78q")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ll0ww")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_n7wag")
+animation = &"open"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

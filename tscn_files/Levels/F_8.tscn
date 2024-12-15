@@ -23,7 +23,7 @@ position = Vector2(-20, 821)
 correctLevel = "F_7"
 
 [node name="Health_boost" parent="." instance=ExtResource("4_fyk8p")]
-position = Vector2(990, -27)
+position = Vector2(990, -18.15)
 
 [node name="Enemy" parent="." instance=ExtResource("6_xw6bp")]
 position = Vector2(636, 663)

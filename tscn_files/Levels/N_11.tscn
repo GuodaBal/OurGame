@@ -11,9 +11,6 @@
 
 [node name="Level" type="Node2D"]
 
-[node name="MainCharacter" parent="." instance=ExtResource("2_tggr3")]
-position = Vector2(425, 1004)
-
 [node name="LevelSwitcher" parent="." instance=ExtResource("3_w4igp")]
 position = Vector2(129, 1087)
 scale = Vector2(1, 1.35)
@@ -27,7 +24,10 @@ correctLevel = "N_10"
 position = Vector2(449, -598)
 
 [node name="Damage_boost" parent="." instance=ExtResource("7_ap27j")]
-position = Vector2(2254, -555)
+position = Vector2(2254, -531.86)
+
+[node name="MainCharacter" parent="." instance=ExtResource("2_tggr3")]
+position = Vector2(425, 1004)
 
 [node name="Rabbit" parent="." instance=ExtResource("8_lfam5")]
 position = Vector2(2010, -521)

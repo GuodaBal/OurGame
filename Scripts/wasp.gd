@@ -86,7 +86,7 @@ func _on_update_target_timeout() -> void:
 		current_speed = SPEED_FOLLOW
 	#Checks if previous target has been reached, or if the wasp has stopped (gotten stuck in a corner)
 	elif (position - navigation.target_position).length() < attackRange || get_real_velocity().length() < 6:
-		var rndpos = Vector2(position.x + randf_range(-500, 500), position.y + randf_range(-500, 500)) 
+		var rndpos = Vector2(position.x + randf_range(-1000, 1000), position.y + randf_range(-1000, 1000)) 
 		navigation.target_position = rndpos
 		current_speed = SPEED_WANDER
 	

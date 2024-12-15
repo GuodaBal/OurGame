@@ -17,6 +17,6 @@ Press {{Settings.controls["thunder_ability"]}} to give it a try.
 You feel yourself getting more resilient.
 => END
 
-~ attack_boost
+~ damage_boost
 You feel yourself getting stronger.
 => END

@@ -3722,12 +3722,12 @@ position = Vector2(937, 866)
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_hgj5o")]
 position = Vector2(-16, 957)
-correctLevel = "starting_level"
+correctLevel = "F_6"
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("6_ij6ja")]
 position = Vector2(-363, 703)
 scale = Vector2(1, 2.285)
-nextLevel = "starting_level"
+nextLevel = "F_6"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.5, 0.5)
