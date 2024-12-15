@@ -14,7 +14,8 @@ var damage = 1
 @onready var attackArea := $Flip/Attack as Area2D
 @onready var rebound := $Rebound as Area2D #Stops player from standing on it
 @onready var animation := $Flip/AnimatedSprite2D as AnimatedSprite2D
-
+@onready var audio = $Attack
+@onready var audio2 = $TakeDamage
 var knockback = Vector2.ZERO
 var sprite_scale
 var margin = 10
@@ -51,6 +52,7 @@ func _physics_process(delta: float) -> void:
 
 	
 func take_damage(damage: int, knockback_strength: int, character_position: Vector2):
+	AudioManager.play_with_random_pitch(audio2)
 	hp-=damage
 	var direction = position - character_position
 	knockback = direction * knockback_strength
@@ -59,6 +61,7 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 		die()
 		
 func attack(body):
+	AudioManager.play_with_random_pitch(audio)
 	animation.play("attack")
 	body.take_damage(damage, 3, position)
 	attackTimer.start()
