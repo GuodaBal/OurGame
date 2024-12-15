@@ -330,6 +330,7 @@ func _on_spike_timer_timeout() -> void:
 	if spawning_spikes and !spikeEndTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
 		for rot in range(-70, 71, 10):
 			var instance = load("res://tscn_files/spike.tscn").instantiate()
+			
 			spikeSpawner.add_child(instance)
 			instance.rotation = deg_to_rad(rot)
 		spikeTimer.start()
