@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://b7e2uwntspmnv"]
+[gd_scene load_steps=10 format=4 uid="uid://b7e2uwntspmnv"]
 
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_usqcu"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="2_3m8dd"]
@@ -7,12 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="5_nxeky"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/Enemies/bat_enemy.tscn" id="7_125o7"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_njmnh"]
-<<<<<<< Updated upstream
-[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/rabbit.tscn" id="8_rbw7s"]
-=======
 [ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/Enemies/rabbit.tscn" id="8_rbw7s"]
 [ext_resource type="Texture2D" uid="uid://51mi5aacj6xm" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="9_nafyi"]
->>>>>>> Stashed changes
 
 [node name="Level" type="Node2D"]
 
@@ -58,3 +54,8 @@ offset_top = -848.0
 offset_right = -733.0
 offset_bottom = -336.0
 scale = Vector2(13.875, 6.81)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2098, 834.5)
+scale = Vector2(3.3, 2.70278)
+texture = ExtResource("9_nafyi")

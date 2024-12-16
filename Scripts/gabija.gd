@@ -245,19 +245,15 @@ func _on_attack_timer_timeout() -> void:
 	if !attacking:
 		if isExhaustedTimer.is_stopped() and !will_be_exhausted and is_on_floor():
 			match state:
-				"left":					
+				"left":
 					get_parent().spawn_fire_right()
-
 				"right":
 					get_parent().spawn_fire_left()
-
 				"up":
 					if playerPostion.x > 1600:
 						get_parent().spawn_fire_right()
-
 					elif playerPostion.x < 200:
 						get_parent().spawn_fire_left()
-
 					elif randi() % 2 == 0:
 						spawn_spikes()
 					else:	

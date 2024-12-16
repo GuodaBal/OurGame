@@ -65,6 +65,7 @@ _data = {
 }
 
 [node name="Node2D" type="Node2D"]
+z_index = 2
 script = ExtResource("1_odcfl")
 
 [node name="MovingPlatform" type="AnimatableBody2D" parent="."]

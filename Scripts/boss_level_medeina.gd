@@ -46,14 +46,16 @@ func block_sun():
 	sunBlocker.set_collision_layer_value(1, true)
 func unblock_sun():
 	sunBlocker.set_collision_layer_value(1, false)
+	sunBlocker.can_burn = false
 	animation.play("Remove_dark")
+func is_sun_blocked():
+	return sunBlocker.can_burn
 	
 	
 
 func _on_spike_interval_timer_timeout() -> void:
 	var instance = load("res://tscn_files/ground_spike.tscn").instantiate()
 	add_child(instance)
-	move_child(instance, -5)
 	#Some spawn under player, some in random spots
 	if randi()%3 == 0 and !lastSpikeAtPlayer:
 		instance.position = Vector2(get_node("MainCharacter").position.x + randi_range(-50, 50), 1115)
@@ -71,7 +73,6 @@ func _on_platform_interval_timer_timeout() -> void:
 			platform[1] =  load("res://tscn_files/moving_platform.tscn").instantiate()
 			add_child(platform[1])
 			platform[1].position.y = platform[0]
-			move_child(platform[1], -5)
 			#Spawns randomly from left or right
 			if randi()%2 == 0:
 				platform[1].move("left", coef)
@@ -92,7 +93,6 @@ func _on_rabbit_interval_timer_timeout() -> void:
 	else:
 		instance.position = Vector2(1800, 1050)
 		instance.set_direction(-1) 
-	move_child(instance, 2)
 	rabbitIntervalTimer.start(randf_range(0.6, 1.2)/coef)
 	
 #When stage changes
@@ -102,7 +102,6 @@ func change_environment(stage):
 	get_node("Stage"+str(stage)+"BG").visible = true
 	
 func end_level():
-	stop_attacks()
 	$Before.visible = false
 	$After.visible = true
 	for i in range(1,4):

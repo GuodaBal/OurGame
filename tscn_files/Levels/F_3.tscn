@@ -19,6 +19,11 @@ position = Vector2(2920.5, 598)
 scale = Vector2(4.45365, 3.61111)
 texture = ExtResource("1_8vcrr")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2920.5, 598)
+scale = Vector2(4.45365, 3.61111)
+texture = ExtResource("1_8vcrr")
+
 [node name="Area2D" parent="." instance=ExtResource("1_wijav")]
 position = Vector2(2892, 1216)
 

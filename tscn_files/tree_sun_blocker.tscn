@@ -428,6 +428,7 @@ animations = [{
 }]
 
 [node name="TreeSunBlocker" type="AnimatableBody2D" groups=["Burnable"]]
+z_index = 1
 scale = Vector2(1.7, 1.7)
 script = ExtResource("1_j6q7w")
 
