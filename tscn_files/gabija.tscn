@@ -1,13 +1,13 @@
 [gd_scene load_steps=85 format=3 uid="uid://n0byngr2sw2r"]
 
 [ext_resource type="Script" path="res://Scripts/gabija.gd" id="1_tjeds"]
-[ext_resource type="Texture2D" uid="uid://dq0hovufrds3l" path="res://Game_Sprites/Animation/Death/FireBoss_Death_V2.png" id="2_hh4jt"]
+[ext_resource type="Texture2D" uid="uid://bu8eesg2g64f2" path="res://Game_Sprites/Animation/Death/FireBoss_Death_V2.png" id="2_hh4jt"]
 [ext_resource type="Texture2D" uid="uid://c2et521s82vsw" path="res://Game_Sprites/Animation/Death/FireBoss_Death.png" id="2_xdtr6"]
-[ext_resource type="Texture2D" uid="uid://cmdla7i1bwh5c" path="res://Game_Sprites/Animation/Bosses/FireBoss/FireBoss_JumpEnd.png" id="3_a1416"]
-[ext_resource type="Texture2D" uid="uid://dbgsag5s307f2" path="res://Game_Sprites/Animation/Bosses/FireBoss/FireBoss_JumpStart.png" id="4_pw7ax"]
-[ext_resource type="Texture2D" uid="uid://cqtcivl3jf0my" path="res://Game_Sprites/Animation/Bosses/FireBoss/Fire_Boss_SpikeAttackEnd.png" id="5_vilak"]
-[ext_resource type="Texture2D" uid="uid://devd0fchj6io7" path="res://Game_Sprites/Animation/Bosses/FireBoss/FireBoss_Walking.png" id="6_1n2ej"]
-[ext_resource type="Texture2D" uid="uid://bh6xqxc7o3tu" path="res://Game_Sprites/Animation/Bosses/FireBoss/FireBoss_SpikeAttackStart.png" id="6_tmy2g"]
+[ext_resource type="Texture2D" uid="uid://c1h41vofdkjer" path="res://Game_Sprites/Animation/Bosses/FireBoss/FireBoss_JumpEnd.png" id="3_a1416"]
+[ext_resource type="Texture2D" uid="uid://cqeu1y8if8wv3" path="res://Game_Sprites/Animation/Bosses/FireBoss/FireBoss_JumpStart.png" id="4_pw7ax"]
+[ext_resource type="Texture2D" uid="uid://dlghmptsas0sm" path="res://Game_Sprites/Animation/Bosses/FireBoss/Fire_Boss_SpikeAttackEnd.png" id="5_vilak"]
+[ext_resource type="Texture2D" uid="uid://ccdnjbwgu8mpw" path="res://Game_Sprites/Animation/Bosses/FireBoss/FireBoss_Walking.png" id="6_1n2ej"]
+[ext_resource type="Texture2D" uid="uid://1urvk4dn8ev4" path="res://Game_Sprites/Animation/Bosses/FireBoss/FireBoss_SpikeAttackStart.png" id="6_tmy2g"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3satc"]
 radius = 630.0

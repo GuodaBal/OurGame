@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/wendigo.gd" id="1_2s4nl"]
 [ext_resource type="Texture2D" uid="uid://pl4c5woknuah" path="res://Game_Sprites/Animation/Death/Vendigo_Death.png" id="2_ygyth"]
-[ext_resource type="Texture2D" uid="uid://dbovdsd6140nx" path="res://Game_Sprites/Animation/Enemies/Vendigo_Attack.png" id="3_6j3bj"]
-[ext_resource type="Texture2D" uid="uid://bpv0v0qqv537a" path="res://Game_Sprites/Animation/Enemies/Vendigo_Walking.png" id="3_vwdb5"]
+[ext_resource type="Texture2D" uid="uid://bp3osr0anxpku" path="res://Game_Sprites/Animation/Enemies/Vendigo_Attack.png" id="3_6j3bj"]
+[ext_resource type="Texture2D" uid="uid://du35tf4st5nc6" path="res://Game_Sprites/Animation/Enemies/Vendigo_Walking.png" id="3_vwdb5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ford3"]
 size = Vector2(450, 1062.5)

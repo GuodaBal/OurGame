@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=4 uid="uid://bm0ie684qvpbv"]
+[gd_scene load_steps=11 format=4 uid="uid://bm0ie684qvpbv"]
 
+[ext_resource type="Texture2D" uid="uid://c8aq7tnw2tbk3" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_2.png" id="1_6n686"]
 [ext_resource type="TileSet" uid="uid://cdk1i5ejbua4j" path="res://Game_Sprites/Tilemaps/New/In_between.tres" id="1_l46q5"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="2_em4vw"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_i7qqi"]
@@ -11,6 +12,11 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_me7us"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-327.5, -282)
+scale = Vector2(4.24948, 3.07222)
+texture = ExtResource("1_6n686")
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("3_5pv1f")]
 position = Vector2(2217, 60)

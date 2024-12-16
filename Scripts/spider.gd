@@ -17,7 +17,7 @@ var damage = 1
 
 var knockback = Vector2.ZERO
 var margin = 100 #How far away the player has to be to follow
-var range = 300 #Range to start following player
+var range = 500 #Range to start following player
 var last_direction = 0
 var shoot_force = 1000
 

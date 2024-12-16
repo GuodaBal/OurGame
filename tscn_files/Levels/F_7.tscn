@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://bark8g8v6u1hr"]
+[gd_scene load_steps=9 format=4 uid="uid://bark8g8v6u1hr"]
 
 [ext_resource type="TileSet" uid="uid://dmel105g6rnl8" path="res://Game_Sprites/Tilemaps/New/Fire_area.tres" id="1_i6xmw"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_sbj08"]
+[ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_xoixd"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_xmtdg"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_40son"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="4_udfbg"]
@@ -9,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_ctok6"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(660.5, 191.5)
+scale = Vector2(2.80052, 3.0713)
+texture = ExtResource("1_xoixd")
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_sbj08")]
 
