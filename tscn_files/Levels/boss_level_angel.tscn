@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b3duwd2fopvue" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Angel_Boss_NEW.png" id="7_cbc4v"]
 [ext_resource type="AudioStream" uid="uid://cgqelm0icu4yl" path="res://Audio/Music/final_mixdown.wav" id="8_h6pym"]
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 script = ExtResource("1_uwy1p")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_6de1d")]

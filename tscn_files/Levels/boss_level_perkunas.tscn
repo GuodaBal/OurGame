@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="6_vis1p"]
 [ext_resource type="AudioStream" uid="uid://he6tgysnei" path="res://Audio/Music/Perkunas.wav" id="7_7go53"]
 
-[node name="Level" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="Perkunas" parent="." instance=ExtResource("2_0mxwv")]
 position = Vector2(639, 873)
