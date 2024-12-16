@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ncwroj8cc52h"]
+[gd_scene load_steps=8 format=3 uid="uid://ncwroj8cc52h"]
 
 [ext_resource type="Script" path="res://Scripts/damage_boost.gd" id="1_wlyha"]
 [ext_resource type="Texture2D" uid="uid://cj7cmgoa866dt" path="res://Game_Sprites/Tilemaps/Assets/Assets.png" id="3_ixwgf"]
+[ext_resource type="AudioStream" uid="uid://dpkcv85vrr7qi" path="res://Audio/SFX/Item_4.wav" id="3_uq0fi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ir78q"]
 size = Vector2(510, 446)
@@ -40,5 +41,10 @@ shape = SubResource("RectangleShape2D_ir78q")
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_n7wag")
 animation = &"open"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_uq0fi")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

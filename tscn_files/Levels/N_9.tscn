@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_msc8g"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_bbma3"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="6_ei5b1"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_icyvg"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Old/details.tres" id="6_icyvg"]
 [ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/rabbit.tscn" id="7_xk55b"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_tem4b"]
 

@@ -1830,7 +1830,7 @@ custom_data_layer_1/name = "G_Gravity"
 custom_data_layer_1/type = 2
 sources/2 = SubResource("TileSetAtlasSource_g1edl")
 
-[node name="Level3" type="Node2D"]
+[node name="Level6" type="Node2D"]
 script = ExtResource("1_rpm1e")
 
 [node name="BG" type="ColorRect" parent="."]
