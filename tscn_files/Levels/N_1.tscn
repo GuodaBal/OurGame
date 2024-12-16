@@ -11,7 +11,7 @@
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="9_aw20p"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_k0xai"]
 
-[node name="Level" type="Node2D"]
+[node name="Level3" type="Node2D"]
 script = ExtResource("1_x075c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
