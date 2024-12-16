@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="7_fa3lj"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_66jag"]
 
-[node name="Level3" type="Node2D"]
+[node name="Level4" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2920.5, 598)

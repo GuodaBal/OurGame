@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="4_pj58x"]
 [ext_resource type="PackedScene" uid="uid://1okjlshefdnc" path="res://tscn_files/tree_sun_blocker.tscn" id="7_7kh2i"]
 [ext_resource type="Texture2D" uid="uid://dynnfse2atnmr" path="res://Game_Sprites/Tilemaps/Old/Nature_Area.png" id="9_05ary"]
-[ext_resource type="PackedScene" uid="uid://g4qukn5lim8h" path="res://tscn_files/cage.tscn" id="10_4x20t"]
+[ext_resource type="PackedScene" uid="uid://cmt3gdnip0ll4" path="res://tscn_files/cage.tscn" id="10_4x20t"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="10_p5x57"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="12_0x487"]
 [ext_resource type="AudioStream" uid="uid://dmxg7q4f4sj2j" path="res://Audio/Music/MedeinaBefore.wav" id="13_rblg5"]
