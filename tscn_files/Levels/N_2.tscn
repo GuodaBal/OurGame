@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=4 uid="uid://cp4kne7equl0a"]
 
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_17a0a"]
-[ext_resource type="Texture2D" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="1_auyft"]
+[ext_resource type="Texture2D" uid="uid://51mi5aacj6xm" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="1_auyft"]
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="1_ttwj6"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_525d6"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_uwi0w"]

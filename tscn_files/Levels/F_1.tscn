@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=4 uid="uid://fvcxk3ymmrkr"]
 
-[ext_resource type="Texture2D" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_0wqlk"]
+[ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_0wqlk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_nlglg"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_yccts"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/Enemies/enemy.tscn" id="4_ixqpu"]

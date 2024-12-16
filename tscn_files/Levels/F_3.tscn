@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=4 uid="uid://biofrt6isi87b"]
 
-[ext_resource type="Texture2D" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_8vcrr"]
+[ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_8vcrr"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_dplmf"]
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="1_wijav"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_pkpfv"]
@@ -19,7 +19,7 @@ position = Vector2(2920.5, 598)
 scale = Vector2(4.45365, 3.61111)
 texture = ExtResource("1_8vcrr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(2920.5, 598)
 scale = Vector2(4.45365, 3.61111)
 texture = ExtResource("1_8vcrr")

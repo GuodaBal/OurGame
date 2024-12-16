@@ -9,7 +9,7 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_icyvg"]
 [ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/Enemies/rabbit.tscn" id="7_xk55b"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_tem4b"]
-[ext_resource type="Texture2D" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="10_soaad"]
+[ext_resource type="Texture2D" uid="uid://kd6fr428ur7p" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="10_soaad"]
 
 [node name="Level" type="Node2D"]
 

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b2a6p8rxv1igu" path="res://tscn_files/medeina.tscn" id="1_0sq2h"]
 [ext_resource type="Script" path="res://Scripts/boss_level_medeina.gd" id="1_rpm1e"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_2jj0m"]
-[ext_resource type="Texture2D" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="2_lqmah"]
+[ext_resource type="Texture2D" uid="uid://51mi5aacj6xm" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="2_lqmah"]
 [ext_resource type="Texture2D" uid="uid://et7gqtpukuo" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Nature_God_NEW.png" id="2_nd5yb"]
 [ext_resource type="PackedScene" uid="uid://hq5bhglrtmhp" path="res://tscn_files/hanging_rabbit.tscn" id="3_x1ok3"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_xwv45"]

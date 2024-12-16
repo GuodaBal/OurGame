@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://cn531sr0k6tkb"]
 
-[ext_resource type="Texture2D" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_1.png" id="1_0h0lx"]
+[ext_resource type="Texture2D" uid="uid://cu31rpyasst87" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_1.png" id="1_0h0lx"]
 [ext_resource type="TileSet" uid="uid://c2wpbrokrmq4w" path="res://Game_Sprites/Tilemaps/New/Water_area.tres" id="1_kpy53"]
 [ext_resource type="PackedScene" uid="uid://d201y4ym3cyrh" path="res://tscn_files/perkunas.tscn" id="2_0mxwv"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_kfjjt"]
