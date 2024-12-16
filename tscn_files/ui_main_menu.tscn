@@ -236,6 +236,7 @@ text = "Quit"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_hhkaw")
 volume_db = -10.0
+autoplay = true
 bus = &"SFX"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

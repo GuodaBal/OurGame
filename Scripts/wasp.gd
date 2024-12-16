@@ -14,6 +14,8 @@ var damage = 1
 @onready var attackArea := $AttackArea as Area2D
 @onready var navigation := $NavigationAgent2D as NavigationAgent2D
 @onready var spawner := $SpikeSpawner as Node2D
+@onready var audio = $AudioStreamPlayer
+@onready var audio2 = $Damage
 
 var knockback = Vector2.ZERO
 var sprite_scale
@@ -50,6 +52,7 @@ func _physics_process(delta: float) -> void:
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 
 func take_damage(damage: int, knockback_strength: int, character_position: Vector2):
+	AudioManager.play_with_random_pitch(audio2)
 	hp-=damage
 	var direction = position - character_position
 	knockback = direction.normalized() * knockback_strength*200
@@ -61,6 +64,7 @@ func attack(body):
 	
 func _on_attack_timer_timeout():
 	if (playerPosition - position).length() < attackRange and hp > 0:
+		AudioManager.play_with_random_pitch(audio)
 		var spike = preload("res://tscn_files/spike.tscn").instantiate()
 		spawner.add_child(spike)
 		#The position used for navigation is different from the real character position

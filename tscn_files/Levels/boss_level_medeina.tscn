@@ -10,9 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="4_pj58x"]
 [ext_resource type="PackedScene" uid="uid://1okjlshefdnc" path="res://tscn_files/tree_sun_blocker.tscn" id="7_7kh2i"]
 [ext_resource type="Texture2D" uid="uid://dynnfse2atnmr" path="res://Game_Sprites/Tilemaps/Old/Nature_Area.png" id="9_05ary"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="10_ouxmr"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Old/details.tres" id="10_ouxmr"]
 [ext_resource type="Texture2D" uid="uid://cj7cmgoa866dt" path="res://Game_Sprites/Tilemaps/Assets/Assets.png" id="11_p4joh"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="12_0x487"]
+[ext_resource type="AudioStream" uid="uid://dmxg7q4f4sj2j" path="res://Audio/Music/MedeinaBefore.wav" id="13_rblg5"]
 
 [sub_resource type="Animation" id="Animation_7rnif"]
 resource_name = "Fade_to_dark"
@@ -1830,7 +1831,7 @@ custom_data_layer_1/name = "G_Gravity"
 custom_data_layer_1/type = 2
 sources/2 = SubResource("TileSetAtlasSource_g1edl")
 
-[node name="Level" type="Node2D"]
+[node name="Level3" type="Node2D"]
 script = ExtResource("1_rpm1e")
 
 [node name="BG" type="Sprite2D" parent="."]
@@ -1964,6 +1965,11 @@ offset_top = -220.0
 offset_right = -391.0
 offset_bottom = 292.0
 scale = Vector2(7.455, 3.93)
+
+[node name="BossBef" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_rblg5")
+autoplay = true
+bus = &"Music"
 
 [connection signal="timeout" from="SpikeIntervalTimer" to="." method="_on_spike_interval_timer_timeout"]
 [connection signal="timeout" from="PlatformIntervalTimer" to="." method="_on_platform_interval_timer_timeout"]

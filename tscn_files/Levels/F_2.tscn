@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c8aq7tnw2tbk3" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_2.png" id="1_ooy1x"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="2_bitpq"]
 [ext_resource type="TileSet" uid="uid://cdk1i5ejbua4j" path="res://Game_Sprites/Tilemaps/New/In_between.tres" id="3_vjf12"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="5_dv5l0"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Old/details.tres" id="5_dv5l0"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="6_8lo6v"]
 [ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="6_lcoeo"]
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="8_plwys"]

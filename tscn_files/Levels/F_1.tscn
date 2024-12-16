@@ -7,13 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_yk3c6"]
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="5_vvby8"]
 [ext_resource type="TileSet" uid="uid://cdk1i5ejbua4j" path="res://Game_Sprites/Tilemaps/New/In_between.tres" id="6_8jae4"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_sl7w2"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Old/details.tres" id="6_sl7w2"]
 [ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="7_71gbe"]
 [ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="8_sscdr"]
 [ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/wasp.tscn" id="10_dn0d2"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="11_34q67"]
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1972, 216)
