@@ -8,6 +8,7 @@ radius = 132.8
 height = 343.2
 
 [node name="Fire" type="Node2D"]
+z_index = 1
 scale = Vector2(2.5, 2.5)
 script = ExtResource("1_la3rp")
 

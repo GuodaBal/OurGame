@@ -1,16 +1,24 @@
-[gd_scene load_steps=7 format=4 uid="uid://cn531sr0k6tkb"]
+[gd_scene load_steps=9 format=4 uid="uid://cn531sr0k6tkb"]
 
+[ext_resource type="Texture2D" uid="uid://cu31rpyasst87" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_1.png" id="1_0h0lx"]
 [ext_resource type="TileSet" uid="uid://c2wpbrokrmq4w" path="res://Game_Sprites/Tilemaps/New/Water_area.tres" id="1_kpy53"]
 [ext_resource type="PackedScene" uid="uid://d201y4ym3cyrh" path="res://tscn_files/perkunas.tscn" id="2_0mxwv"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_kfjjt"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_32123"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="5_7rvqh"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="6_vis1p"]
+[ext_resource type="AudioStream" uid="uid://he6tgysnei" path="res://Audio/Music/Perkunas.wav" id="7_7go53"]
 
-[node name="Level" type="Node2D"]
+[node name="Level3" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(612.5, 679.5)
+scale = Vector2(1.63802, 2.25833)
+texture = ExtResource("1_0h0lx")
 
 [node name="Perkunas" parent="." instance=ExtResource("2_0mxwv")]
 position = Vector2(639, 873)
+frame_progress = 0.870856
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_kfjjt")]
 position = Vector2(-267, 1197)
@@ -37,3 +45,8 @@ offset_top = -762.0
 offset_right = -1418.0
 offset_bottom = -250.0
 scale = Vector2(10.2, 6.25)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_7go53")
+autoplay = true
+bus = &"Music"

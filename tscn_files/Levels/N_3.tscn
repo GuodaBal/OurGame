@@ -1,14 +1,45 @@
-[gd_scene load_steps=8 format=4 uid="uid://cgxlloschbhnj"]
+[gd_scene load_steps=12 format=4 uid="uid://cgxlloschbhnj"]
 
+[ext_resource type="Texture2D" uid="uid://kd6fr428ur7p" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="1_akjpt"]
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_hbkrw"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_fxxjw"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="4_6bsqd"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="5_yb07h"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_ek35r"]
+[ext_resource type="Texture2D" uid="uid://m1fisabmsa0t" path="res://Game_Sprites/Tilemaps/Assets/Details.png" id="6_lhu6p"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="6_ssah8"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_28pus"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdji0"]
+atlas = ExtResource("6_lhu6p")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk3oe"]
+resource_name = "Details"
+texture = SubResource("AtlasTexture_xdji0")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dfshn"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_uk3oe")
+
 [node name="Level" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1022.5, 705)
+scale = Vector2(3.29531, 2.23519)
+texture = ExtResource("1_akjpt")
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_fxxjw")]
 position = Vector2(1440, 1196)
@@ -42,7 +73,7 @@ position = Vector2(1396, 380)
 
 [node name="Detail" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AACN/1YAAAAAAAAAAGCN/0IAAAACAAAAAGCN/0oAAAABAAAAAGCN/04AAAABAAAAAGB8ARkAAAAAAAAAAFB8AS4AAAACAAAAAFB8ASAAAAABAAAAAFB8ASYAAAABAAAAAFC1/64AAAACAAIAAACgAE8AAAACAAIAABBgAVkAAAACAAIAABBbAVYAAAACAAIAAABcAVcAAAACAAEAAAD/AJgAAAADAAAAAGCOAKkAAAADAAAAAAD7AJYAAAAAAAIAAAD//34AAAACAAEAAACN/38AAAAAAAIAAADm/2YAAAAAAAIAAAC4AE8AAAAAAAIAAABVAYcAAAAAAAIAABDUAL8AAAAAAAIAABA=")
-tile_set = ExtResource("6_ek35r")
+tile_set = SubResource("TileSet_dfshn")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.5, 0.5)

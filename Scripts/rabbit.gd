@@ -4,7 +4,7 @@ extends CharacterBody2D
 const WALK_SPEED = 450
 const JUMP_STRENGTH = -600
 
-var hp = 15
+var hp = 5
 var damage = 1
 
 @onready var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
@@ -19,7 +19,7 @@ var damage = 1
 var knockback = Vector2.ZERO
 var sprite_scale
 var direction = -1
-
+var range #not used, needed when angel spawns it in as every other enemy has range
 var state = "running"
 
 func _ready() -> void:
@@ -53,13 +53,7 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 	knockback = direction * knockback_strength
 	knockback.y = 0
 	if hp <= 0:
-		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
-			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
-			add_sibling(instance)
-			instance.position = position
-		animation.play("death")
-		await animation.animation_finished
-		queue_free()
+		die()
 		
 func attack(body):
 	animation.play("attack")
@@ -71,18 +65,26 @@ func _on_attack_timer_timeout():
 		if body.is_in_group("Player"):
 			attack(body)
 
-
 func _on_hit_area_body_entered(body: Node2D) -> void:
 	if attackTimer.is_stopped() && body.is_in_group("Player"):
 		attack(body)
-
 
 func _on_switch_directions_timeout() -> void:
 	
 	direction *= -1
 	switchTimer.start(randi_range(6, 15))
-	
 
 func _on_stuck_timer_timeout() -> void:
 	direction *= -1
 	switchTimer.start(randi_range(6, 15))
+
+func die():
+	set_physics_process(false)
+	set_process(false)
+	if(randi_range(0,3) == 3):
+		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
+		add_sibling(instance)
+		instance.position = position
+	animation.play("death")
+	await animation.animation_finished
+	queue_free()

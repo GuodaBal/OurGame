@@ -4,6 +4,7 @@ extends AnimatableBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animation.play("spawn")
+	
 
 func _on_despawn_timeout() -> void:
 	queue_free()

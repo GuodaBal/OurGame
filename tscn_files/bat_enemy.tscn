@@ -1,8 +1,11 @@
-[gd_scene load_steps=38 format=3 uid="uid://br6uins0i4hue"]
+[gd_scene load_steps=41 format=3 uid="uid://br6uins0i4hue"]
 
 [ext_resource type="Script" path="res://Scripts/bat_enemy.gd" id="1_awle0"]
 [ext_resource type="Texture2D" uid="uid://c2hq1or0bxsuk" path="res://Game_Sprites/Animation/Death/Bat_Death.png" id="2_s5g4y"]
 [ext_resource type="Texture2D" uid="uid://bh3qcjeilbgk0" path="res://Game_Sprites/Animation/Enemies/Bat_Flying.png" id="3_tthid"]
+[ext_resource type="AudioStream" uid="uid://cwh88yt2aahki" path="res://Audio/SFX/BatFly.wav" id="4_q87uq"]
+[ext_resource type="AudioStream" uid="uid://dvtxmgr3okrrc" path="res://Audio/SFX/Bite.wav" id="5_57h37"]
+[ext_resource type="AudioStream" uid="uid://608d6lq4fwo4" path="res://Audio/SFX/BatTakeDamage.wav" id="6_a2lht"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f88da"]
 atlas = ExtResource("2_s5g4y")
@@ -241,6 +244,8 @@ radius = 39.2046
 radius = 49.163
 
 [node name="BatEnemy" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 2
+collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_awle0")
 
@@ -273,6 +278,21 @@ path_postprocessing = 1
 [node name="UpdateTarget" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
+
+[node name="Flying" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_q87uq")
+volume_db = -0.5
+autoplay = true
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="Bite" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_57h37")
+bus = &"SFX"
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_a2lht")
+bus = &"SFX"
 
 [connection signal="body_entered" from="AttackArea" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

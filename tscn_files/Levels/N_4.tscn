@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=4 uid="uid://cc3r7d6j8bws7"]
+[gd_scene load_steps=10 format=4 uid="uid://cc3r7d6j8bws7"]
 
+[ext_resource type="Texture2D" uid="uid://51mi5aacj6xm" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="1_f1o0j"]
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_ofp0l"]
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="2_2ldxe"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="3_c1yer"]
@@ -10,6 +11,11 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_nag7c"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1461, 734.5)
+scale = Vector2(2.93021, 2.22685)
+texture = ExtResource("1_f1o0j")
 
 [node name="BatEnemy" parent="." instance=ExtResource("2_2ldxe")]
 position = Vector2(1446, 956)

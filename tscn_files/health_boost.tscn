@@ -29,12 +29,12 @@ animations = [{
 }]
 
 [node name="Health_boost" type="Area2D" groups=["Boost"]]
+z_index = 1
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_11mam")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7.49997, 2.50001)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ip7y7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -17,7 +17,7 @@ var damage = 1
 
 var knockback = Vector2.ZERO
 var margin = 100 #How far away the player has to be to follow
-var range = 300 #Range to start following player
+var range = 500 #Range to start following player
 var last_direction = 0
 var shoot_force = 1000
 
@@ -38,9 +38,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0
 		
-	if velocity.x == 0 and hp > 0:
+	if velocity.x == 0:
 		animation.play("standing") 
-	elif !(animation.is_playing() and animation.animation == "running") and hp > 0:
+	elif !(animation.is_playing() and animation.animation == "running"):
 		animation.play("running") 
 	velocity += knockback
 	move_and_slide()
@@ -52,13 +52,7 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 	knockback = direction * knockback_strength
 	knockback.y = 0
 	if hp <= 0:
-		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
-			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
-			add_sibling(instance)
-			instance.position = position
-		animation.play("death")
-		await animation.animation_finished
-		queue_free()
+		die()
 
 func _on_attack_timer_timeout():
 	#shoots poison projectile
@@ -75,3 +69,16 @@ func _on_attack_timer_timeout():
 func _on_rebound_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player"):
 		body.take_damage(damage, 5, position)
+		
+
+func die():
+	set_physics_process(false)
+	set_process(false)
+	attackTimer.stop()
+	if(randi_range(0,3) == 3):
+		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
+		add_sibling(instance)
+		instance.position = position
+	animation.play("death")
+	await animation.animation_finished
+	queue_free()

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://dyljqhrhv85wj"]
+[gd_scene load_steps=11 format=4 uid="uid://dyljqhrhv85wj"]
 
 [ext_resource type="TileSet" uid="uid://c2wpbrokrmq4w" path="res://Game_Sprites/Tilemaps/New/Water_area.tres" id="1_awgg6"]
 [ext_resource type="Script" path="res://Scripts/change_after_perkunas.gd" id="1_gj47v"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="2_2jldc"]
+[ext_resource type="Texture2D" uid="uid://dxst1n24nwlq" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_2.png" id="2_ab3te"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_ltofw"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_gbith"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="5_kvrsl"]
@@ -12,6 +13,11 @@
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_gj47v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3926, 1323.5)
+scale = Vector2(5.08958, 3.45093)
+texture = ExtResource("2_ab3te")
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_ltofw")]
 position = Vector2(7526, 544)

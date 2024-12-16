@@ -55,3 +55,8 @@ func play_music(music_stream: AudioStream):
 		current_music.stream = music_stream
 		current_music.play()
 	
+func play_with_random_pitch(audio_player: AudioStreamPlayer, min_pitch: float = 0.8, max_pitch: float = 1.2) -> void:
+	# Sugeneruojame atsitiktinį pitch ir nustatome jį grotuvui
+	audio_player.pitch_scale = randf_range(min_pitch, max_pitch)
+	# Paleidžiame garsą
+	audio_player.play()

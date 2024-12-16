@@ -1,17 +1,23 @@
-[gd_scene load_steps=11 format=4 uid="uid://biofrt6isi87b"]
+[gd_scene load_steps=12 format=4 uid="uid://biofrt6isi87b"]
 
+[ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_8vcrr"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_dplmf"]
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="1_wijav"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_pkpfv"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_gjyb2"]
 [ext_resource type="TileSet" uid="uid://cdk1i5ejbua4j" path="res://Game_Sprites/Tilemaps/New/In_between.tres" id="4_grc2a"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="5_i2exb"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_gwd18"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Old/details.tres" id="6_gwd18"]
 [ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_cn058"]
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="7_fa3lj"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_66jag"]
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2920.5, 598)
+scale = Vector2(4.45365, 3.61111)
+texture = ExtResource("1_8vcrr")
 
 [node name="Area2D" parent="." instance=ExtResource("1_wijav")]
 position = Vector2(2892, 1216)

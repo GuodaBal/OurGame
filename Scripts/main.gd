@@ -4,7 +4,8 @@ extends Node
 var previousLevel = "";
 @onready var audio = $AudioStreamPlayer
 @onready var transition = $AnimationPlayer as AnimationPlayer
-# Called when the node enters the scene tree for the first time.
+var is_popup_on = false #Need to manually change whether popup is on as pressing esc can add or remove it
+#on the same frame
 func _ready() -> void:
 	#load data
 	if GlobalVariables.load:
@@ -35,10 +36,12 @@ func _ready() -> void:
 	else:
 		AudioManager.play_music(audio.stream)
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("menu"):
+func _input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("menu") and !is_popup_on:
+		print_debug("new popup")
 		var instance = load("res://tscn_files/ui_popup_menu.tscn").instantiate()
 		get_child(0).add_sibling(instance)
+		is_popup_on = true
 		
 #For spawnpoints in scenes
 func changePreviousLevel(levelName):
