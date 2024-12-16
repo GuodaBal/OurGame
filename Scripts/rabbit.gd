@@ -79,6 +79,8 @@ func _on_stuck_timer_timeout() -> void:
 	switchTimer.start(randi_range(6, 15))
 
 func die():
+	set_physics_process(false)
+	set_process(false)
 	if(randi_range(0,3) == 3):
 		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 		add_sibling(instance)

@@ -38,9 +38,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0
 		
-	if velocity.x == 0 and hp > 0:
+	if velocity.x == 0:
 		animation.play("standing") 
-	elif !(animation.is_playing() and animation.animation == "running") and hp > 0:
+	elif !(animation.is_playing() and animation.animation == "running"):
 		animation.play("running") 
 	velocity += knockback
 	move_and_slide()
@@ -56,7 +56,7 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 
 func _on_attack_timer_timeout():
 	#shoots poison projectile
-	if (playerPosition - position).length() < range and hp > 0:
+	if (playerPosition - position).length() < range:
 		var projectile = preload("res://tscn_files/poison_projectile.tscn").instantiate()
 		spawner.add_child(projectile)
 		projectile.apply_impulse(Vector2(last_direction, -0.3)*shoot_force)
@@ -72,6 +72,9 @@ func _on_rebound_body_entered(body: Node2D) -> void:
 		
 
 func die():
+	set_physics_process(false)
+	set_process(false)
+	attackTimer.stop()
 	if(randi_range(0,3) == 3):
 		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 		add_sibling(instance)

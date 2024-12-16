@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp5yhk5ietk7x"]
+[gd_scene load_steps=10 format=3 uid="uid://cp5yhk5ietk7x"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_aq6xk"]
 [ext_resource type="PackedScene" uid="uid://cm2o2u51ewval" path="res://tscn_files/ui_health_overlay.tscn" id="4_tic8s"]
@@ -102,10 +102,39 @@ tracks/1/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_7mmie"]
+resource_name = "Fade_out_long"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasModulate:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_expem"]
 _data = {
 "Fade_in": SubResource("Animation_xve6f"),
 "Fade_out": SubResource("Animation_wfl3p"),
+"Fade_out_long": SubResource("Animation_7mmie"),
 "Hide": SubResource("Animation_4ct3k"),
 "RESET": SubResource("Animation_o3ehy")
 }
