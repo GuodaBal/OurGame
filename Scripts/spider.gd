@@ -14,8 +14,7 @@ var damage = 1
 @onready var spawner := $Flip/PoisonSpawner as Node2D #Projectile spawn position
 @onready var rebound := $Rebound as Area2D #Stops player from standing on it
 @onready var animation := $Flip/AnimatedSprite2D as AnimatedSprite2D
-@onready var audio = $Attack
-@onready var audio2 = $TakeDamage
+
 var knockback = Vector2.ZERO
 var margin = 100 #How far away the player has to be to follow
 var range = 500 #Range to start following player
@@ -48,7 +47,6 @@ func _physics_process(delta: float) -> void:
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 
 func take_damage(damage: int, knockback_strength: int, character_position: Vector2):
-	AudioManager.play_with_random_pitch(audio2)
 	hp-=damage
 	var direction = position - character_position
 	knockback = direction * knockback_strength
@@ -59,7 +57,6 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 func _on_attack_timer_timeout():
 	#shoots poison projectile
 	if (playerPosition - position).length() < range and hp > 0:
-		AudioManager.play_with_random_pitch(audio)
 		var projectile = preload("res://tscn_files/poison_projectile.tscn").instantiate()
 		spawner.add_child(projectile)
 		projectile.apply_impulse(Vector2(last_direction, -0.3)*shoot_force)

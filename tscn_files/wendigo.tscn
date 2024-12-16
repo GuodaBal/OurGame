@@ -1,10 +1,9 @@
-[gd_scene load_steps=23 format=3 uid="uid://csmu3pwabn6vc"]
+[gd_scene load_steps=68 format=3 uid="uid://csmu3pwabn6vc"]
 
 [ext_resource type="Script" path="res://Scripts/wendigo.gd" id="1_2s4nl"]
 [ext_resource type="Texture2D" uid="uid://pl4c5woknuah" path="res://Game_Sprites/Animation/Death/Vendigo_Death.png" id="2_ygyth"]
-[ext_resource type="AudioStream" uid="uid://cb63mq42eyjku" path="res://Audio/SFX/Wendigo.wav" id="3_v2kj7"]
-[ext_resource type="AudioStream" uid="uid://dvtxmgr3okrrc" path="res://Audio/SFX/Bite.wav" id="4_lffxg"]
-[ext_resource type="AudioStream" uid="uid://r1evv3bgctmb" path="res://Audio/SFX/WendigoHurt.wav" id="5_k8fmg"]
+[ext_resource type="Texture2D" uid="uid://bp3osr0anxpku" path="res://Game_Sprites/Animation/Enemies/Vendigo_Attack.png" id="3_6j3bj"]
+[ext_resource type="Texture2D" uid="uid://du35tf4st5nc6" path="res://Game_Sprites/Animation/Enemies/Vendigo_Walking.png" id="3_vwdb5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ford3"]
 size = Vector2(450, 1062.5)
@@ -497,20 +496,6 @@ position = Vector2(0, -33)
 shape = SubResource("CircleShape2D_hafxt")
 
 [node name="AttackTimer" type="Timer" parent="."]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_v2kj7")
-autoplay = true
-max_distance = 500.0
-bus = &"SFX"
-
-[node name="Attack" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_lffxg")
-bus = &"SFX"
-
-[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_k8fmg")
-bus = &"SFX"
 
 [connection signal="body_entered" from="Flip/Attack" to="." method="_on_attack_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
