@@ -5,8 +5,8 @@ const SPEED = 500
 const JUMP_VELOCITY = 1500.0
 const max_velocity = 350
 const max_fall_velocity = 600
-var hp = 40
-
+var hp = 1
+#40
 @onready var animation := $AnimatedSprite2D as AnimatedSprite2D
 @onready var wall_detector_left := $DetectLeft as RayCast2D
 @onready var wall_detector_right := $DetectRight as RayCast2D

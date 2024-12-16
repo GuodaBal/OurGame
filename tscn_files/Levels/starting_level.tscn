@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://btnbw77n5dw1u"]
+[gd_scene load_steps=12 format=4 uid="uid://btnbw77n5dw1u"]
 
 [ext_resource type="Script" path="res://Scripts/starting_level.gd" id="1_orm5a"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_s418v"]
@@ -11,7 +11,6 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="9_pjygb"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_ko45t"]
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="10_w0l0e"]
-[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/Enemies/enemy.tscn" id="12_xd2va"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_orm5a")
@@ -75,11 +74,5 @@ offset_top = -486.0
 offset_right = -1207.0
 offset_bottom = 26.0
 scale = Vector2(11.685, 5.07)
-
-[node name="Enemy" parent="." instance=ExtResource("12_xd2va")]
-position = Vector2(1362, 839)
-
-[node name="Enemy2" parent="." instance=ExtResource("12_xd2va")]
-position = Vector2(1587, 833)
 
 [connection signal="ready" from="Node2D" to="Node2D" method="_on_ready"]

@@ -4164,7 +4164,6 @@ tile_set = SubResource("TileSet_bli7s")
 process_mode = 3
 stream = ExtResource("6_nb1fa")
 volume_db = -10.0
-autoplay = true
 bus = &"Music"
 
 [node name="GabijaAf" type="AudioStreamPlayer" parent="."]

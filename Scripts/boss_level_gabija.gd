@@ -12,8 +12,8 @@ var bottomSpeed = 550
 @onready var levelBe = $TileMapLayer as TileMapLayer
 @onready var levelAf = $TileMapLayer2 as TileMapLayer
 
-@onready var GabijaBe = $GabijaBe.stream
-@onready var GabijaAF = $GabijaAf.stream
+@onready var GabijaBe = $GabijaBe
+@onready var GabijaAF = $GabijaAf
 
 @onready var audio = $Fire
 var fire_left = false
@@ -120,10 +120,11 @@ func switch_scene():
 	levelBe.collision_enabled = false
 	levelAf.visible = true
 	levelAf.visible = true
-	AudioManager.play_music(GabijaAF)
+	GabijaBe.stop()
+	GabijaAF.play()
 
 func _on_ready() -> void:
 	if(GlobalVariables.GabijaDone):
-		AudioManager.play_music(GabijaAF)
+		GabijaAF.play()
 	else:
-		AudioManager.play_music(GabijaBe)
+		GabijaBe.play()
