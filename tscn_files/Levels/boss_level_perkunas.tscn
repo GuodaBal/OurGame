@@ -33,11 +33,11 @@ tile_set = ExtResource("1_kpy53")
 [node name="LevelSwitcher" parent="." instance=ExtResource("4_32123")]
 position = Vector2(-491, 584)
 scale = Vector2(1, 4.715)
-nextLevel = "W_6"
+nextLevel = "starting_level"
 
 [node name="SpawnArea" parent="." instance=ExtResource("5_7rvqh")]
 position = Vector2(-354, 1165)
-correctLevel = "W_6"
+correctLevel = "starting_level"
 
 [node name="Fog" parent="." instance=ExtResource("6_vis1p")]
 offset_left = -1930.0

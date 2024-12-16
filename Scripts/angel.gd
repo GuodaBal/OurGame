@@ -25,14 +25,10 @@ func _on_spawn_timer_timeout() -> void:
 
 func take_damage(amount):
 	health-=amount
-	print_debug(health)
 	if health <= 0:
 		spawnTimer.stop()
-		print_debug("dying")
 		for node in get_parent().get_children():
-			print_debug(node)
 			if node.is_in_group("Enemy"):
-				print_debug(node)
 				node.die()
 		play("death")
 		await animation_finished
@@ -44,4 +40,3 @@ func _on_speed_coef_timeout() -> void:
 	timePassed += 1
 	spawnSpeedCoef = 1.0 - (timePassed/100)
 	spawnSpeedCoef = clamp(spawnSpeedCoef, 0.3, 1.0)
-	print_debug(spawnSpeedCoef)
