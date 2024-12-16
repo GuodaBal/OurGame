@@ -12,6 +12,7 @@ atlas = ExtResource("2_l116d")
 region = Rect2(512, 0, 256, 256)
 
 [node name="HealthDrop" type="Node2D"]
+z_index = 1
 script = ExtResource("1_b5fcq")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]

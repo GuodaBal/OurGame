@@ -36,7 +36,7 @@ var state = "down"
 var jumping = false
 var jump_direction
 var will_be_exhausted = false
-var attacking := [] as Array
+var attacking = false
 var spawning_spikes = false
 
 var sprite_scale
@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 	if !isExhaustedTimer.is_stopped() and is_on_floor():
 		velocity.x = lerp(velocity.x, 0.0, 0.1)
 
-	if will_be_exhausted and attacking.is_empty():
+	if will_be_exhausted and attacking == false:
 		will_be_exhausted = false
 		switch_to_down()
 		isExhaustedTimer.start()
@@ -72,7 +72,7 @@ func _physics_process(delta: float) -> void:
 		velocity = JUMP_VELOCITY * jump_direction - 500 * gravity_dir
 	
 	#slow down to stop when attacking
-	if !attacking.is_empty():
+	if attacking == true:
 		velocity.x  = lerp(velocity.x , 0.0, 0.1)
 		velocity.y  = lerp(velocity.y , 0.0, 0.1)
 	elif state=="up":
@@ -111,7 +111,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = clamp(velocity.x, -max_fall_velocity, max_fall_velocity)
 	#jumping
 	if is_on_floor() and jumpTimer.is_stopped() and isExhaustedTimer.is_stopped():
-		if jump_detector_left.is_colliding() and jump_detector_left.get_collider() is TileMapLayer and player_is_to("right") and attacking.is_empty():
+		if jump_detector_left.is_colliding() and jump_detector_left.get_collider() is TileMapLayer and player_is_to("right") and attacking == false:
 			var tile_data=jump_detector_left.get_collider().get_cell_tile_data(jump_detector_left.get_collider().get_coords_for_body_rid(jump_detector_left.get_collider_rid()))
 			if tile_data.get_custom_data_by_layer_id(0)==1:
 				jumping = true
@@ -120,7 +120,7 @@ func _physics_process(delta: float) -> void:
 				jump_direction = left
 				animation.scale.x = -sprite_scale
 				animation.play("jump_start")
-		if jump_detector_right.is_colliding() and jump_detector_right.get_collider() is TileMapLayer and player_is_to("left") and attacking.is_empty():
+		if jump_detector_right.is_colliding() and jump_detector_right.get_collider() is TileMapLayer and player_is_to("left") and attacking == false:
 			var tile_data=jump_detector_right.get_collider().get_cell_tile_data(jump_detector_right.get_collider().get_coords_for_body_rid(jump_detector_right.get_collider_rid()))
 			if tile_data.get_custom_data_by_layer_id(0)==1:
 				jumping = true
@@ -271,7 +271,7 @@ func _on_attack_timer_timeout() -> void:
 				else:	
 					spawn_fire_bottom()
 		if state != "down":
-			attacking.append(0)
+			attacking == true
 	attackTimer.start()
 	
 func spawn_spikes():
@@ -281,24 +281,26 @@ func spawn_spikes():
 	spikeTimer.start()
 	
 func not_attacking():
-	attacking.pop_back()
+	attacking = false
 
 func _on_exhaustion_timer_timeout() -> void:
-	if !attacking.is_empty():
+	print_debug("exhaustion")
+	print_debug(attacking)
+	if attacking == true:
 		will_be_exhausted = true
-		print_debug("will be exhausted")
 	else:
-		print_debug("down from timer")
 		switch_to_down()
 		isExhaustedTimer.start()
 
 
 func _on_spike_end_timer_timeout() -> void:
 	spawning_spikes = false
-	attacking.pop_back()
+	attacking == false
 	animation.play("spike_attack_end")
+	print_debug("spike_end")
 	if will_be_exhausted:
 		await animation.animation_finished
+		#await get_tree().get_parent().end_level()
 		will_be_exhausted = false
 		switch_to_down()
 		isExhaustedTimer.start()
@@ -308,8 +310,6 @@ func _on_jump_end_timer_timeout() -> void:
 	animation.play("jump_end")
 	
 func player_is_to(direction: String):
-	if abs(playerPostion - position).length() > range:
-		return false
 	match [direction, state]:
 		["left", "down"]:
 			if playerPostion.x - position.x <= -distance_margin:

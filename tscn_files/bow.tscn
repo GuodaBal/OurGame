@@ -151,6 +151,7 @@ animations = [{
 }]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+z_index = 2
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_slui3")
 animation = &"Start"

@@ -29,6 +29,7 @@ animations = [{
 }]
 
 [node name="Health_boost" type="Area2D" groups=["Boost"]]
+z_index = 1
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_11mam")
 

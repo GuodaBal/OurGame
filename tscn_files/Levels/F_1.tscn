@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://fvcxk3ymmrkr"]
+[gd_scene load_steps=16 format=4 uid="uid://fvcxk3ymmrkr"]
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_0wqlk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_nlglg"]
@@ -7,11 +7,36 @@
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_yk3c6"]
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="5_vvby8"]
 [ext_resource type="TileSet" uid="uid://cdk1i5ejbua4j" path="res://Game_Sprites/Tilemaps/New/In_between.tres" id="6_8jae4"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Old/details.tres" id="6_sl7w2"]
 [ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="7_71gbe"]
+[ext_resource type="Texture2D" uid="uid://m1fisabmsa0t" path="res://Game_Sprites/Tilemaps/Assets/Details.png" id="8_anb5i"]
 [ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="8_sscdr"]
 [ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/wasp.tscn" id="10_dn0d2"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="11_34q67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdji0"]
+atlas = ExtResource("8_anb5i")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uk3oe"]
+resource_name = "Details"
+texture = SubResource("AtlasTexture_xdji0")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+3:1/0 = 0
+3:0/0 = 0
+2:0/0 = 0
+1:0/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_dfshn"]
+tile_size = Vector2i(8, 8)
+sources/0 = SubResource("TileSetAtlasSource_uk3oe")
 
 [node name="Level3" type="Node2D"]
 
@@ -81,7 +106,7 @@ position = Vector2(2805, 1495)
 
 [node name="Details" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AACRAN8AAAADAAAAAAD7AFn/AAAAAAAAAFD7AG7/AAACAAAAAFD7AGH/AAABAAAAAFD7AGf/AAABAAAAAFDeAG//AAADAAAAABBu/20AAAAAAAAAAGBu/2UAAAABAAAAAGBu/10AAAABAAAAAGBu/1YAAAABAAAAAGB2/3AAAAAAAAIAAABq/28AAAAAAAIAAABu/24AAAAAAAIAAAD8/28AAAAAAAIAAAD4/28AAAADAAEAAAD7/04AAAACAAEAAADo/+b/AAAAAAIAAAAkAL7/AAAAAAIAAAB6AN//AAADAAEAAAB3AKb/AAAAAAIAAAAgAO7/AAAAAAIAAAAjAO//AAAAAAIAAACq/y4AAAAAAAIAAAAWAF4AAAAAAAIAAADnAH4AAAAAAAIAAADjAH4AAAAAAAIAABBaAZ4AAAAAAAIAABAsAk8AAAACAAEAAACQAk8AAAAAAAIAAABhAmYAAAAAAAIAAABkAmcAAAAAAAIAABDNAbAAAAADAAEAAADGAa4AAAACAAEAAAAVAcIAAAADAAAAAAAZAcAAAAADAAAAABAXAb4AAAAAAAIAAACdAjoAAAAAAAAAAFCdAkEAAAABAAAAAFCdAkYAAAABAAAAAFCdAk4AAAACAAAAAFBzAMkAAAACAAAAAGBzAN4AAAAAAAAAAGBzAN8AAAAAAAAAAGBzANAAAAABAAAAAGBzANcAAAABAAAAAGBu/1IAAAACAAAAAGDr/+b/AAAAAAIAAADp/+b/AAACAAIAABBV/x4AAAACAAIAAABaAHYAAAAAAAIAAABjAOcAAAAAAAEAAADKAa8AAAAAAAIAAAA=")
-tile_set = ExtResource("6_sl7w2")
+tile_set = SubResource("TileSet_dfshn")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 scale = Vector2(0.5, 0.5)

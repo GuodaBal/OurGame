@@ -115,6 +115,7 @@ animations = [{
 }]
 
 [node name="Area2D" type="Area2D" groups=["save_point"]]
+z_index = 1
 scale = Vector2(0.2, 0.2)
 collision_layer = 4
 script = ExtResource("1_fh2po")

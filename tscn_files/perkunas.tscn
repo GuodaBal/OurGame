@@ -229,6 +229,8 @@ animations = [{
 }]
 
 [node name="Perkunas" type="AnimatedSprite2D"]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_8qb4k")
 animation = &"idle"
+flip_h = true
 script = ExtResource("2_blpax")
