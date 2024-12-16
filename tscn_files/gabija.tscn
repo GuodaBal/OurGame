@@ -579,9 +579,7 @@ shape = SubResource("CapsuleShape2D_3satc")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3.2, 3.2)
 sprite_frames = SubResource("SpriteFrames_lgu78")
-animation = &"spike_attack_end"
-frame = 10
-frame_progress = 1.0
+animation = &"standing"
 
 [node name="DetectRight" type="RayCast2D" parent="."]
 position = Vector2(0, 100)
