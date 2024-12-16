@@ -14,13 +14,13 @@
 
 [sub_resource type="Curve2D" id="Curve2D_hn5tq"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -512, 576, -386.263, -285.635, 386.263, 285.635, 401, 817.113, 4.29153e-06, 0.33371, -4.29153e-06, -0.33371, 960, 1520)
+"points": PackedVector2Array(0, 0, 0, 0, -792, 564.291, -386.263, -285.635, 386.263, 285.635, 401, 817.113, 4.29153e-06, 0.33371, -4.29153e-06, -0.33371, 960, 1520)
 }
 point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_gan78"]
 _data = {
-"points": PackedVector2Array(-0.0883179, 0.224841, 0.0883179, -0.224841, 2432, 576, 401.317, -222.14, -401.317, 222.14, 1447, 847.861, 0, 0, 0, 0, 960, 1520)
+"points": PackedVector2Array(-0.0883179, 0.224841, 0.0883179, -0.224841, 2752, 570.523, 401.317, -222.14, -401.317, 222.14, 1447, 847.861, 0, 0, 0, 0, 960, 1520)
 }
 point_count = 3
 
@@ -4122,8 +4122,8 @@ scale = Vector2(1, 1.26176)
 curve = SubResource("Curve2D_hn5tq")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PathLeft"]
-position = Vector2(-301.505, 578.637)
-rotation = 0.0773855
+position = Vector2(-581.364, 565.838)
+rotation = 0.0391396
 progress = 210.688
 loop = false
 
@@ -4133,8 +4133,8 @@ scale = Vector2(1, 1.262)
 curve = SubResource("Curve2D_gan78")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="PathRight"]
-position = Vector2(1237.51, 1007.87)
-rotation = 2.34578
+position = Vector2(1490.95, 825.133)
+rotation = 2.69052
 progress = 1292.57
 loop = false
 
