@@ -40,9 +40,14 @@ func spawn_random_enemy():
 	add_child(enemy)
 	enemy.position = spawnLocations[spawnPoint-1]
 	enemy.range = 40000
-	move_child(enemy, 1)
+	move_child(enemy, 3)
 
 
 func _on_child_exiting_tree(node: Node) -> void:
 	if node.is_in_group("Enemy") and get_node("Angel") != null:
 		$Angel.take_damage(1)
+
+func over():
+	get_parent().get_node("AnimationPlayer").play("fade_out")
+	await get_parent().get_node("AnimationPlayer").animation_finished
+	get_tree().change_scene_to_file("res://tscn_files/ui_end_credits.tscn")

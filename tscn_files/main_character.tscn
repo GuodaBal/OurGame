@@ -1242,7 +1242,6 @@ collision_mask = 10
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AnimatedSprite2D/Attack"]
 position = Vector2(188.889, 50)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bwdsa")
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]

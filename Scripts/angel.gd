@@ -9,7 +9,10 @@ var health = 2
 var spawnSpeedCoef = 1.0
 var timePassed = 0.0
 
+signal over
+
 func _process(delta: float) -> void:
+	over.connect(get_parent().over)
 	if !is_playing():
 		play("idle")
 
@@ -32,6 +35,7 @@ func take_damage(amount):
 				node.die()
 		play("death")
 		await animation_finished
+		over.emit()
 		queue_free()
 
 
