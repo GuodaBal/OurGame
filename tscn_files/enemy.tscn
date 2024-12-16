@@ -210,13 +210,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_du2wl"]
-size = Vector2(2200, 2800)
+size = Vector2(4900, 2900)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8kcm"]
 radius = 28.0
 height = 98.0
 
 [node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+z_index = 2
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_beq4l")
@@ -232,7 +233,7 @@ scale = Vector2(0.05, 0.05)
 collision_mask = 5
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AnimatedSprite2D/Attack"]
-position = Vector2(-1950, 500.001)
+position = Vector2(-600, 450)
 scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_du2wl")
 

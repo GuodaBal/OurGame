@@ -24,7 +24,6 @@ var gravityStrength = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var playerPostion = get_parent().get_node("MainCharacter").position
 var distance_margin = 20
-var range = 1000
 
 
 var gravity = Vector2(0, gravityStrength)
@@ -36,13 +35,15 @@ var state = "down"
 var jumping = false
 var jump_direction
 var will_be_exhausted = false
-var attacking := [] as Array
+var attacking = false
 var spawning_spikes = false
 
 var sprite_scale
 
 func _ready() -> void:
 	sprite_scale = animation.scale.x
+	set_physics_process(false)
+	set_process(false)
 
 func _physics_process(delta: float) -> void:
 	#If it's falling after becoming exhausted, it falls to the opposite direction of the player, so as to not land on them
@@ -58,7 +59,7 @@ func _physics_process(delta: float) -> void:
 	if !isExhaustedTimer.is_stopped() and is_on_floor():
 		velocity.x = lerp(velocity.x, 0.0, 0.1)
 
-	if will_be_exhausted and attacking.is_empty():
+	if will_be_exhausted and attacking == false:
 		will_be_exhausted = false
 		switch_to_down()
 		isExhaustedTimer.start()
@@ -72,7 +73,7 @@ func _physics_process(delta: float) -> void:
 		velocity = JUMP_VELOCITY * jump_direction - 500 * gravity_dir
 	
 	#slow down to stop when attacking
-	if !attacking.is_empty():
+	if attacking == true:
 		velocity.x  = lerp(velocity.x , 0.0, 0.1)
 		velocity.y  = lerp(velocity.y , 0.0, 0.1)
 	elif state=="up":
@@ -86,8 +87,8 @@ func _physics_process(delta: float) -> void:
 			animation.scale.x = -sprite_scale
 		else:
 			velocity.x = lerp(velocity.x, 0.0, 0.05)
+			
 	#move opposite direction of player
-
 	else:
 		if exhaustionTimer.is_stopped():
 			exhaustionTimer.start()
@@ -111,7 +112,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = clamp(velocity.x, -max_fall_velocity, max_fall_velocity)
 	#jumping
 	if is_on_floor() and jumpTimer.is_stopped() and isExhaustedTimer.is_stopped():
-		if jump_detector_left.is_colliding() and jump_detector_left.get_collider() is TileMapLayer and player_is_to("right") and attacking.is_empty():
+		if jump_detector_left.is_colliding() and jump_detector_left.get_collider() is TileMapLayer and (player_is_to("right") or state == "up") and attacking == false:
 			var tile_data=jump_detector_left.get_collider().get_cell_tile_data(jump_detector_left.get_collider().get_coords_for_body_rid(jump_detector_left.get_collider_rid()))
 			if tile_data.get_custom_data_by_layer_id(0)==1:
 				jumping = true
@@ -120,7 +121,7 @@ func _physics_process(delta: float) -> void:
 				jump_direction = left
 				animation.scale.x = -sprite_scale
 				animation.play("jump_start")
-		if jump_detector_right.is_colliding() and jump_detector_right.get_collider() is TileMapLayer and player_is_to("left") and attacking.is_empty():
+		if jump_detector_right.is_colliding() and jump_detector_right.get_collider() is TileMapLayer and (player_is_to("left") or state == "up") and attacking == false:
 			var tile_data=jump_detector_right.get_collider().get_cell_tile_data(jump_detector_right.get_collider().get_coords_for_body_rid(jump_detector_right.get_collider_rid()))
 			if tile_data.get_custom_data_by_layer_id(0)==1:
 				jumping = true
@@ -204,7 +205,6 @@ func switch_gravity(direction):
 
 #switches gravity (global)
 func switch_to_right():
-	print_debug("switched to right")
 	state = "right"
 	gravity_dir = Vector2.RIGHT
 	gravity = Vector2(gravityStrength, 0)
@@ -213,7 +213,6 @@ func switch_to_right():
 	right = Vector2(0, -SPEED)
 	
 func switch_to_left():
-	print_debug("switched to left")
 	state = "left"
 	gravity_dir = Vector2.LEFT
 	gravity = Vector2(-gravityStrength, 0)
@@ -222,7 +221,6 @@ func switch_to_left():
 	right = Vector2(0, SPEED)
 
 func switch_to_up():
-	print_debug("switched to up")
 	state = "up"
 	gravity_dir = Vector2.UP
 	gravity = Vector2(0, -gravityStrength)
@@ -231,7 +229,7 @@ func switch_to_up():
 	right = Vector2(-SPEED, 0)
 
 func switch_to_down():
-	print_debug("switched to down")
+	animation.play("jump_start")
 	state = "down"
 	gravity = Vector2(0, gravityStrength)
 	gravity_dir = Vector2.DOWN
@@ -239,40 +237,29 @@ func switch_to_down():
 	left = Vector2(-SPEED, 0)
 	right = Vector2(SPEED, 0)
 
-#calls boss level to spawn fire
-func spawn_fire_left():
-	for child in get_tree().current_scene.get_children():
-		if "Level" in child.name:
-			child.spawn_fire_left()
-func spawn_fire_right():
-	for child in get_tree().current_scene.get_children():
-		if "Level" in child.name:
-			child.spawn_fire_right()
-func spawn_fire_bottom():
-	for child in get_tree().current_scene.get_children():
-		if "Level" in child.name:
-			child.spawn_fire_bottom()
-
 #attacks depending on position
 func _on_attack_timer_timeout() -> void:
-	if isExhaustedTimer.is_stopped() and !will_be_exhausted and is_on_floor():
-		match state:
-			"left":
-				spawn_fire_right()
-			"right":
-				spawn_fire_left()
-			"up":
-				if playerPostion.x > 1600:
-					spawn_fire_right()
-				elif playerPostion.x < 200:
-					spawn_fire_right()
-				elif randi() % 2 == 0:
-					spawn_spikes()
-				else:	
-					spawn_fire_bottom()
-		if state != "down":
-			attacking.append(0)
-	attackTimer.start()
+	if !attacking:
+		if isExhaustedTimer.is_stopped() and !will_be_exhausted and is_on_floor():
+			match state:
+				"left":
+					get_parent().spawn_fire_right()
+				"right":
+					get_parent().spawn_fire_left()
+				"up":
+					if playerPostion.x > 1600:
+						get_parent().spawn_fire_right()
+					elif playerPostion.x < 200:
+						get_parent().spawn_fire_left()
+					elif randi() % 2 == 0:
+						spawn_spikes()
+					else:	
+						get_parent().spawn_fire_bottom()
+			if state != "down":
+				attacking = true
+		attackTimer.start(8)
+	else:
+		attackTimer.start(1)
 	
 func spawn_spikes():
 	animation.play("spike_attack_start")
@@ -281,24 +268,23 @@ func spawn_spikes():
 	spikeTimer.start()
 	
 func not_attacking():
-	attacking.pop_back()
+	attacking = false
 
 func _on_exhaustion_timer_timeout() -> void:
-	if !attacking.is_empty():
+	if attacking == true:
 		will_be_exhausted = true
-		print_debug("will be exhausted")
 	else:
-		print_debug("down from timer")
 		switch_to_down()
 		isExhaustedTimer.start()
 
 
 func _on_spike_end_timer_timeout() -> void:
 	spawning_spikes = false
-	attacking.pop_back()
+	attacking = false
 	animation.play("spike_attack_end")
 	if will_be_exhausted:
 		await animation.animation_finished
+		#await get_tree().get_parent().end_level()
 		will_be_exhausted = false
 		switch_to_down()
 		isExhaustedTimer.start()
@@ -308,8 +294,6 @@ func _on_jump_end_timer_timeout() -> void:
 	animation.play("jump_end")
 	
 func player_is_to(direction: String):
-	if abs(playerPostion - position).length() > range:
-		return false
 	match [direction, state]:
 		["left", "down"]:
 			if playerPostion.x - position.x <= -distance_margin:
@@ -350,3 +334,7 @@ func _on_spike_timer_timeout() -> void:
 			spikeSpawner.add_child(instance)
 			instance.rotation = deg_to_rad(rot)
 		spikeTimer.start()
+		
+func can_start():
+	set_physics_process(true)
+	set_process(true)

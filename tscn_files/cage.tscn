@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmt3gdnip0ll4"]
+
+[ext_resource type="Texture2D" uid="uid://cj7cmgoa866dt" path="res://Game_Sprites/Tilemaps/Assets/Assets.png" id="1_cginm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nih2g"]
+size = Vector2(302, 309)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3eeeu"]
+atlas = ExtResource("1_cginm")
+region = Rect2(1024, 0, 512, 512)
+
+[node name="Cage" type="StaticBody2D"]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, 37.5)
+shape = SubResource("RectangleShape2D_nih2g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.8, 0.8)
+texture = SubResource("AtlasTexture_3eeeu")

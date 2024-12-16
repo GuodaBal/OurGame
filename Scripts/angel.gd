@@ -11,8 +11,9 @@ var timePassed = 0.0
 
 signal over
 
-func _process(delta: float) -> void:
+func _ready() -> void:
 	over.connect(get_parent().over)
+func _process(delta: float) -> void:
 	if !is_playing():
 		play("idle")
 
@@ -41,5 +42,6 @@ func take_damage(amount):
 
 func _on_speed_coef_timeout() -> void:
 	timePassed += 1
-	spawnSpeedCoef = 1.0 - (timePassed/150)
-	spawnSpeedCoef = clamp(spawnSpeedCoef, 0.6, 1.0)
+	spawnSpeedCoef = 1.0 - (timePassed/100)
+	spawnSpeedCoef = clamp(spawnSpeedCoef, 0.3, 1.0)
+	print_debug(spawnSpeedCoef)

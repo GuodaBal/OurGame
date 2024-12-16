@@ -48,6 +48,7 @@ func _on_child_exiting_tree(node: Node) -> void:
 		$Angel.take_damage(1)
 
 func over():
-	get_parent().get_node("AnimationPlayer").play("fade_out")
+	await get_tree().create_timer(1).timeout
+	get_parent().get_node("AnimationPlayer").play("Fade_out_long")
 	await get_parent().get_node("AnimationPlayer").animation_finished
 	get_tree().change_scene_to_file("res://tscn_files/ui_end_credits.tscn")

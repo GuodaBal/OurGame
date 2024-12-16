@@ -51,16 +51,20 @@ func _on_attack_timer_timeout() -> void:
 
 func changeStage():
 	if stage == 3: #Fight ends
+		attackTimer.stop()
 		GlobalVariables.MedeinaDone = true
-		get_parent().end_level()
+		get_parent().stop_attacks()
+		await get_tree().create_timer(1).timeout
 		DialogueManager.show_dialogue_balloon(load("res://Dialogue/medeina.dialogue"), "death")
 		play("death")
 		await animation_finished
+		get_parent().end_level()
 		queue_free()
 	else:
 		stage+=1
+		if !(lastWasDark and get_parent().is_sun_blocked()):
+			get_parent().block_sun()
 		lastWasDark = true
-		get_parent().block_sun()
 		#Attack speed changes
 		get_parent().coef *= 1.4
 		stageTimer.start()

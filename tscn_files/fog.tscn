@@ -9,6 +9,7 @@ shader_parameter/base_color = Color(0.568973, 0.568973, 0.568973, 1)
 
 [node name="Fog" type="TextureRect"]
 process_mode = 1
+z_index = 4
 material = SubResource("ShaderMaterial_t5oo8")
 offset_right = 512.0
 offset_bottom = 512.0

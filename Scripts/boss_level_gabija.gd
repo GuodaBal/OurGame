@@ -34,10 +34,14 @@ func _ready() -> void:
 		levelBe.collision_enabled = false
 		get_node("Gabija").queue_free()
 	else:
+		levelAf.visible = false
+		levelAf.visible = false
 		await get_parent().get_node("AnimationPlayer").animation_finished
 		DialogueManager.show_dialogue_balloon(load("res://Dialogue/gabija.dialogue"), "meet")
-		levelAf.visible = false
-		levelAf.visible = false
+		await DialogueManager.dialogue_ended
+		$Gabija.can_start()
+		
+		
 
 # Called when the node enters the scene tree for the first time.
 func _process(delta: float) -> void:
@@ -77,16 +81,16 @@ func _process(delta: float) -> void:
 
 func spawn_fire_left():
 	var instance = load("res://tscn_files/fire.tscn").instantiate()
+	path_left.progress_ratio = 0
 	path_left.add_child(instance)
 	fire_left = true
-	path_left.progress_ratio = 0
 	
 func spawn_fire_right():
 	var instance = load("res://tscn_files/fire.tscn").instantiate()
-	path_right.add_child(instance)
 	instance.rotation=deg_to_rad(180)
-	fire_right = true
 	path_right.progress_ratio = 0
+	path_right.add_child(instance)
+	fire_right = true
 
 func spawn_fire_bottom():
 	fire_down=true

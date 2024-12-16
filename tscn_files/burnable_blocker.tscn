@@ -34,6 +34,7 @@ animations = [{
 size = Vector2(85, 155)
 
 [node name="StaticBody2D" type="StaticBody2D" groups=["Burnable"]]
+z_index = 1
 script = ExtResource("1_nvnxe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
