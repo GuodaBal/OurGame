@@ -190,6 +190,8 @@ animations = [{
 }]
 
 [node name="LightningAbility" type="Area2D"]
+z_index = 1
+collision_mask = 11
 script = ExtResource("1_1e61e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

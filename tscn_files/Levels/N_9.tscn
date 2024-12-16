@@ -1,14 +1,15 @@
-[gd_scene load_steps=10 format=4 uid="uid://do5ep6u7wdmcm"]
+[gd_scene load_steps=11 format=4 uid="uid://do5ep6u7wdmcm"]
 
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_lwdcp"]
 [ext_resource type="PackedScene" uid="uid://l442d7hfs4ha" path="res://tscn_files/health_boost.tscn" id="1_tcq7f"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_o03v0"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_msc8g"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_bbma3"]
-[ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="6_ei5b1"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Old/details.tres" id="6_icyvg"]
-[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/rabbit.tscn" id="7_xk55b"]
+[ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/Enemies/bat_enemy.tscn" id="6_ei5b1"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_icyvg"]
+[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/Enemies/rabbit.tscn" id="7_xk55b"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_tem4b"]
+[ext_resource type="Texture2D" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="10_soaad"]
 
 [node name="Level" type="Node2D"]
 
@@ -57,3 +58,8 @@ offset_top = -821.0
 offset_right = -941.0
 offset_bottom = -309.0
 scale = Vector2(11.41, 5.69)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1244.5, 713)
+scale = Vector2(2.29635, 2.32037)
+texture = ExtResource("10_soaad")

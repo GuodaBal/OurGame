@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://dk4xtfw7cmv3r"]
 
-[ext_resource type="Script" path="res://tscn_files/rabbit_for_boss.gd" id="1_oj2ug"]
+[ext_resource type="Script" path="res://Scripts/rabbit_for_boss.gd" id="1_oj2ug"]
 [ext_resource type="Texture2D" uid="uid://dhyy2be8k1mfg" path="res://Game_Sprites/Animation/Enemies/Bunny_Running.png" id="2_n2oqk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ki4fs"]

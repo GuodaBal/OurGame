@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://cn531sr0k6tkb"]
+[gd_scene load_steps=9 format=4 uid="uid://cn531sr0k6tkb"]
 
+[ext_resource type="Texture2D" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_1.png" id="1_0h0lx"]
 [ext_resource type="TileSet" uid="uid://c2wpbrokrmq4w" path="res://Game_Sprites/Tilemaps/New/Water_area.tres" id="1_kpy53"]
 [ext_resource type="PackedScene" uid="uid://d201y4ym3cyrh" path="res://tscn_files/perkunas.tscn" id="2_0mxwv"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_kfjjt"]
@@ -8,10 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="6_vis1p"]
 [ext_resource type="AudioStream" uid="uid://he6tgysnei" path="res://Audio/Music/Perkunas.wav" id="7_7go53"]
 
-[node name="Level6" type="Node2D"]
+[node name="Level3" type="Node2D"]
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(612.5, 679.5)
+scale = Vector2(1.63802, 2.25833)
+texture = ExtResource("1_0h0lx")
 
 [node name="Perkunas" parent="." instance=ExtResource("2_0mxwv")]
 position = Vector2(639, 873)
+frame_progress = 0.870856
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_kfjjt")]
 position = Vector2(-267, 1197)
@@ -26,11 +33,11 @@ tile_set = ExtResource("1_kpy53")
 [node name="LevelSwitcher" parent="." instance=ExtResource("4_32123")]
 position = Vector2(-491, 584)
 scale = Vector2(1, 4.715)
-nextLevel = "starting_level"
+nextLevel = "W_6"
 
 [node name="SpawnArea" parent="." instance=ExtResource("5_7rvqh")]
 position = Vector2(-354, 1165)
-correctLevel = "starting_level"
+correctLevel = "W_6"
 
 [node name="Fog" parent="." instance=ExtResource("6_vis1p")]
 offset_left = -1930.0

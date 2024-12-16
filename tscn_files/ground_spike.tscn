@@ -89,6 +89,7 @@ _data = {
 }
 
 [node name="GroundSpike" type="AnimatableBody2D"]
+z_index = 1
 script = ExtResource("1_jg1gg")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
