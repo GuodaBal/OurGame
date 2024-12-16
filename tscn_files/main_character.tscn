@@ -16,10 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://c18qnst1vfmiq" path="res://Game_Sprites/Animation/Niya_NEW/Niya_RunningEnd.png" id="9_nc6eq"]
 [ext_resource type="Texture2D" uid="uid://bjj41gyphcbvo" path="res://Game_Sprites/Animation/Niya_NEW/Niya_RunningStart.png" id="10_yo7tk"]
 [ext_resource type="Texture2D" uid="uid://1n0pgo76g0u5" path="res://Game_Sprites/Animation/Niya_NEW/Niya_Hit.png" id="11_spw3f"]
-[ext_resource type="Texture2D" uid="uid://cu3pu18hblrdp" path="res://Game_Sprites/Animation/Character_Animation_New/Niya_Animation_TakingDamage.png" id="13_px31y"]
-[ext_resource type="AudioStream" uid="uid://dxdd4lru7skr3" path="res://Audio/SFX/TreeTrunkAbility_mixdown.wav" id="20_cltx4"]
-[ext_resource type="AudioStream" uid="uid://b423pbyvvaa57" path="res://Audio/SFX/Thunder_mixdown.wav" id="21_na0sb"]
-[ext_resource type="AudioStream" uid="uid://c6el6u87hsl3o" path="res://Audio/SFX/takingDamage.wav" id="22_vqii3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ral1"]
 atlas = ExtResource("2_q5qet")
@@ -1246,7 +1242,6 @@ collision_mask = 10
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AnimatedSprite2D/Attack"]
 position = Vector2(188.889, 50)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_bwdsa")
 
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
@@ -1299,7 +1294,6 @@ bus = &"SFX"
 
 [node name="PrepareArrow" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_56k4n")
-volume_db = 4.466
 bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer" parent="."]
@@ -1320,14 +1314,3 @@ bus = &"SFX"
 [node name="SoundTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
-
-[node name="TreeTrunkAbility" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("20_cltx4")
-bus = &"SFX"
-
-[node name="ThunderAbility" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("21_na0sb")
-bus = &"SFX"
-
-[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("22_vqii3")

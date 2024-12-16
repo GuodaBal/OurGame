@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://b5cnnwjdprlnn"]
+[gd_scene load_steps=23 format=4 uid="uid://b5cnnwjdprlnn"]
 
 [ext_resource type="PackedScene" uid="uid://b2a6p8rxv1igu" path="res://tscn_files/medeina.tscn" id="1_0sq2h"]
 [ext_resource type="Script" path="res://Scripts/boss_level_medeina.gd" id="1_rpm1e"]
