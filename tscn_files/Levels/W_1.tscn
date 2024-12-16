@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://ctpmr2kr3vhsn"]
+[gd_scene load_steps=9 format=4 uid="uid://ctpmr2kr3vhsn"]
 
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="1_1cgh3"]
+[ext_resource type="Texture2D" uid="uid://cu31rpyasst87" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_1.png" id="1_10x34"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_evb2k"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_dtbl4"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_l268s"]
@@ -9,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_scpt0"]
 
 [node name="Level" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(221, 866)
+scale = Vector2(2.71458, 2.6037)
+texture = ExtResource("1_10x34")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_evb2k")]
 position = Vector2(930, 1003)

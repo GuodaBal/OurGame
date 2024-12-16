@@ -7,7 +7,8 @@
 radius = 7.0
 
 [node name="Poison_projectile" type="RigidBody2D"]
-collision_mask = 7
+collision_layer = 2
+collision_mask = 5
 mass = 0.5
 contact_monitor = true
 max_contacts_reported = 3

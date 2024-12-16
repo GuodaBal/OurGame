@@ -18,7 +18,7 @@ var damage = 1
 var knockback = Vector2.ZERO
 var sprite_scale
 var margin = 10
-var range = 650
+var range = 850
 var last_direction = 0
 
 func _physics_process(delta: float) -> void:
@@ -41,6 +41,11 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = 0
 	velocity += knockback
+	if !animation.is_playing():
+			if velocity.x > 0:  
+				animation.play("walking")
+			else:
+				animation.play("idle")
 	move_and_slide()
 	knockback = lerp(knockback, Vector2.ZERO, 0.1)
 
@@ -51,13 +56,7 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 	knockback = direction * knockback_strength
 	knockback.y = 0
 	if hp <= 0:
-		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
-			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
-			add_sibling(instance)
-			instance.position = position
-		animation.play("death")
-		await animation.animation_finished
-		queue_free()
+		die()
 		
 func attack(body):
 	animation.play("attack")
@@ -72,3 +71,12 @@ func _on_attack_timer_timeout():
 	for body in attackArea.get_overlapping_bodies():
 		if body.is_in_group("Player"):
 			attack(body)
+			
+func die():
+	if(randi_range(0,3) == 3):
+		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
+		add_sibling(instance)
+		instance.position = position
+	animation.play("death")
+	await animation.animation_finished
+	queue_free()

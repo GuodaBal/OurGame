@@ -53,13 +53,7 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 	var direction = position - character_position
 	knockback = direction.normalized() * knockback_strength*200
 	if hp <= 0:
-		if(randi_range(0,3) == 3): #1/4 chance FOR NOW
-			var instance = load("res://tscn_files/health_drop.tscn").instantiate()
-			add_sibling(instance)
-			instance.position = position
-		animation.play("death")
-		await animation.animation_finished
-		queue_free()
+		die()
 		
 func attack(body):
 	attacking = false
@@ -88,7 +82,14 @@ func _on_update_target_timeout() -> void:
 	else:
 		navigation.target_position = playerPosition
 	
-
+func die():
+	if(randi_range(0,3) == 3):
+		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
+		add_sibling(instance)
+		instance.position = position
+	animation.play("death")
+	await animation.animation_finished
+	queue_free()
 
 func _on_navigation_agent_2d_target_reached() -> void:
 	attacking = false

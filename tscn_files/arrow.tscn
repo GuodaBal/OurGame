@@ -10,7 +10,7 @@ height = 34.0
 
 [node name="Arrow" type="RigidBody2D"]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 15
 mass = 0.2
 center_of_mass_mode = 1
 center_of_mass = Vector2(10, 0)

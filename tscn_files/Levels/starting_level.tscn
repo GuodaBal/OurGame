@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=4 uid="uid://btnbw77n5dw1u"]
+[gd_scene load_steps=15 format=4 uid="uid://btnbw77n5dw1u"]
 
 [ext_resource type="Script" path="res://Scripts/starting_level.gd" id="1_orm5a"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_s418v"]
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="2_6s6y2"]
+[ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="2_vy81c"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_t5iol"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_oxnbh"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="5_c6jit"]
@@ -1771,6 +1772,11 @@ sources/2 = SubResource("TileSetAtlasSource_lpssx")
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_orm5a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1289.5, 625)
+scale = Vector2(3.05052, 1.80185)
+texture = ExtResource("2_vy81c")
 
 [node name="Area2D" parent="." instance=ExtResource("2_6s6y2")]
 position = Vector2(1032, 830)

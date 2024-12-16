@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://c83o4uejxjvsx"]
+[gd_scene load_steps=18 format=4 uid="uid://c83o4uejxjvsx"]
 
 [ext_resource type="Script" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_20n8p"]
-[ext_resource type="Texture2D" uid="uid://cx62ywpb0xxyc" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Fire_God_NEW.png" id="2_odbf3"]
+[ext_resource type="Texture2D" uid="uid://c8aq7tnw2tbk3" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_2.png" id="2_ya7jn"]
 [ext_resource type="PackedScene" uid="uid://n0byngr2sw2r" path="res://tscn_files/gabija.tscn" id="3_0oha5"]
+[ext_resource type="Texture2D" uid="uid://ccc0swcaxeaqf" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Fire_God.png" id="3_qddtw"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_hgj5o"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="6_ij6ja"]
 [ext_resource type="AudioStream" uid="uid://c647i37lqy6er" path="res://Audio/Music/GabijaBe.wav" id="6_nb1fa"]
@@ -3676,17 +3677,15 @@ sources/2 = SubResource("TileSetAtlasSource_aa4v2")
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_cdcpk")
 
-[node name="BG" type="ColorRect" parent="."]
-offset_left = -566.0
-offset_top = -606.0
-offset_right = 2626.0
-offset_bottom = 1598.0
-color = Color(0.202454, 0.184978, 0.189473, 1)
+[node name="BG" type="Sprite2D" parent="."]
+position = Vector2(643, 333)
+scale = Vector2(1.66979, 1.61667)
+texture = ExtResource("2_ya7jn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(916.22, 542)
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_odbf3")
+texture = ExtResource("3_qddtw")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_20n8p")]
 
