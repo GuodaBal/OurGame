@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://btnbw77n5dw1u"]
+[gd_scene load_steps=14 format=4 uid="uid://btnbw77n5dw1u"]
 
 [ext_resource type="Script" path="res://Scripts/starting_level.gd" id="1_orm5a"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_s418v"]
@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_n4237"]
 [ext_resource type="Texture2D" uid="uid://de2b5wx7rrtk8" path="res://Game_Sprites/Tilemaps/Old/Starting area_V2.png" id="9_pey2b"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_ko45t"]
-[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="11_1gown"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_exydm"]
 vertices = PackedVector2Array(64, 64, -64, 64, -64, -64, 64, -64)
@@ -1797,7 +1796,7 @@ correctLevel = "N_1"
 [node name="LevelSwitcher2" parent="." instance=ExtResource("3_t5iol")]
 position = Vector2(2627, 507)
 scale = Vector2(1, 1.91)
-nextLevel = "boss_level_angel"
+nextLevel = "F_1"
 
 [node name="SpawnArea2" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(2464, 677)
@@ -1809,6 +1808,7 @@ scale = Vector2(1, 2.015)
 script = ExtResource("6_u6smp")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("7_n4237")
 autoplay = true
 bus = &"Music"
@@ -1832,8 +1832,5 @@ offset_top = -486.0
 offset_right = -1207.0
 offset_bottom = 26.0
 scale = Vector2(11.685, 5.07)
-
-[node name="Wendigo" parent="." instance=ExtResource("11_1gown")]
-position = Vector2(1614, 807)
 
 [connection signal="ready" from="Node2D" to="Node2D" method="_on_ready"]
