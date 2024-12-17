@@ -77,7 +77,7 @@ position = Vector2(-159, -1028)
 correctLevel = "N_2"
 
 [node name="LevelSwitcher4" parent="." instance=ExtResource("2_t1dvb")]
-position = Vector2(-958, 1017)
+position = Vector2(-1166, 1017)
 scale = Vector2(1, 1.725)
 nextLevel = "W_12"
 

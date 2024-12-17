@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://du7hdgoyfg4fp"]
 
-[ext_resource type="Texture2D" uid="uid://wk685ke13dm" path="res://tscn_files/Levels/ELR_SpringlLeaf.png" id="1_dhwii"]
+[ext_resource type="Texture2D" uid="uid://wk685ke13dm" path="res://Sprites/ELR_SpringlLeaf.png" id="1_dhwii"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l8nkd"]
 particles_animation = true

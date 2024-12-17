@@ -1329,4 +1329,5 @@ bus = &"SFX"
 
 [node name="TakeDamage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("19_3ploa")
+volume_db = -2.0
 bus = &"SFX"

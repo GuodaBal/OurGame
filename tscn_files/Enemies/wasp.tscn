@@ -298,7 +298,7 @@ bus = &"SFX"
 
 [node name="Damage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_46px3")
-volume_db = -1.0
+volume_db = -2.0
 bus = &"SFX"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

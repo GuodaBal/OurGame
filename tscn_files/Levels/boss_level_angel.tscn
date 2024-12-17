@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cxbqwn7b3j37q" path="res://tscn_files/angel.tscn" id="3_x4sya"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_gqt1s"]
 [ext_resource type="TileSet" uid="uid://c8q5d3oyujb2m" path="res://Game_Sprites/Tilemaps/New/Angel_boss.tres" id="4_v3i2m"]
+[ext_resource type="AudioStream" uid="uid://dvgtwhjx385ls" path="res://Audio/Music/Citeria_(G.Roussel).wav" id="7_6t1tj"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_8brmy"]
-[ext_resource type="AudioStream" uid="uid://cgqelm0icu4yl" path="res://Audio/Music/final_mixdown.wav" id="8_h6pym"]
 [ext_resource type="Texture2D" uid="uid://dbyuksnsgphoh" path="res://Game_Sprites/Tilemaps/Backgrounds/AngelBoss_Background.png" id="8_vvtp8"]
 [ext_resource type="Texture2D" uid="uid://c6188qbaaprns" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Angel_Boss.png" id="9_dan3c"]
 
@@ -49,8 +49,8 @@ scale = Vector2(8.915, 4.8)
 
 [node name="FinalSong" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("8_h6pym")
-volume_db = -5.0
+stream = ExtResource("7_6t1tj")
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
 

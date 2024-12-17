@@ -273,6 +273,7 @@ hit_from_inside = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_8c6st")
+volume_db = 2.0
 autoplay = true
 max_distance = 500.0
 bus = &"SFX"
@@ -283,6 +284,7 @@ bus = &"SFX"
 
 [node name="TakeDamage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_4gvbi")
+volume_db = -2.0
 bus = &"SFX"
 
 [connection signal="body_entered" from="AnimatedSprite2D/Attack" to="." method="_on_attack_body_entered"]

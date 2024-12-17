@@ -62,7 +62,7 @@ func _on_attack_timer_timeout() -> void:
 		state = "wait"
 
 func changeStage():
-	if stage == 3: #Fight ends
+	if stage == 1: #Fight ends
 		attackTimer.stop()
 		GlobalVariables.MedeinaDone = true
 		get_parent().stop_attacks()
