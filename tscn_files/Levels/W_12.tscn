@@ -1,6 +1,5 @@
 [gd_scene load_steps=12 format=4 uid="uid://dyrwwbfyumg3f"]
 
-[ext_resource type="Script" path="res://Scripts/StopForestSound.gd" id="1_2y0c3"]
 [ext_resource type="TileSet" uid="uid://c2wpbrokrmq4w" path="res://Game_Sprites/Tilemaps/New/Water_area.tres" id="1_kautp"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="2_5hqye"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_b3wqn"]
@@ -11,9 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_l8obu"]
 [ext_resource type="Texture2D" uid="uid://dxst1n24nwlq" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_2.png" id="9_l08xw"]
 [ext_resource type="PackedScene" uid="uid://d10hy11cpcxf7" path="res://tscn_files/Rain.tscn" id="10_6xry1"]
+[ext_resource type="Script" path="res://Scripts/SFire_PWater.gd" id="11_7dy2o"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_2y0c3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2545, 282.5)
@@ -72,3 +71,6 @@ offset_top = -1796.0
 offset_right = -469.0
 offset_bottom = -1284.0
 scale = Vector2(13.7222, 8.02218)
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("11_7dy2o")

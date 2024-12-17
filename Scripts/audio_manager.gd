@@ -46,7 +46,6 @@ func get_SFX_volume() -> float:
 	return saved_SFX_volume
 	
 
-
 func play_forest_sound():
 	if not audio_player:  # Sukuriame tik jei dar nėra
 		audio_player = AudioStreamPlayer.new()
