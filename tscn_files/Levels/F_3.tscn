@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://biofrt6isi87b"]
+[gd_scene load_steps=13 format=4 uid="uid://biofrt6isi87b"]
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_8vcrr"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_dplmf"]
@@ -6,15 +6,21 @@
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_pkpfv"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_gjyb2"]
 [ext_resource type="TileSet" uid="uid://cdk1i5ejbua4j" path="res://Game_Sprites/Tilemaps/New/In_between.tres" id="4_grc2a"]
-[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="5_i2exb"]
-[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Old/details.tres" id="6_gwd18"]
+[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/Enemies/enemy.tscn" id="5_i2exb"]
+[ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_gwd18"]
 [ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_cn058"]
-[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="7_fa3lj"]
+[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="7_fa3lj"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_66jag"]
+[ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="12_8ukk4"]
 
-[node name="Level3" type="Node2D"]
+[node name="Level4" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2920.5, 598)
+scale = Vector2(4.45365, 3.61111)
+texture = ExtResource("1_8vcrr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(2920.5, 598)
 scale = Vector2(4.45365, 3.61111)
 texture = ExtResource("1_8vcrr")
@@ -90,3 +96,10 @@ offset_top = -1427.0
 offset_right = -772.0
 offset_bottom = -915.0
 scale = Vector2(16.36, 8.12)
+
+[node name="Spark" parent="." instance=ExtResource("12_8ukk4")]
+offset_left = -417.0
+offset_top = -569.0
+offset_right = 95.0
+offset_bottom = -57.0
+scale = Vector2(12.3839, 4.71376)

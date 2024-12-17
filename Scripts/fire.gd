@@ -3,7 +3,6 @@ extends Node2D
 var damage = 1
 @onready var timer := $Timer as Timer
 @onready var area:= $Area2D as Area2D
-
 func _process(delta: float) -> void:
 	if timer.is_stopped():
 		for body in area.get_overlapping_bodies():

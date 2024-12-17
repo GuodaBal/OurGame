@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://d2vnmvp7i8fmt"]
+[gd_scene load_steps=11 format=4 uid="uid://d2vnmvp7i8fmt"]
 
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_boun6"]
 [ext_resource type="TileSet" uid="uid://dmel105g6rnl8" path="res://Game_Sprites/Tilemaps/New/Fire_area.tres" id="1_s4bvx"]
@@ -6,9 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_3m48b"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_0awvc"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="4_m0rib"]
-[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="5_3iayq"]
-[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="7_y8r0b"]
+[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/Enemies/enemy.tscn" id="5_3iayq"]
+[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="7_y8r0b"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_5lpav"]
+[ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="10_g01y2"]
 
 [node name="Level" type="Node2D"]
 
@@ -61,3 +62,10 @@ offset_top = -1347.0
 offset_right = -1419.0
 offset_bottom = -835.0
 scale = Vector2(16.39, 8.97)
+
+[node name="Spark" parent="." instance=ExtResource("10_g01y2")]
+offset_left = -967.0
+offset_top = -1104.0
+offset_right = -455.0
+offset_bottom = -592.0
+scale = Vector2(10.9159, 8.51542)

@@ -1,15 +1,16 @@
-[gd_scene load_steps=14 format=4 uid="uid://ixq4hr2e35l5"]
+[gd_scene load_steps=15 format=4 uid="uid://ixq4hr2e35l5"]
 
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_q0aw3"]
 [ext_resource type="Script" path="res://Scripts/change_after_perkunas.gd" id="1_x075c"]
 [ext_resource type="Texture2D" uid="uid://kd6fr428ur7p" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="2_sb1bx"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_t1dvb"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_0pxxw"]
-[ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/bat_enemy.tscn" id="5_art3a"]
-[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/rabbit.tscn" id="7_fqkj8"]
+[ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/Enemies/bat_enemy.tscn" id="5_art3a"]
+[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/Enemies/rabbit.tscn" id="7_fqkj8"]
 [ext_resource type="Texture2D" uid="uid://m1fisabmsa0t" path="res://Game_Sprites/Tilemaps/Assets/Details.png" id="8_tfhhf"]
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="9_aw20p"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_k0xai"]
+[ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="11_h3usi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdji0"]
 atlas = ExtResource("8_tfhhf")
@@ -111,3 +112,8 @@ offset_top = -2200.0
 offset_right = -1987.0
 offset_bottom = -1688.0
 scale = Vector2(13.895, 8.685)
+
+[node name="Leaf" parent="." instance=ExtResource("11_h3usi")]
+modulate = Color(0.0823529, 0.356863, 0.168627, 1)
+position = Vector2(853, 170)
+scale = Vector2(6.13198, 8.4686)

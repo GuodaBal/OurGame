@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://6xk5k5bm1cb7"]
+[gd_scene load_steps=12 format=4 uid="uid://6xk5k5bm1cb7"]
 
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_1mcs3"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="1_mlrjv"]
@@ -6,10 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="2_bitpq"]
 [ext_resource type="TileSet" uid="uid://cdk1i5ejbua4j" path="res://Game_Sprites/Tilemaps/New/In_between.tres" id="3_vjf12"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="5_dv5l0"]
-[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/enemy.tscn" id="6_8lo6v"]
+
+[ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/Enemies/enemy.tscn" id="6_8lo6v"]
+
 [ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="6_lcoeo"]
-[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/spider.tscn" id="8_plwys"]
+[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="8_plwys"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_pp2dn"]
+[ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="11_3163t"]
 
 [node name="Level6" type="Node2D"]
 
@@ -68,3 +71,10 @@ offset_top = -1083.0
 offset_right = -847.0
 offset_bottom = -571.0
 scale = Vector2(12.055, 7.34)
+
+[node name="Spark" parent="." instance=ExtResource("11_3163t")]
+offset_left = -236.0
+offset_top = -221.0
+offset_right = 276.0
+offset_bottom = 291.0
+scale = Vector2(8.66071, 3.7532)

@@ -1,9 +1,12 @@
-[gd_scene load_steps=31 format=3 uid="uid://b1ic8r1mfi8ss"]
+[gd_scene load_steps=34 format=3 uid="uid://b1ic8r1mfi8ss"]
 
 [ext_resource type="Texture2D" uid="uid://bqcmoqtav37aq" path="res://Game_Sprites/Enemy/Bunny_Down_256.png" id="1_f428x"]
 [ext_resource type="Script" path="res://Scripts/rabbit.gd" id="1_ujdan"]
 [ext_resource type="Texture2D" uid="uid://diqrrkkpvfcv1" path="res://Game_Sprites/Animation/Death/Bunny_Death.png" id="2_nldxw"]
 [ext_resource type="Texture2D" uid="uid://dhyy2be8k1mfg" path="res://Game_Sprites/Animation/Enemies/Bunny_Running.png" id="4_m27vl"]
+[ext_resource type="AudioStream" uid="uid://e8icpofvoh0k" path="res://Audio/SFX/RabbitRunning.wav" id="5_0seti"]
+[ext_resource type="AudioStream" uid="uid://dvtxmgr3okrrc" path="res://Audio/SFX/Bite.wav" id="6_w7vb5"]
+[ext_resource type="AudioStream" uid="uid://608d6lq4fwo4" path="res://Audio/SFX/BatTakeDamage.wav" id="7_xfy5d"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3trbd"]
 atlas = ExtResource("2_nldxw")
@@ -235,6 +238,23 @@ autostart = true
 
 [node name="StuckTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0seti")
+volume_db = 2.0
+autoplay = true
+max_distance = 500.0
+bus = &"SFX"
+
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_w7vb5")
+volume_db = -2.0
+bus = &"SFX"
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xfy5d")
+pitch_scale = 0.6
+bus = &"SFX"
 
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

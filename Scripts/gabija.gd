@@ -6,7 +6,7 @@ const JUMP_VELOCITY = 1500.0
 const max_velocity = 350
 const max_fall_velocity = 600
 var hp = 40
-
+#40
 @onready var animation := $AnimatedSprite2D as AnimatedSprite2D
 @onready var wall_detector_left := $DetectLeft as RayCast2D
 @onready var wall_detector_right := $DetectRight as RayCast2D
@@ -20,6 +20,8 @@ var hp = 40
 @onready var spikeTimer := $SpikeTimer as Timer
 @onready var spikeEndTimer := $SpikeEndTimer as Timer
 @onready var jumpEndTimer := $JumpEndTimer as Timer
+@onready var audio = $TakeDamage
+@onready var audio2 = $Spike
 var gravityStrength = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var playerPostion = get_parent().get_node("MainCharacter").position
@@ -158,6 +160,7 @@ func _physics_process(delta: float) -> void:
 
 
 func take_damage(damage, knockback_strength, player_position):
+	AudioManager.play_with_random_pitch(audio)
 	hp-=damage
 	print_debug(hp)
 	var direction = position - player_position
@@ -243,19 +246,24 @@ func _on_attack_timer_timeout() -> void:
 	if !attacking:
 		if isExhaustedTimer.is_stopped() and !will_be_exhausted and is_on_floor():
 			match state:
-				"left":
+				"left":					
 					get_parent().spawn_fire_right()
+
 				"right":
 					get_parent().spawn_fire_left()
+
 				"up":
 					if playerPostion.x > 1600:
 						get_parent().spawn_fire_right()
+
 					elif playerPostion.x < 200:
 						get_parent().spawn_fire_left()
+
 					elif randi() % 2 == 0:
 						spawn_spikes()
 					else:	
 						get_parent().spawn_fire_bottom()
+
 			if state != "down":
 				attacking = true
 		attackTimer.start(8)
@@ -330,7 +338,7 @@ func _on_spike_timer_timeout() -> void:
 	if spawning_spikes and !spikeEndTimer.is_stopped() and isExhaustedTimer.is_stopped() and is_on_floor():
 		for rot in range(-70, 71, 10):
 			var instance = load("res://tscn_files/spike.tscn").instantiate()
-			
+			AudioManager.play_with_random_pitch(audio2)
 			spikeSpawner.add_child(instance)
 			instance.rotation = deg_to_rad(rot)
 		spikeTimer.start()

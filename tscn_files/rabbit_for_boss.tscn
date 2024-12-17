@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://dk4xtfw7cmv3r"]
+[gd_scene load_steps=20 format=3 uid="uid://dk4xtfw7cmv3r"]
 
-[ext_resource type="Script" path="res://tscn_files/rabbit_for_boss.gd" id="1_oj2ug"]
+[ext_resource type="Script" path="res://Scripts/rabbit_for_boss.gd" id="1_oj2ug"]
 [ext_resource type="Texture2D" uid="uid://dhyy2be8k1mfg" path="res://Game_Sprites/Animation/Enemies/Bunny_Running.png" id="2_n2oqk"]
+[ext_resource type="AudioStream" uid="uid://e8icpofvoh0k" path="res://Audio/SFX/RabbitRunning.wav" id="3_jfyit"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ki4fs"]
 atlas = ExtResource("2_n2oqk")
@@ -130,5 +131,11 @@ shape = SubResource("CapsuleShape2D_emwfm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 position = Vector2(-1, -3)
 shape = SubResource("CapsuleShape2D_37gy3")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_jfyit")
+volume_db = 5.0
+autoplay = true
+max_distance = 700.0
 
 [connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

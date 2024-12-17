@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://ths70qmt2skq"]
+[gd_scene load_steps=10 format=4 uid="uid://ths70qmt2skq"]
 
 [ext_resource type="TileSet" uid="uid://c2wpbrokrmq4w" path="res://Game_Sprites/Tilemaps/New/Water_area.tres" id="1_g4335"]
 [ext_resource type="Texture2D" uid="uid://dxst1n24nwlq" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_2.png" id="1_njj8q"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="5_mtgkf"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_06frn"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_sqv4x"]
+[ext_resource type="PackedScene" uid="uid://d10hy11cpcxf7" path="res://tscn_files/Rain.tscn" id="9_63x0b"]
 
 [node name="Level" type="Node2D"]
 
@@ -58,3 +59,10 @@ offset_top = -627.0
 offset_right = -2588.0
 offset_bottom = -115.0
 scale = Vector2(14.925, 4.2)
+
+[node name="Rain" parent="." instance=ExtResource("9_63x0b")]
+offset_left = -2804.0
+offset_top = -541.0
+offset_right = -2292.0
+offset_bottom = -29.0
+scale = Vector2(14.0464, 4.03768)

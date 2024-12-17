@@ -60,3 +60,10 @@ func play_with_random_pitch(audio_player: AudioStreamPlayer, min_pitch: float = 
 	audio_player.pitch_scale = randf_range(min_pitch, max_pitch)
 	# Paleidžiame garsą
 	audio_player.play()
+	
+func play_with_random_pitch2D(audio_player: AudioStreamPlayer2D, distance: int, min_pitch: float = 0.8, max_pitch: float = 1.2) -> void:
+	# Sugeneruojame atsitiktinį pitch ir nustatome jį grotuvui
+	audio_player.pitch_scale = randf_range(min_pitch, max_pitch)
+	# Paleidžiame garsą
+	audio_player.max_distance = distance
+	audio_player.play()

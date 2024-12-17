@@ -8,6 +8,8 @@ extends Node2D
 @onready var animation := $AnimationPlayer as AnimationPlayer 
 @onready var before := $Before as TileMapLayer
 @onready var after := $After as TileMapLayer
+@onready var MedeinaBe = $MedeinaBe
+@onready var MedeinaAF = $MedeinaAF
 var coef = 1
 var platforms= [[975, null], [925, null], [875, null]] as Array #Platforms spawn in one of 
 #three heights. Stores platforms or null if line not busy
@@ -18,14 +20,16 @@ var lastSpikeAtPlayer = false #If last spike was spawned under player, don't spa
 
 func _ready() -> void:
 	animation.play("Remove_dark")
-	if GlobalVariables.MedeinaDone:
+	if GlobalVariables.MedeinaDone:		
 		before.visible = false
 		before.collision_enabled = false
 		end_level()
 		$Medeina.queue_free()
+		MedeinaAF.play()
 	else:
 		after.visible = false
 		after.collision_enabled = false
+		MedeinaBe.play()
 
 func start_spike_attack():
 	spikeIntervalTimer.start()

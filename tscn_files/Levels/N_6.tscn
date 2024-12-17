@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dbusf3bvhfdxp"]
+[gd_scene load_steps=10 format=4 uid="uid://dbusf3bvhfdxp"]
 
 [ext_resource type="Texture2D" uid="uid://51mi5aacj6xm" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="1_vvyxm"]
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_xd8h3"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="5_1rc4a"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="6_hr50s"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="7_5yew8"]
-[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/rabbit.tscn" id="7_iq8tb"]
+[ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/Enemies/rabbit.tscn" id="7_iq8tb"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_ooqoo"]
+[ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="9_gof1l"]
 
 [node name="Level" type="Node2D"]
 
@@ -58,3 +59,12 @@ offset_top = -492.0
 offset_right = -807.0
 offset_bottom = 20.0
 scale = Vector2(12.445, 5.505)
+
+[node name="Leaf" parent="." instance=ExtResource("9_gof1l")]
+modulate = Color(0.290196, 0.290196, 0.290196, 1)
+self_modulate = Color(0.101961, 0.101961, 0.101961, 1)
+position = Vector2(1992, 1027)
+scale = Vector2(4.67254, 3.85217)
+amount = 150
+lifetime = 5.0
+speed_scale = 0.5

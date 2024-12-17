@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=4 uid="uid://ctpmr2kr3vhsn"]
+[gd_scene load_steps=10 format=4 uid="uid://ctpmr2kr3vhsn"]
 
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="1_1cgh3"]
 [ext_resource type="Texture2D" uid="uid://cu31rpyasst87" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_1.png" id="1_10x34"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_evb2k"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_dtbl4"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_l268s"]
-[ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/wasp.tscn" id="5_p818q"]
+[ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/Enemies/wasp.tscn" id="5_p818q"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="5_sxrji"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_scpt0"]
+[ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="9_rg75g"]
 
 [node name="Level" type="Node2D"]
 
@@ -58,3 +59,11 @@ offset_top = -563.0
 offset_right = -2275.0
 offset_bottom = -51.0
 scale = Vector2(12.25, 5.755)
+
+[node name="Leaf" parent="." instance=ExtResource("9_rg75g")]
+modulate = Color(0.170875, 0.335742, 0.200208, 1)
+position = Vector2(254, 941)
+scale = Vector2(4.09484, 4.72503)
+amount = 250
+lifetime = 5.0
+speed_scale = 0.6

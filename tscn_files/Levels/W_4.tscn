@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://cqhc4dbw5sj1k"]
+[gd_scene load_steps=11 format=4 uid="uid://cqhc4dbw5sj1k"]
 
 [ext_resource type="TileSet" uid="uid://c2wpbrokrmq4w" path="res://Game_Sprites/Tilemaps/New/Water_area.tres" id="1_6a30y"]
 [ext_resource type="Texture2D" uid="uid://dxst1n24nwlq" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_2.png" id="1_r3es0"]
@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="3_wanr1"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_4ogi3"]
 [ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="6_jr2w2"]
-[ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/wasp.tscn" id="7_yf5sp"]
+[ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/Enemies/wasp.tscn" id="7_yf5sp"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_2v14b"]
+[ext_resource type="PackedScene" uid="uid://d10hy11cpcxf7" path="res://tscn_files/Rain.tscn" id="10_1ro2t"]
 
 [node name="Level" type="Node2D"]
 
@@ -62,3 +63,10 @@ offset_top = -1022.0
 offset_right = -688.0
 offset_bottom = -510.0
 scale = Vector2(13.785, 5.39)
+
+[node name="Rain" parent="." instance=ExtResource("10_1ro2t")]
+offset_left = -1157.0
+offset_top = -996.0
+offset_right = -645.0
+offset_bottom = -484.0
+scale = Vector2(13.5913, 5.09586)

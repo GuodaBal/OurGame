@@ -56,6 +56,7 @@ func changeStage():
 		get_parent().stop_attacks()
 		await get_tree().create_timer(1).timeout
 		DialogueManager.show_dialogue_balloon(load("res://Dialogue/medeina.dialogue"), "death")
+		GlobalVariables.MedeinaDone = true
 		play("death")
 		await animation_finished
 		get_parent().end_level()

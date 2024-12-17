@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=3 uid="uid://bo5x65xs813fn"]
+[gd_scene load_steps=186 format=3 uid="uid://bo5x65xs813fn"]
 
 [ext_resource type="Script" path="res://Scripts/main_character.gd" id="1_7nded"]
 [ext_resource type="Texture2D" uid="uid://cvhpbbqhi764o" path="res://Game_Sprites/Animation/Niya_NEW/Niya_Attack_1.png" id="2_q5qet"]
@@ -16,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://c18qnst1vfmiq" path="res://Game_Sprites/Animation/Niya_NEW/Niya_RunningEnd.png" id="9_nc6eq"]
 [ext_resource type="Texture2D" uid="uid://bjj41gyphcbvo" path="res://Game_Sprites/Animation/Niya_NEW/Niya_RunningStart.png" id="10_yo7tk"]
 [ext_resource type="Texture2D" uid="uid://1n0pgo76g0u5" path="res://Game_Sprites/Animation/Niya_NEW/Niya_Hit.png" id="11_spw3f"]
+[ext_resource type="AudioStream" uid="uid://b423pbyvvaa57" path="res://Audio/SFX/Thunder_mixdown.wav" id="17_2l50j"]
+[ext_resource type="AudioStream" uid="uid://dxdd4lru7skr3" path="res://Audio/SFX/TreeTrunkAbility_mixdown.wav" id="18_m0a3t"]
+[ext_resource type="AudioStream" uid="uid://c6el6u87hsl3o" path="res://Audio/SFX/takingDamage.wav" id="19_3ploa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ral1"]
 atlas = ExtResource("2_q5qet")
@@ -1315,3 +1318,15 @@ bus = &"SFX"
 [node name="SoundTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Lightning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_2l50j")
+bus = &"SFX"
+
+[node name="TreeTrunk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_m0a3t")
+bus = &"SFX"
+
+[node name="TakeDamage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_3ploa")
+bus = &"SFX"

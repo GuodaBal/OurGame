@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
 @onready var animation := $AnimatedSprite2D as AnimatedSprite2D
+
 var SPEED = 400.0
 var direction = 1
 
 func _ready() -> void:
 	animation.play("running")
+	
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

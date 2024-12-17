@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_ri7ra"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_2oowx"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_tj6vo"]
-[ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/wasp.tscn" id="5_pit1w"]
+[ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/Enemies/wasp.tscn" id="5_pit1w"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_coh3p"]
-[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="6_fic8u"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_v3vjy"]
+[ext_resource type="PackedScene" uid="uid://d10hy11cpcxf7" path="res://tscn_files/Rain.tscn" id="9_fvc7w"]
 
 [node name="Level" type="Node2D"]
 
@@ -41,9 +41,6 @@ nextLevel = "W_3"
 [node name="Wasp" parent="." instance=ExtResource("5_pit1w")]
 position = Vector2(892, 632)
 
-[node name="Wendigo" parent="." instance=ExtResource("6_fic8u")]
-position = Vector2(1275, 1145)
-
 [node name="Details" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AAARALoAAAACAAAAAGARAM4AAAAAAAAAAGARAMIAAAABAAAAAGARAMgAAAABAAAAAGCBARIAAAAAAAAAAFCBASUAAAACAAAAAFCBARoAAAABAAAAAFCBAR4AAAABAAAAAFB5AJ4AAAAAAAEAAAA4AWYAAAAAAAEAABAzAWYAAAACAAEAAACIAY8AAAADAAEAAABuAAgBAAADAAEAAAAQAJYAAAACAAEAABBAABgAAAADAAAAAAA7ABYAAAAAAAMAAAChAFoAAAADAAIAAADDAOcAAAADAAIAACBFAc8AAAAAAAEAAAAvAckAAAADAAAAAAC6AJYAAAACAAEAAACnAGAAAAADAAEAAABYAOAAAAADAAAAAAA=")
 tile_set = ExtResource("6_coh3p")
@@ -59,3 +56,10 @@ offset_top = -581.0
 offset_right = -693.0
 offset_bottom = -69.0
 scale = Vector2(11.185, 5.895)
+
+[node name="Rain" parent="." instance=ExtResource("9_fvc7w")]
+z_index = 4
+offset_left = -913.0
+offset_top = -512.0
+offset_right = -401.0
+scale = Vector2(10.4772, 5.61677)
