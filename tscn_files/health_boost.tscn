@@ -42,4 +42,6 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_2p37f")
 animation = &"open"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

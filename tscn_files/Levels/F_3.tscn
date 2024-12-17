@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=4 uid="uid://biofrt6isi87b"]
+[gd_scene load_steps=14 format=4 uid="uid://biofrt6isi87b"]
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_8vcrr"]
+[ext_resource type="Script" path="res://Scripts/SWater_PFire.gd" id="1_a5riy"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_dplmf"]
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="1_wijav"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_pkpfv"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="12_8ukk4"]
 
 [node name="Level4" type="Node2D"]
+script = ExtResource("1_a5riy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2920.5, 598)

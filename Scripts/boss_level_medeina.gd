@@ -19,6 +19,7 @@ var lastSpikeAtPlayer = false #If last spike was spawned under player, don't spa
 
 
 func _ready() -> void:
+	AudioManager.stop_forest_sound()
 	animation.play("Remove_dark")
 	if GlobalVariables.MedeinaDone:		
 		before.visible = false

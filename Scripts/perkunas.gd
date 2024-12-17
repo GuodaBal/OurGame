@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 
 func _ready() -> void:
+	AudioManager.stop_water_sound()
 	play("idle")
 	await get_parent().get_parent().get_node("AnimationPlayer").animation_finished
 	if !GlobalVariables.PerkunasDone:

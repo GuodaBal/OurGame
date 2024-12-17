@@ -8,6 +8,9 @@ extends Node2D
 var spawnLocations
 
 func _ready() -> void:
+	AudioManager.stop_forestfire_sound()
+	AudioManager.stop_forest_sound()
+	AudioManager.stop_water_sound()
 	spawnLocations = [enemySpawnLocation1, enemySpawnLocation2, enemySpawnLocation3, enemySpawnLocation4]
 
 func spawn_random_enemy():

@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 
 	
 func take_damage(damage: int, knockback_strength: int, character_position: Vector2):
-	#AudioManager.play_with_random_pitch(audio2)
+	AudioManager.play_with_random_pitch(audio2)
 	hp-=damage
 	var direction = position - character_position
 	knockback = direction * knockback_strength
@@ -61,7 +61,7 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 		die()
 		
 func attack(body):
-	#AudioManager.play_with_random_pitch(audio)
+	AudioManager.play_with_random_pitch(audio)
 	animation.play("attack")
 	body.take_damage(damage, 3, position)
 	attackTimer.start()

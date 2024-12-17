@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://dxjgj16g2vqjt"]
+[gd_scene load_steps=22 format=3 uid="uid://dxjgj16g2vqjt"]
 
 [ext_resource type="Script" path="res://Scripts/save_point.gd" id="1_fh2po"]
 [ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="3_avc60"]
 [ext_resource type="AudioStream" uid="uid://dt1nwasq2nhe3" path="res://Audio/SFX/Campfire.wav" id="4_ia0c5"]
 [ext_resource type="Texture2D" uid="uid://7nuogvgi6uwo" path="res://Game_Sprites/Animation/UI/Campfire.png" id="4_u6obr"]
+[ext_resource type="AudioStream" uid="uid://bcrqaafddsr4" path="res://Audio/SFX/Save.wav" id="5_1k83h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ux4t"]
 size = Vector2(710, 955)
@@ -139,4 +140,8 @@ frame_progress = 0.4792
 stream = ExtResource("4_ia0c5")
 volume_db = 3.0
 autoplay = true
+bus = &"SFX"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1k83h")
 bus = &"SFX"

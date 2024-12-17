@@ -30,6 +30,7 @@ var bottom_fire_left
 var bottom_fire_right
 
 func _ready() -> void:
+	AudioManager.stop_forestfire_sound()
 	if GlobalVariables.GabijaDone:
 		levelBe.visible = false
 		levelBe.collision_enabled = false
