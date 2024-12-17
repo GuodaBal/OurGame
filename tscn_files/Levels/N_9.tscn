@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://do5ep6u7wdmcm"]
+[gd_scene load_steps=12 format=4 uid="uid://do5ep6u7wdmcm"]
 
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_lwdcp"]
 [ext_resource type="PackedScene" uid="uid://l442d7hfs4ha" path="res://tscn_files/health_boost.tscn" id="1_tcq7f"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/Enemies/rabbit.tscn" id="7_xk55b"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_tem4b"]
 [ext_resource type="Texture2D" uid="uid://kd6fr428ur7p" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="10_soaad"]
+[ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="11_51038"]
 
 [node name="Level" type="Node2D"]
 
@@ -63,3 +64,12 @@ scale = Vector2(11.41, 5.69)
 position = Vector2(1244.5, 713)
 scale = Vector2(2.29635, 2.32037)
 texture = ExtResource("10_soaad")
+
+[node name="Leaf" parent="." instance=ExtResource("11_51038")]
+modulate = Color(0.345098, 0.345098, 0.345098, 1)
+self_modulate = Color(0.145098, 0.145098, 0.145098, 1)
+position = Vector2(1191, 496)
+scale = Vector2(3.81745, 5.12543)
+amount = 100
+lifetime = 5.0
+speed_scale = 0.5

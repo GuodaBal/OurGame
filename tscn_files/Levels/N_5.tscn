@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dqhi4f367u282"]
+[gd_scene load_steps=11 format=4 uid="uid://dqhi4f367u282"]
 
 [ext_resource type="Texture2D" uid="uid://kd6fr428ur7p" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="1_kjyio"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_ftpkk"]
@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_m8j3o"]
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="7_lg0y1"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_rrkks"]
+[ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="10_gieor"]
 
 [node name="Level" type="Node2D"]
 
@@ -71,3 +72,12 @@ offset_top = -1059.0
 offset_right = -1454.0
 offset_bottom = -547.0
 scale = Vector2(15.685, 6.72)
+
+[node name="Leaf" parent="." instance=ExtResource("10_gieor")]
+modulate = Color(0.317647, 0.317647, 0.317647, 1)
+self_modulate = Color(0.0941176, 0.0941176, 0.0941176, 1)
+position = Vector2(1956, 471)
+scale = Vector2(5.30732, 5.26437)
+amount = 150
+lifetime = 5.0
+speed_scale = 0.5

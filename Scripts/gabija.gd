@@ -5,7 +5,7 @@ const SPEED = 500
 const JUMP_VELOCITY = 1500.0
 const max_velocity = 350
 const max_fall_velocity = 600
-var hp = 1
+var hp = 40
 #40
 @onready var animation := $AnimatedSprite2D as AnimatedSprite2D
 @onready var wall_detector_left := $DetectLeft as RayCast2D
@@ -245,15 +245,19 @@ func _on_attack_timer_timeout() -> void:
 	if !attacking:
 		if isExhaustedTimer.is_stopped() and !will_be_exhausted and is_on_floor():
 			match state:
-				"left":
+				"left":					
 					get_parent().spawn_fire_right()
+
 				"right":
 					get_parent().spawn_fire_left()
+
 				"up":
 					if playerPostion.x > 1600:
 						get_parent().spawn_fire_right()
+
 					elif playerPostion.x < 200:
 						get_parent().spawn_fire_left()
+
 					elif randi() % 2 == 0:
 						spawn_spikes()
 					else:	

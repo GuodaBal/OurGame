@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://biofrt6isi87b"]
+[gd_scene load_steps=13 format=4 uid="uid://biofrt6isi87b"]
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_8vcrr"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_dplmf"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_cn058"]
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="7_fa3lj"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_66jag"]
+[ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="12_8ukk4"]
 
 [node name="Level4" type="Node2D"]
 
@@ -95,3 +96,10 @@ offset_top = -1427.0
 offset_right = -772.0
 offset_bottom = -915.0
 scale = Vector2(16.36, 8.12)
+
+[node name="Spark" parent="." instance=ExtResource("12_8ukk4")]
+offset_left = -417.0
+offset_top = -569.0
+offset_right = 95.0
+offset_bottom = -57.0
+scale = Vector2(12.3839, 4.71376)

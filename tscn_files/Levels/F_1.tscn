@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://fvcxk3ymmrkr"]
+[gd_scene load_steps=17 format=4 uid="uid://fvcxk3ymmrkr"]
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_0wqlk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_nlglg"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="8_sscdr"]
 [ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/Enemies/wasp.tscn" id="10_dn0d2"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="11_34q67"]
+[ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="13_mnq0x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdji0"]
 atlas = ExtResource("8_anb5i")
@@ -127,3 +128,13 @@ offset_top = -2295.0
 offset_right = -2359.0
 offset_bottom = -1783.0
 scale = Vector2(10.51, 9.52)
+
+[node name="Leaf" parent="." instance=ExtResource("13_mnq0x")]
+modulate = Color(0.182333, 0.293766, 0.210052, 1)
+position = Vector2(1903, 137)
+scale = Vector2(8.997, 9.889)
+skew = -0.139626
+lifetime = 5.0
+speed_scale = 0.3
+randomness = 1.0
+visibility_rect = Rect2(-2500.93, -200, 5000, 400)

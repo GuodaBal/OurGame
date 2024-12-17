@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://dxst1n24nwlq" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_2.png" id="1_nts1v"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_80fy5"]
 [ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/Enemies/wasp.tscn" id="2_qplb5"]
-[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/Enemies/wendigo.tscn" id="3_w7rl8"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_canrs"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="5_14hvw"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_5rimb"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_fxsrw"]
+[ext_resource type="PackedScene" uid="uid://d10hy11cpcxf7" path="res://tscn_files/Rain.tscn" id="9_ig0d6"]
 
 [node name="Level" type="Node2D"]
 
@@ -25,9 +25,6 @@ position = Vector2(2268, 1154)
 
 [node name="Wasp2" parent="." instance=ExtResource("2_qplb5")]
 position = Vector2(2506, 45)
-
-[node name="Wendigo" parent="." instance=ExtResource("3_w7rl8")]
-position = Vector2(2217, 1714)
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("4_canrs")]
 position = Vector2(5857, 827)
@@ -70,3 +67,10 @@ offset_top = -989.0
 offset_right = -855.0
 offset_bottom = -477.0
 scale = Vector2(17.17, 6.625)
+
+[node name="Rain" parent="." instance=ExtResource("9_ig0d6")]
+offset_left = -972.0
+offset_top = -829.0
+offset_right = -460.0
+offset_bottom = -317.0
+scale = Vector2(16.0805, 6.09815)

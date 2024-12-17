@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cp4kne7equl0a"]
+[gd_scene load_steps=14 format=4 uid="uid://cp4kne7equl0a"]
 
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_17a0a"]
 [ext_resource type="Texture2D" uid="uid://51mi5aacj6xm" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="1_auyft"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b1ic8r1mfi8ss" path="res://tscn_files/Enemies/rabbit.tscn" id="7_kc1hb"]
 [ext_resource type="Texture2D" uid="uid://m1fisabmsa0t" path="res://Game_Sprites/Tilemaps/Assets/Details.png" id="7_ylggd"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_kyn7t"]
+[ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="10_uq6gv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xdji0"]
 atlas = ExtResource("7_ylggd")
@@ -87,3 +88,9 @@ offset_top = -531.0
 offset_right = -2508.0
 offset_bottom = -19.0
 scale = Vector2(12.53, 5.26)
+
+[node name="Leaf" parent="." instance=ExtResource("10_uq6gv")]
+modulate = Color(0.112236, 0.274545, 0.14565, 1)
+position = Vector2(466, 828)
+scale = Vector2(5.62811, 5.49746)
+lifetime = 5.0
