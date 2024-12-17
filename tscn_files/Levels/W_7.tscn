@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dcuyphk1cpbhh"]
+[gd_scene load_steps=11 format=4 uid="uid://dcuyphk1cpbhh"]
 
 [ext_resource type="TileSet" uid="uid://c2wpbrokrmq4w" path="res://Game_Sprites/Tilemaps/New/Water_area.tres" id="1_v4hef"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_aevjd"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_pyfds"]
 [ext_resource type="Texture2D" uid="uid://cu31rpyasst87" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_1.png" id="8_uj5et"]
 [ext_resource type="PackedScene" uid="uid://d10hy11cpcxf7" path="res://tscn_files/Rain.tscn" id="9_00mja"]
+[ext_resource type="Script" path="res://Scripts/SFire_PWater.gd" id="10_723j5"]
 
 [node name="Level" type="Node2D"]
 
@@ -69,3 +70,6 @@ offset_top = -1418.0
 offset_right = -829.0
 offset_bottom = -906.0
 scale = Vector2(14.5143, 7.31201)
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("10_723j5")
