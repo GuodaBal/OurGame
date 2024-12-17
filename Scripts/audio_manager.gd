@@ -5,7 +5,6 @@ extends Node
 @onready var Master_Bus_ID = AudioServer.get_bus_index("Master")
 
 const MainMenu = preload("res://Audio/Music/MainMenuwav.wav")
-const BurningForest = preload("res://Audio/Music/ForestFire_mixdown.wav")
 var audio_player = null
 var audio_playerF = null
 var audio_playerW = null
@@ -47,24 +46,13 @@ func get_SFX_volume() -> float:
 	return saved_SFX_volume
 	
 
-# Reference to the existing AudioStreamPlayer node with settings applied
-
-func play_music(music_stream: AudioStream):
-	# Stop current music if it's playing
-	if current_music != null and current_music.playing:
-		current_music.stop()
-	
-	# Set the new music stream and play it with the existing settings
-	if current_music != null:
-		current_music.stream = music_stream
-		current_music.play()
-	
 
 func play_forest_sound():
 	if not audio_player:  # Sukuriame tik jei dar nėra
 		audio_player = AudioStreamPlayer.new()
 		audio_player.stream = preload("res://Audio/Music/forest.wav")
 		audio_player.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada
+		audio_player.bus = "Music"
 		add_child(audio_player)
 	if not audio_player.playing:  # Patikriname, ar garsas jau negroja
 		audio_player.play()
@@ -82,7 +70,8 @@ func play_forestfire_sound():
 	if not audio_playerF:  # Sukuriame tik jei dar nėra
 		audio_playerF = AudioStreamPlayer.new()
 		audio_playerF.stream = preload("res://Audio/Music/ForestFire_mixdown.wav")
-		audio_playerF.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada		
+		audio_playerF.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada	
+		audio_playerF.bus = "Music"	
 		add_child(audio_playerF)
 		if not audio_playerF.playing:  # Patikriname, ar garsas jau negroja
 			audio_playerF.play()
@@ -102,6 +91,7 @@ func play_water_sound():
 		audio_playerW = AudioStreamPlayer.new()
 		audio_playerW.stream = preload("res://Audio/Music/WaterArea.wav")
 		audio_playerW.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada		
+		audio_playerW.bus = "Music"
 		add_child(audio_playerW)
 		if not audio_playerW.playing:  # Patikriname, ar garsas jau negroja
 			audio_playerW.play()
@@ -119,7 +109,8 @@ func play_mainmenu():
 	if not audio_playerM:  # Sukuriame tik jei dar nėra
 		audio_playerM = AudioStreamPlayer.new()
 		audio_playerM.stream = preload("res://Audio/Music/MainMenuwav.wav")
-		audio_playerM.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada		
+		audio_playerM.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada	
+		audio_playerM.bus = "Music"	
 		add_child(audio_playerM)
 		if not audio_playerM.playing:  # Patikriname, ar garsas jau negroja
 			audio_playerM.play()

@@ -2,7 +2,6 @@ extends Node
 
 
 var previousLevel = "";
-@onready var audio = $AudioStreamPlayer
 @onready var transition = $AnimationPlayer as AnimationPlayer
 var is_popup_on = false #Need to manually change whether popup is on as pressing esc can add or remove it
 #on the same frame
@@ -30,11 +29,6 @@ func _ready() -> void:
 					if child.is_in_group("Enemy") and !GlobalVariables.AliveEnemies[str(instance.scene_file_path)].has(child.name):
 						child.queue_free()
 	AudioPlayer.stop()
-	if(AudioManager.current_music == null):	
-		AudioManager.current_music = audio
-		AudioManager.play_music(audio.stream)
-	else:
-		AudioManager.play_music(audio.stream)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("menu") and !is_popup_on:

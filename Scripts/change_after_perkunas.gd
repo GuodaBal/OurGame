@@ -7,6 +7,7 @@ extends Node2D
 func _ready() -> void:
 	AudioManager.play_forest_sound()
 	AudioManager.stop_water_sound()
+	AudioManager.stop_forestfire_sound()
 	if GlobalVariables.PerkunasDone:
 		levelBe.visible = false
 		levelBe.collision_enabled = false
