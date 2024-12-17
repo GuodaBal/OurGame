@@ -27,7 +27,7 @@ func spawn_random_enemy():
 			1:
 				enemy =  load("res://tscn_files/Enemies/enemy.tscn").instantiate()
 			2:
-				enemy =  load("res://tscn_files/Enemies/wendigo.tscn").instantiate()
+				enemy =  load("res://tscn_files/wendigo.tscn").instantiate()
 			3:
 				enemy =  load("res://tscn_files/Enemies/spider.tscn").instantiate()
 			4:

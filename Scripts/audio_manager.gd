@@ -9,6 +9,7 @@ const BurningForest = preload("res://Audio/Music/ForestFire_mixdown.wav")
 var audio_player = null
 var audio_playerF = null
 var audio_playerW = null
+var audio_playerM = null
 var saved_music_volume = 1.0
 var saved_SFX_volume = 1.0
 var mute_pressed: bool = false
@@ -110,6 +111,24 @@ func play_water_sound():
 func stop_water_sound():
 	if audio_playerW and audio_playerW.playing:  # Tikriname, ar groja
 		audio_playerW.stop()
+		print("Garsas sustabdytas.")
+	else:
+		print("Nėra grojančio garso.")
+		
+func play_mainmenu():
+	if not audio_playerM:  # Sukuriame tik jei dar nėra
+		audio_playerM = AudioStreamPlayer.new()
+		audio_playerM.stream = preload("res://Audio/Music/MainMenuwav.wav")
+		audio_playerM.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada		
+		add_child(audio_playerM)
+		if not audio_playerM.playing:  # Patikriname, ar garsas jau negroja
+			audio_playerM.play()
+			print("Garsas paleistas.")
+		else:
+			print("Garsas jau groja.")
+func stop_mainmenu():
+	if audio_playerM and audio_playerM.playing:  # Tikriname, ar groja
+		audio_playerM.stop()
 		print("Garsas sustabdytas.")
 	else:
 		print("Nėra grojančio garso.")
