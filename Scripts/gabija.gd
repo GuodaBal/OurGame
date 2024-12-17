@@ -166,6 +166,7 @@ func take_damage(damage, knockback_strength, player_position):
 	var direction = position - player_position
 	if hp <= 0:
 		GlobalVariables.GabijaDone = true
+		set_physics_process(false)
 		for child in get_tree().current_scene.get_children():
 			if "Level" in child.name:
 				child.switch_scene()
@@ -288,11 +289,10 @@ func _on_exhaustion_timer_timeout() -> void:
 
 func _on_spike_end_timer_timeout() -> void:
 	spawning_spikes = false
-	attacking = false
 	animation.play("spike_attack_end")
+	await animation.animation_finished
+	attacking = false
 	if will_be_exhausted:
-		await animation.animation_finished
-		#await get_tree().get_parent().end_level()
 		will_be_exhausted = false
 		switch_to_down()
 		isExhaustedTimer.start()

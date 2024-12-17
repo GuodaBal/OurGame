@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://c441kcf2pl3jx"]
+
+[ext_resource type="Texture2D" uid="uid://bx4g1dv22a5c0" path="res://Game_Sprites/Tilemaps/Assets/Background_Assets.png" id="1_7b1o1"]
+[ext_resource type="Script" path="res://Scripts/church.gd" id="1_vt4co"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uch8j"]
+atlas = ExtResource("1_7b1o1")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dl2e"]
+atlas = ExtResource("1_7b1o1")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mlrq"]
+size = Vector2(1120, 856)
+
+[node name="Church" type="Area2D"]
+z_index = 1
+script = ExtResource("1_vt4co")
+
+[node name="Start" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_uch8j")
+
+[node name="AfterGabija" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_3dl2e")
+
+[node name="AfterMedeina" type="Sprite2D" parent="."]
+visible = false
+
+[node name="AfterPerkunas" type="Sprite2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, -340)
+shape = SubResource("RectangleShape2D_3mlrq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

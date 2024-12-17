@@ -33,10 +33,10 @@ position = Vector2(986, 1048)
 correctLevel = "starting_level"
 
 [node name="EnemySpawn1" type="Node2D" parent="."]
-position = Vector2(138, 1057)
+position = Vector2(138, 1040)
 
 [node name="EnemySpawn2" type="Node2D" parent="."]
-position = Vector2(1784, 1060)
+position = Vector2(1784, 1040)
 
 [node name="EnemySpawn3" type="Node2D" parent="."]
 position = Vector2(545, 821)

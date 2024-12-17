@@ -1,4 +1,6 @@
-[gd_scene load_steps=17 format=4 uid="uid://fvcxk3ymmrkr"]
+
+[gd_scene load_steps=15 format=4 uid="uid://fvcxk3ymmrkr"]
+
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_0wqlk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_nlglg"]
@@ -10,7 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="7_71gbe"]
 [ext_resource type="Texture2D" uid="uid://m1fisabmsa0t" path="res://Game_Sprites/Tilemaps/Assets/Details.png" id="8_anb5i"]
 [ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="8_sscdr"]
+
 [ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/Enemies/wasp.tscn" id="10_dn0d2"]
+
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="11_34q67"]
 [ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="13_mnq0x"]
 
@@ -118,9 +122,6 @@ tile_set = ExtResource("5_vvby8")
 scale = Vector2(0.5, 0.5)
 tile_map_data = PackedByteArray("AAA/AA8AAgAAAAMAAgBAAA8AAgAGAAEAAABBAA8AAgAJAAIAAQBBAA4AAgALAAIAAgBAAA4AAgALAAAAAQA1ABcAAgACAAMAAQA2ABgAAgALAAIAAQA3ABgAAgAKAAAACwA2ABcAAgAGAAEAAgA3ABcAAgAKAAAACAA4ABcAAgAFAAAAAAA5ABcAAgABAAMAAQA6ABcAAgACAAMAAAA4ABgAAgAJAAAAAwAVAPr/AgAJAAIAAgAWAPr/AgAJAAIAAwAVAPv/AgAFAAAAAwAWAPv/AgAFAAEAAADz/xAAAgAAAAMAAgD0/xAAAgAFAAAAAQD4/xAAAgAKAAMAAAD4/xEAAgAJAAAAAwD3/xEAAgAKAAAACgD0/xEAAgALAAIAAQD1/xAAAgAKAAMAAwD1/xEAAgAKAAAACwD2/xEAAgAKAAAACgAbAPP/AgAJAAEAAwAbAPT/AgALAAEACAAbAPX/AgAJAAEAAwAbAPb/AgAJAAEAAAAcAPX/AgAKAAEAAwD3/xAAAgAKAAEAAgD2/xAAAgAKAAEAAAD5/xAAAgALAAAAAgD5/w8AAgAJAAAAAQD4/w8AAgAKAAIAAwD3/w8AAgAKAAIABAD2/w8AAgAKAAAAAAD1/w8AAgAJAAIAAgAcAPP/AgAJAAEABAAcAPT/AgAIAAMAAAAcAPb/AgAKAAEAAwAbAPL/AgALAAAAAQAcAPL/AgALAAIAAgAdAPT/AgAJAAAAAQAdAPX/AgALAAEAAAAdAPb/AgAJAAEABAAUAPv/AgABAAMAAwATAPv/AgAAAAMAAAAbAPf/AgALAAIAAQAcAPf/AgAKAAMAAQAdAPf/AgALAAEABwAdAPj/AgAJAAEAAgAdAPn/AgAJAAEABAAdAPr/AgAJAAEABAAcAPr/AgAKAAMAAwAcAPv/AgAKAAEAAgAbAPv/AgAKAAEAAgAbAPz/AgAKAAIAAgAaAPz/AgAKAAAACgAZAPz/AgAKAAIAAgAYAPz/AgAKAAAACgAXAPz/AgAJAAIAAAAXAPv/AgAGAAEAAgAYAPv/AgAKAAIABAAZAPv/AgAJAAMAAAAZAPr/AgAJAAAAAAAaAPr/AgAKAAIAAwAbAPr/AgAKAAIAAwAcAPn/AgAJAAEAAAAcAPj/AgAJAAEAAwAaAPv/AgAKAAEAAwAdAPv/AgAJAAEABAAdAPz/AgALAAIAAAAcAPz/AgAKAAAACgDn//X/AgAJAAAAAgDo//X/AgAKAAAACgDp//X/AgAKAAIAAgDp//T/AgAKAAEAAgDq//T/AgAKAAEAAADr//T/AgAKAAEAAADr//P/AgAKAAIAAwDs//P/AgAKAAIABADn//T/AgALAAIAAwDo//T/AgAKAAMAAwDo//P/AgAJAAAAAADp//P/AgAKAAIAAwDq//P/AgAKAAAAAADn//n/AgAHAAMAAgDq//X/AgAKAAIAAgDr//X/AgAKAAAACwDs//X/AgALAAIAAADs//T/AgAIAAMAAgDt//P/AgAKAAIABADu//P/AgAKAAAAAADv//P/AgAKAAAACADw//P/AgAJAAAAAQDw//T/AgAJAAIAAQDv//T/AgAKAAAACwDu//T/AgAKAAIAAADt//T/AgAKAAAACwA=")
 tile_set = ExtResource("6_8jae4")
-
-[node name="Wasp" parent="." instance=ExtResource("10_dn0d2")]
-position = Vector2(484, 532)
 
 [node name="Fog" parent="." instance=ExtResource("11_34q67")]
 offset_left = -3383.0
