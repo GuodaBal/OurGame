@@ -101,12 +101,13 @@ func _on_rabbit_interval_timer_timeout() -> void:
 	
 #When stage changes
 func change_environment(stage):
-	print_debug("should change")
 	await animation.animation_finished
 	get_node("Stage"+str(stage)+"BG").visible = true
 	
 func end_level():
-	$Before.visible = false
-	$After.visible = true
+	before.visible = false
+	before.collision_enabled = false
+	after.visible = true
+	after.collision_enabled = true
 	for i in range(1,4):
 		get_node("Stage"+str(i)+"BG").visible = false

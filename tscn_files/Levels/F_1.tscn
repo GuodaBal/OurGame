@@ -1,6 +1,4 @@
-
-[gd_scene load_steps=15 format=4 uid="uid://fvcxk3ymmrkr"]
-
+[gd_scene load_steps=16 format=4 uid="uid://fvcxk3ymmrkr"]
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_0wqlk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_nlglg"]
@@ -12,9 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://bcpi4fns2cnla" path="res://Audio/Music/forest.wav" id="7_71gbe"]
 [ext_resource type="Texture2D" uid="uid://m1fisabmsa0t" path="res://Game_Sprites/Tilemaps/Assets/Details.png" id="8_anb5i"]
 [ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="8_sscdr"]
-
-[ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/Enemies/wasp.tscn" id="10_dn0d2"]
-
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="11_34q67"]
 [ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="13_mnq0x"]
 

@@ -1,10 +1,8 @@
-[gd_scene load_steps=23 format=4 uid="uid://cv71vm2eqy6um"]
+[gd_scene load_steps=6 format=4 uid="uid://cv71vm2eqy6um"]
 
 [ext_resource type="Texture2D" uid="uid://kmanoughgb5k" path="res://Sprites/UI Sprite/Game_Name.png" id="1_odsw1"]
+[ext_resource type="Texture2D" uid="uid://dkux17n0usjhl" path="res://Game_Sprites/Tilemaps/Backgrounds/MainMeniu_Background.png" id="1_tmw38"]
 [ext_resource type="Theme" uid="uid://bjbttb5s3tf0h" path="res://Sprites/UI Sprite/UI2.tres" id="2_ylukf"]
-[ext_resource type="Texture2D" uid="uid://7nuogvgi6uwo" path="res://Game_Sprites/Animation/UI/Campfire.png" id="3_mpb4y"]
-[ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="4_n5twp"]
-[ext_resource type="AudioStream" uid="uid://ch7ybn76fic0p" path="res://Audio/Music/MainMenuwav.wav" id="5_m54xm"]
 
 [sub_resource type="GDScript" id="GDScript_nvuo8"]
 script/source = "extends Control
@@ -12,7 +10,6 @@ script/source = "extends Control
 @onready var click = $AudioStreamPlayer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimatedSprite2D.play(\"default\")
 	if !FileAccess.file_exists(\"user://savegame.save\"):
 		$VBoxContainer3/ContinueButton.disabled = true
 	if FileAccess.file_exists(\"user://settings.save\"):
@@ -25,9 +22,9 @@ func _process(delta: float) -> void:
 
 
 func _on_start_button_pressed() -> void:
-	#get_tree().change_scene_to_file(\"res://tscn_files/ui_end_credits.tscn\")
+	get_tree().change_scene_to_file(\"res://tscn_files/ui_starting_animation.tscn\")
 	GlobalVariables.reset()
-	get_tree().change_scene_to_file(\"res://tscn_files/main.tscn\")
+	#get_tree().change_scene_to_file(\"res://tscn_files/main.tscn\")
 
 
 func _on_options_button_pressed() -> void:
@@ -71,112 +68,6 @@ data = PackedByteArray("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 format = 1
 stereo = true
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8x2rn"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(0, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xaw1o"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(512, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8iibd"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(1024, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_27gil"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(1536, 0, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_76sug"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(0, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1458l"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(512, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xfcw"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(1024, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tco0w"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(1536, 512, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lv8dx"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(0, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6xcl5"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(512, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qmr7b"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(1024, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7v26k"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(1536, 1024, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_noq2s"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(0, 1536, 512, 512)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7igcs"]
-atlas = ExtResource("3_mpb4y")
-region = Rect2(512, 1536, 512, 512)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uewtt"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8x2rn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xaw1o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8iibd")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_27gil")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_76sug")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1458l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6xfcw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tco0w")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lv8dx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6xcl5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qmr7b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7v26k")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_noq2s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7igcs")
-}],
-"loop": true,
-"name": &"default",
-"speed": 24.0
-}]
-
 [node name="Menu" type="Control"]
 process_mode = 3
 layout_mode = 3
@@ -187,11 +78,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_nvuo8")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.1, 0.1, 0.1, 1)
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tmw38")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="GameName" type="Sprite2D" parent="."]
 position = Vector2(457, 240)
@@ -237,22 +133,8 @@ text = "Quit"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamWAV_hhkaw")
 volume_db = -10.0
-bus = &"SFX"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1320, 624)
-scale = Vector2(1.6, 1.6)
-sprite_frames = SubResource("SpriteFrames_uewtt")
-
-[node name="PointLight2D" type="PointLight2D" parent="AnimatedSprite2D"]
-position = Vector2(-25, -70.0002)
-scale = Vector2(1.41512, 1.45106)
-texture = ExtResource("4_n5twp")
-
-[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("5_m54xm")
 autoplay = true
+bus = &"SFX"
 
 [connection signal="mouse_entered" from="VBoxContainer3/StartButton" to="." method="_on_start_button_mouse_entered"]
 [connection signal="pressed" from="VBoxContainer3/StartButton" to="." method="_on_start_button_pressed"]

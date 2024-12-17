@@ -174,15 +174,6 @@ func take_damage(damage, knockback_strength, player_position):
 		DialogueManager.show_dialogue_balloon(load("res://Dialogue/gabija.dialogue"), "death")
 		animation.play("death")
 		await animation.animation_finished
-		#var instance = load("res://tscn_files/health_drop.tscn").instantiate()
-		#add_sibling(instance)
-		#instance.position = position
-		#instance = load("res://tscn_files/health_drop.tscn").instantiate()
-		#add_sibling(instance)
-		#instance.position = position
-		#instance = load("res://tscn_files/health_drop.tscn").instantiate()
-		#add_sibling(instance)
-		#instance.position = position
 		DialogueManager.show_dialogue_balloon(load("res://Dialogue/ability.dialogue"), "fire_ability")
 		queue_free()
 

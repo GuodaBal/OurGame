@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dek3hypbets8v"]
+[gd_scene load_steps=10 format=4 uid="uid://dek3hypbets8v"]
 
 [ext_resource type="Script" path="res://Scripts/boss_level_angel.gd" id="1_uwy1p"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_6de1d"]
@@ -6,24 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_gqt1s"]
 [ext_resource type="TileSet" uid="uid://c8q5d3oyujb2m" path="res://Game_Sprites/Tilemaps/New/Angel_boss.tres" id="4_v3i2m"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_8brmy"]
-[ext_resource type="Texture2D" uid="uid://b3duwd2fopvue" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Angel_Boss_NEW.png" id="7_cbc4v"]
 [ext_resource type="AudioStream" uid="uid://cgqelm0icu4yl" path="res://Audio/Music/final_mixdown.wav" id="8_h6pym"]
+[ext_resource type="Texture2D" uid="uid://dbyuksnsgphoh" path="res://Game_Sprites/Tilemaps/Backgrounds/AngelBoss_Background.png" id="8_vvtp8"]
+[ext_resource type="Texture2D" uid="uid://c6188qbaaprns" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Angel_Boss.png" id="9_dan3c"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_uwy1p")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_6de1d")]
 position = Vector2(773, 1016)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1673, 630)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("7_cbc4v")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-position = Vector2(386, 630)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("7_cbc4v")
 
 [node name="Angel" parent="." instance=ExtResource("3_x4sya")]
 position = Vector2(1015.23, 503)
@@ -62,5 +53,45 @@ stream = ExtResource("8_h6pym")
 volume_db = -5.0
 autoplay = true
 bus = &"Music"
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1011, 678)
+texture = ExtResource("8_vvtp8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1857, 656)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_dan3c")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(167, 656)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_dan3c")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(430, 606)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_dan3c")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1598, 606)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_dan3c")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(1420, 557)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_dan3c")
+
+[node name="Sprite2D7" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(606, 557)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("9_dan3c")
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]

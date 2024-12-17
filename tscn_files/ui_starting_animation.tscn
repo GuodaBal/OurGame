@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnkpcokxgwbcg"]
+
+[ext_resource type="Script" path="res://Scripts/ui_starting_animation.gd" id="1_l6p5b"]
+[ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_nkacp"]
+[ext_resource type="Texture2D" uid="uid://bqwepacx8cf3f" path="res://Game_Sprites/StartAnimation/StartAnimation_2_1.png" id="2_4yyub"]
+[ext_resource type="Texture2D" uid="uid://db6bpuu6ymxph" path="res://Game_Sprites/StartAnimation/StartAnimation_1_2.png" id="3_3q0sq"]
+[ext_resource type="Texture2D" uid="uid://b5m46jdda5gx" path="res://Game_Sprites/StartAnimation/StartAnimation_1_3.png" id="4_ayhry"]
+[ext_resource type="Texture2D" uid="uid://cr8b8x7xd7c8y" path="res://Game_Sprites/StartAnimation/StartAnimation_1_4.png" id="5_js64r"]
+
+[node name="ui_starting_animation" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l6p5b")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nkacp")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Frame1" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4yyub")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Frame2" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3q0sq")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Frame3" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_ayhry")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Frame4" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_js64r")
+expand_mode = 1
+stretch_mode = 4

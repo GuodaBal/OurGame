@@ -2117,7 +2117,7 @@ position = Vector2(1870, 1057)
 correctLevel = "N_10"
 
 [node name="TreeSunBlocker" parent="." instance=ExtResource("7_7kh2i")]
-position = Vector2(1534.33, 489)
+position = Vector2(1538.13, 528.525)
 scale = Vector2(1.5, 1.5)
 collision_layer = 0
 
@@ -2135,7 +2135,7 @@ one_shot = true
 position = Vector2(1040, 450)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AACBACQAAQAHAAIAAACBABQAAQAHAAEAAACBAAQAAQAHAAEAAAA=")
+tile_map_data = PackedByteArray("AACBACQAAQAHAAIAAACBABQAAQAHAAEAAACBAAQAAQAHAAEAAAD4/3oAAAACAAAAAGD4/4YAAAAAAAAAAGD4/4AAAAABAAAAAGAJAXkAAAAAAAAAAFAJAYYAAAACAAAAAFAJAYAAAAABAAAAAFA=")
 tile_set = ExtResource("10_p5x57")
 
 [node name="Before" type="TileMapLayer" parent="."]
