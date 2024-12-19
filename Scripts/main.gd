@@ -13,6 +13,7 @@ func _ready() -> void:
 		GlobalVariables.load_data()
 	previousLevel = str(GlobalVariables.starting_level)
 	#add level
+	#var instance = load("res://tscn_files/Levels/starting_level_for_showing.tscn").instantiate()
 	var instance = load("res://tscn_files/Levels/" + str(GlobalVariables.starting_level) + ".tscn").instantiate()
 	add_child(instance)
 	if GlobalVariables.load:
@@ -29,6 +30,7 @@ func _ready() -> void:
 					if child.is_in_group("Enemy") and !GlobalVariables.AliveEnemies[str(instance.scene_file_path)].has(child.name):
 						child.queue_free()
 	AudioPlayer.stop()
+	transition.play("Fade_in")
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("menu") and !is_popup_on:
@@ -49,7 +51,7 @@ func done():
 	for node in get_tree().current_scene.get_children():
 		if "Level" in node.name:
 			for child in node.get_children():
-				if child is CanvasModulate:
+				if child is CanvasModulate and child.visible == true:
 					can_play = false
 	if can_play:
 		transition.play("Fade_in")
@@ -98,7 +100,7 @@ func switchLevelDeferred(nextLevel):
 				#If enemy not in save file, it is dead and will be erased, same for others
 				if child.is_in_group("Enemy") and !GlobalVariables.AliveEnemies[str(newLevel.scene_file_path)].has(child.name):
 					child.queue_free()
-				if child.is_in_group("Burnable") and !GlobalVariables.NotBurnedObjects[str(newLevel.scene_file_path)].has(child.name):
-					child.queue_free()
-				if child.is_in_group("Boost") and !GlobalVariables.NotObtainedBoosts[str(newLevel.scene_file_path)].has(child.name):
-					child.queue_free()
+			if child.is_in_group("Burnable") and !GlobalVariables.NotBurnedObjects[str(newLevel.scene_file_path)].has(child.name):
+				child.queue_free()
+			if child.is_in_group("Boost") and !GlobalVariables.NotObtainedBoosts[str(newLevel.scene_file_path)].has(child.name):
+				child.queue_free()

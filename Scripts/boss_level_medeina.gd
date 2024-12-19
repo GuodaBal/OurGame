@@ -112,3 +112,5 @@ func end_level():
 	after.collision_enabled = true
 	for i in range(1,4):
 		get_node("Stage"+str(i)+"BG").visible = false
+	await get_tree().process_frame
+	

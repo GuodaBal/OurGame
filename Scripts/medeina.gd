@@ -62,7 +62,7 @@ func _on_attack_timer_timeout() -> void:
 		state = "wait"
 
 func changeStage():
-	if stage == 1: #Fight ends
+	if stage == 3: #Fight ends
 		attackTimer.stop()
 		GlobalVariables.MedeinaDone = true
 		get_parent().stop_attacks()
@@ -72,6 +72,7 @@ func changeStage():
 		play("death")
 		await animation_finished
 		get_parent().end_level()
+		DialogueManager.show_dialogue_balloon(load("res://Dialogue/ability.dialogue"), "nature_ability")
 		queue_free()
 	else:
 		stage+=1

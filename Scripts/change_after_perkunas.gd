@@ -1,5 +1,5 @@
 extends Node2D
-@onready var audio = $Background.stream
+#@onready var audio = $Background.stream
 @onready var levelBe := $BeforePerkunas as TileMapLayer
 @onready var levelAf := $AfterPerkunas as TileMapLayer
 

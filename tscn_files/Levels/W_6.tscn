@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_ltofw"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_gbith"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="5_kvrsl"]
-[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/wendigo.tscn" id="6_p3cc7"]
+[ext_resource type="PackedScene" uid="uid://csmu3pwabn6vc" path="res://tscn_files/Enemies/wendigo.tscn" id="6_p3cc7"]
 [ext_resource type="PackedScene" uid="uid://cenfxhlt2eegv" path="res://tscn_files/Enemies/wasp.tscn" id="7_e88ae"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_4ed6m"]
 [ext_resource type="PackedScene" uid="uid://d10hy11cpcxf7" path="res://tscn_files/Rain.tscn" id="11_wgct4"]
@@ -16,12 +16,12 @@
 script = ExtResource("1_gj47v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3926, 1323.5)
-scale = Vector2(5.08958, 3.45093)
+position = Vector2(3670, 1323.5)
+scale = Vector2(6.80833, 3.45093)
 texture = ExtResource("2_ab3te")
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_ltofw")]
-position = Vector2(7526, 544)
+position = Vector2(5596, 796)
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("4_gbith")]
 position = Vector2(7557, 503)

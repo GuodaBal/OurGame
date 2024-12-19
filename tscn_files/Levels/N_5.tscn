@@ -14,15 +14,15 @@
 [node name="Level" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1953.5, 585)
-scale = Vector2(3.88281, 2.67963)
+position = Vector2(2369.5, 585)
+scale = Vector2(4.31614, 2.67963)
 texture = ExtResource("1_kjyio")
 
 [node name="Area2D" parent="." instance=ExtResource("5_ovecv")]
 position = Vector2(3428, 839)
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_ftpkk")]
-position = Vector2(2729, 551)
+position = Vector2(1197, 188)
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("3_e0kmu")]
 position = Vector2(-470, -59)

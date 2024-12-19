@@ -31,6 +31,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(0.0383973, 0.0383971, 0.0383972, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasModulate:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kymck"]
 length = 0.001
@@ -46,6 +58,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasModulate:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_r5yo4"]
 resource_name = "Remove_dark"
@@ -60,6 +84,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.0687983, 0.0687983, 0.0687983, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasModulate:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s3q2n"]
@@ -2022,8 +2058,8 @@ sources/2 = SubResource("TileSetAtlasSource_g1edl")
 script = ExtResource("1_rpm1e")
 
 [node name="BG" type="Sprite2D" parent="."]
-position = Vector2(1021.5, 568.5)
-scale = Vector2(1.38385, 1.17315)
+position = Vector2(982, 1078)
+scale = Vector2(3.04375, 2.11667)
 texture = ExtResource("2_lqmah")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -2106,7 +2142,7 @@ nextLevel = "N_7"
 
 [node name="SpawnArea" parent="." instance=ExtResource("3_xwv45")]
 position = Vector2(229, 1059)
-correctLevel = "starting_level"
+correctLevel = "N_7"
 
 [node name="LevelSwitcher2" parent="." instance=ExtResource("2_2jj0m")]
 position = Vector2(2094, 947)

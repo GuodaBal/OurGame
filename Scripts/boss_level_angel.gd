@@ -27,7 +27,7 @@ func spawn_random_enemy():
 			1:
 				enemy =  load("res://tscn_files/Enemies/enemy.tscn").instantiate()
 			2:
-				enemy =  load("res://tscn_files/wendigo.tscn").instantiate()
+				enemy =  load("res://tscn_files/Enemies/wendigo.tscn").instantiate()
 			3:
 				enemy =  load("res://tscn_files/Enemies/spider.tscn").instantiate()
 			4:
@@ -43,6 +43,7 @@ func spawn_random_enemy():
 	add_child(enemy)
 	enemy.position = spawnLocations[spawnPoint-1]
 	enemy.range = 40000
+	enemy.hp_chance = 4
 	move_child(enemy, 3)
 
 

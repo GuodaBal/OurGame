@@ -15,8 +15,8 @@
 [node name="Level6" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1678, 781.5)
-scale = Vector2(3.22083, 3.24907)
+position = Vector2(2199.5, 781.5)
+scale = Vector2(3.76406, 3.24907)
 texture = ExtResource("1_ooy1x")
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_1mcs3")]

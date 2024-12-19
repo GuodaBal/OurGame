@@ -38,8 +38,8 @@ sources/0 = SubResource("TileSetAtlasSource_uk3oe")
 [node name="Level" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1022.5, 705)
-scale = Vector2(3.29531, 2.23519)
+position = Vector2(1167, 747.5)
+scale = Vector2(3.87812, 2.8787)
 texture = ExtResource("1_akjpt")
 
 [node name="MainCharacter" parent="." instance=ExtResource("3_fxxjw")]

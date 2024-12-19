@@ -1282,6 +1282,7 @@ one_shot = true
 
 [node name="ArrowProgressBar" type="ProgressBar" parent="."]
 visible = false
+z_index = 5
 offset_left = 40.0
 offset_top = -24.0
 offset_right = 53.0

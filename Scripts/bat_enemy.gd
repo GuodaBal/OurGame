@@ -19,6 +19,7 @@ var damage = 1
 var knockback = Vector2.ZERO
 var sprite_scale
 
+var hp_chance = 3 #One in ___ chance to drop hp when dead
 var attackRange = 200
 var range = 600
 var attacking = false
@@ -86,7 +87,9 @@ func _on_update_target_timeout() -> void:
 		navigation.target_position = playerPosition
 	
 func die():
-	if(randi_range(0,3) == 3):
+	set_physics_process(false)
+	set_process(false)
+	if(randi_range(1,hp_chance) == hp_chance):
 		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 		add_sibling(instance)
 		instance.position = position

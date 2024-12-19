@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/health_drop.gd" id="1_b5fcq"]
 [ext_resource type="Texture2D" uid="uid://dfmtq612ixohd" path="res://Sprites/UI Sprite/Hearts.png" id="2_l116d"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vfhel"]
-radius = 17.0
-height = 50.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_pjen0"]
+radius = 27.6586
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_msl6o"]
 atlas = ExtResource("2_l116d")
@@ -24,7 +23,7 @@ contact_monitor = true
 max_contacts_reported = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource("CapsuleShape2D_vfhel")
+shape = SubResource("CircleShape2D_pjen0")
 
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
 scale = Vector2(0.2, 0.2)

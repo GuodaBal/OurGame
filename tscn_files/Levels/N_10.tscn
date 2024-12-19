@@ -14,8 +14,8 @@
 [node name="Level" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2364, 1108.5)
-scale = Vector2(3.4625, 3.05278)
+position = Vector2(1961.5, 1108.5)
+scale = Vector2(3.88177, 3.05278)
 texture = ExtResource("1_etb0u")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_adil1")]

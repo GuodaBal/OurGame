@@ -21,6 +21,7 @@ var margin = 100 #How far away the player has to be to follow
 var range = 500 #Range to start following player
 var last_direction = 0
 var shoot_force = 1000
+var hp_chance = 3 #One in ___ chance to drop hp when dead
 
 func _physics_process(delta: float) -> void:
 	playerPosition = get_parent().get_node("MainCharacter").position
@@ -78,7 +79,7 @@ func die():
 	set_physics_process(false)
 	set_process(false)
 	attackTimer.stop()
-	if(randi_range(0,3) == 3):
+	if(randi_range(1,hp_chance) == hp_chance):
 		var instance = load("res://tscn_files/health_drop.tscn").instantiate()
 		add_sibling(instance)
 		instance.position = position

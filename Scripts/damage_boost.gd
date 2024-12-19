@@ -9,5 +9,5 @@ func _on_body_entered(body: Node2D) -> void:
 		body.attack_boost()
 		DialogueManager.show_dialogue_balloon(load("res://Dialogue/ability.dialogue"), "damage_boost")
 		AudioManager.play_with_random_pitch(audio)
-		await audio.finished
+		#await audio.finished
 		queue_free()

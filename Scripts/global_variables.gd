@@ -11,11 +11,11 @@ var AliveEnemies = {}
 var NotBurnedObjects = {}
 var NotObtainedBoosts = {}
 #neccessary to keep player consistant between screens
-var attack_damage = 10.125
-var arrow_damage = 3.375
-var thunder_damage = 6.75
-var currentHP = 24
-var maxHP = 24
+var attack_damage = 3
+var arrow_damage = 1
+var thunder_damage = 2
+var currentHP = 12
+var maxHP = 12
 
 func reset():
 	load = false
@@ -26,11 +26,11 @@ func reset():
 	PerkunasDone = false
 	AliveEnemies = {}
 	NotBurnedObjects = {}
-	attack_damage = 10.125
-	arrow_damage = 3.375
-	thunder_damage = 6.75
-	currentHP = 24
-	maxHP = 24
+	attack_damage = 3
+	arrow_damage = 1
+	thunder_damage = 2
+	currentHP = 12
+	maxHP = 12
 func save_data():
 	var save_dict = {
 		"starting_level" : starting_level,
