@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://r4ohillk204q"]
+[gd_scene load_steps=12 format=4 uid="uid://r4ohillk204q"]
 
 [ext_resource type="TileSet" uid="uid://dmel105g6rnl8" path="res://Game_Sprites/Tilemaps/New/Fire_area.tres" id="1_kmvom"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_m67bj"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="7_nngp1"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_l2fd5"]
 [ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="10_x6fsd"]
+[ext_resource type="PackedScene" uid="uid://12o0346rpmc3" path="res://tscn_files/PlayFire.tscn" id="11_gowlo"]
 
 [node name="Level" type="Node2D"]
 
@@ -68,3 +69,5 @@ offset_top = -910.0
 offset_right = -125.0
 offset_bottom = -398.0
 scale = Vector2(10.9947, 6.81984)
+
+[node name="PlayFire" parent="." instance=ExtResource("11_gowlo")]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://12o0346rpmc3"]
+
+[ext_resource type="Script" path="res://Scripts/PlayFire.gd" id="1_52spe"]
+
+[node name="PlayFire" type="Node2D"]
+script = ExtResource("1_52spe")

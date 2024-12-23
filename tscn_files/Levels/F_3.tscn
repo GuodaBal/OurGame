@@ -1,7 +1,6 @@
-[gd_scene load_steps=14 format=4 uid="uid://biofrt6isi87b"]
+[gd_scene load_steps=13 format=4 uid="uid://biofrt6isi87b"]
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_8vcrr"]
-[ext_resource type="Script" path="res://Scripts/SWater_PFire.gd" id="1_a5riy"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_dplmf"]
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="1_wijav"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_pkpfv"]
@@ -9,13 +8,21 @@
 [ext_resource type="TileSet" uid="uid://cdk1i5ejbua4j" path="res://Game_Sprites/Tilemaps/New/In_between.tres" id="4_grc2a"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/Enemies/enemy.tscn" id="5_i2exb"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_gwd18"]
-[ext_resource type="AudioStream" uid="uid://b57s85ummld2h" path="res://Audio/Music/ForestFire_mixdown.wav" id="7_cn058"]
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="7_fa3lj"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_66jag"]
 [ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="12_8ukk4"]
 
+[sub_resource type="GDScript" id="GDScript_fc5cf"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	AudioManager.play_forest_sound()
+"
+
 [node name="Level4" type="Node2D"]
-script = ExtResource("1_a5riy")
+script = SubResource("GDScript_fc5cf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4281, 606)
@@ -74,11 +81,6 @@ position = Vector2(2138, -103)
 
 [node name="Enemy3" parent="." instance=ExtResource("5_i2exb")]
 position = Vector2(4643, 1413)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_cn058")
-autoplay = true
-bus = &"Music"
 
 [node name="Spider" parent="." instance=ExtResource("7_fa3lj")]
 position = Vector2(5308, 197)

@@ -2,7 +2,6 @@
 
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="1_1cgh3"]
 [ext_resource type="Texture2D" uid="uid://cu31rpyasst87" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_1.png" id="1_10x34"]
-[ext_resource type="Script" path="res://Scripts/SFire_PForest.gd" id="1_h80pu"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_evb2k"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_dtbl4"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_l268s"]
@@ -11,8 +10,19 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_scpt0"]
 [ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="9_rg75g"]
 
+[sub_resource type="GDScript" id="GDScript_j417a"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	AudioManager.stop_forestfire_sound()
+	AudioManager.stop_water_sound()
+	AudioManager.play_forest_sound()
+"
+
 [node name="Level" type="Node2D"]
-script = ExtResource("1_h80pu")
+script = SubResource("GDScript_j417a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(598, 881)

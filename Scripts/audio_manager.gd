@@ -47,6 +47,12 @@ func get_SFX_volume() -> float:
 	
 
 func play_forest_sound():
+	if audio_playerM and audio_playerM.playing:
+		audio_playerM.stop()
+	if audio_playerW and audio_playerW.playing:
+		audio_playerW.stop()
+	if audio_playerF and audio_playerF.playing:
+		audio_playerF.stop()	
 	if not audio_player:  # Sukuriame tik jei dar nėra
 		audio_player = AudioStreamPlayer.new()
 		audio_player.stream = preload("res://Audio/Music/forest.wav")
@@ -66,17 +72,24 @@ func stop_forest_sound():
 		print("Nėra grojančio garso.")
 		
 func play_forestfire_sound():
+	if audio_playerM and audio_playerM.playing:
+		audio_playerM.stop()
+	if audio_playerW and audio_playerW.playing:
+		audio_playerW.stop()
+	if audio_player and audio_player.playing:
+		audio_player.stop()
 	if not audio_playerF:  # Sukuriame tik jei dar nėra
 		audio_playerF = AudioStreamPlayer.new()
 		audio_playerF.stream = preload("res://Audio/Music/ForestFire_mixdown.wav")
 		audio_playerF.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada	
 		audio_playerF.bus = "Music"	
 		add_child(audio_playerF)
-		if not audio_playerF.playing:  # Patikriname, ar garsas jau negroja
-			audio_playerF.play()
-			print("Garsas paleistas.")
-		else:
-			print("Garsas jau groja.")
+	if not audio_playerF.playing:  # Patikriname, ar garsas jau negroja
+		audio_playerF.play()
+		print("Garsas paleistas.")
+	else:
+		print("Garsas jau groja.")
+
 func stop_forestfire_sound():
 	if audio_playerF and audio_playerF.playing:  # Tikriname, ar groja
 		audio_playerF.stop()
@@ -86,6 +99,12 @@ func stop_forestfire_sound():
 		
 
 func play_water_sound():
+	if audio_playerM and audio_playerM.playing:
+		audio_playerM.stop()
+	if audio_player and audio_player.playing:
+		audio_player.stop()
+	if audio_playerF and audio_playerF.playing:
+		audio_playerF.stop()
 	if not audio_playerW:  # Sukuriame tik jei dar nėra
 		audio_playerW = AudioStreamPlayer.new()
 		audio_playerW.stream = preload("res://Audio/Music/WaterArea.wav")
@@ -105,6 +124,12 @@ func stop_water_sound():
 		print("Nėra grojančio garso.")
 		
 func play_mainmenu():
+	if audio_player and audio_player.playing:
+		audio_player.stop()
+	if audio_playerW and audio_playerW.playing:
+		audio_playerW.stop()
+	if audio_playerF and audio_playerF.playing:
+		audio_playerF.stop()	
 	if not audio_playerM:  # Sukuriame tik jei dar nėra
 		audio_playerM = AudioStreamPlayer.new()
 		audio_playerM.stream = preload("res://Audio/Music/MainMenuwav.wav")

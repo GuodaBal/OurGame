@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://m4d50vkgpv4x"]
+[gd_scene load_steps=16 format=4 uid="uid://bfymleuqf5q7k"]
 
 [ext_resource type="Script" path="res://Scripts/starting_level.gd" id="1_vvnoh"]
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="2_vpc82"]

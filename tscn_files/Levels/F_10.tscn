@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bm0ie684qvpbv"]
+[gd_scene load_steps=13 format=4 uid="uid://bm0ie684qvpbv"]
 
 [ext_resource type="Texture2D" uid="uid://c8aq7tnw2tbk3" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_2.png" id="1_6n686"]
 [ext_resource type="TileSet" uid="uid://cdk1i5ejbua4j" path="res://Game_Sprites/Tilemaps/New/In_between.tres" id="1_l46q5"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ncwroj8cc52h" path="res://tscn_files/damage_boost.tscn" id="8_b788e"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="9_me7us"]
 [ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="11_6oqdr"]
+[ext_resource type="PackedScene" uid="uid://eifwyhksbild" path="res://tscn_files/PlayForest.tscn" id="12_omp5f"]
 
 [node name="Level" type="Node2D"]
 
@@ -74,3 +75,5 @@ offset_top = -1927.0
 offset_right = -3282.0
 offset_bottom = -1415.0
 scale = Vector2(13.1798, 6.51223)
+
+[node name="PlayForest" parent="." instance=ExtResource("12_omp5f")]

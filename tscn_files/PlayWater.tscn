@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhawpsbb72x51"]
+
+[ext_resource type="Script" path="res://Scripts/PlayWater.gd" id="1_e6wve"]
+
+[node name="PlayWater" type="Node2D"]
+script = ExtResource("1_e6wve")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bark8g8v6u1hr"]
+[gd_scene load_steps=11 format=4 uid="uid://bark8g8v6u1hr"]
 
 [ext_resource type="TileSet" uid="uid://dmel105g6rnl8" path="res://Game_Sprites/Tilemaps/New/Fire_area.tres" id="1_i6xmw"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_sbj08"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/Enemies/enemy.tscn" id="5_4frr8"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_ctok6"]
 [ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="9_n6gq5"]
+[ext_resource type="PackedScene" uid="uid://12o0346rpmc3" path="res://tscn_files/PlayFire.tscn" id="10_512x4"]
 
 [node name="Level" type="Node2D"]
 
@@ -83,3 +84,5 @@ offset_top = -1134.0
 offset_right = -1083.0
 offset_bottom = -622.0
 scale = Vector2(9.03147, 4.99313)
+
+[node name="PlayFire" parent="." instance=ExtResource("10_512x4")]

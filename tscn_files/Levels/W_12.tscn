@@ -10,7 +10,18 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_l8obu"]
 [ext_resource type="Texture2D" uid="uid://dxst1n24nwlq" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_2.png" id="9_l08xw"]
 [ext_resource type="PackedScene" uid="uid://d10hy11cpcxf7" path="res://tscn_files/Rain.tscn" id="10_6xry1"]
-[ext_resource type="Script" path="res://Scripts/SFire_PWater.gd" id="11_7dy2o"]
+
+[sub_resource type="GDScript" id="GDScript_q7c55"]
+script/source = "extends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	AudioManager.stop_forestfire_sound()
+	AudioManager.stop_forest_sound()
+	AudioManager.play_water_sound()
+	
+"
 
 [node name="Level" type="Node2D"]
 
@@ -73,4 +84,4 @@ offset_bottom = -1284.0
 scale = Vector2(13.7222, 8.02218)
 
 [node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("11_7dy2o")
+script = SubResource("GDScript_q7c55")
