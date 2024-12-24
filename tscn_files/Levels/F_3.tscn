@@ -10,7 +10,7 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="6_gwd18"]
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="7_fa3lj"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_66jag"]
-[ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="12_8ukk4"]
+[ext_resource type="PackedScene" uid="uid://djpry4u1yloak" path="res://tscn_files/Sparks.tscn" id="11_xhb4a"]
 
 [sub_resource type="GDScript" id="GDScript_fc5cf"]
 script/source = "extends Node
@@ -101,9 +101,6 @@ offset_right = -772.0
 offset_bottom = -915.0
 scale = Vector2(16.36, 8.12)
 
-[node name="Spark" parent="." instance=ExtResource("12_8ukk4")]
-offset_left = -417.0
-offset_top = -569.0
-offset_right = 95.0
-offset_bottom = -57.0
-scale = Vector2(12.3839, 4.71376)
+[node name="Sparks" parent="." instance=ExtResource("11_xhb4a")]
+scale = Vector2(2.16806, 1.33448)
+amount = 1000

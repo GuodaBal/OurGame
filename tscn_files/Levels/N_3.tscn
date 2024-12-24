@@ -49,6 +49,7 @@ position = Vector2(1440, 1196)
 position = Vector2(441, 656)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0.051971, 0.051971, 0.051971, 1)
 
 [node name="SpawnArea" parent="." instance=ExtResource("5_yb07h")]

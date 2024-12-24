@@ -111,11 +111,11 @@ func play_water_sound():
 		audio_playerW.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada		
 		audio_playerW.bus = "Music"
 		add_child(audio_playerW)
-		if not audio_playerW.playing:  # Patikriname, ar garsas jau negroja
-			audio_playerW.play()
-			print("Garsas paleistas.")
-		else:
-			print("Garsas jau groja.")
+	if not audio_playerW.playing:  # Patikriname, ar garsas jau negroja
+		audio_playerW.play()
+		print("Garsas paleistas.")
+	else:
+		print("Garsas jau groja.")
 func stop_water_sound():
 	if audio_playerW and audio_playerW.playing:  # Tikriname, ar groja
 		audio_playerW.stop()
@@ -136,11 +136,11 @@ func play_mainmenu():
 		audio_playerM.process_mode = Node.PROCESS_MODE_ALWAYS  # Nustatome, kad procesas vyktų visada	
 		audio_playerM.bus = "Music"	
 		add_child(audio_playerM)
-		if not audio_playerM.playing:  # Patikriname, ar garsas jau negroja
-			audio_playerM.play()
-			print("Garsas paleistas.")
-		else:
-			print("Garsas jau groja.")
+	if not audio_playerM.playing:  # Patikriname, ar garsas jau negroja
+		audio_playerM.play()
+		print("Garsas paleistas.")
+	else:
+		print("Garsas jau groja.")
 func stop_mainmenu():
 	if audio_playerM and audio_playerM.playing:  # Tikriname, ar groja
 		audio_playerM.stop()

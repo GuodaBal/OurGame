@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://d27rv16vlxuud"]
+[gd_scene load_steps=12 format=4 uid="uid://d27rv16vlxuud"]
 
 [ext_resource type="Texture2D" uid="uid://51mi5aacj6xm" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="1_etb0u"]
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_fsyc1"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://br6uins0i4hue" path="res://tscn_files/Enemies/bat_enemy.tscn" id="7_x36ta"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_0y87f"]
 [ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="10_vlpo0"]
+[ext_resource type="PackedScene" uid="uid://eifwyhksbild" path="res://tscn_files/PlayForest.tscn" id="11_m4hic"]
 
 [node name="Level" type="Node2D"]
 
@@ -80,3 +81,5 @@ scale = Vector2(5.36123, 6.51171)
 amount = 100
 lifetime = 5.0
 speed_scale = 0.5
+
+[node name="PlayForest" parent="." instance=ExtResource("11_m4hic")]

@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="7_0tqdx"]
 [ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="7_ws38f"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="8_64l8c"]
-[ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="10_fe0pw"]
+[ext_resource type="PackedScene" uid="uid://djpry4u1yloak" path="res://tscn_files/Sparks.tscn" id="11_8uq2l"]
 [ext_resource type="PackedScene" uid="uid://12o0346rpmc3" path="res://tscn_files/PlayFire.tscn" id="11_tvr80"]
 
 [node name="Level" type="Node2D"]
@@ -64,11 +64,9 @@ offset_right = -1719.0
 offset_bottom = -286.0
 scale = Vector2(11.425, 5.65)
 
-[node name="Spark" parent="." instance=ExtResource("10_fe0pw")]
-offset_left = -1971.0
-offset_top = -600.0
-offset_right = -1459.0
-offset_bottom = -88.0
-scale = Vector2(10.3408, 4.81215)
-
 [node name="PlayFire" parent="." instance=ExtResource("11_tvr80")]
+
+[node name="Sparks" parent="." instance=ExtResource("11_8uq2l")]
+position = Vector2(-640, 234)
+scale = Vector2(1.13233, 1.82336)
+amount = 1500

@@ -8,8 +8,8 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="4_udfbg"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/Enemies/enemy.tscn" id="5_4frr8"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_ctok6"]
-[ext_resource type="PackedScene" uid="uid://6exanioy4gvb" path="res://tscn_files/Spark.tscn" id="9_n6gq5"]
 [ext_resource type="PackedScene" uid="uid://12o0346rpmc3" path="res://tscn_files/PlayFire.tscn" id="10_512x4"]
+[ext_resource type="PackedScene" uid="uid://djpry4u1yloak" path="res://tscn_files/Sparks.tscn" id="10_cfvkc"]
 
 [node name="Level" type="Node2D"]
 
@@ -78,11 +78,9 @@ offset_right = -1560.0
 offset_bottom = -1022.0
 scale = Vector2(10.59, 6.725)
 
-[node name="Spark" parent="." instance=ExtResource("9_n6gq5")]
-offset_left = -1595.0
-offset_top = -1134.0
-offset_right = -1083.0
-offset_bottom = -622.0
-scale = Vector2(9.03147, 4.99313)
-
 [node name="PlayFire" parent="." instance=ExtResource("10_512x4")]
+
+[node name="Sparks" parent="." instance=ExtResource("10_cfvkc")]
+position = Vector2(-614, -318)
+scale = Vector2(1.18288, 1.392)
+amount = 1500

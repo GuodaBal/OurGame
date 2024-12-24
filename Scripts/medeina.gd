@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 @onready var attackTimer := $AttackTimer as Timer
 @onready var stageTimer := $StageTimer as Timer
-
+@onready var audio = $AudioStreamPlayer
 var stage = 1
 var state = "wait"
 
@@ -65,6 +65,7 @@ func changeStage():
 	if stage == 3: #Fight ends
 		attackTimer.stop()
 		GlobalVariables.MedeinaDone = true
+		audio.play()
 		get_parent().stop_attacks()
 		await get_tree().create_timer(1).timeout
 		DialogueManager.show_dialogue_balloon(load("res://Dialogue/medeina.dialogue"), "death")

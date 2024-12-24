@@ -1,9 +1,10 @@
-[gd_scene load_steps=64 format=3 uid="uid://b2a6p8rxv1igu"]
+[gd_scene load_steps=65 format=3 uid="uid://b2a6p8rxv1igu"]
 
 [ext_resource type="Texture2D" uid="uid://dvibdmr8tdfgk" path="res://Game_Sprites/Animation/Bosses/NatureBoss/CallingBunnies_NatureBoss.png" id="1_481mr"]
 [ext_resource type="Script" path="res://Scripts/medeina.gd" id="2_226k6"]
 [ext_resource type="Texture2D" uid="uid://bf8hojuep5qck" path="res://Game_Sprites/Animation/Bosses/NatureBoss/CallingSpikes_NatureBoss.png" id="2_ypptx"]
 [ext_resource type="Texture2D" uid="uid://c6mt7qejugg3y" path="res://Game_Sprites/Animation/Death/NatureBoss_Death.png" id="3_wyl0q"]
+[ext_resource type="AudioStream" uid="uid://cos85bpe60bu7" path="res://Audio/Music/MedeinaAfter.wav" id="5_8xtic"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7d67"]
 atlas = ExtResource("1_481mr")
@@ -445,5 +446,9 @@ autostart = true
 wait_time = 40.0
 one_shot = true
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_8xtic")
+bus = &"Music"
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

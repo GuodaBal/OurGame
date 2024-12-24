@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://tnu0vlfyhepe"]
+[gd_scene load_steps=12 format=4 uid="uid://tnu0vlfyhepe"]
 
 [ext_resource type="Script" path="res://Scripts/change_after_gabija.gd" id="1_1y5n0"]
 [ext_resource type="Texture2D" uid="uid://kd6fr428ur7p" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="1_74dwn"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="6_nfjky"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_sk3ur"]
 [ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="9_lwshs"]
+[ext_resource type="PackedScene" uid="uid://eifwyhksbild" path="res://tscn_files/PlayForest.tscn" id="11_mxkjp"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_1y5n0")
@@ -80,3 +81,5 @@ scale = Vector2(5.40996, 4.85658)
 amount = 150
 lifetime = 5.0
 speed_scale = 0.5
+
+[node name="PlayForest" parent="." instance=ExtResource("11_mxkjp")]

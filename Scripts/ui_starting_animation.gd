@@ -9,7 +9,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if current_frame == 4:
+	if current_frame == 4 and Input.is_action_just_pressed("ui_accept"):
 		change_to_start()
 		return
 	if Input.is_action_just_pressed("ui_accept"):
