@@ -5,7 +5,7 @@ extends AnimatedSprite2D
 var rangeStart = 3
 var rangeEnd = 6
 
-var health = 20
+var health = 30
 var spawnSpeedCoef = 1.0
 var timePassed = 0.0
 
