@@ -15,6 +15,7 @@ var bottomSpeed = 550
 @onready var GabijaBe = $GabijaBe
 @onready var GabijaAF = $GabijaAf
 
+@onready var Gabija = $Gabija
 @onready var audio = $Fire
 var fire_left = false
 var fire_right = false
@@ -28,8 +29,10 @@ var distance = 300
 
 var bottom_fire_left
 var bottom_fire_right
-
+var shader_material: ShaderMaterial
 func _ready() -> void:
+	var animated_sprite = Gabija.get_node("AnimatedSprite2D")
+	shader_material = animated_sprite.material as ShaderMaterial
 	AudioManager.stop_forestfire_sound()
 	if GlobalVariables.GabijaDone:
 		levelBe.visible = false

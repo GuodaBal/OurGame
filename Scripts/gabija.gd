@@ -46,8 +46,9 @@ func _ready() -> void:
 	sprite_scale = animation.scale.x
 	set_physics_process(false)
 	set_process(false)
-
+	
 func _physics_process(delta: float) -> void:
+
 	#If it's falling after becoming exhausted, it falls to the opposite direction of the player, so as to not land on them
 	if !isExhaustedTimer.is_stopped() and !is_on_floor():
 		animation.stop()
