@@ -22,6 +22,7 @@ var hp = 40
 @onready var jumpEndTimer := $JumpEndTimer as Timer
 @onready var audio = $TakeDamage
 @onready var audio2 = $Spike
+@onready var Gabija = $"."
 var gravityStrength = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var playerPostion = get_parent().get_node("MainCharacter").position
@@ -41,7 +42,6 @@ var attacking = false
 var spawning_spikes = false
 
 var sprite_scale
-
 func _ready() -> void:
 	sprite_scale = animation.scale.x
 	set_physics_process(false)
@@ -54,6 +54,7 @@ func _physics_process(delta: float) -> void:
 		animation.stop()
 		if player_is_to("right") and !wall_detector_left.is_colliding():
 			velocity += left * delta
+
 			animation.scale.x = -sprite_scale
 		elif player_is_to("left") and !wall_detector_right.is_colliding():
 			velocity += right  * delta
@@ -264,6 +265,7 @@ func _on_attack_timer_timeout() -> void:
 	
 func spawn_spikes():
 	animation.play("spike_attack_start")
+	$AnimatedSprite2D/spygliu.emitting = true
 	spawning_spikes = true
 	spikeEndTimer.start()
 	spikeTimer.start()
