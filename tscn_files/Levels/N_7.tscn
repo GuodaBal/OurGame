@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://tnu0vlfyhepe"]
 
-[ext_resource type="Script" path="res://Scripts/change_after_gabija.gd" id="1_1y5n0"]
+[ext_resource type="Script" uid="uid://dohdiabovgx2h" path="res://Scripts/change_after_gabija.gd" id="1_1y5n0"]
 [ext_resource type="Texture2D" uid="uid://kd6fr428ur7p" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="1_74dwn"]
 [ext_resource type="TileSet" uid="uid://cdfxr3214wjiw" path="res://Game_Sprites/Tilemaps/New/Nature_area.tres" id="1_fsw6j"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_lsnqp"]

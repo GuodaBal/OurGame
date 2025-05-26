@@ -1,8 +1,8 @@
-[gd_scene load_steps=11 format=4 uid="uid://ctpmr2kr3vhsn"]
+[gd_scene load_steps=22 format=4 uid="uid://ctpmr2kr3vhsn"]
 
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="1_1cgh3"]
 [ext_resource type="Texture2D" uid="uid://cu31rpyasst87" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_1.png" id="1_10x34"]
-[ext_resource type="Script" path="res://Scripts/SFire_PForest.gd" id="1_h80pu"]
+[ext_resource type="Script" uid="uid://cd7fdpts2yret" path="res://Scripts/SFire_PForest.gd" id="1_h80pu"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_evb2k"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_dtbl4"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="4_l268s"]
@@ -10,14 +10,29 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="5_sxrji"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_scpt0"]
 [ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="9_rg75g"]
+[ext_resource type="Shader" uid="uid://q4eyd14sqvg8" path="res://Shaders/sway.gdshader" id="11_jpis7"]
+[ext_resource type="Texture2D" uid="uid://dmdifw6gpb67" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_57_56.png" id="12_rjo23"]
+[ext_resource type="Texture2D" uid="uid://v6t45dj0ygtd" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_57_45.png" id="13_hfl6w"]
+[ext_resource type="Texture2D" uid="uid://dg454buoeh75p" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_08.png" id="14_ndfsm"]
+[ext_resource type="Texture2D" uid="uid://bv2uoev228bpp" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_58_17.png" id="15_v8s00"]
+[ext_resource type="Shader" uid="uid://cfkfu2tqmyttx" path="res://Shaders/blur.gdshader" id="16_pm5lg"]
+[ext_resource type="Texture2D" uid="uid://10dn7doviaxl" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_57_58.png" id="17_ymq5b"]
+[ext_resource type="Texture2D" uid="uid://b0ghmjcljancy" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_45.png" id="18_km6dk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b15y1"]
+shader = ExtResource("11_jpis7")
+shader_parameter/strength = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v3gnw"]
+shader = ExtResource("16_pm5lg")
+shader_parameter/lod = 1.81
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pvyrp"]
+shader = ExtResource("16_pm5lg")
+shader_parameter/lod = 0.699
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_h80pu")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(598, 881)
-scale = Vector2(3.72396, 3.43333)
-texture = ExtResource("1_10x34")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_evb2k")]
 position = Vector2(930, 1003)
@@ -69,3 +84,94 @@ scale = Vector2(4.09484, 4.72503)
 amount = 250
 lifetime = 5.0
 speed_scale = 0.6
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(598, 881)
+scale = Vector2(3.72396, 3.43333)
+texture = ExtResource("1_10x34")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.0225313, 0.0617343, 0.0886882, 1)
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="Tree2025-05-18155756" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_b15y1")
+position = Vector2(1381, 522)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("12_rjo23")
+
+[node name="Tree2025-05-18155746" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_b15y1")
+position = Vector2(-17, 993)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("13_hfl6w")
+
+[node name="Tree2025-05-18155908" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_b15y1")
+position = Vector2(-818, 1375)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("14_ndfsm")
+
+[node name="Tree2025-05-18155818" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_b15y1")
+position = Vector2(1142, 1174)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("15_v8s00")
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_v3gnw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2163.0
+offset_top = -1894.0
+offset_right = 6077.0
+offset_bottom = 2431.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.0332935, 0.0413299, 0.0317097, 1)
+motion_scale = Vector2(0.95, 0.95)
+
+[node name="Tree2025-05-18155745" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_b15y1")
+position = Vector2(-504, 1251)
+texture = ExtResource("13_hfl6w")
+
+[node name="Tree2025-05-18155758" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_b15y1")
+position = Vector2(596, 767)
+rotation = -0.0580643
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("17_ymq5b")
+
+[node name="Tree2025-05-18155817" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_b15y1")
+position = Vector2(1602, 555)
+texture = ExtResource("15_v8s00")
+
+[node name="Tree2025-05-18155945" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_b15y1")
+position = Vector2(-1346, 1847)
+texture = ExtResource("18_km6dk")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="ParallaxBackground/ParallaxLayer3"]
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_pvyrp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1584.0
+offset_top = -1666.0
+offset_right = 6307.0
+offset_bottom = 2657.0
+grow_horizontal = 2
+grow_vertical = 2

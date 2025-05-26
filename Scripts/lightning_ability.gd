@@ -1,11 +1,15 @@
 extends Area2D
 
+@onready var particles := $GPUParticles2D as GPUParticles2D
 @onready var animation := $AnimatedSprite2D as AnimatedSprite2D
+@onready var collision := $CollisionShape2D as CollisionShape2D
+@onready var light := $PointLight2D as PointLight2D
+
+
 var damage
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	animation.play("spawn")
-
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") or body.is_in_group("Player"):
@@ -13,4 +17,9 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	collision.disabled = true
+	light.visible = false
+	particles.emitting = true
+
+func _on_gpu_particles_2d_finished() -> void:
 	queue_free()

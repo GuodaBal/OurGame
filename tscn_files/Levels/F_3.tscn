@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=4 uid="uid://biofrt6isi87b"]
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_8vcrr"]
-[ext_resource type="Script" path="res://Scripts/SWater_PFire.gd" id="1_a5riy"]
+[ext_resource type="Script" uid="uid://citeq4c6xmjb7" path="res://Scripts/SWater_PFire.gd" id="1_a5riy"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_dplmf"]
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="1_wijav"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_pkpfv"]
@@ -45,11 +45,11 @@ correctLevel = "F_2"
 [node name="LevelSwitcher2" parent="." instance=ExtResource("2_pkpfv")]
 position = Vector2(-188, 894)
 scale = Vector2(1, 1.42)
-nextLevel = "W_1"
+nextLevel = "W_7"
 
 [node name="SpawnArea2" parent="." instance=ExtResource("3_gjyb2")]
 position = Vector2(14, 1003)
-correctLevel = "W_1"
+correctLevel = "W_7"
 
 [node name="LevelSwitcher3" parent="." instance=ExtResource("2_pkpfv")]
 position = Vector2(5748, 61)

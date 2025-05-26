@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bwu0uom3tq46e"]
 
 [ext_resource type="Theme" uid="uid://j45wqqn7h7xh" path="res://Sprites/UI Sprite/UI.tres" id="1_74qny"]
-[ext_resource type="Script" path="res://Scripts/ui_popup_menu.gd" id="1_cpjbp"]
+[ext_resource type="Script" uid="uid://u68w0m7mdrd0" path="res://Scripts/ui_popup_menu.gd" id="1_cpjbp"]
 [ext_resource type="AudioStream" uid="uid://dyimm10xksvic" path="res://Audio/SFX/ButtonClick.wav" id="3_khxtl"]
 
 [node name="ui_popup_menu" type="Control"]

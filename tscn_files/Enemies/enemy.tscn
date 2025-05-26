@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://7lbe4hly8swj"]
 
-[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_beq4l"]
+[ext_resource type="Script" uid="uid://dcmpqny14on8f" path="res://Scripts/Enemy.gd" id="1_beq4l"]
 [ext_resource type="Texture2D" uid="uid://ds3jalfpkbvw1" path="res://Game_Sprites/Animation/Enemies/Wolf_Walking.png" id="3_be773"]
 [ext_resource type="Texture2D" uid="uid://bm6ync6uom6wy" path="res://Game_Sprites/Animation/Death/Wolf_Death.png" id="3_m0dkn"]
 [ext_resource type="AudioStream" uid="uid://nyruspxbsew8" path="res://Audio/SFX/Growl.wav" id="4_8c6st"]
@@ -228,8 +228,7 @@ script = ExtResource("1_beq4l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_6vk4a")
-animation = &"walking"
-frame_progress = 0.996511
+animation = &"attack"
 
 [node name="Attack" type="Area2D" parent="AnimatedSprite2D"]
 scale = Vector2(0.05, 0.05)

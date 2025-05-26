@@ -1,12 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4o4ya0nsck28"]
+[gd_scene load_steps=13 format=3 uid="uid://c4o4ya0nsck28"]
 
-[ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_1e6l1"]
+[ext_resource type="Script" uid="uid://b08odlg16i20s" path="res://Scripts/arrow.gd" id="1_1e6l1"]
 [ext_resource type="Texture2D" uid="uid://bpygk4i8odb1j" path="res://Game_Sprites/Abilities/Arrow.png" id="2_ft2i3"]
-[ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="3_8h342"]
+[ext_resource type="Texture2D" uid="uid://cb1666ofucme7" path="res://Game_Sprites/Shaders/spark.png" id="3_5p2xa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qqw8o"]
 radius = 11.0
 height = 34.0
+
+[sub_resource type="Gradient" id="Gradient_y146o"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 0.52549, 0.113725, 1, 1, 0.556863, 0.403922, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_be8ux"]
+gradient = SubResource("Gradient_y146o")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_6npmg"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_w852f"]
+gradient = SubResource("Gradient_6npmg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_24vil"]
+offsets = PackedFloat32Array(0.131579, 0.534783, 0.873684, 0.989474)
+colors = PackedColorArray(0.092, 0.092, 0.092, 0.282, 0.038, 0.038, 0.038, 0.674, 0.147672, 0.147672, 0.147672, 0.099, 0.366594, 0.366595, 0.366594, 0)
+
+[sub_resource type="Curve" id="Curve_cehe8"]
+_data = [Vector2(0.142857, 1), 0.0, -7.04659e-07, 0, 0, Vector2(1, 0), 0.139131, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_h34e0"]
+width = 36
+curve = SubResource("Curve_cehe8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r6uoa"]
+lifetime_randomness = 0.1
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 1.0
+angle_min = -557.9
+angle_max = 476.8
+gravity = Vector3(0, 98, 0)
+scale_min = 0.1
+scale_max = 0.2
+alpha_curve = SubResource("CurveTexture_h34e0")
+hue_variation_min = -0.06
+hue_variation_max = 0.48
+collision_mode = 2
 
 [node name="Arrow" type="RigidBody2D"]
 z_index = 2
@@ -30,7 +79,34 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_ft2i3")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(0.954391, 0.874654, 0.814692, 1)
-texture = ExtResource("3_8h342")
+position = Vector2(12, -3)
+energy = 4.5
+blend_mode = 2
+texture = SubResource("GradientTexture2D_be8ux")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.165)
+position = Vector2(14, 0)
+amount = 30
+texture = SubResource("GradientTexture2D_w852f")
+lifetime = 1.2
+explosiveness = 0.12
+randomness = 0.17
+direction = Vector2(0, 0)
+spread = 16.51
+gravity = Vector2(0, -80)
+initial_velocity_min = 25.0
+initial_velocity_max = 60.0
+scale_amount_min = 0.4
+scale_amount_max = 0.8
+color = Color(0.205117, 0.205117, 0.205117, 1)
+color_ramp = SubResource("Gradient_24vil")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+position = Vector2(13, 0)
+texture = ExtResource("3_5p2xa")
+randomness = 0.1
+process_material = SubResource("ParticleProcessMaterial_r6uoa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]

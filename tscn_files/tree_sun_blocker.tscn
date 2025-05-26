@@ -1,6 +1,6 @@
 [gd_scene load_steps=42 format=3 uid="uid://1okjlshefdnc"]
 
-[ext_resource type="Script" path="res://Scripts/tree_sun_blocker.gd" id="1_j6q7w"]
+[ext_resource type="Script" uid="uid://qpeowtttag5s" path="res://Scripts/tree_sun_blocker.gd" id="1_j6q7w"]
 [ext_resource type="Texture2D" uid="uid://bviwsbnqpjvqr" path="res://Game_Sprites/Animation/Bosses/NatureBoss/GrowingBranches.png" id="2_tifxp"]
 
 [sub_resource type="Animation" id="Animation_niuwb"]
@@ -171,9 +171,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xot0c"]
 _data = {
-"RESET": SubResource("Animation_niuwb"),
-"burning": SubResource("Animation_3857u"),
-"grow": SubResource("Animation_636s2")
+&"RESET": SubResource("Animation_niuwb"),
+&"burning": SubResource("Animation_3857u"),
+&"grow": SubResource("Animation_636s2")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y50a7"]

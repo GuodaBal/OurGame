@@ -60,21 +60,34 @@ func take_damage(damage: int, knockback_strength: int, character_position: Vecto
 	knockback.y = 0
 	if hp <= 0:
 		die()
-		
-func attack(body):
+
+#Starts attack animation and attack timer
+func start_attack():
 	AudioManager.play_with_random_pitch(audio)
 	animation.play("attack")
-	body.take_damage(damage, 3, position)
 	attackTimer.start()
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	#Tries to hit player at end of attack animation
+	if animation.animation == "attack" && animation.frame == 7:
+		for body in attackArea.get_overlapping_bodies():
+			if body.is_in_group("Player"):
+				body.take_damage(damage, 3, position)
+
+#Handles events on end of animation
+func _on_animated_sprite_2d_animation_finished() -> void:
+	#Removes body on end of death
+	if animation.animation == "death":
+		queue_free()
 
 func _on_attack_body_entered(body):
 	if attackTimer.is_stopped() && body.is_in_group("Player"):
-		attack(body)
+		start_attack()
 		
 func _on_attack_timer_timeout():
 	for body in attackArea.get_overlapping_bodies():
 		if body.is_in_group("Player"):
-			attack(body)
+			start_attack()
 			
 func die():
 	set_physics_process(false)
@@ -84,5 +97,3 @@ func die():
 		add_sibling(instance)
 		instance.position = position
 	animation.play("death")
-	await animation.animation_finished
-	queue_free()

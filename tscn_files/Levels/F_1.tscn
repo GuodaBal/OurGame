@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://fvcxk3ymmrkr"]
+[gd_scene load_steps=34 format=4 uid="uid://fvcxk3ymmrkr"]
 
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_0wqlk"]
-[ext_resource type="Script" path="res://Scripts/SWater_PFire.gd" id="1_g2ebf"]
+[ext_resource type="Script" uid="uid://citeq4c6xmjb7" path="res://Scripts/SWater_PFire.gd" id="1_g2ebf"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_nlglg"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_yccts"]
 [ext_resource type="PackedScene" uid="uid://7lbe4hly8swj" path="res://tscn_files/Enemies/enemy.tscn" id="4_ixqpu"]
@@ -13,13 +13,40 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="9_n22b4"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="11_34q67"]
 [ext_resource type="PackedScene" uid="uid://du7hdgoyfg4fp" path="res://tscn_files/Leaf.tscn" id="13_mnq0x"]
+[ext_resource type="PackedScene" uid="uid://dmcrboumpymth" path="res://tscn_files/Enemies/spider.tscn" id="14_c3xhk"]
+[ext_resource type="Shader" uid="uid://q4eyd14sqvg8" path="res://Shaders/sway.gdshader" id="15_v5ros"]
+[ext_resource type="Texture2D" uid="uid://dmdifw6gpb67" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_57_56.png" id="16_is2gt"]
+[ext_resource type="Texture2D" uid="uid://v6t45dj0ygtd" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_57_45.png" id="17_po1kd"]
+[ext_resource type="Texture2D" uid="uid://dg454buoeh75p" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_08.png" id="18_c70ns"]
+[ext_resource type="Texture2D" uid="uid://bv2uoev228bpp" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_58_17.png" id="19_d1yte"]
+[ext_resource type="Texture2D" uid="uid://v5k4j814ukjr" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_58_28.png" id="20_uxq3c"]
+[ext_resource type="Texture2D" uid="uid://dcn70bqka8h67" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_07.png" id="21_m5d3e"]
+[ext_resource type="Texture2D" uid="uid://du77wu1q1615n" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_58_26.png" id="22_85lka"]
+[ext_resource type="Texture2D" uid="uid://dltaxpfwhq3sa" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_04.png" id="23_t2tho"]
+[ext_resource type="Texture2D" uid="uid://djb8qgfnjxt3q" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_43.png" id="24_0360e"]
+[ext_resource type="Shader" uid="uid://cfkfu2tqmyttx" path="res://Shaders/blur.gdshader" id="25_w2ycr"]
+[ext_resource type="Texture2D" uid="uid://10dn7doviaxl" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_57_58.png" id="26_a8jam"]
+[ext_resource type="Texture2D" uid="uid://b0ghmjcljancy" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_45.png" id="27_nyg0y"]
+[ext_resource type="Texture2D" uid="uid://bac3iy8ofkajm" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_01.png" id="28_sneaj"]
+[ext_resource type="Texture2D" uid="uid://b3lil1jnwkqm0" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_29.png" id="29_1k5vp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p4dun"]
+shader = ExtResource("15_v5ros")
+shader_parameter/strength = 10.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gvv41"]
+shader = ExtResource("15_v5ros")
+shader_parameter/strength = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1fh3"]
+shader = ExtResource("25_w2ycr")
+shader_parameter/lod = 1.81
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bvtlw"]
+shader = ExtResource("25_w2ycr")
+shader_parameter/lod = 0.699
 
 [node name="Level3" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(2222, 343.5)
-scale = Vector2(6.98229, 5.5213)
-texture = ExtResource("1_0wqlk")
 
 [node name="MainCharacter" parent="." instance=ExtResource("1_nlglg")]
 position = Vector2(1284, 283)
@@ -113,3 +140,148 @@ visibility_rect = Rect2(-2500.93, -200, 5000, 400)
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("1_g2ebf")
+
+[node name="Spider" parent="." instance=ExtResource("14_c3xhk")]
+position = Vector2(627, 727)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0.8)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(2222, 343.5)
+scale = Vector2(6.98229, 5.5213)
+texture = ExtResource("1_0wqlk")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.0839148, 0.0909271, 0.0841385, 1)
+motion_scale = Vector2(0.9, 0.9)
+
+[node name="Tree2025-05-18155756" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(675, 483)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("16_is2gt")
+
+[node name="Tree2025-05-18155746" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(718, -507)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("17_po1kd")
+
+[node name="Tree2025-05-18155908" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(1489, 731)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("18_c70ns")
+
+[node name="Tree2025-05-18155818" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(-378, 83)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("19_d1yte")
+
+[node name="Tree2025-05-18155828" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(1422, -630)
+rotation = -0.397936
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("20_uxq3c")
+
+[node name="Tree2025-05-18155907" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(3838, 722)
+rotation = -0.0996937
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("21_m5d3e")
+
+[node name="Tree2025-05-18155909" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_gvv41")
+position = Vector2(-1126, -236)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("21_m5d3e")
+flip_h = true
+
+[node name="Tree2025-05-18155826" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_gvv41")
+position = Vector2(-135, -420)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("22_85lka")
+
+[node name="Tree2025-05-18155904" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_gvv41")
+position = Vector2(1463, -1209)
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("23_t2tho")
+
+[node name="Tree2025-05-18155943" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(4463, 1491)
+texture = ExtResource("24_0360e")
+
+[node name="Tree2025-05-18155910" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(-377, 1068)
+rotation = -0.427041
+texture = ExtResource("21_m5d3e")
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_d1fh3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2163.0
+offset_top = -1894.0
+offset_right = 6077.0
+offset_bottom = 2431.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color(0.0332935, 0.0413299, 0.0317097, 1)
+motion_scale = Vector2(0.95, 0.95)
+
+[node name="Tree2025-05-18155745" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(1106, 428)
+texture = ExtResource("17_po1kd")
+
+[node name="Tree2025-05-18155758" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(864, -916)
+rotation = -0.0580643
+scale = Vector2(0.79, 0.79)
+texture = ExtResource("26_a8jam")
+
+[node name="Tree2025-05-18155817" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(2470, 1164)
+texture = ExtResource("19_d1yte")
+
+[node name="Tree2025-05-18155945" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(-1049, -126)
+texture = ExtResource("27_nyg0y")
+
+[node name="Tree2025-05-18155901" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_p4dun")
+position = Vector2(1334, 1570)
+texture = ExtResource("28_sneaj")
+
+[node name="Tree2025-05-18155929" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2(3737, 1003)
+texture = ExtResource("29_1k5vp")
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="ParallaxBackground/ParallaxLayer3"]
+copy_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_bvtlw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1584.0
+offset_top = -1666.0
+offset_right = 6307.0
+offset_bottom = 2657.0
+grow_horizontal = 2
+grow_vertical = 2

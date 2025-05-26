@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bdv0bdvxiu2tj"]
 
 [ext_resource type="Texture2D" uid="uid://dynnfse2atnmr" path="res://Game_Sprites/Tilemaps/Old/Nature_Area.png" id="1_ia048"]
-[ext_resource type="Script" path="res://Scripts/moving_platform.gd" id="1_odcfl"]
+[ext_resource type="Script" uid="uid://dj6o78me8cgll" path="res://Scripts/moving_platform.gd" id="1_odcfl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f62lb"]
 atlas = ExtResource("1_ia048")
@@ -59,9 +59,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f43e5"]
 _data = {
-"RESET": SubResource("Animation_euxkh"),
-"move_left": SubResource("Animation_hutmo"),
-"move_right": SubResource("Animation_6msom")
+&"RESET": SubResource("Animation_euxkh"),
+&"move_left": SubResource("Animation_hutmo"),
+&"move_right": SubResource("Animation_6msom")
 }
 
 [node name="Node2D" type="Node2D"]

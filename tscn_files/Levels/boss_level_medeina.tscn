@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=4 uid="uid://b5cnnwjdprlnn"]
 
 [ext_resource type="PackedScene" uid="uid://b2a6p8rxv1igu" path="res://tscn_files/medeina.tscn" id="1_0sq2h"]
-[ext_resource type="Script" path="res://Scripts/boss_level_medeina.gd" id="1_rpm1e"]
+[ext_resource type="Script" uid="uid://bovgf07duwlvw" path="res://Scripts/boss_level_medeina.gd" id="1_rpm1e"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_2jj0m"]
 [ext_resource type="Texture2D" uid="uid://51mi5aacj6xm" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_2.png" id="2_lqmah"]
 [ext_resource type="Texture2D" uid="uid://et7gqtpukuo" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Nature_God_NEW.png" id="2_nd5yb"]
@@ -100,9 +100,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s3q2n"]
 _data = {
-"Fade_to_dark": SubResource("Animation_7rnif"),
-"RESET": SubResource("Animation_kymck"),
-"Remove_dark": SubResource("Animation_r5yo4")
+&"Fade_to_dark": SubResource("Animation_7rnif"),
+&"RESET": SubResource("Animation_kymck"),
+&"Remove_dark": SubResource("Animation_r5yo4")
 }
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_exydm"]

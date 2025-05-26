@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=4 uid="uid://c83o4uejxjvsx"]
 
-[ext_resource type="Script" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
+[ext_resource type="Script" uid="uid://da3ocejxdfgr5" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_20n8p"]
 [ext_resource type="Texture2D" uid="uid://c8aq7tnw2tbk3" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_2.png" id="2_ya7jn"]
 [ext_resource type="PackedScene" uid="uid://n0byngr2sw2r" path="res://tscn_files/gabija.tscn" id="3_0oha5"]
@@ -4144,7 +4144,7 @@ position = Vector2(937, 899.975)
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_hgj5o")]
 position = Vector2(-16, 957)
-correctLevel = "F_6"
+correctLevel = "starting_level"
 
 [node name="LevelSwitcher" parent="." instance=ExtResource("6_ij6ja")]
 position = Vector2(-363, 703)

@@ -1,6 +1,6 @@
-[gd_scene load_steps=186 format=3 uid="uid://bo5x65xs813fn"]
+[gd_scene load_steps=190 format=3 uid="uid://bo5x65xs813fn"]
 
-[ext_resource type="Script" path="res://Scripts/main_character.gd" id="1_7nded"]
+[ext_resource type="Script" uid="uid://db01tqli2w5ak" path="res://Scripts/main_character.gd" id="1_7nded"]
 [ext_resource type="Texture2D" uid="uid://cvhpbbqhi764o" path="res://Game_Sprites/Animation/Niya_NEW/Niya_Attack_1.png" id="2_q5qet"]
 [ext_resource type="Texture2D" uid="uid://c5ni62get2by" path="res://Game_Sprites/Animation/Niya_NEW/Niya_Attack_2.png" id="3_04yjb"]
 [ext_resource type="AudioStream" uid="uid://50pr2qfnk5sq" path="res://Audio/SFX/Arrow2_mixdown.wav" id="3_q8j6a"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c18qnst1vfmiq" path="res://Game_Sprites/Animation/Niya_NEW/Niya_RunningEnd.png" id="9_nc6eq"]
 [ext_resource type="Texture2D" uid="uid://bjj41gyphcbvo" path="res://Game_Sprites/Animation/Niya_NEW/Niya_RunningStart.png" id="10_yo7tk"]
 [ext_resource type="Texture2D" uid="uid://1n0pgo76g0u5" path="res://Game_Sprites/Animation/Niya_NEW/Niya_Hit.png" id="11_spw3f"]
+[ext_resource type="Script" uid="uid://gapsf6yc4iqi" path="res://Scripts/camera_2d.gd" id="12_qdop2"]
 [ext_resource type="AudioStream" uid="uid://b423pbyvvaa57" path="res://Audio/SFX/Thunder_mixdown.wav" id="17_2l50j"]
 [ext_resource type="AudioStream" uid="uid://dxdd4lru7skr3" path="res://Audio/SFX/TreeTrunkAbility_mixdown.wav" id="18_m0a3t"]
 [ext_resource type="AudioStream" uid="uid://c6el6u87hsl3o" path="res://Audio/SFX/takingDamage.wav" id="19_3ploa"]
@@ -1217,11 +1218,27 @@ height = 75.5401
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oopqj"]
 size = Vector2(42, 15.5)
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uahpp"]
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_ytc0k"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.132479, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_td2qc"]
+gradient = SubResource("Gradient_ytc0k")
+width = 128
+height = 138
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [node name="MainCharacter" type="CharacterBody2D" groups=["Persist", "Player"]]
 visibility_layer = 3
 z_index = 2
 collision_mask = 13
-platform_floor_layers = 4294967042
+platform_floor_layers = 4294967050
 platform_wall_layers = 4
 script = ExtResource("1_7nded")
 
@@ -1255,9 +1272,6 @@ target_position = Vector2(0, 400)
 collision_mask = 4
 hit_from_inside = true
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-visible = false
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-4.76837e-07, 5)
 scale = Vector2(0.999999, 0.999999)
@@ -1268,9 +1282,10 @@ offset = Vector2(0, -100)
 zoom = Vector2(0.8, 0.8)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+script = ExtResource("12_qdop2")
 
 [node name="FloorCollision" type="Area2D" parent="."]
-collision_mask = 4
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FloorCollision"]
 position = Vector2(0, 37.25)
@@ -1332,3 +1347,11 @@ bus = &"SFX"
 stream = ExtResource("19_3ploa")
 volume_db = -2.0
 bus = &"SFX"
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_uahpp")
+scale = Vector2(4.34, 4.34)
+energy = 2.08
+blend_mode = 2
+texture = SubResource("GradientTexture2D_td2qc")
+texture_scale = 0.3

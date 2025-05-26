@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxgmjuqjggw38"]
+
+[ext_resource type="Script" uid="uid://dit6r1qhlb8m4" path="res://Scripts/lightning_spawning.gd" id="1_5nxh7"]
+[ext_resource type="PackedScene" uid="uid://byqevr2q4thew" path="res://tscn_files/l_generation.tscn" id="2_2bh3d"]
+[ext_resource type="AudioStream" uid="uid://b423pbyvvaa57" path="res://Audio/SFX/Thunder_mixdown.wav" id="3_2bh3d"]
+
+[node name="Lightning spawning" type="Node2D"]
+script = ExtResource("1_5nxh7")
+
+[node name="L-generation" parent="." instance=ExtResource("2_2bh3d")]
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[node name="Lightning" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2bh3d")
+bus = &"SFX"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

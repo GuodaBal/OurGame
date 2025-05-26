@@ -1,13 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://dxjgj16g2vqjt"]
+[gd_scene load_steps=32 format=3 uid="uid://dxjgj16g2vqjt"]
 
-[ext_resource type="Script" path="res://Scripts/save_point.gd" id="1_fh2po"]
-[ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="3_avc60"]
+[ext_resource type="Script" uid="uid://cpl87smray2j8" path="res://Scripts/save_point.gd" id="1_fh2po"]
+[ext_resource type="Texture2D" uid="uid://b77tx07acq3ax" path="res://Sprites/light_texture.tres" id="2_7wceo"]
 [ext_resource type="AudioStream" uid="uid://dt1nwasq2nhe3" path="res://Audio/SFX/Campfire.wav" id="4_ia0c5"]
 [ext_resource type="Texture2D" uid="uid://7nuogvgi6uwo" path="res://Game_Sprites/Animation/UI/Campfire.png" id="4_u6obr"]
 [ext_resource type="AudioStream" uid="uid://bcrqaafddsr4" path="res://Audio/SFX/Save.wav" id="5_1k83h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ux4t"]
 size = Vector2(710, 955)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_l834u"]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qn0u0"]
 atlas = ExtResource("4_u6obr")
@@ -115,6 +118,55 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_kiq24"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_chnlj"]
+gradient = SubResource("Gradient_kiq24")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_b5eio"]
+offsets = PackedFloat32Array(0.131579, 0.573684, 0.873684, 0.989474)
+colors = PackedColorArray(0.092, 0.092, 0.092, 0.282, 0.0383972, 0.0383971, 0.0383972, 0.519, 0.20871, 0.20871, 0.20871, 0.099, 0.366594, 0.366595, 0.366594, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_od0xs"]
+gradient = SubResource("Gradient_b5eio")
+
+[sub_resource type="Curve" id="Curve_voj4p"]
+_data = [Vector2(0, 0.263736), 0.0, 0.0, 0, 0, Vector2(0.92233, 0.637363), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g4lm3"]
+curve = SubResource("Curve_voj4p")
+
+[sub_resource type="Curve" id="Curve_y1ibh"]
+_data = [Vector2(0, 0), 0.0, -0.171728, 0, 0, Vector2(0.582569, 0.362637), 2.19597, 2.19597, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_o0txn"]
+curve = SubResource("Curve_y1ibh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1ibdv"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 157.8
+direction = Vector3(0, -80, 0)
+spread = 24.256
+initial_velocity_min = 41.32
+initial_velocity_max = 66.11
+gravity = Vector3(0, -20, 0)
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_g4lm3")
+color = Color(0.61339, 0.61339, 0.61339, 1)
+color_ramp = SubResource("GradientTexture1D_od0xs")
+turbulence_influence_min = 0.0
+turbulence_influence_max = 1.0
+turbulence_influence_over_life = SubResource("CurveTexture_o0txn")
+collision_mode = 2
+
 [node name="Area2D" type="Area2D" groups=["save_point"]]
 z_index = 1
 scale = Vector2(0.2, 0.2)
@@ -122,19 +174,9 @@ collision_layer = 4
 script = ExtResource("1_fh2po")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-5.00001, 7.49997)
 shape = SubResource("RectangleShape2D_5ux4t")
-
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(0, -80)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("3_avc60")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_4sto0")
-frame = 11
-frame_progress = 0.4792
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ia0c5")
@@ -145,3 +187,28 @@ bus = &"SFX"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_1k83h")
 bus = &"SFX"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+material = SubResource("CanvasItemMaterial_l834u")
+position = Vector2(-5, 30)
+scale = Vector2(2.72, 2.72)
+energy = 4.0
+blend_mode = 2
+texture = ExtResource("2_7wceo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_4sto0")
+frame = 11
+frame_progress = 0.4792
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.899, 0.899, 0.899, 0.299)
+position = Vector2(-4, 88)
+amount = 200
+texture = SubResource("GradientTexture2D_chnlj")
+lifetime = 4.0
+preprocess = 2.0
+explosiveness = 0.14
+randomness = 0.17
+process_material = SubResource("ParticleProcessMaterial_1ibdv")

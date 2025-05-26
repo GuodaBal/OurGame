@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://hq5bhglrtmhp"]
 
 [ext_resource type="Texture2D" uid="uid://beyoxqn1t533s" path="res://Game_Sprites/Animation/Bosses/NatureBoss/HangingBunnies.png" id="1_f85c2"]
-[ext_resource type="Script" path="res://Scripts/hanging_rabbit.gd" id="2_n8gon"]
+[ext_resource type="Script" uid="uid://dkgwfe7pocsax" path="res://Scripts/hanging_rabbit.gd" id="2_n8gon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ktyt"]
 atlas = ExtResource("1_f85c2")

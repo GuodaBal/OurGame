@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://djgxs2t3tek2c"]
+
+[ext_resource type="Script" uid="uid://clfhph2ftjtwy" path="res://Scripts/blue_flower_1.gd" id="1_vfdo0"]
+[ext_resource type="Texture2D" uid="uid://bw4ue0hnnl84m" path="res://Game_Sprites/Tilemaps/Assets/Blue_flower_particle.png" id="2_rfxao"]
+[ext_resource type="Shader" uid="uid://dq21cxr7w31o4" path="res://Shaders/blue_flower.gdshader" id="3_g0arh"]
+[ext_resource type="Texture2D" uid="uid://cwbbj3fxbuh2c" path="res://Game_Sprites/Tilemaps/Assets/Blue_flower_2.png" id="4_61nd7"]
+
+[sub_resource type="Gradient" id="Gradient_gxaiv"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n7lmc"]
+gradient = SubResource("Gradient_gxaiv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_psvx0"]
+lifetime_randomness = 0.25
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 30.0
+emission_ring_inner_radius = 25.0
+emission_ring_cone_angle = 90.0
+spread = 180.0
+initial_velocity_min = 10.09
+initial_velocity_max = 30.29
+gravity = Vector3(0, 0, 0)
+scale_min = 0.04
+scale_max = 0.1
+color_ramp = SubResource("GradientTexture1D_n7lmc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ygvt"]
+shader = ExtResource("3_g0arh")
+shader_parameter/size = Vector2(0.025, 0.02)
+shader_parameter/samples = 5
+shader_parameter/rotation_strength = 1.0
+shader_parameter/rotation_radius = 0.65
+shader_parameter/random_offset = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njxxk"]
+size = Vector2(44, 43)
+
+[node name="blue_flower_2" type="Node2D"]
+script = ExtResource("1_vfdo0")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(0, -15)
+emitting = false
+amount = 14
+texture = ExtResource("2_rfxao")
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_psvx0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_6ygvt")
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_61nd7")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, -1.5)
+shape = SubResource("RectangleShape2D_njxxk")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

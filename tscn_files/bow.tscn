@@ -1,8 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://cg6xkwun78ucg"]
+[gd_scene load_steps=28 format=3 uid="uid://cg6xkwun78ucg"]
 
 [ext_resource type="Texture2D" uid="uid://s4ttrlyfkedb" path="res://Game_Sprites/Animation/Character_Animation_New/Bow_Animation_End.png" id="1_ubkdt"]
 [ext_resource type="Texture2D" uid="uid://dhdt38r7524uw" path="res://Game_Sprites/Animation/Character_Animation_New/Bow_Animation_Start.png" id="2_6wh02"]
-[ext_resource type="Texture2D" uid="uid://b1dio3tcwgegg" path="res://Sprites/Main_character/Pixahunt-507e901e465149c33f86396017b6693dd9.webp" id="3_q247v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7npp"]
 atlas = ExtResource("1_ubkdt")
@@ -150,6 +149,33 @@ animations = [{
 "speed": 24.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_8ba8n"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.0047619, 1)
+colors = PackedColorArray(1, 0.524254, 0.115339, 1, 1, 0.556863, 0.403922, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uvls8"]
+gradient = SubResource("Gradient_8ba8n")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_6npmg"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wlq0q"]
+gradient = SubResource("Gradient_6npmg")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="Gradient" id="Gradient_0u0es"]
+offsets = PackedFloat32Array(0.131579, 0.534783, 0.873684, 0.989474)
+colors = PackedColorArray(0.092, 0.092, 0.092, 0.282, 0.038, 0.038, 0.038, 0.674, 0.147672, 0.147672, 0.147672, 0.099, 0.366594, 0.366595, 0.366594, 0)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D"]
 z_index = 2
 scale = Vector2(0.1, 0.1)
@@ -157,6 +183,26 @@ sprite_frames = SubResource("SpriteFrames_slui3")
 animation = &"Start"
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(200, -30)
-scale = Vector2(10, 10)
-texture = ExtResource("3_q247v")
+position = Vector2(210, -10)
+scale = Vector2(9, 9)
+energy = 4.5
+blend_mode = 2
+texture = SubResource("GradientTexture2D_uvls8")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color(1, 1, 1, 0.165)
+position = Vector2(210, 0)
+amount = 30
+texture = SubResource("GradientTexture2D_wlq0q")
+lifetime = 1.2
+explosiveness = 0.12
+randomness = 0.17
+direction = Vector2(0, 0)
+spread = 16.51
+gravity = Vector2(0, -80)
+initial_velocity_min = 25.0
+initial_velocity_max = 60.0
+scale_amount_min = 0.4
+scale_amount_max = 0.8
+color = Color(0.203922, 0.203922, 0.203922, 1)
+color_ramp = SubResource("Gradient_0u0es")

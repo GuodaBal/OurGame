@@ -1,7 +1,44 @@
-[gd_scene load_steps=9 format=3 uid="uid://cm2o2u51ewval"]
+[gd_scene load_steps=27 format=3 uid="uid://cm2o2u51ewval"]
 
-[ext_resource type="Script" path="res://Scripts/ui_overlay.gd" id="1_nv50j"]
+[ext_resource type="Script" uid="uid://duj0h806325o7" path="res://Scripts/ui_overlay.gd" id="1_nv50j"]
 [ext_resource type="Texture2D" uid="uid://dfmtq612ixohd" path="res://Sprites/UI Sprite/Hearts.png" id="2_g4xl5"]
+[ext_resource type="Texture2D" uid="uid://feugwohm4l0i" path="res://Game_Sprites/Shaders/aura.png" id="3_c84cb"]
+[ext_resource type="Shader" uid="uid://c4mvfnnqe14ex" path="res://Shaders/shake.gdshader" id="3_wh00n"]
+[ext_resource type="Texture2D" uid="uid://co5vpejosrfrv" path="res://Game_Sprites/Shaders/aura2.png" id="4_vnk1j"]
+[ext_resource type="Shader" uid="uid://dsef84gwsbr8g" path="res://Shaders/aura.gdshader" id="5_kb6rg"]
+[ext_resource type="Material" uid="uid://bx0lsjk5bq657" path="res://Shaders/heal.tres" id="5_oupng"]
+[ext_resource type="Material" uid="uid://bobd2repw1p4j" path="res://Shaders/shake.tres" id="7_5fenw"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5fenw"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ssl5o"]
+width = 216
+height = 216
+seamless = true
+seamless_blend_skirt = 0.22
+noise = SubResource("FastNoiseLite_5fenw")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ssl5o"]
+shader = ExtResource("5_kb6rg")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_ssl5o")
+shader_parameter/direction = -1.0
+
+[sub_resource type="Gradient" id="Gradient_kvd0g"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oupng"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5fenw"]
+width = 256
+height = 256
+seamless = true
+seamless_blend_skirt = 0.244
+color_ramp = SubResource("Gradient_kvd0g")
+noise = SubResource("FastNoiseLite_oupng")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kvd0g"]
+shader = ExtResource("5_kb6rg")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_5fenw")
+shader_parameter/direction = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cueww"]
 atlas = ExtResource("2_g4xl5")
@@ -66,22 +103,67 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oupng"]
+shader = ExtResource("3_wh00n")
+shader_parameter/start_time = -1.0
+shader_parameter/current_time = 0.0
+shader_parameter/duration = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c84cb"]
+shader = ExtResource("3_wh00n")
+shader_parameter/start_time = -1.0
+shader_parameter/current_time = 0.0
+shader_parameter/duration = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnk1j"]
+shader = ExtResource("3_wh00n")
+shader_parameter/start_time = -1.0
+shader_parameter/current_time = 0.0
+shader_parameter/duration = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_le43l"]
+shader = ExtResource("3_wh00n")
+shader_parameter/start_time = -1.0
+shader_parameter/current_time = 0.0
+shader_parameter/duration = 0.3
+
+[sub_resource type="Environment" id="Environment_vnk1j"]
+background_mode = 3
+adjustment_enabled = true
+
 [node name="UIOverlay" type="CanvasLayer"]
 script = ExtResource("1_nv50j")
 
+[node name="aura2" type="Sprite2D" parent="."]
+modulate = Color(0.0901961, 0.0901961, 0.0901961, 0)
+material = SubResource("ShaderMaterial_ssl5o")
+position = Vector2(961.5, 539)
+scale = Vector2(2.00312, 2)
+texture = ExtResource("4_vnk1j")
+
+[node name="aura" type="Sprite2D" parent="."]
+modulate = Color(0.301961, 0.854902, 1, 0)
+material = SubResource("ShaderMaterial_kvd0g")
+position = Vector2(961.5, 539)
+scale = Vector2(2.00312, 2)
+texture = ExtResource("3_c84cb")
+
 [node name="first" type="AnimatedSprite2D" parent="."]
+material = ExtResource("5_oupng")
 position = Vector2(48, 48)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
 animation = &"4"
 
 [node name="second" type="AnimatedSprite2D" parent="."]
+material = ExtResource("7_5fenw")
 position = Vector2(128, 48)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
 animation = &"4"
 
 [node name="third" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_oupng")
 position = Vector2(208, 48)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
@@ -89,6 +171,7 @@ animation = &"4"
 
 [node name="fourth" type="AnimatedSprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_c84cb")
 position = Vector2(288, 48)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
@@ -96,6 +179,7 @@ animation = &"4"
 
 [node name="fifth" type="AnimatedSprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_vnk1j")
 position = Vector2(368, 48)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
@@ -103,7 +187,11 @@ animation = &"4"
 
 [node name="sixth" type="AnimatedSprite2D" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_le43l")
 position = Vector2(448, 48)
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_4f781")
 animation = &"4"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_vnk1j")
