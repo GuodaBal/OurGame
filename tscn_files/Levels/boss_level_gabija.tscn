@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://c83o4uejxjvsx"]
+[gd_scene load_steps=38 format=4 uid="uid://c83o4uejxjvsx"]
 
 [ext_resource type="Script" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_20n8p"]
@@ -18,6 +18,9 @@
 [ext_resource type="AudioStream" uid="uid://cftw0rd8kj2qp" path="res://Audio/SFX/Fire.wav" id="12_hmdf2"]
 [ext_resource type="TileSet" uid="uid://dmel105g6rnl8" path="res://Game_Sprites/Tilemaps/New/Fire_area.tres" id="13_hsd5s"]
 [ext_resource type="Texture2D" uid="uid://ctof20qe8tea6" path="res://Game_Sprites/blob.png" id="15_w4t3m"]
+[ext_resource type="Texture2D" uid="uid://jc0e7w240uul" path="res://Game_Sprites/Shaders/glowGradient.tres" id="19_j3kox"]
+[ext_resource type="Shader" path="res://Game_Sprites/Shaders/tattooGlow.gdshader" id="20_12kv2"]
+[ext_resource type="FastNoiseLite" uid="uid://1fn44xdlpkaj" path="res://Game_Sprites/Shaders/TattooNoise.tres" id="21_ef2fc"]
 
 [sub_resource type="Curve2D" id="Curve2D_hn5tq"]
 _data = {
@@ -4142,6 +4145,20 @@ color_ramp = SubResource("GradientTexture1D_rs0ha")
 emission_curve = SubResource("CurveTexture_1g6ru")
 turbulence_enabled = true
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_fod2d"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2ud63"]
+noise = ExtResource("21_ef2fc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3c5k"]
+shader = ExtResource("20_12kv2")
+shader_parameter/time_speed = 1.0
+shader_parameter/distortion_strength = 5.0
+shader_parameter/noise_scale = Vector2(20, 20)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2ud63")
+
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_cdcpk")
 
@@ -4149,11 +4166,6 @@ script = ExtResource("1_cdcpk")
 position = Vector2(643, 333)
 scale = Vector2(1.66979, 1.61667)
 texture = ExtResource("2_ya7jn")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(916.22, 542)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_qddtw")
 
 [node name="MainCharacter" parent="." instance=ExtResource("2_20n8p")]
 position = Vector2(0, 500)
@@ -4253,6 +4265,34 @@ offset_right = -992.0
 offset_bottom = -27.0
 scale = Vector2(9.445, 4.31)
 metadata/_edit_use_anchors_ = true
+
+[node name="RootTattoo" type="Node2D" parent="."]
+position = Vector2(914, 537)
+
+[node name="Sprite2D" type="Sprite2D" parent="RootTattoo"]
+position = Vector2(2.21997, 5)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_qddtw")
+
+[node name="GlowSprite" type="Sprite2D" parent="RootTattoo"]
+visible = false
+modulate = Color(1, 0.703, 0.67, 1)
+z_index = 1
+material = SubResource("CanvasItemMaterial_fod2d")
+position = Vector2(-42, -32.5)
+scale = Vector2(10.5938, 10.4844)
+texture = ExtResource("19_j3kox")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="HeatDistortion" type="ColorRect" parent="RootTattoo"]
+visible = false
+material = SubResource("ShaderMaterial_u3c5k")
+offset_left = -478.0
+offset_top = -447.0
+offset_right = 405.0
+offset_bottom = 426.0
+color = Color(1, 1, 1, 0)
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

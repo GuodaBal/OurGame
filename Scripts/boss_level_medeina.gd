@@ -10,13 +10,17 @@ extends Node2D
 @onready var after := $After as TileMapLayer
 @onready var MedeinaBe = $MedeinaBe
 @onready var MedeinaAF = $MedeinaAF
+@onready var ground_tilemap := $Before
 var coef = 1
 var platforms= [[975, null], [925, null], [875, null]] as Array #Platforms spawn in one of 
 #three heights. Stores platforms or null if line not busy
 
 var lastSpikeAtPlayer = false #If last spike was spawned under player, don't spawn it under
 #player again to prevent getting trapped
-
+var ground_mat: ShaderMaterial
+var spike_duration := 0.6
+var max_radius := 64.0    # turi sutapti su shader parametro max_radius
+var max_strength := 8.0   # turi sutapti su shader parametro max_strength
 
 func _ready() -> void:
 	AudioManager.stop_forest_sound() 
@@ -31,6 +35,15 @@ func _ready() -> void:
 		after.visible = false
 		after.collision_enabled = false
 		MedeinaBe.play()
+		# Paimame ShaderMaterial per “material”
+	ground_mat = ground_tilemap.material as ShaderMaterial
+	if not ground_mat:
+		push_error("GroundTileMap neturi ShaderMaterial: priskirk Material lauke.")
+	# Inicialiai deformacija neaktyvi:
+	ground_mat.set_shader_parameter("spike_time", -1.0)
+	ground_mat.set_shader_parameter("spike_duration", spike_duration)
+	ground_mat.set_shader_parameter("max_radius", max_radius)
+	ground_mat.set_shader_parameter("max_strength", max_strength)
 
 func start_spike_attack():
 	spikeIntervalTimer.start()
@@ -57,19 +70,47 @@ func is_sun_blocked():
 	return sunBlocker.can_burn
 	
 	
-
+func _process(delta: float) -> void:
+	# Atnaujiname bangavimo laikmatį shader’yje
+	var t = ground_mat.get_shader_parameter("spike_time")
+	if t >= 0.0 and t < spike_duration:
+		t += delta
+		if t > spike_duration:
+			t = spike_duration
+			#ground_mat.set_shader_parameter("spike_time", t)
+			ground_mat.set("shader_parameter/spike_time",t)
+	# Jeigu t >= spike_duration, deformacija sustoja natūraliai (shader išmeta wave=0)
 func _on_spike_interval_timer_timeout() -> void:
 	var instance = load("res://tscn_files/ground_spike.tscn").instantiate()
 	add_child(instance)
-	#Some spawn under player, some in random spots
-	if randi()%3 == 0 and !lastSpikeAtPlayer:
-		instance.position = Vector2(get_node("MainCharacter").position.x + randi_range(-50, 50), 1115)
+
+	# Nustatom spawno poziciją
+	var world_pos: Vector2
+	if randi() % 3 == 0 and !lastSpikeAtPlayer:
+		world_pos = Vector2(get_node("MainCharacter").position.x + randi_range(-50, 50), 1115)
 		lastSpikeAtPlayer = true
 	else:
-		instance.position = Vector2(randf_range(500, 1600), 1115)
+		world_pos = Vector2(randf_range(500, 1600), 1115)
 		lastSpikeAtPlayer = false
+		instance.position = world_pos
+
+	# Paleidžiam spyglio spawn logiką
 	instance.spawn(coef)
+
+	# 🎯 ČIA aktyvuojame žemės deformaciją:
+	# 1) Konvertuojame pasaulio koordinates į GroundTileMap lokalias koordinatės (pikseliais)
+	var local_origin: Vector2 = ground_tilemap.to_local(world_pos)
+
+	# 2) Gauname ShaderMaterial iš GroundTileMap
+	if ground_mat:
+		#ground_mat.set_shader_param("spike_origin_local", local_origin)
+		ground_mat.set("shader_parameter/spike_origin_local", local_origin)
+		ground_mat.set("shader_parameter/spike_time",0.0)
+		#ground_mat.set_shader_param("spike_time", 0.0)
+
+	# Galiausiai atnaujinam laikmatį
 	spikeIntervalTimer.start(randf_range(0.9, 1.6)/coef)
+
 
 
 func _on_platform_interval_timer_timeout() -> void:

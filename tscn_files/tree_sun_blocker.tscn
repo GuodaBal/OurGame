@@ -1,7 +1,9 @@
-[gd_scene load_steps=42 format=3 uid="uid://1okjlshefdnc"]
+[gd_scene load_steps=50 format=3 uid="uid://1okjlshefdnc"]
 
 [ext_resource type="Script" path="res://Scripts/tree_sun_blocker.gd" id="1_j6q7w"]
 [ext_resource type="Texture2D" uid="uid://bviwsbnqpjvqr" path="res://Game_Sprites/Animation/Bosses/NatureBoss/GrowingBranches.png" id="2_tifxp"]
+[ext_resource type="Shader" path="res://Game_Sprites/Shaders/branchWiggle.gdshader" id="3_i0cb1"]
+[ext_resource type="Shader" path="res://tscn_files/tree_sun_blocker.gdshader" id="4_h7n38"]
 
 [sub_resource type="Animation" id="Animation_niuwb"]
 length = 0.001
@@ -175,6 +177,14 @@ _data = {
 "burning": SubResource("Animation_3857u"),
 "grow": SubResource("Animation_636s2")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xouib"]
+shader = ExtResource("3_i0cb1")
+shader_parameter/amplitude = 0.01
+shader_parameter/speed = 0.5
+shader_parameter/frequency = 4.0
+shader_parameter/frame_offset = 0.0
+shader_parameter/growth_progress = 1.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y50a7"]
 atlas = ExtResource("2_tifxp")
@@ -427,6 +437,34 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qxqto"]
+shader = ExtResource("3_i0cb1")
+shader_parameter/amplitude = 0.01
+shader_parameter/speed = 0.5
+shader_parameter/frequency = 4.0
+shader_parameter/frame_offset = 0.0
+shader_parameter/growth_progress = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u0uq6"]
+shader = ExtResource("4_h7n38")
+
+[sub_resource type="Gradient" id="Gradient_ds4cv"]
+colors = PackedColorArray(0.416288, 0.269838, 0.136073, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eu3t0"]
+gradient = SubResource("Gradient_ds4cv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_apsnb"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(80, 50, 1)
+gravity = Vector3(0, 6, 0)
+linear_accel_min = 0.999998
+linear_accel_max = 1.8
+scale_min = 1.5
+scale_max = 2.0
+color_initial_ramp = SubResource("GradientTexture1D_eu3t0")
+
 [node name="TreeSunBlocker" type="AnimatableBody2D" groups=["Burnable"]]
 z_index = 1
 scale = Vector2(1.7, 1.7)
@@ -444,11 +482,36 @@ polygon = PackedVector2Array(-249, -130, -94, -73, -138, -9, -187, -36, -248, -4
 polygon = PackedVector2Array(-428.235, -126.471, -587.059, -65.8824, -537.059, -12.9412, -480.588, -38.2353, -427.059, -43.5294)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_xouib")
 sprite_frames = SubResource("SpriteFrames_wwmq5")
-animation = &"reset"
+animation = &"grow"
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_qxqto")
 position = Vector2(-675, 0)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_wwmq5")
-animation = &"reset"
+animation = &"grow"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.54, 0.31824, 0.2376, 1)
+material = SubResource("ShaderMaterial_u0uq6")
+position = Vector2(31.1765, -17.0588)
+scale = Vector2(2.10588, 1.14118)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_apsnb")
+lifetime = 10.0
+randomness = 0.5
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+modulate = Color(0.54, 0.31824, 0.2376, 1)
+material = SubResource("ShaderMaterial_u0uq6")
+position = Vector2(-689.412, -19.4118)
+scale = Vector2(2.10588, 1.14118)
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_apsnb")
+lifetime = 10.0
+randomness = 0.5

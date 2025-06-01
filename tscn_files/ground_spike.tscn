@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://djna2o8otep4p"]
+[gd_scene load_steps=8 format=3 uid="uid://djna2o8otep4p"]
 
 [ext_resource type="Script" path="res://Scripts/ground_spike.gd" id="1_jg1gg"]
 [ext_resource type="Texture2D" uid="uid://in1boey7nt6o" path="res://Game_Sprites/Animation/Bosses/NatureBoss/Spike_256.png" id="2_dhny5"]
@@ -89,6 +89,19 @@ _data = {
 "spawn": SubResource("Animation_e3oav")
 }
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_08gj0"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+angle_min = -130.9
+angle_max = 229.1
+direction = Vector3(0, 0, 0)
+spread = 90.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 1, 0)
+scale_min = 4.0
+scale_max = 5.0
+
 [node name="GroundSpike" type="AnimatableBody2D"]
 z_index = 1
 script = ExtResource("1_jg1gg")
@@ -119,6 +132,16 @@ polygon = PackedVector2Array(-26, -22, 0, -106, 28, -22)
 stream = ExtResource("3_xxnru")
 max_distance = 600.0
 bus = &"SFX"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.319753, 0.215417, 0.129882, 1)
+position = Vector2(0, 27)
+rotation = -1.5708
+scale = Vector2(60, 60)
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_08gj0")
+one_shot = true
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
