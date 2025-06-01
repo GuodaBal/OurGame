@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2dh8so4rhtia"]
 
-[ext_resource type="Script" path="res://Scripts/health_drop.gd" id="1_b5fcq"]
+[ext_resource type="Script" uid="uid://brvostexfnd7" path="res://Scripts/health_drop.gd" id="1_b5fcq"]
 [ext_resource type="Texture2D" uid="uid://dfmtq612ixohd" path="res://Sprites/UI Sprite/Hearts.png" id="2_l116d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pjen0"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://7gmos44kvb8r"]
 
-[ext_resource type="Script" path="res://Scripts/ui_end_credits.gd" id="1_f8350"]
+[ext_resource type="Script" uid="uid://co6682nd0dkmc" path="res://Scripts/ui_end_credits.gd" id="1_f8350"]
 
 [sub_resource type="Animation" id="Animation_nmomm"]
 length = 0.001
@@ -59,8 +59,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xqjuy"]
 _data = {
-"RESET": SubResource("Animation_nmomm"),
-"scroll": SubResource("Animation_isq5l")
+&"RESET": SubResource("Animation_nmomm"),
+&"scroll": SubResource("Animation_isq5l")
 }
 
 [node name="EndCredits" type="Control"]

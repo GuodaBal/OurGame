@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=4 uid="uid://ixq4hr2e35l5"]
 
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_q0aw3"]
-[ext_resource type="Script" path="res://Scripts/change_after_perkunas.gd" id="1_x075c"]
+[ext_resource type="Script" uid="uid://b2duy4rg8lfwv" path="res://Scripts/change_after_perkunas.gd" id="1_x075c"]
 [ext_resource type="Texture2D" uid="uid://kd6fr428ur7p" path="res://Game_Sprites/Tilemaps/Backgrounds/NatureArea_1.png" id="2_sb1bx"]
 [ext_resource type="PackedScene" uid="uid://cm5io1eqsih0u" path="res://tscn_files/level_switcher.tscn" id="2_t1dvb"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="3_0pxxw"]
