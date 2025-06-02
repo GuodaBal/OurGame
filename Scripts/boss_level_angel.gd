@@ -17,8 +17,9 @@ func spawn_random_enemy():
 	print_debug("spawning")
 	var spawnPoint = randi_range(1, 4)
 	var enemy
+	var spawnPos = spawnLocations[spawnPoint-1]
 	#If player is too close to selected floor spawnpoint, pick different one to prevent spawning on player
-	if spawnPoint <= 2 and abs(spawnLocations[spawnPoint-1] - get_node("MainCharacter").position).length() < 150:
+	if spawnPoint <= 2 and abs(spawnPos - get_node("MainCharacter").position).length() < 150:
 		spawn_random_enemy()
 		return
 	#FloorEnemies
@@ -45,6 +46,11 @@ func spawn_random_enemy():
 	enemy.range = 40000
 	enemy.hp_chance = 4
 	move_child(enemy, 3)
+	
+	var angel:= get_node_or_null("Angel")
+	var beam := get_node_or_null("AngelBeam")
+	if angel and beam:
+		beam.play_beam(angel.global_position, spawnPos)
 
 
 func _on_child_exiting_tree(node: Node) -> void:

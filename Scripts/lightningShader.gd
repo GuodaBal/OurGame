@@ -9,7 +9,7 @@ func start_lightning_loop():
 	lightning_loop()
 
 func lightning_loop() -> void:
-	await get_tree().create_timer(randf_range(6.0, 15.0)).timeout
+	await get_tree().create_timer(randf_range(6.0, 12.0)).timeout
 	flash_lightning()
 	lightning_loop()  # Rekursyviai kviečia save
 	

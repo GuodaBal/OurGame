@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://dek3hypbets8v"]
+[gd_scene load_steps=11 format=4 uid="uid://dek3hypbets8v"]
 
 [ext_resource type="Script" path="res://Scripts/boss_level_angel.gd" id="1_uwy1p"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_6de1d"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_8brmy"]
 [ext_resource type="Texture2D" uid="uid://dbyuksnsgphoh" path="res://Game_Sprites/Tilemaps/Backgrounds/AngelBoss_Background.png" id="8_vvtp8"]
 [ext_resource type="Texture2D" uid="uid://c6188qbaaprns" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Angel_Boss.png" id="9_dan3c"]
+[ext_resource type="PackedScene" uid="uid://d4ht6k4xa8mt5" path="res://tscn_files/AngelBeam.tscn" id="10_vp11h"]
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_uwy1p")
@@ -93,5 +94,10 @@ z_index = 1
 position = Vector2(606, 557)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("9_dan3c")
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="AngelBeam" parent="." instance=ExtResource("10_vp11h")]
+position = Vector2(-130, -226)
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_child_exiting_tree"]
