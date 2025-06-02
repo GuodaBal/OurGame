@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnkpcokxgwbcg"]
 
-[ext_resource type="Script" path="res://Scripts/ui_starting_animation.gd" id="1_l6p5b"]
+[ext_resource type="Script" uid="uid://yunwcvy2jpua" path="res://Scripts/ui_starting_animation.gd" id="1_l6p5b"]
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="1_nkacp"]
 [ext_resource type="Texture2D" uid="uid://bqwepacx8cf3f" path="res://Game_Sprites/StartAnimation/StartAnimation_2_1.png" id="2_4yyub"]
 [ext_resource type="Texture2D" uid="uid://db6bpuu6ymxph" path="res://Game_Sprites/StartAnimation/StartAnimation_1_2.png" id="3_3q0sq"]

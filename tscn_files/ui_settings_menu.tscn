@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://biff12c7vb888"]
 
-[ext_resource type="Script" path="res://Scripts/ui_settings_menu.gd" id="1_2ejto"]
+[ext_resource type="Script" uid="uid://ch2o5woey0n3v" path="res://Scripts/ui_settings_menu.gd" id="1_2ejto"]
 
 [sub_resource type="Theme" id="Theme_8yoo2"]
 CheckButton/constants/icon_max_width = 500

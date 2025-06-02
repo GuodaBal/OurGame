@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://dek3hypbets8v"]
 
-[ext_resource type="Script" path="res://Scripts/boss_level_angel.gd" id="1_uwy1p"]
+[ext_resource type="Script" uid="uid://df75us36h42of" path="res://Scripts/boss_level_angel.gd" id="1_uwy1p"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_6de1d"]
 [ext_resource type="PackedScene" uid="uid://cxbqwn7b3j37q" path="res://tscn_files/angel.tscn" id="3_x4sya"]
 [ext_resource type="PackedScene" uid="uid://cbk23murpdmn1" path="res://tscn_files/spawn_area.tscn" id="4_gqt1s"]

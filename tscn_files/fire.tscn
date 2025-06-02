@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dha2kq4ekqp8y"]
 
-[ext_resource type="Script" path="res://Scripts/fire.gd" id="1_la3rp"]
+[ext_resource type="Script" uid="uid://c2p1ouxgmt13k" path="res://Scripts/fire.gd" id="1_la3rp"]
 [ext_resource type="Texture2D" uid="uid://dhxgr0163ohwt" path="res://Sprites/Bosses/Gabija/pngtree-fire-illustration-png-image_6485204.png" id="2_dwlic"]
 [ext_resource type="AudioStream" uid="uid://cftw0rd8kj2qp" path="res://Audio/SFX/Fire.wav" id="3_o1iia"]
 

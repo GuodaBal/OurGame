@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://cea5n48jbtdkj"]
 
-[ext_resource type="Script" path="res://Scripts/lightning_ability.gd" id="1_1e61e"]
+[ext_resource type="Script" uid="uid://bkn47e8staqpw" path="res://Scripts/lightning_ability.gd" id="1_1e61e"]
 [ext_resource type="Texture2D" uid="uid://yvgjbpr1m5d8" path="res://Game_Sprites/Animation/Abilities/Spell_Animation_Lightning.png" id="2_qdjdm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6rko"]

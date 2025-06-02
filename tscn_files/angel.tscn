@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ccddxm2g1k550" path="res://Game_Sprites/Animation/Bosses/AngelBoss/Flying_AngelBoss.png" id="1_1u14g"]
 [ext_resource type="Texture2D" uid="uid://cqy7slngmcb3v" path="res://Game_Sprites/Animation/Death/AngelBoss_Death.png" id="1_g570j"]
 [ext_resource type="Texture2D" uid="uid://bl13m8nsb52hr" path="res://Game_Sprites/Animation/Bosses/AngelBoss/SpawningEnemies_AngelBoss.png" id="2_bbnbr"]
-[ext_resource type="Script" path="res://Scripts/angel.gd" id="2_sguas"]
+[ext_resource type="Script" uid="uid://cary2jf47rb3r" path="res://Scripts/angel.gd" id="2_sguas"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uw8qx"]
 atlas = ExtResource("1_g570j")
