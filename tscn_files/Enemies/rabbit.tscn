@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://b1ic8r1mfi8ss"]
 
 [ext_resource type="Texture2D" uid="uid://bqcmoqtav37aq" path="res://Game_Sprites/Enemy/Bunny_Down_256.png" id="1_f428x"]
-[ext_resource type="Script" uid="uid://bm61oqtkig0fc" path="res://Scripts/rabbit.gd" id="1_ujdan"]
+[ext_resource type="Script" path="res://Scripts/rabbit.gd" id="1_ujdan"]
 [ext_resource type="Texture2D" uid="uid://diqrrkkpvfcv1" path="res://Game_Sprites/Animation/Death/Bunny_Death.png" id="2_nldxw"]
 [ext_resource type="Texture2D" uid="uid://dhyy2be8k1mfg" path="res://Game_Sprites/Animation/Enemies/Bunny_Running.png" id="4_m27vl"]
 [ext_resource type="AudioStream" uid="uid://e8icpofvoh0k" path="res://Audio/SFX/RabbitRunning.wav" id="5_0seti"]

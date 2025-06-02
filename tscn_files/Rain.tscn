@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://d10hy11cpcxf7"]
 
-[ext_resource type="Shader" uid="uid://crdiacyparcwd" path="res://Game_Sprites/Shaders/Rain.gdshader" id="1_wa287"]
+[ext_resource type="Shader" path="res://Game_Sprites/Shaders/Rain.gdshader" id="1_wa287"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hvony"]
 shader = ExtResource("1_wa287")

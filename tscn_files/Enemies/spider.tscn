@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://dmcrboumpymth"]
 
-[ext_resource type="Script" uid="uid://wtfsq0mw7pr1" path="res://Scripts/spider.gd" id="1_2cmbd"]
+[ext_resource type="Script" path="res://Scripts/spider.gd" id="1_2cmbd"]
 [ext_resource type="Texture2D" uid="uid://dkydsg7w0aqv0" path="res://Game_Sprites/Enemy/Spider_256.png" id="2_h0wtt"]
 [ext_resource type="Texture2D" uid="uid://bvhcwkg77wlg1" path="res://Game_Sprites/Animation/Death/Spider_Death.png" id="2_nagwb"]
 [ext_resource type="Texture2D" uid="uid://cjb15tttykulf" path="res://Game_Sprites/Animation/Enemies/Spider_Running.png" id="4_jjluc"]

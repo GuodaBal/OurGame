@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwgdgfpdtvmx3"]
 
 [ext_resource type="Texture2D" uid="uid://doq3fviqudc2x" path="res://Game_Sprites/Abilities/Stump.png" id="1_gq1vk"]
-[ext_resource type="Script" uid="uid://bjli3y3j2un2h" path="res://Scripts/stump_ability.gd" id="1_wncbf"]
+[ext_resource type="Script" path="res://Scripts/stump_ability.gd" id="1_wncbf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcevg"]
 size = Vector2(65, 89)
@@ -63,8 +63,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dfhrt"]
 _data = {
-&"RESET": SubResource("Animation_ilc4l"),
-&"spawn": SubResource("Animation_f576l")
+"RESET": SubResource("Animation_ilc4l"),
+"spawn": SubResource("Animation_f576l")
 }
 
 [node name="StumpAbility" type="AnimatableBody2D"]

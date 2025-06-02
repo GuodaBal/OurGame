@@ -1,6 +1,6 @@
 [gd_scene load_steps=50 format=3 uid="uid://1okjlshefdnc"]
 
-[ext_resource type="Script" uid="uid://qpeowtttag5s" path="res://Scripts/tree_sun_blocker.gd" id="1_j6q7w"]
+[ext_resource type="Script" path="res://Scripts/tree_sun_blocker.gd" id="1_j6q7w"]
 [ext_resource type="Texture2D" uid="uid://bviwsbnqpjvqr" path="res://Game_Sprites/Animation/Bosses/NatureBoss/GrowingBranches.png" id="2_tifxp"]
 [ext_resource type="Shader" path="res://Game_Sprites/Shaders/branchWiggle.gdshader" id="3_i0cb1"]
 [ext_resource type="Shader" path="res://tscn_files/tree_sun_blocker.gdshader" id="4_h7n38"]
@@ -173,9 +173,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xot0c"]
 _data = {
-&"RESET": SubResource("Animation_niuwb"),
-&"burning": SubResource("Animation_3857u"),
-&"grow": SubResource("Animation_636s2")
+"RESET": SubResource("Animation_niuwb"),
+"burning": SubResource("Animation_3857u"),
+"grow": SubResource("Animation_636s2")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xouib"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cx5hwtyvddfas"]
 
-[ext_resource type="Shader" uid="uid://dq7jx3j00rar5" path="res://Game_Sprites/Shaders/moving_fog.gdshader" id="1_mltjq"]
+[ext_resource type="Shader" path="res://Game_Sprites/Shaders/moving_fog.gdshader" id="1_mltjq"]
 [ext_resource type="Texture2D" uid="uid://diabvwd1lmeor" path="res://Game_Sprites/Shaders/fog_texture.tres" id="2_tp2q8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t5oo8"]

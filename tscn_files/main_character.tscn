@@ -1,6 +1,6 @@
 [gd_scene load_steps=186 format=3 uid="uid://bo5x65xs813fn"]
 
-[ext_resource type="Script" uid="uid://df8vs3hxtjfka" path="res://Scripts/main_character.gd" id="1_7nded"]
+[ext_resource type="Script" path="res://Scripts/main_character.gd" id="1_7nded"]
 [ext_resource type="Texture2D" uid="uid://cvhpbbqhi764o" path="res://Game_Sprites/Animation/Niya_NEW/Niya_Attack_1.png" id="2_q5qet"]
 [ext_resource type="Texture2D" uid="uid://c5ni62get2by" path="res://Game_Sprites/Animation/Niya_NEW/Niya_Attack_2.png" id="3_04yjb"]
 [ext_resource type="AudioStream" uid="uid://50pr2qfnk5sq" path="res://Audio/SFX/Arrow2_mixdown.wav" id="3_q8j6a"]

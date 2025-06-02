@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://djna2o8otep4p"]
 
-[ext_resource type="Script" uid="uid://ndf5dwqrlbtj" path="res://Scripts/ground_spike.gd" id="1_jg1gg"]
+[ext_resource type="Script" path="res://Scripts/ground_spike.gd" id="1_jg1gg"]
 [ext_resource type="Texture2D" uid="uid://in1boey7nt6o" path="res://Game_Sprites/Animation/Bosses/NatureBoss/Spike_256.png" id="2_dhny5"]
 [ext_resource type="AudioStream" uid="uid://bbq6o6dtjujfs" path="res://Audio/SFX/GSpike.wav" id="3_xxnru"]
 
@@ -85,8 +85,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v16pq"]
 _data = {
-&"RESET": SubResource("Animation_yi3ku"),
-&"spawn": SubResource("Animation_e3oav")
+"RESET": SubResource("Animation_yi3ku"),
+"spawn": SubResource("Animation_e3oav")
 }
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_08gj0"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=4 uid="uid://dyljqhrhv85wj"]
 
 [ext_resource type="TileSet" uid="uid://c2wpbrokrmq4w" path="res://Game_Sprites/Tilemaps/New/Water_area.tres" id="1_awgg6"]
-[ext_resource type="Script" uid="uid://b2duy4rg8lfwv" path="res://Scripts/change_after_perkunas.gd" id="1_gj47v"]
+[ext_resource type="Script" path="res://Scripts/change_after_perkunas.gd" id="1_gj47v"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="2_2jldc"]
 [ext_resource type="Texture2D" uid="uid://dxst1n24nwlq" path="res://Game_Sprites/Tilemaps/Backgrounds/WaterArea_2.png" id="2_ab3te"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="3_ltofw"]

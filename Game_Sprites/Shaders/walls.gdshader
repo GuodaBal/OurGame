@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 // Pagrindinė (sienos) tekstūra gaunama iš TEXTURE (TileMap).
 // Papildomai deklaruojame antrą tekstūrą – lava.
-uniform sampler2D lava_tex: repeat_enable; //Pridedama repeat_enable, kad lavos tekstura kartotusi
+uniform sampler2D lava_tex;
 uniform sampler2D noise_tex; // Naudosim generuoti "plyšiams"
 
 // Tuning parametrai:
@@ -14,8 +14,6 @@ uniform float edge_start = 0.1;    // Jei UV atstumas nuo kraštų (border) maž
 uniform float edge_fade_start = 0.05; // Pradeda blukėti efektas
 
 void fragment() {
-	//Kaukė, rodanti lygio area
-	float tex_mask = texture(TEXTURE, UV).r;
     // 1. Paimame pagrindinę sienos spalvą
     vec4 wall_col = texture(TEXTURE, UV);
     // 2. Naudojame triukšmo tekstūrą (be TIME) – plyšių raštas bus statinis
@@ -27,18 +25,23 @@ void fragment() {
     // 4. Apskaičiuojame atstumą nuo UV erdvės kraštų. UV koordinatės pagal nutylėjimą yra [0, 1].
     float border = min(min(UV.x, UV.y), min(1.0 - UV.x, 1.0 - UV.y));
 
+    // 5. Sukuriame kraštų kaukę: jei border yra mažesnis nei edge_start, norime, kad efektas visiškai išnyktų.
+    // Naudojame step(), kad visiškai nuleistume efektą prie kraštų.
+    float edgeClamp = step(edge_start, border); // Grąžina 0.0, jei border < edge_start, kitaip 1.0.
+
+    // Taip pat galite naudoti smoothstep, kad efektas išnyktų glotniai nuo edge_fade_start iki edge_start.
+    float edgeMask = smoothstep(edge_fade_start, edge_start, border);
+
     // Kombinuojame – efektas bus aktyvus tik vidinėje dalyje.
-    float final_mask = cracks_mask * tex_mask;
+    float final_mask = cracks_mask * edgeClamp * edgeMask;
 
     // 6. Lava tekstūros UV offsetas – lava juda vertikaliai.
-	vec2 lava_uv = UV;
-	lava_uv.y += TIME * lava_speed;                // Lava tekėjimas
-	lava_uv.x += sin(UV.y * 10.0 + TIME) * 0.01;   // Bangavimas (horizontalus iškraipymas)
+vec2 lava_uv = UV;
+lava_uv.y += TIME * lava_speed;                // Lava tekėjimas
+lava_uv.x += sin(UV.y * 10.0 + TIME) * 0.01;   // Bangavimas (horizontalus iškraipymas)
     vec4 lava_col = texture(lava_tex, lava_uv);
 
     // 7. Sumaišome sienos ir lavos spalvas, naudojant mūsų final_mask.
     vec3 final_rgb = mix(wall_col.rgb, lava_col.rgb, final_mask);
-	
     COLOR = vec4(final_rgb, 1.0);
-	COLOR.a = final_mask;
 }

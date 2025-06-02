@@ -21,5 +21,5 @@ void fragment()
 		float fog_alpha = (fog_color.r + fog_color.g + fog_color.b) / 3.0 * 1.5;
 		COLOR.a = base_color.a * fog_alpha;
 		COLOR.rgb = fog_color * base_color.rgb;
-
+		
 	}

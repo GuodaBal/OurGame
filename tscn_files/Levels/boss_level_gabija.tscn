@@ -1,6 +1,6 @@
-[gd_scene load_steps=41 format=4 uid="uid://c83o4uejxjvsx"]
+[gd_scene load_steps=38 format=4 uid="uid://c83o4uejxjvsx"]
 
-[ext_resource type="Script" uid="uid://dksta408awpxm" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
+[ext_resource type="Script" path="res://Scripts/boss_level_gabija.gd" id="1_cdcpk"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_20n8p"]
 [ext_resource type="Texture2D" uid="uid://c8aq7tnw2tbk3" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_2.png" id="2_ya7jn"]
 [ext_resource type="PackedScene" uid="uid://n0byngr2sw2r" path="res://tscn_files/gabija.tscn" id="3_0oha5"]
@@ -12,17 +12,15 @@
 [ext_resource type="AudioStream" uid="uid://divv83lg7clup" path="res://Audio/Music/GabijaAf.wav" id="7_njy1q"]
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="8_dbq0o"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_3u04n"]
-[ext_resource type="Shader" uid="uid://bdpb2wu765hrc" path="res://Game_Sprites/Shaders/walls.gdshader" id="10_xgtnv"]
+[ext_resource type="Shader" path="res://Game_Sprites/Shaders/walls.gdshader" id="10_xgtnv"]
 [ext_resource type="Texture2D" uid="uid://cnn8vtdb00rb0" path="res://Game_Sprites/Shaders/walls.tres" id="11_ceux5"]
 [ext_resource type="Texture2D" uid="uid://d21ds7l70844k" path="res://Game_Sprites/Shaders/istockphoto-1398516147-612x612.jpg" id="11_whtdq"]
 [ext_resource type="AudioStream" uid="uid://cftw0rd8kj2qp" path="res://Audio/SFX/Fire.wav" id="12_hmdf2"]
 [ext_resource type="TileSet" uid="uid://dmel105g6rnl8" path="res://Game_Sprites/Tilemaps/New/Fire_area.tres" id="13_hsd5s"]
 [ext_resource type="Texture2D" uid="uid://ctof20qe8tea6" path="res://Game_Sprites/blob.png" id="15_w4t3m"]
 [ext_resource type="Texture2D" uid="uid://jc0e7w240uul" path="res://Game_Sprites/Shaders/glowGradient.tres" id="19_j3kox"]
-[ext_resource type="Shader" uid="uid://wxw40uyplyer" path="res://Game_Sprites/Shaders/tattooGlow.gdshader" id="20_12kv2"]
+[ext_resource type="Shader" path="res://Game_Sprites/Shaders/tattooGlow.gdshader" id="20_12kv2"]
 [ext_resource type="FastNoiseLite" uid="uid://1fn44xdlpkaj" path="res://Game_Sprites/Shaders/TattooNoise.tres" id="21_ef2fc"]
-[ext_resource type="Texture2D" uid="uid://cl7ocj683tdas" path="res://Game_Sprites/Shaders/repeating_lava_texture.png" id="22_3ip4k"]
-[ext_resource type="Texture2D" uid="uid://cvt710k7wx0mw" path="res://Game_Sprites/Shaders/gabija_level_mask.png" id="23_cyv0p"]
 
 [sub_resource type="Curve2D" id="Curve2D_hn5tq"]
 _data = {
@@ -4108,12 +4106,12 @@ sources/2 = SubResource("TileSetAtlasSource_kscki")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y66ym"]
 shader = ExtResource("10_xgtnv")
-shader_parameter/lava_tex = ExtResource("11_whtdq")
-shader_parameter/noise_tex = ExtResource("11_ceux5")
 shader_parameter/threshold = 0.36
 shader_parameter/lava_speed = 0.1
 shader_parameter/edge_start = 0.06
 shader_parameter/edge_fade_start = 0.05
+shader_parameter/lava_tex = ExtResource("11_whtdq")
+shader_parameter/noise_tex = ExtResource("11_ceux5")
 
 [sub_resource type="Shader" id="Shader_xxtyr"]
 
@@ -4156,19 +4154,10 @@ noise = ExtResource("21_ef2fc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3c5k"]
 shader = ExtResource("20_12kv2")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_2ud63")
 shader_parameter/time_speed = 1.0
 shader_parameter/distortion_strength = 5.0
 shader_parameter/noise_scale = Vector2(20, 20)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_alemp"]
-shader = ExtResource("10_xgtnv")
-shader_parameter/lava_tex = ExtResource("22_3ip4k")
-shader_parameter/noise_tex = ExtResource("11_ceux5")
-shader_parameter/threshold = 0.5
-shader_parameter/lava_speed = 0.1
-shader_parameter/edge_start = 0.1
-shader_parameter/edge_fade_start = 0.05
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_2ud63")
 
 [node name="Level4" type="Node2D"]
 script = ExtResource("1_cdcpk")
@@ -4263,10 +4252,10 @@ use_parent_material = true
 position = Vector2(907, 533)
 scale = Vector2(9.445, 4.31)
 amount = 350
+process_material = SubResource("ParticleProcessMaterial_t77ly")
 texture = ExtResource("15_w4t3m")
 lifetime = 10.0
 visibility_rect = Rect2(-125, -140, 250, 280)
-process_material = SubResource("ParticleProcessMaterial_t77ly")
 
 [node name="Fog" parent="." instance=ExtResource("10_3u04n")]
 visible = false
@@ -4304,13 +4293,6 @@ offset_top = -447.0
 offset_right = 405.0
 offset_bottom = 426.0
 color = Color(1, 1, 1, 0)
-
-[node name="GabijaLevelMask" type="Sprite2D" parent="."]
-z_index = 3
-material = SubResource("ShaderMaterial_alemp")
-position = Vector2(439.501, 767)
-scale = Vector2(1.97494, 1.97494)
-texture = ExtResource("23_cyv0p")
 
 [connection signal="ready" from="." to="." method="_on_ready"]
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]

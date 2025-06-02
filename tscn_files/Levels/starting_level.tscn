@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://doinotd4lf80o"]
 
-[ext_resource type="Script" uid="uid://bjlpwy40smyb7" path="res://Scripts/starting_level.gd" id="1_orm5a"]
+[ext_resource type="Script" path="res://Scripts/starting_level.gd" id="1_orm5a"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_s418v"]
 [ext_resource type="PackedScene" uid="uid://dxjgj16g2vqjt" path="res://tscn_files/save_point.tscn" id="2_6s6y2"]
 [ext_resource type="Texture2D" uid="uid://csyusnqjjrcmp" path="res://Game_Sprites/Tilemaps/Backgrounds/FireArea_1.png" id="2_vy81c"]
