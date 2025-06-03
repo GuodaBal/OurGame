@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://doinotd4lf80o"]
+[gd_scene load_steps=12 format=4 uid="uid://doinotd4lf80o"]
 
 [ext_resource type="Script" path="res://Scripts/starting_level.gd" id="1_orm5a"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_s418v"]
@@ -10,6 +10,7 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="9_pjygb"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_ko45t"]
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="10_w0l0e"]
+[ext_resource type="PackedScene" uid="uid://c2dh8so4rhtia" path="res://tscn_files/health_drop.tscn" id="12_pdfvt"]
 
 [node name="Level5" type="Node2D"]
 script = ExtResource("1_orm5a")
@@ -31,7 +32,7 @@ position = Vector2(-249, 747)
 [node name="LevelSwitcher" parent="." instance=ExtResource("3_t5iol")]
 position = Vector2(-323, 624)
 scale = Vector2(1, 2.015)
-nextLevel = "boss_level_angel"
+nextLevel = "boss_level_medeina"
 
 [node name="SpawnArea" parent="." instance=ExtResource("4_oxnbh")]
 position = Vector2(-208, 841)
@@ -69,5 +70,26 @@ offset_top = -486.0
 offset_right = -1207.0
 offset_bottom = 26.0
 scale = Vector2(11.685, 5.07)
+
+[node name="HealthDrop" parent="." instance=ExtResource("12_pdfvt")]
+position = Vector2(799, 873)
+
+[node name="HealthDrop2" parent="." instance=ExtResource("12_pdfvt")]
+position = Vector2(871, 871)
+
+[node name="HealthDrop3" parent="." instance=ExtResource("12_pdfvt")]
+position = Vector2(945, 875)
+
+[node name="HealthDrop4" parent="." instance=ExtResource("12_pdfvt")]
+position = Vector2(1015, 875)
+
+[node name="HealthDrop5" parent="." instance=ExtResource("12_pdfvt")]
+position = Vector2(1074, 880)
+
+[node name="HealthDrop6" parent="." instance=ExtResource("12_pdfvt")]
+position = Vector2(1136, 877)
+
+[node name="HealthDrop7" parent="." instance=ExtResource("12_pdfvt")]
+position = Vector2(1208, 869)
 
 [connection signal="ready" from="Node2D" to="Node2D" method="_on_ready"]

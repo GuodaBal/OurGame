@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://djna2o8otep4p"]
+[gd_scene load_steps=9 format=3 uid="uid://djna2o8otep4p"]
 
 [ext_resource type="Script" path="res://Scripts/ground_spike.gd" id="1_jg1gg"]
 [ext_resource type="Texture2D" uid="uid://in1boey7nt6o" path="res://Game_Sprites/Animation/Bosses/NatureBoss/Spike_256.png" id="2_dhny5"]
 [ext_resource type="AudioStream" uid="uid://bbq6o6dtjujfs" path="res://Audio/SFX/GSpike.wav" id="3_xxnru"]
+[ext_resource type="Material" uid="uid://clhpoqnpuut2a" path="res://Game_Sprites/Shaders/cracks.tres" id="4_qal5y"]
 
 [sub_resource type="Animation" id="Animation_yi3ku"]
 length = 0.001
@@ -142,6 +143,15 @@ emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_08gj0")
 one_shot = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 5
+z_as_relative = false
+material = ExtResource("4_qal5y")
+offset_left = -70.0
+offset_top = -11.0
+offset_right = 66.0
+offset_bottom = 144.0
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]

@@ -4,14 +4,30 @@ extends Node2D
 @onready var enemySpawnLocation2 = $EnemySpawn2.position as Vector2
 @onready var enemySpawnLocation3 = $EnemySpawn3.position as Vector2
 @onready var enemySpawnLocation4 = $EnemySpawn4.position as Vector2
-
+@onready var camera = $MainCharacter/Camera2D
 var spawnLocations
+
+@onready var cracks_material := $Sprite2D8.material as ShaderMaterial
+
+@onready var murals := [
+	$Sprite2D7,$Sprite2D6,$Sprite2D5,$Sprite2D4,$Sprite2D2,$Sprite2D
+]
+var shake_strengths = [1.0, 3.0, 8.0]    # atitinkamai stiprėjantis camera shake
+var enemies_killed = 0
+var cracks_thresholds = [0.3, 0.5, 0.7]  # 3 etapai
+var current_stage = 0
+const STAGE_KILL_REQUIREMENTS := [2, 4, 6]  # Po kiek priešų reikia kiekvienam etapui
 
 func _ready() -> void:
 	AudioManager.stop_forestfire_sound()
 	AudioManager.stop_forest_sound()
 	AudioManager.stop_water_sound()
 	spawnLocations = [enemySpawnLocation1, enemySpawnLocation2, enemySpawnLocation3, enemySpawnLocation4]
+	
+	 # Pradžioje – niekas nesimato
+	for mural in murals:
+		var mat := mural.material as ShaderMaterial
+		mat.set_shader_parameter("reveal_amount", 0.0)
 
 func spawn_random_enemy():
 	print_debug("spawning")
@@ -56,6 +72,30 @@ func spawn_random_enemy():
 func _on_child_exiting_tree(node: Node) -> void:
 	if node.is_in_group("Enemy") and get_node("Angel") != null:
 		$Angel.take_damage(1)
+		enemies_killed += 1
+		if enemies_killed % 2 == 0 and current_stage < 3:
+			camera.shake(8.0)
+			increase_cracks_and_shake(current_stage)
+			reveal_murals_stage(current_stage)
+			current_stage += 1	
+
+func reveal_murals_stage(stage: int):
+	var start_index = stage * 2
+	for i in range(start_index, start_index + 2):
+		var mural = murals[i]
+		var mat = mural.material as ShaderMaterial
+		var tween = create_tween()
+		tween.tween_property(mat, "shader_parameter/reveal_amount", 1.0, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	
+func increase_cracks_and_shake(stage: int):
+	# 1) Padidiname plyšių threshold
+	var new_threshold = cracks_thresholds[stage]
+	cracks_material.set_shader_parameter("threshold", new_threshold)
+
+	# 2) Iškviečiame camera.shake su atitinkama stiprybe
+	var shake_amount = shake_strengths[stage]
+	camera.shake(shake_amount)
+				
 
 func over():
 	await get_tree().create_timer(1).timeout

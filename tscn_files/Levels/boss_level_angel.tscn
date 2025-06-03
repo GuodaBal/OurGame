@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://dek3hypbets8v"]
+[gd_scene load_steps=22 format=4 uid="uid://dek3hypbets8v"]
 
 [ext_resource type="Script" path="res://Scripts/boss_level_angel.gd" id="1_uwy1p"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="2_6de1d"]
@@ -9,7 +9,43 @@
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="7_8brmy"]
 [ext_resource type="Texture2D" uid="uid://dbyuksnsgphoh" path="res://Game_Sprites/Tilemaps/Backgrounds/AngelBoss_Background.png" id="8_vvtp8"]
 [ext_resource type="Texture2D" uid="uid://c6188qbaaprns" path="res://Game_Sprites/Background_Boss_Symbol/Background_symbol_Angel_Boss.png" id="9_dan3c"]
+[ext_resource type="Shader" path="res://Game_Sprites/Shaders/wallHoles.gdshader" id="9_rwcbq"]
+[ext_resource type="Texture2D" uid="uid://cnn8vtdb00rb0" path="res://Game_Sprites/Shaders/walls.tres" id="10_cs3sf"]
+[ext_resource type="Shader" path="res://Game_Sprites/Shaders/angelMarkings.gdshader" id="10_it01q"]
 [ext_resource type="PackedScene" uid="uid://d4ht6k4xa8mt5" path="res://tscn_files/AngelBeam.tscn" id="10_vp11h"]
+[ext_resource type="Texture2D" uid="uid://dgyrw7d5uvhc6" path="res://Game_Sprites/Tilemaps/Backgrounds/AngelBoss_Background_mask2.png" id="11_46k1d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_enn3b"]
+shader = ExtResource("9_rwcbq")
+shader_parameter/threshold = 0.0
+shader_parameter/glow_intensity = 1.0
+shader_parameter/glow_size = 0.05
+shader_parameter/glow_color = Vector3(1, 1, 0.8)
+shader_parameter/noise_tex = ExtResource("10_cs3sf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n7ael"]
+shader = ExtResource("10_it01q")
+shader_parameter/reveal_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3grgs"]
+shader = ExtResource("10_it01q")
+shader_parameter/reveal_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gom6p"]
+shader = ExtResource("10_it01q")
+shader_parameter/reveal_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kk8l5"]
+shader = ExtResource("10_it01q")
+shader_parameter/reveal_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7opbl"]
+shader = ExtResource("10_it01q")
+shader_parameter/reveal_amount = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6enrb"]
+shader = ExtResource("10_it01q")
+shader_parameter/reveal_amount = 0.0
 
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_uwy1p")
@@ -59,40 +95,51 @@ bus = &"Music"
 position = Vector2(1011, 678)
 texture = ExtResource("8_vvtp8")
 
+[node name="Sprite2D8" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_enn3b")
+position = Vector2(1011, 678)
+texture = ExtResource("11_46k1d")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(1857, 656)
-scale = Vector2(0.4, 0.4)
+material = SubResource("ShaderMaterial_n7ael")
+position = Vector2(1867, 660)
+scale = Vector2(0.362109, 0.4)
 texture = ExtResource("9_dan3c")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(167, 656)
-scale = Vector2(0.4, 0.4)
+material = SubResource("ShaderMaterial_3grgs")
+position = Vector2(167, 652)
+scale = Vector2(0.365039, 0.4)
 texture = ExtResource("9_dan3c")
 
 [node name="Sprite2D4" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(430, 606)
-scale = Vector2(0.3, 0.3)
+material = SubResource("ShaderMaterial_gom6p")
+position = Vector2(428, 604)
+scale = Vector2(0.230762, 0.3)
 texture = ExtResource("9_dan3c")
 
 [node name="Sprite2D5" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(1598, 606)
-scale = Vector2(0.3, 0.3)
+material = SubResource("ShaderMaterial_kk8l5")
+position = Vector2(1602, 604)
+scale = Vector2(0.261523, 0.3)
 texture = ExtResource("9_dan3c")
 
 [node name="Sprite2D6" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(1420, 557)
-scale = Vector2(0.2, 0.2)
+material = SubResource("ShaderMaterial_7opbl")
+position = Vector2(1423, 557)
+scale = Vector2(0.185938, 0.2)
 texture = ExtResource("9_dan3c")
 
 [node name="Sprite2D7" type="Sprite2D" parent="."]
 z_index = 1
-position = Vector2(606, 557)
-scale = Vector2(0.2, 0.2)
+material = SubResource("ShaderMaterial_6enrb")
+position = Vector2(608, 557)
+scale = Vector2(0.176172, 0.2)
 texture = ExtResource("9_dan3c")
 
 [node name="Line2D" type="Line2D" parent="."]
