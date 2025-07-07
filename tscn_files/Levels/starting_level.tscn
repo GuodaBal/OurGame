@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://doinotd4lf80o"]
+[gd_scene load_steps=23 format=4 uid="uid://doinotd4lf80o"]
 
 [ext_resource type="Script" uid="uid://d0g7w3768bjsj" path="res://Scripts/starting_level.gd" id="1_orm5a"]
 [ext_resource type="PackedScene" uid="uid://bo5x65xs813fn" path="res://tscn_files/main_character.tscn" id="1_s418v"]
@@ -10,7 +10,6 @@
 [ext_resource type="TileSet" uid="uid://dnfmdyc7xk4pc" path="res://Game_Sprites/Tilemaps/Assets/details.tres" id="9_pjygb"]
 [ext_resource type="PackedScene" uid="uid://cx5hwtyvddfas" path="res://tscn_files/fog.tscn" id="10_ko45t"]
 [ext_resource type="TileSet" uid="uid://cvwjvo7olmjey" path="res://Game_Sprites/Tilemaps/New/Starting_area.tres" id="10_w0l0e"]
-[ext_resource type="PackedScene" uid="uid://c2dh8so4rhtia" path="res://tscn_files/health_drop.tscn" id="11_vd72e"]
 [ext_resource type="Shader" uid="uid://q4eyd14sqvg8" path="res://Shaders/sway.gdshader" id="12_cmsu4"]
 [ext_resource type="Texture2D" uid="uid://v6t45dj0ygtd" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_57_45.png" id="12_xr71x"]
 [ext_resource type="Texture2D" uid="uid://dmdifw6gpb67" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_57_56.png" id="13_mnfm8"]
@@ -19,7 +18,6 @@
 [ext_resource type="Shader" uid="uid://cfkfu2tqmyttx" path="res://Shaders/blur.gdshader" id="14_mnfm8"]
 [ext_resource type="Texture2D" uid="uid://dg454buoeh75p" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_08.png" id="16_xwb5g"]
 [ext_resource type="Texture2D" uid="uid://v5k4j814ukjr" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_58_28.png" id="18_ppt3l"]
-[ext_resource type="PackedScene" uid="uid://dyaneafq12qav" path="res://tscn_files/burnable_blocker.tscn" id="18_rrelh"]
 [ext_resource type="Texture2D" uid="uid://bac3iy8ofkajm" path="res://Game_Sprites/Tilemaps/Backgrounds/Trees/tree_2025-05-1815_59_01.png" id="21_yhjo8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6n6yb"]
@@ -89,12 +87,6 @@ offset_right = -1207.0
 offset_bottom = 26.0
 scale = Vector2(11.685, 5.07)
 
-[node name="HealthDrop" parent="." instance=ExtResource("11_vd72e")]
-position = Vector2(28, 670)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("18_rrelh")]
-position = Vector2(1501, 840)
-
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground2"]
@@ -111,7 +103,7 @@ motion_scale = Vector2(0.9, 0.9)
 
 [node name="Tree2025-05-18155756" type="Sprite2D" parent="ParallaxBackground2/ParallaxLayer2"]
 material = SubResource("ShaderMaterial_6n6yb")
-position = Vector2(675, 483)
+position = Vector2(675, 642)
 scale = Vector2(0.79, 0.79)
 texture = ExtResource("13_mnfm8")
 
